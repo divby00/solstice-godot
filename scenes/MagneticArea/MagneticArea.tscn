@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/MagneticArea/MagneticArea.gd" type="Script" id=2]
+
+[node name="MagneticArea" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+margin_left = -29.0
+margin_top = -15.0
+margin_right = 29.0
+margin_bottom = 16.0
+text = "Magnetic
+Area"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="body_entered" from="." to="." method="_on_MagneticArea_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_MagneticArea_body_exited"]

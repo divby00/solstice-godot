@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bulletsup.ogg-c75518b81492746ef79188ba1637dcc0.oggstr"
+
+[deps]
+
+source_file="res://sfx/bulletsup.ogg"
+dest_files=[ "res://.import/bulletsup.ogg-c75518b81492746ef79188ba1637dcc0.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

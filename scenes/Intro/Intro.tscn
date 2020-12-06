@@ -1,0 +1,183 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/Intro/intro-background.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Intro/intro-title.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Intro/single-smoke.png" type="Texture" id=3]
+[ext_resource path="res://fonts/joystix.tres" type="DynamicFont" id=4]
+[ext_resource path="res://scenes/Intro/Intro.gd" type="Script" id=5]
+[ext_resource path="res://music/girl_from_mars.ogg" type="AudioStream" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "scroll"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 128, 96 ), Vector2( 324, 96 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "title"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("TitleSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TitleSprite:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TitleSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 1, 2, 3, 4 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("TitleSprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.856818 ), 0.0, 0.0, 0, 0 ]
+
+[node name="Intro" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 252, 112 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "scroll"
+anims/scroll = SubResource( 1 )
+anims/title = SubResource( 2 )
+
+[node name="SunSprite" type="Sprite" parent="."]
+
+[node name="NuclearPlantSprite" type="Sprite" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 1, 1, 1, 0 )
+polygon = PoolVector2Array( 1, 3, 275, 0, 264, 22, 267, 43, 278, 58, 297, 68, 296, 97, 315, 119, 338, 118, 350, 100, 349, 67, 362, 60, 378, 39, 381, 16, 372, 0, 503, 0, 503, 126, 426, 126, 419, 108, 401, 104, 376, 107, 370, 130, 1, 132 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 387, 119 )
+amount = 30
+preprocess = 10.0
+texture = ExtResource( 3 )
+emission_shape = 2
+emission_rect_extents = Vector2( 5, 3 )
+gravity = Vector2( 0, -98 )
+angular_velocity = 90.0
+damping = 25.0
+damping_random = 1.0
+scale_amount_curve = SubResource( 3 )
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2( 406, 119 )
+amount = 30
+preprocess = 10.0
+texture = ExtResource( 3 )
+emission_shape = 2
+emission_rect_extents = Vector2( 5, 3 )
+gravity = Vector2( 0, -98 )
+angular_velocity = 90.0
+damping = 25.0
+damping_random = 1.0
+scale_amount_curve = SubResource( 3 )
+
+[node name="TitleSprite" type="Sprite" parent="."]
+position = Vector2( 324, 24 )
+scale = Vector2( 1, 1e-05 )
+texture = ExtResource( 2 )
+vframes = 5
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 145.043, 96 )
+current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LabelSkip" type="Label" parent="CanvasLayer"]
+margin_left = 48.0
+margin_top = 176.0
+margin_right = 200.0
+margin_bottom = 181.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+custom_fonts/font = ExtResource( 4 )
+text = "PRESS ENTER TO SKIP"
+align = 1
+valign = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+margin_left = 128.0
+margin_top = 93.0
+margin_right = 128.0
+margin_bottom = 98.0
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+margin_bottom = 5.0
+custom_fonts/font = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
