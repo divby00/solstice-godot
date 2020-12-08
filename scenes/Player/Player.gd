@@ -10,6 +10,7 @@ export(int) var GRAVITY = 150
 export(float) var FRICTION = .2
 
 signal item_picked(item)
+signal item_used
 
 enum Facing {
 	LEFT, RIGHT
@@ -87,7 +88,18 @@ func create_new_item(item):
 
 func on_player_can_open(lock):
 	if Input.is_action_just_pressed("ui_accept"):
-		# Destroy item
 		player_stats.selected_item = null
-		# Open locked area
+		emit_signal("item_used")
 		lock.open()
+
+func on_player_over_charger(teleporter_group, teleporter):
+	if Input.is_action_just_pressed("ui_accept") and player_stats.selected_item == 'teleportpass':
+		player_stats.selected_item = null
+		teleporter_group.charges += 2
+		emit_signal("item_used")
+
+func on_teleporter_activated(teleporter_group, teleporter):
+	for tele in teleporter_group.get_children():
+		if tele.name != teleporter.name:
+			global_position.x = tele.global_position.x + 24
+			global_position.y  = tele.global_position.y - 16

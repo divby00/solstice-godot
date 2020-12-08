@@ -177,6 +177,8 @@ radius = 7.0
 [node name="Player" type="KinematicBody2D" groups=[
 "PlayerGroup",
 ]]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
@@ -194,6 +196,8 @@ anims/rotation = SubResource( 4 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 remote_path = NodePath(".")
+update_rotation = false
+update_scale = false
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 4 )

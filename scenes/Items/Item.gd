@@ -10,9 +10,7 @@ func _process(delta):
 		emit_signal("player_over_item", self)
 
 func _on_Item_body_entered(body):
-	if body.is_in_group("PlayerGroup"):
-		over_item = true
+	over_item = true
 
 func _on_Item_body_exited(body):
-	if body.is_in_group("PlayerGroup"):
-		over_item = false
+	over_item = false

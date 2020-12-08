@@ -3,10 +3,10 @@
 [ext_resource path="res://scenes/Locks/Lock.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Locks/steel-lock.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 8 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 4, 8 )
 
 [node name="SteelLock" instance=ExtResource( 1 )]
@@ -14,11 +14,14 @@ opened_by = "drill"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpenerArea" index="0"]
 position = Vector2( 4, -8 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClosedArea" index="0"]
 position = Vector2( 4, -8 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "animate"
 
 [node name="Sprite" parent="." index="3"]
 position = Vector2( 4, -8 )

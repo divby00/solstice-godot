@@ -1,0 +1,148 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/Teleporter/teleporter.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Teleporter/Teleporter.gd" type="Script" id=2]
+[ext_resource path="res://fonts/joystix.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scenes/InfoAreas/InfoArea.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "charged"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 3 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "working"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 5 ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 8, 2 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 8, 2 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 19, 4 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 24, 28 )
+
+[node name="Teleporter" type="StaticBody2D"]
+z_index = 1
+collision_mask = 4
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_top = -72.0
+margin_right = 88.0
+margin_bottom = -56.0
+custom_fonts/font = ExtResource( 3 )
+text = "Name: 
+Linked to: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 24, -28 )
+z_index = 1
+texture = ExtResource( 1 )
+hframes = 6
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/charged = SubResource( 1 )
+anims/idle = SubResource( 2 )
+anims/working = SubResource( 3 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 24, -24 )
+emitting = false
+amount = 60
+lifetime = 0.35
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 8.0
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 40.0
+angular_velocity = 6.0
+damping = 50.0
+angle = 45.0
+color = Color( 0.968627, 0.886275, 0.419608, 1 )
+
+[node name="ActivateArea" type="Area2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActivateArea"]
+position = Vector2( 24, -38 )
+shape = SubResource( 4 )
+
+[node name="LoadingArea" type="Area2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LoadingArea"]
+position = Vector2( 24, -10 )
+shape = SubResource( 5 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 0, -40, 16, -56, 32, -56, 48, -40, 48, -32, 32, -32, 32, -40, 16, -40, 16, -32, 0, -32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 24, -4 )
+shape = SubResource( 6 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="InfoArea" parent="." instance=ExtResource( 4 )]
+text = "Use a teleporter pass to activate, once it's activated touch the upper ball to travel"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InfoArea"]
+position = Vector2( 24, -28 )
+shape = SubResource( 7 )
+[connection signal="body_entered" from="ActivateArea" to="." method="_on_ActivateArea_body_entered"]
+[connection signal="body_entered" from="LoadingArea" to="." method="_on_LoadingArea_body_entered"]
+[connection signal="body_exited" from="LoadingArea" to="." method="_on_LoadingArea_body_exited"]

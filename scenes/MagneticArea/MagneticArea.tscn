@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://fonts/joystix.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scenes/MagneticArea/MagneticArea.gd" type="Script" id=2]
 
 [node name="MagneticArea" type="Area2D"]
@@ -12,6 +13,7 @@ margin_left = -29.0
 margin_top = -15.0
 margin_right = 29.0
 margin_bottom = 16.0
+custom_fonts/font = ExtResource( 1 )
 text = "Magnetic
 Area"
 align = 1
