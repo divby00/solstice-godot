@@ -18,7 +18,6 @@ signal player_health_changed(health)
 signal player_laser_changed(laser)
 signal player_thrust_changed(thrust)
 signal player_lives_changed(lives)
-
 signal player_destroyed
 
 func set_health(value):

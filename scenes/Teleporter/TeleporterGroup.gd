@@ -3,8 +3,9 @@ extends Node
 const MAX_CHARGES = 10
 onready var animatorA = $TeleporterA/AnimationPlayer
 onready var animatorB = $TeleporterB/AnimationPlayer
+var player_stats = ResourceLoader.player_stats
 
-signal player_over_charger(teleporter_group, teleporter)
+signal teleporter_charged(teleporter_group, teleporter)
 signal teleporter_activated(teleporter_group, teleporter)
 
 enum Status {
@@ -37,18 +38,23 @@ func set_status(value):
 		animatorB.play("working")
 
 func _on_TeleporterA_player_over_charger(teleporter):
-	emit_signal("player_over_charger", self, teleporter)
+	charge_teleporter(teleporter)
 
 func _on_TeleporterB_player_over_charger(teleporter):
-	emit_signal("player_over_charger", self, teleporter)
+	charge_teleporter(teleporter)
+
+func charge_teleporter(teleporter):
+	if Input.is_action_just_pressed("ui_accept") and player_stats.selected_item == 'teleportpass':
+		self.charges += 2
+		emit_signal("teleporter_charged", self, teleporter)
 
 func _on_TeleporterA_teleporter_activated(teleporter):
-	self.status = Status.WORKING
-	yield(get_tree().create_timer(.4), "timeout")
-	self.charges -= 1
-	emit_signal("teleporter_activated", self, teleporter)
+	activate_teleporter(teleporter)
 
 func _on_TeleporterB_teleporter_activated(teleporter):
+	activate_teleporter(teleporter)
+	
+func activate_teleporter(teleporter):
 	self.status = Status.WORKING
 	yield(get_tree().create_timer(.4), "timeout")
 	self.charges -= 1

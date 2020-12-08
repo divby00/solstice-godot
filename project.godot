@@ -36,6 +36,7 @@ config/icon="res://icon.png"
 [autoload]
 
 ResourceLoader="*res://ResourceLoader.gd"
+InfoAreaTexts="*res://scenes/InfoAreas/InfoAreaTexts.gd"
 
 [display]
 

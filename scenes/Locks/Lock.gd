@@ -1,6 +1,6 @@
 extends Node2D
 
-signal player_can_open(lock)
+signal lock_opened(lock)
 
 export(int) var OPENING_EXPLOSIONS = 8
 
@@ -16,8 +16,9 @@ var player_stats = ResourceLoader.player_stats
 var can_open = false
 
 func _process(delta):
-	if can_open:
-		emit_signal("player_can_open", self)
+	if can_open and Input.is_action_just_pressed("ui_accept"):
+		open()
+		emit_signal("lock_opened", self)
 
 func _on_OpenerArea_body_entered(body):
 	if body.is_in_group("PlayerGroup"):

@@ -22,34 +22,46 @@ func load_level(level_key):
 	connect_items()
 	connect_locks()
 	connect_teleporters()
+	connect_teleporter_pass_dispatchers()
 	connect_info_areas()
+	connect_nuclear_storages()
 	
 func connect_items():
 	var items = get_tree().get_nodes_in_group("ItemGroup")
 	for item in items:
-		item.connect("player_over_item", player, "on_player_over_item")
+		item.connect("item_picked", player, "on_item_picked")
 
 func connect_locks():
 	var locks = get_tree().get_nodes_in_group("LockGroup")
 	for lock in locks:
-		lock.connect("player_can_open", player, "on_player_can_open")
+		lock.connect("lock_opened", player, "on_lock_opened")
 
 func connect_teleporters():
 	var teleporter_groups = get_tree().get_nodes_in_group("TeleporterGroup")
 	for teleporter_group in teleporter_groups:
-		teleporter_group.connect("player_over_charger", player, "on_player_over_charger")
+		teleporter_group.connect("teleporter_charged", player, "on_teleporter_charged")
 		teleporter_group.connect("teleporter_activated", player, "on_teleporter_activated")
+		
+func connect_teleporter_pass_dispatchers():
+	var dispatchers = get_tree().get_nodes_in_group("TeleporterPassDispatcherGroup")
+	for dispatcher in dispatchers:
+		dispatcher.connect("pass_dispatched", player, "on_pass_dispatched")
 
 func connect_info_areas():
 	var info_areas = get_tree().get_nodes_in_group("InfoAreaGroup")
 	for info_area in info_areas:
 		info_area.connect("info_area_entered", panel, "on_info_area_entered")
 
+func connect_nuclear_storages():
+	var nuclear_storages = get_tree().get_nodes_in_group("NuclearStorageGroup")
+	for nuclear_storage in nuclear_storages:
+		nuclear_storage.connect("nuclear_waste_stored", player, "on_nuclear_waste_stored")
+
 func set_camera_limits(level):
 	camera.limit_left = level.camera_limit_left
-	camera.limit_top = level.camera_limit_top - 24
+	camera.limit_top = level.camera_limit_top - 32
 	camera.limit_right = level.camera_limit_right
-	camera.limit_bottom = level.camera_limit_bottom + 24
+	camera.limit_bottom = level.camera_limit_bottom + 16
 	
 func set_initial_player_position():
 	var start_position = current_level.get_node("StartPosition")

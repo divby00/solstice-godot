@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Locks/Lock.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Locks/dump-lock.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24, 16 )
 
 [node name="DumpLock" instance=ExtResource( 1 )]
 opened_by = "tnt"
@@ -21,3 +24,10 @@ autoplay = "animate"
 position = Vector2( 16, -16 )
 texture = ExtResource( 2 )
 hframes = 2
+
+[node name="InfoArea" parent="." index="5"]
+text = "Blocked. Use TNT to destroy it."
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InfoArea" index="0"]
+position = Vector2( 16, -16 )
+shape = SubResource( 1 )

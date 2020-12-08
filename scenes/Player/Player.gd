@@ -72,34 +72,43 @@ func update_animation(input_vector):
 		facing = Facing.RIGHT
 		animation_player.play(current_animation)
 
-func on_player_over_item(item):
-	if Input.is_action_just_pressed("ui_down"):
-		if player_stats.selected_item != null:
-			create_new_item(item)
-		player_stats.selected_item = item.item_name
-		item.queue_free()
-		emit_signal("item_picked", item_definitions[player_stats.selected_item].texture)
+func on_item_picked(item):
+	if player_stats.selected_item != null:
+		create_new_item(item)
+	player_stats.selected_item = item.item_name
+	item.queue_free()
+	emit_signal("item_picked", item_definitions[player_stats.selected_item].texture)
 
 func create_new_item(item):
 	var item_scene = item_definitions[player_stats.selected_item].scene.instance()
 	item_scene.global_position = item.global_position
-	item_scene.connect("player_over_item", self, "on_player_over_item")
+	item_scene.connect("item_picked", self, "on_item_picked")
 	get_tree().current_scene.add_child(item_scene)
+	
+func on_lock_opened(lock):
+	player_stats.selected_item = null
+	emit_signal("item_used")
 
-func on_player_can_open(lock):
-	if Input.is_action_just_pressed("ui_accept"):
-		player_stats.selected_item = null
-		emit_signal("item_used")
-		lock.open()
-
-func on_player_over_charger(teleporter_group, teleporter):
-	if Input.is_action_just_pressed("ui_accept") and player_stats.selected_item == 'teleportpass':
-		player_stats.selected_item = null
-		teleporter_group.charges += 2
-		emit_signal("item_used")
+func on_teleporter_charged(teleporter_group, teleporter):
+	player_stats.selected_item = null
+	emit_signal("item_used")
 
 func on_teleporter_activated(teleporter_group, teleporter):
 	for tele in teleporter_group.get_children():
 		if tele.name != teleporter.name:
 			global_position.x = tele.global_position.x + 24
 			global_position.y  = tele.global_position.y - 16
+
+func on_pass_dispatched(dispatcher):
+	player_stats.lives -= 1
+	create_teleporter_pass(dispatcher.spawner.global_position)
+
+func create_teleporter_pass(position: Vector2):
+	var item_scene = item_definitions["teleportpass"].scene.instance()
+	item_scene.global_position = position
+	item_scene.connect("item_picked", self, "on_item_picked")
+	get_tree().current_scene.add_child(item_scene)
+
+func on_nuclear_waste_stored(storage):
+	player_stats.selected_item = null
+	emit_signal("item_used")
