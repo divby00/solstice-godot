@@ -55,8 +55,8 @@ tracks/0/keys = {
 "values": [ 4, 5 ]
 }
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 8, 2 )
+[sub_resource type="CircleShape2D" id=8]
+radius = 6.0
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 8, 2 )
@@ -118,8 +118,8 @@ color = Color( 0.968627, 0.886275, 0.419608, 1 )
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActivateArea"]
-position = Vector2( 24, -38 )
-shape = SubResource( 4 )
+position = Vector2( 24, -40 )
+shape = SubResource( 8 )
 
 [node name="LoadingArea" type="Area2D" parent="."]
 collision_mask = 0
@@ -129,7 +129,7 @@ position = Vector2( 24, -10 )
 shape = SubResource( 5 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 0, -40, 16, -56, 32, -56, 48, -40, 48, -32, 32, -32, 32, -40, 16, -40, 16, -32, 0, -32 )
+polygon = PoolVector2Array( 0, -40, 16, -56, 32, -56, 48, -40, 48, -32, 32.5109, -32, 30, -36, 18, -36, 16, -32, 0, -32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 24, -4 )

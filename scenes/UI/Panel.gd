@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 onready var player_stats = ResourceLoader.player_stats
-onready var label = $LivesLabel
+onready var lives_label = $LivesLabel
 onready var info_area_label = $InfoAreaLabel
 onready var item_texture = $ItemTexture
 onready var animation_player = $AnimationPlayer
@@ -9,7 +9,7 @@ onready var tween = $Tween
 onready var texts = []
 
 func _ready():
-	label.text = str(player_stats.lives)
+	lives_label.text = str(player_stats.lives)
 	item_texture.texture = null
 
 func on_info_area_entered(info_area):
@@ -42,3 +42,9 @@ func append_text(text):
 func _on_Tween_tween_completed(object, key):
 	texts.remove(0)
 	init_tween()
+
+func on_lives_changed(lives):
+	lives_label.text = str(lives)
+
+func on_health_changed(health):
+	pass

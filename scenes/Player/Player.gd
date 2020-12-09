@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var animation_player : AnimationPlayer = $AnimationPlayer
 onready var sprite : Sprite = $Sprite
 onready var particles : CPUParticles2D = $Particles
+onready var timer = $InvincibleTimer
 
 export(int) var ACCELERATION = 400
 export(int) var MAX_SPEED = 80
@@ -16,8 +17,17 @@ enum Facing {
 	LEFT, RIGHT
 }
 
+enum Status {
+	OK,
+	DAMAGED,
+	DESTROYED,
+	INVINCIBLE,
+	TELEPORT
+}
+
 var motion = Vector2.ZERO
 var facing = Facing.RIGHT
+var status = Status.OK setget set_status
 var is_in_magnetic_area = false
 
 var player_stats = ResourceLoader.player_stats
@@ -60,7 +70,7 @@ func apply_friction(input_vector):
 		motion.x = lerp(motion.x, 0, FRICTION)
 
 func apply_gravity(delta):
-	if !is_on_floor() and !is_in_magnetic_area:
+	if !is_on_floor() and !is_in_magnetic_area and status != Status.TELEPORT:
 		motion.y += GRAVITY * delta
 
 func update_animation(input_vector):
@@ -94,13 +104,20 @@ func on_teleporter_charged(teleporter_group, teleporter):
 	emit_signal("item_used")
 
 func on_teleporter_activated(teleporter_group, teleporter):
+	self.status = Status.TELEPORT
+	set_physics_process(false)
 	for tele in teleporter_group.get_children():
 		if tele.name != teleporter.name:
+			yield(get_tree().create_timer(.4), "timeout")
 			global_position.x = tele.global_position.x + 24
-			global_position.y  = tele.global_position.y - 16
+			global_position.y  = tele.global_position.y - 24
+			tele.particles.emitting = true
+			yield(get_tree().create_timer(.4), "timeout")
+			self.status = Status.OK
+			set_physics_process(true)
 
 func on_pass_dispatched(dispatcher):
-	player_stats.lives -= 1
+	PlayerData.health = 0
 	create_teleporter_pass(dispatcher.spawner.global_position)
 
 func create_teleporter_pass(position: Vector2):
@@ -112,3 +129,32 @@ func create_teleporter_pass(position: Vector2):
 func on_nuclear_waste_stored(storage):
 	player_stats.selected_item = null
 	emit_signal("item_used")
+
+func on_health_changed(health):
+	pass
+
+func on_lives_changed(lives):
+	pass
+
+func on_player_destroyed():
+	self.status = Status.DESTROYED
+
+func set_status(value):
+	var animation = "rotation"
+	if value == Status.DAMAGED:
+		animation = "hurt"
+	elif value == Status.DESTROYED:
+		animation = "destroyed"
+	elif value == Status.INVINCIBLE:
+		animation = "invincible"
+	elif value == Status.TELEPORT:
+		animation = "teleport"
+	animation_player.play(animation)
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "destroyed":
+		self.status = Status.INVINCIBLE
+		timer.start()
+
+func _on_InvincibleTimer_timeout():
+	self.status = Status.OK

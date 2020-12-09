@@ -37,6 +37,7 @@ config/icon="res://icon.png"
 
 ResourceLoader="*res://ResourceLoader.gd"
 InfoAreaTexts="*res://scenes/InfoAreas/InfoAreaTexts.gd"
+PlayerData="*res://scenes/Player/PlayerData.gd"
 
 [display]
 

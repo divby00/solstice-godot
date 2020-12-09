@@ -25,6 +25,7 @@ func load_level(level_key):
 	connect_teleporter_pass_dispatchers()
 	connect_info_areas()
 	connect_nuclear_storages()
+	connect_player_data()
 	
 func connect_items():
 	var items = get_tree().get_nodes_in_group("ItemGroup")
@@ -56,6 +57,13 @@ func connect_nuclear_storages():
 	var nuclear_storages = get_tree().get_nodes_in_group("NuclearStorageGroup")
 	for nuclear_storage in nuclear_storages:
 		nuclear_storage.connect("nuclear_waste_stored", player, "on_nuclear_waste_stored")
+
+func connect_player_data():
+	PlayerData.connect("health_changed", player, "on_health_changed")
+	PlayerData.connect("health_changed", panel, "on_health_changed")
+	PlayerData.connect("lives_changed", player, "on_lives_changed")
+	PlayerData.connect("lives_changed", panel, "on_lives_changed")
+	PlayerData.connect("player_destroyed", player, "on_player_destroyed")
 
 func set_camera_limits(level):
 	camera.limit_left = level.camera_limit_left

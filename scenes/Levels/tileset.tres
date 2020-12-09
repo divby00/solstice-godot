@@ -553,7 +553,7 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 "shape": SubResource( 15 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-16/z_index = 0
+16/z_index = 1
 17/name = "tileset.png 17"
 17/texture = ExtResource( 1 )
 17/tex_offset = Vector2( 0, 0 )

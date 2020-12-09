@@ -160,7 +160,7 @@ position = Vector2( 0, 144 )
 shape = SubResource( 1 )
 
 [node name="TeleportPassDispatcher" parent="." index="10" instance=ExtResource( 11 )]
-position = Vector2( 568, 832 )
+position = Vector2( 88, 256 )
 
 [node name="NuclearContainer" parent="." index="11" instance=ExtResource( 21 )]
 position = Vector2( 64, 832 )

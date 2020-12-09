@@ -56,6 +56,5 @@ func _on_TeleporterB_teleporter_activated(teleporter):
 	
 func activate_teleporter(teleporter):
 	self.status = Status.WORKING
-	yield(get_tree().create_timer(.4), "timeout")
 	self.charges -= 1
 	emit_signal("teleporter_activated", self, teleporter)
