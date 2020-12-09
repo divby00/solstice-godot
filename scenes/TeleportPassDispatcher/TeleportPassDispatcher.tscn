@@ -32,7 +32,7 @@ position = Vector2( 24, -26 )
 shape = SubResource( 1 )
 
 [node name="InfoArea" parent="." instance=ExtResource( 3 )]
-text = "Use this to exchange one of your droid's lives for a teleporter pass"
+text = "Stay over it to recover your health or activate it to exchange one of your droid's lives for a teleporter pass."
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InfoArea"]
 position = Vector2( 24, -14 )

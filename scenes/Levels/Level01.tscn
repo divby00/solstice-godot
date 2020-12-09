@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/Teleporter/TeleporterGroup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/NonInteractiveObjects/MagneticDoor.tscn" type="PackedScene" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://scenes/Items/ItemBattery.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scenes/Levels/Level.tscn" type="PackedScene" id=20]
 [ext_resource path="res://scenes/NuclearContainer/NuclearContainer.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/Enemies/Medusoid.tscn" type="PackedScene" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13, 152 )
@@ -164,6 +165,10 @@ position = Vector2( 88, 256 )
 
 [node name="NuclearContainer" parent="." index="11" instance=ExtResource( 21 )]
 position = Vector2( 64, 832 )
+
+[node name="Medusoid" parent="." index="12" instance=ExtResource( 22 )]
+position = Vector2( 72, 184 )
+collision_layer = 8
 
 [editable path="TeleporterGroup"]
 

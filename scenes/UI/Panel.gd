@@ -1,15 +1,18 @@
 extends CanvasLayer
 
-onready var player_stats = ResourceLoader.player_stats
 onready var lives_label = $LivesLabel
 onready var info_area_label = $InfoAreaLabel
 onready var item_texture = $ItemTexture
 onready var animation_player = $AnimationPlayer
 onready var tween = $Tween
+onready var thrust_bar = $BlueNinePatchRect
+onready var laser_bar = $GreenNinePatchRect
+onready var time_bar = $RedNinePatchRect
+onready var health_sprite = $HealthSprite
 onready var texts = []
 
 func _ready():
-	lives_label.text = str(player_stats.lives)
+	lives_label.text = str(PlayerData.lives)
 	item_texture.texture = null
 
 func on_info_area_entered(info_area):
@@ -47,4 +50,14 @@ func on_lives_changed(lives):
 	lives_label.text = str(lives)
 
 func on_health_changed(health):
-	pass
+	var frame = lerp(9.0, 0.0, (float(health) / float(PlayerData.MAX_HEALTH)))
+	health_sprite.frame = frame
+
+func on_thrust_changed(thrust):
+	thrust_bar.rect_size.x = thrust
+
+func on_laser_changed(laser):
+	laser_bar.rect_size.x = laser
+
+func on_time_changed(time):
+	time_bar.rect_size.x = time

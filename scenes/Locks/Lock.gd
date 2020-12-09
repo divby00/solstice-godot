@@ -12,7 +12,6 @@ const BigExplosionEffect = preload("res://scenes/Effects/BigExplosionEffect.tscn
 export(String) var opened_by = ""
 export(bool) var explodes_on_opening = false
 
-var player_stats = ResourceLoader.player_stats
 var can_open = false
 
 func _process(delta):
@@ -22,7 +21,7 @@ func _process(delta):
 
 func _on_OpenerArea_body_entered(body):
 	if body.is_in_group("PlayerGroup"):
-		if player_stats.selected_item == opened_by:
+		if PlayerData.selected_item == opened_by:
 			can_open = true
 
 func _on_OpenerArea_body_exited(body):

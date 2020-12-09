@@ -26,6 +26,7 @@ func load_level(level_key):
 	connect_info_areas()
 	connect_nuclear_storages()
 	connect_player_data()
+	connect_enemies()
 	
 func connect_items():
 	var items = get_tree().get_nodes_in_group("ItemGroup")
@@ -59,11 +60,13 @@ func connect_nuclear_storages():
 		nuclear_storage.connect("nuclear_waste_stored", player, "on_nuclear_waste_stored")
 
 func connect_player_data():
-	PlayerData.connect("health_changed", player, "on_health_changed")
 	PlayerData.connect("health_changed", panel, "on_health_changed")
-	PlayerData.connect("lives_changed", player, "on_lives_changed")
 	PlayerData.connect("lives_changed", panel, "on_lives_changed")
+	PlayerData.connect("thrust_changed", panel, "on_thrust_changed")
+	PlayerData.connect("laser_changed", panel, "on_laser_changed")
+	PlayerData.connect("time_changed", panel, "on_time_changed")
 	PlayerData.connect("player_destroyed", player, "on_player_destroyed")
+	PlayerData.connect("status_changed", player, "on_status_changed")
 
 func set_camera_limits(level):
 	camera.limit_left = level.camera_limit_left
@@ -74,3 +77,10 @@ func set_camera_limits(level):
 func set_initial_player_position():
 	var start_position = current_level.get_node("StartPosition")
 	player.global_position = start_position.global_position
+
+func connect_enemies():
+	var enemies = get_tree().get_nodes_in_group("EnemyGroup")
+	for enemy in enemies:
+		enemy.connect("enemy_attacked", player, "on_enemy_attacked")
+		enemy.connect("enemy_attack_stopped", player, "on_enemy_attack_stopped")
+

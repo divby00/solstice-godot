@@ -13,15 +13,9 @@ _global_script_classes=[ {
 "class": "ItemDefs",
 "language": "GDScript",
 "path": "res://scenes/Items/ItemDefs.gd"
-}, {
-"base": "Resource",
-"class": "PlayerStats",
-"language": "GDScript",
-"path": "res://scenes/Player/PlayerStats.gd"
 } ]
 _global_script_class_icons={
-"ItemDefs": "",
-"PlayerStats": ""
+"ItemDefs": ""
 }
 
 [application]
@@ -76,6 +70,7 @@ texture={
 2d_physics/layer_1="Walls"
 2d_physics/layer_2="Item"
 2d_physics/layer_3="Player"
+2d_physics/layer_4="Enemy"
 
 [rendering]
 

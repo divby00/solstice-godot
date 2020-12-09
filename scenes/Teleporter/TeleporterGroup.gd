@@ -3,7 +3,6 @@ extends Node
 const MAX_CHARGES = 10
 onready var animatorA = $TeleporterA/AnimationPlayer
 onready var animatorB = $TeleporterB/AnimationPlayer
-var player_stats = ResourceLoader.player_stats
 
 signal teleporter_charged(teleporter_group, teleporter)
 signal teleporter_activated(teleporter_group, teleporter)
@@ -44,7 +43,7 @@ func _on_TeleporterB_player_over_charger(teleporter):
 	charge_teleporter(teleporter)
 
 func charge_teleporter(teleporter):
-	if Input.is_action_just_pressed("ui_accept") and player_stats.selected_item == 'teleportpass':
+	if Input.is_action_just_pressed("ui_accept") and PlayerData.selected_item == 'teleportpass':
 		self.charges += 2
 		emit_signal("teleporter_charged", self, teleporter)
 
