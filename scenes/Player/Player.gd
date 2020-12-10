@@ -24,6 +24,19 @@ var facing = Facing.RIGHT
 var is_in_magnetic_area = false
 var item_definitions = ResourceLoader.item_defs.definitions
 
+func _process(delta):
+	if Input.is_action_pressed("ui_accept"):
+		var selected_item = PlayerData.selected_item
+		match selected_item:
+			"redbarrel":
+				PlayerData.thrust = PlayerData.MAX_THRUST
+				PlayerData.selected_item = null
+				emit_signal("item_used")
+			"battery":
+				PlayerData.laser = PlayerData.MAX_LASER
+				PlayerData.selected_item = null
+				emit_signal("item_used")
+
 func _physics_process(delta):
 	var input_vector = get_input_vector()
 	apply_horizontal_force(input_vector, delta)
@@ -42,6 +55,10 @@ func get_input_vector():
 		PlayerData.thrust -= .025
 	else:
 		particles.emitting = false
+	if input_vector.x < 0:
+		facing = Facing.LEFT
+	elif input_vector.x > 0:
+		facing = Facing.RIGHT
 	return input_vector
 
 func apply_horizontal_force(input_vector, delta):
@@ -67,11 +84,9 @@ func apply_gravity(delta):
 
 func update_animation(input_vector):
 	var current_animation = animation_player.current_animation
-	if input_vector.x < 0:
-		facing = Facing.LEFT
+	if facing == Facing.LEFT:
 		animation_player.play_backwards(current_animation)
-	elif input_vector.x > 0:
-		facing = Facing.RIGHT
+	elif facing == Facing.RIGHT:
 		animation_player.play(current_animation)
 
 func on_item_picked(item):
@@ -135,27 +150,40 @@ func on_player_destroyed():
 	timer.start()
 
 func _on_InvincibleTimer_timeout():
-	PlayerData.status = PlayerData.Status.OK
+	pass
 
 func on_enemy_attacked(enemy):
 	if timer.is_stopped():
 		PlayerData.status = PlayerData.Status.DAMAGED
 
 func on_status_changed(old_status, new_status):
-	match new_status:
-		PlayerData.Status.OK:
-			animation_player.play("rotation")
-		PlayerData.Status.DAMAGED:
-			animation_player.play("hurt")
-		PlayerData.Status.DESTROYED:
-			animation_player.play("destroyed")
-		PlayerData.Status.INVINCIBLE:
-			animation_player.play("invincible")
-		PlayerData.Status.TELEPORT:
-			animation_player.play("teleport")
+	if old_status != new_status:
+		match new_status:
+			PlayerData.Status.OK:
+				animation_player.play("rotation")
+			PlayerData.Status.DAMAGED:
+				animation_player.play("hurt")
+			PlayerData.Status.DESTROYED:
+				animation_player.play("destroyed")
+			PlayerData.Status.INVINCIBLE:
+				animation_player.play("invincible")
+			PlayerData.Status.TELEPORT:
+				animation_player.play("teleport")
 
 func on_enemy_attack_stopped(enemy):
 	if timer.is_stopped():
-		PlayerData.status = PlayerData.Status.OK
+		if PlayerData.in_teleporter:
+			PlayerData.status = PlayerData.Status.TELEPORT
+		else:
+			PlayerData.status = PlayerData.Status.OK
 	else:
 		PlayerData.status = PlayerData.Status.INVINCIBLE
+
+func on_explosion_triggered():
+	pass
+
+func on_player_has_to_move(direction):
+	if direction == 0:
+		motion.x = Vector2.LEFT.x * 75
+	else:
+		motion.x = Vector2.RIGHT.x * 75

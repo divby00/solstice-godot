@@ -174,7 +174,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=5]
 resource_name = "teleport"
-length = 0.1
+length = 0.2
 loop = true
 step = 0.05
 tracks/0/type = "value"
@@ -184,7 +184,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 1 ]
@@ -244,8 +244,8 @@ update_rotation = false
 update_scale = false
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 4 )
-hframes = 5
+texture = ExtResource( 6 )
+hframes = 2
 
 [node name="Particles" type="CPUParticles2D" parent="."]
 modulate = Color( 0.745098, 0.745098, 0.745098, 1 )

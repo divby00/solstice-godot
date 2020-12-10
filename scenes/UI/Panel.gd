@@ -59,5 +59,6 @@ func on_thrust_changed(thrust):
 func on_laser_changed(laser):
 	laser_bar.rect_size.x = laser
 
-func on_time_changed(time):
-	time_bar.rect_size.x = time
+func on_time_changed(seconds_to_explosion, time_left):
+	if time_left > 0:
+		time_bar.rect_size.x = lerp(1.0, PlayerData.MAX_TIME, (float(time_left) / float(seconds_to_explosion)))

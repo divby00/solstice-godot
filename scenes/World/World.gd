@@ -3,30 +3,28 @@ extends Node
 onready var player = $Player
 onready var camera = $Camera2D
 onready var panel = $UI/Panel
+onready var storage_base = $StorageBase
 
-onready var levels = {
-	"level01": preload("res://scenes/Levels/Level01.tscn"),
-	"level02": preload("res://scenes/Levels/Level02.tscn"),
-}
 
-var current_level = null
 
 func _ready():
-	load_level("level01")
+	load_level("1")
 	
 func load_level(level_key):
-	current_level = levels[level_key].instance()
-	set_camera_limits(current_level)
-	get_tree().current_scene.add_child_below_node(camera, current_level, false)
+	LevelData.current_level = LevelData.levels[level_key].instance()
+	LevelData.current_level_number = 1
+	set_camera_limits(LevelData.current_level)
+	get_tree().current_scene.add_child_below_node(camera, LevelData.current_level, false)
 	call_deferred("set_initial_player_position")
 	connect_items()
 	connect_locks()
 	connect_teleporters()
 	connect_teleporter_pass_dispatchers()
 	connect_info_areas()
-	connect_nuclear_storages()
+	connect_nuclear_containers()
 	connect_player_data()
 	connect_enemies()
+	connect_rails()
 	
 func connect_items():
 	var items = get_tree().get_nodes_in_group("ItemGroup")
@@ -54,10 +52,14 @@ func connect_info_areas():
 	for info_area in info_areas:
 		info_area.connect("info_area_entered", panel, "on_info_area_entered")
 
-func connect_nuclear_storages():
-	var nuclear_storages = get_tree().get_nodes_in_group("NuclearStorageGroup")
-	for nuclear_storage in nuclear_storages:
-		nuclear_storage.connect("nuclear_waste_stored", player, "on_nuclear_waste_stored")
+func connect_nuclear_containers():
+	var nuclear_containers = get_tree().get_nodes_in_group("NuclearStorageGroup")
+	for nuclear_container in nuclear_containers:
+		nuclear_container.connect("nuclear_waste_stored", player, "on_nuclear_waste_stored")
+		nuclear_container.connect("nuclear_waste_stored", storage_base, "on_nuclear_waste_stored")
+		nuclear_container.connect("time_tick_finished", panel, "on_time_changed")
+		nuclear_container.connect("explosion_triggered", player, "on_explosion_triggered")
+		nuclear_container.explosion_timer.start()
 
 func connect_player_data():
 	PlayerData.connect("health_changed", panel, "on_health_changed")
@@ -75,7 +77,7 @@ func set_camera_limits(level):
 	camera.limit_bottom = level.camera_limit_bottom + 16
 	
 func set_initial_player_position():
-	var start_position = current_level.get_node("StartPosition")
+	var start_position = LevelData.current_level.get_node("StartPosition")
 	player.global_position = start_position.global_position
 
 func connect_enemies():
@@ -84,3 +86,7 @@ func connect_enemies():
 		enemy.connect("enemy_attacked", player, "on_enemy_attacked")
 		enemy.connect("enemy_attack_stopped", player, "on_enemy_attack_stopped")
 
+func connect_rails():
+	var rails = get_tree().get_nodes_in_group("RailGroup")
+	for rail in rails:
+		rail.connect("player_has_to_move", player, "on_player_has_to_move")

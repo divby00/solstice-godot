@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/storage_base.png-77c19f6b6da67f476ddb94a8aef5fae0.stex"
+path="res://.import/rail_01.png-fe63c8f235d433ca2718a9bd6e43b0f9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/NuclearContainer/storage_base.png"
-dest_files=[ "res://.import/storage_base.png-77c19f6b6da67f476ddb94a8aef5fae0.stex" ]
+source_file="res://scenes/Rail/rail_01.png"
+dest_files=[ "res://.import/rail_01.png-fe63c8f235d433ca2718a9bd6e43b0f9.stex" ]
 
 [params]
 

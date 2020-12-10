@@ -31,6 +31,7 @@ var time = MAX_TIME setget set_time
 var selected_item = null
 var status = Status.OK setget set_status
 var invincible = false
+var in_teleporter = false
 
 func set_health(value):
 	health = clamp(value, 0, MAX_HEALTH)
@@ -42,6 +43,7 @@ func set_health(value):
 func set_lives(value):
 	lives = clamp(value, 0, MAX_LIVES)
 	if lives == 0:
+		emit_signal("lives_changed", lives)
 		emit_signal("game_over")
 	else:
 		emit_signal("lives_changed", lives)
@@ -63,4 +65,5 @@ func set_status(value):
 	var new_status = value
 	status = value
 	invincible = status == Status.INVINCIBLE
+	in_teleporter = status == Status.TELEPORT
 	emit_signal("status_changed", old_status, new_status)
