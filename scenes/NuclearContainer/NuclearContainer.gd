@@ -15,7 +15,7 @@ func _ready():
 	time_left = seconds_to_explosion
 
 func _process(delta):
-	if player_in_nuclear_storage and Input.is_action_just_pressed("ui_accept") and PlayerData.selected_item == "nuclearwaste":
+	if player_in_nuclear_storage and Input.is_action_just_pressed("secondary") and PlayerData.selected_item == "nuclearwaste":
 		explosion_timer.stop()
 		audio_player.play()
 		emit_signal("nuclear_waste_stored", self)

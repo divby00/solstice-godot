@@ -7,7 +7,7 @@ var over_item = false
 signal item_picked(item)
 
 func _process(delta):
-	if over_item and visible and Input.is_action_just_pressed("ui_down"):
+	if over_item and visible and Input.is_action_just_pressed("down"):
 		emit_signal("item_picked", self)
 
 func _on_Item_body_entered(body):

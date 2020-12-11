@@ -4,8 +4,10 @@ const BigExplosionEffect = preload("res://scenes/Effects/BigExplosionEffect.tscn
 
 onready var animation_player : AnimationPlayer = $AnimationPlayer
 onready var sprite : Sprite = $Sprite
+onready var damage_particles : CPUParticles2D = $DamageParticles
 onready var particles : CPUParticles2D = $Particles
 onready var timer = $InvincibleTimer
+onready var laser = $Laser
 
 export(int) var ACCELERATION = 400
 export(int) var MAX_SPEED = 80
@@ -25,7 +27,7 @@ var is_in_magnetic_area = false
 var item_definitions = ResourceLoader.item_defs.definitions
 
 func _process(delta):
-	if Input.is_action_pressed("ui_accept"):
+	if Input.is_action_pressed("secondary"):
 		var selected_item = PlayerData.selected_item
 		match selected_item:
 			"redbarrel":
@@ -38,6 +40,8 @@ func _process(delta):
 				emit_signal("item_used")
 
 func _physics_process(delta):
+	if Input.is_action_pressed("primary"):
+		laser.fire()
 	var input_vector = get_input_vector()
 	apply_horizontal_force(input_vector, delta)
 	apply_vertical_force(input_vector, delta)
@@ -48,8 +52,8 @@ func _physics_process(delta):
 
 func get_input_vector():
 	var input_vector = Vector2.ZERO
-	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	if Input.get_action_strength("ui_up") and PlayerData.thrust > 5:
+	input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+	if Input.get_action_strength("up") and PlayerData.thrust > 5:
 		input_vector.y = -1
 		particles.emitting = true
 		PlayerData.thrust -= .025
@@ -57,8 +61,12 @@ func get_input_vector():
 		particles.emitting = false
 	if input_vector.x < 0:
 		facing = Facing.LEFT
+		laser.scale.x = -1
+		laser.global_position.x = global_position.x - 8
 	elif input_vector.x > 0:
 		facing = Facing.RIGHT
+		laser.scale.x = 1
+		laser.global_position.x = global_position.x + 8
 	return input_vector
 
 func apply_horizontal_force(input_vector, delta):
@@ -155,6 +163,7 @@ func _on_InvincibleTimer_timeout():
 func on_enemy_attacked(enemy):
 	if timer.is_stopped():
 		PlayerData.status = PlayerData.Status.DAMAGED
+		damage_particles.emitting = true
 
 func on_status_changed(old_status, new_status):
 	if old_status != new_status:

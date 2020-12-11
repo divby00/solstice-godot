@@ -29,7 +29,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13, 152 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8, 32 )
 
 [node name="Level01" instance=ExtResource( 20 )]
@@ -162,11 +162,7 @@ position = Vector2( 568, 832 )
 [node name="NuclearContainer" parent="." index="10" instance=ExtResource( 21 )]
 position = Vector2( 64, 832 )
 
-[node name="Medusoid" parent="." index="11" instance=ExtResource( 22 )]
-position = Vector2( 72, 184 )
-collision_layer = 8
-
-[node name="Elevator" parent="." index="12" instance=ExtResource( 27 )]
+[node name="Elevator" parent="." index="11" instance=ExtResource( 27 )]
 position = Vector2( 688, 832 )
 
 [node name="InfoArea" parent="Elevator" index="2"]
@@ -174,7 +170,10 @@ text = "Elevator. Use the security pass 2 to travel to next level."
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Elevator/InfoArea" index="0"]
 position = Vector2( 0, -32 )
-shape = SubResource( 6 )
+shape = SubResource( 2 )
+
+[node name="Medusoid" parent="." index="12" instance=ExtResource( 22 )]
+position = Vector2( 233, 248 )
 
 [editable path="TeleporterGroup"]
 

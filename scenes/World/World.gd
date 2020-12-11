@@ -1,11 +1,11 @@
 extends Node
 
+const nuclear_waste_texture = preload("res://scenes/StorageBase/nuclear_waste.png")
+
 onready var player = $Player
 onready var camera = $Camera2D
 onready var panel = $UI/Panel
 onready var storage_base = $StorageBase
-
-
 
 func _ready():
 	load_level("1")
@@ -57,6 +57,7 @@ func connect_nuclear_containers():
 	for nuclear_container in nuclear_containers:
 		nuclear_container.connect("nuclear_waste_stored", player, "on_nuclear_waste_stored")
 		nuclear_container.connect("nuclear_waste_stored", storage_base, "on_nuclear_waste_stored")
+		nuclear_container.connect("nuclear_waste_stored", self, "on_nuclear_waste_stored")
 		nuclear_container.connect("time_tick_finished", panel, "on_time_changed")
 		nuclear_container.connect("explosion_triggered", player, "on_explosion_triggered")
 		nuclear_container.explosion_timer.start()
@@ -90,3 +91,10 @@ func connect_rails():
 	var rails = get_tree().get_nodes_in_group("RailGroup")
 	for rail in rails:
 		rail.connect("player_has_to_move", player, "on_player_has_to_move")
+
+func on_nuclear_waste_stored(storage):
+	if LevelData.current_level_number == 1:
+		var sprite = Sprite.new()
+		sprite.texture = nuclear_waste_texture
+		sprite.global_position = Vector2(64, 328)
+		get_tree().current_scene.add_child(sprite)

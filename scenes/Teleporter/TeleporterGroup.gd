@@ -43,7 +43,7 @@ func _on_TeleporterB_player_over_charger(teleporter):
 	charge_teleporter(teleporter)
 
 func charge_teleporter(teleporter):
-	if Input.is_action_just_pressed("ui_accept") and PlayerData.selected_item == 'teleportpass':
+	if Input.is_action_just_pressed("secondary") and PlayerData.selected_item == 'teleportpass':
 		self.charges += 2
 		emit_signal("teleporter_charged", self, teleporter)
 

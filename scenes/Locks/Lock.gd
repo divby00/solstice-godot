@@ -15,7 +15,7 @@ export(bool) var explodes_on_opening = false
 var can_open = false
 
 func _process(delta):
-	if can_open and Input.is_action_just_pressed("ui_accept"):
+	if can_open and Input.is_action_just_pressed("secondary"):
 		open()
 		emit_signal("lock_opened", self)
 

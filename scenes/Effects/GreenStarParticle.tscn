@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Effects/StarParticle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Effects/green_star_particle.png" type="Texture" id=2]
+
+[node name="GreenStarParticle" instance=ExtResource( 1 )]
+texture = ExtResource( 2 )

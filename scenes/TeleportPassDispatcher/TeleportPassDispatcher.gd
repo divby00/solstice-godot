@@ -10,7 +10,7 @@ var player_on_dispatcher = false
 func _process(delta):
 	if player_on_dispatcher:
 		PlayerData.health += .25
-		if Input.is_action_just_pressed("ui_down"):
+		if Input.is_action_just_pressed("down"):
 			emit_signal("pass_dispatched", self)
 
 func _on_ActivateArea_body_entered(body):

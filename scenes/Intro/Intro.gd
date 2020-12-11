@@ -25,7 +25,7 @@ func _ready():
 			polygon.add_child(blue_star_effect)
 
 func _process(_delta):
-	if Input.is_action_just_pressed("ui_accept") and animation_player.is_playing():
+	if Input.is_action_just_pressed("secondary") and animation_player.is_playing():
 		animation_player.stop()
 		animation_player.play("title")
 		camera.position.x = 324
@@ -33,7 +33,7 @@ func _process(_delta):
 		label.text = ""
 		label_skip.text = "PRESS ENTER TO START"
 		
-	if Input.is_action_just_pressed("ui_accept") and not animation_player.is_playing():
+	if Input.is_action_just_pressed("secondary") and not animation_player.is_playing():
 		# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://scenes/World/World.tscn")
 
