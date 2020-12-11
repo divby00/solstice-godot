@@ -17,7 +17,6 @@ collision_mask = 0
 format = 1
 
 [node name="Map" type="TileMap" parent="."]
-z_index = 1
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 8, 8 )
 collision_mask = 0

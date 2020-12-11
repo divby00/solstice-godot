@@ -20,7 +20,8 @@ func fire():
 		if raycast.is_colliding():
 			var point = raycast.get_collision_point()
 			var ray_length = abs(point.x - ray_position.global_position.x)
-			laser_texture.rect_size.x = ray_length
+			if ray_length > 7:
+				laser_texture.rect_size.x = ray_length
 			var particles = RedStarParticle.instance()
 			particles.global_position = point
 			particles.emitting = true
