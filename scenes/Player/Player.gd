@@ -1,13 +1,12 @@
 extends KinematicBody2D
 
-const BigExplosionEffect = preload("res://scenes/Effects/BigExplosionEffect.tscn") 
-
-onready var animation_player : AnimationPlayer = $AnimationPlayer
-onready var sprite : Sprite = $Sprite
-onready var damage_particles : CPUParticles2D = $DamageParticles
-onready var particles : CPUParticles2D = $Particles
-onready var timer = $InvincibleTimer
 onready var laser = $Laser
+onready var timer = $InvincibleTimer
+onready var sprite : Sprite = $Sprite
+onready var big_explosion = $BigExplosionParticles
+onready var particles : CPUParticles2D = $SmokeParticles
+onready var damage_particles : CPUParticles2D = $DamageParticles
+onready var animation_player : AnimationPlayer = $AnimationPlayer
 
 export(int) var ACCELERATION = 400
 export(int) var MAX_SPEED = 80
@@ -146,12 +145,8 @@ func on_nuclear_waste_stored(storage):
 	emit_signal("item_used")
 
 func on_player_destroyed():
-	var sprite_size = sprite.texture.get_size()
-	for i in 5:
-		var position = Vector2(global_position.x + rand_range(-8, 8), global_position.y + rand_range(-8, 8))
-		var explosion = BigExplosionEffect.instance()
-		explosion.global_position = position
-		get_tree().current_scene.add_child(explosion)
+	big_explosion.global_position = global_position
+	big_explosion.emitting = true
 	PlayerData.lives -= 1
 	PlayerData.health = PlayerData.MAX_HEALTH
 	PlayerData.status = PlayerData.Status.INVINCIBLE

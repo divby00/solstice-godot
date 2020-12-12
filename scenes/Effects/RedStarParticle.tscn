@@ -7,3 +7,6 @@
 z_index = 2
 amount = 10
 texture = ExtResource( 2 )
+
+[node name="Timer" parent="." index="0"]
+wait_time = 5.0

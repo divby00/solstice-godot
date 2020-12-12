@@ -1,15 +1,20 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scenes/Effects/StarParticle.gd" type="Script" id=1]
-
-[sub_resource type="CanvasItemMaterial" id=1]
+[sub_resource type="CanvasItemMaterial" id=3]
 particles_animation = true
 particles_anim_h_frames = 4
 particles_anim_v_frames = 1
 particles_anim_loop = true
 
+[sub_resource type="GDScript" id=2]
+script/source = "extends CPUParticles2D
+
+func _on_Timer_timeout():
+	queue_free()
+"
+
 [node name="StarParticle" type="CPUParticles2D"]
-material = SubResource( 1 )
+material = SubResource( 3 )
 emitting = false
 amount = 4
 lifetime = 0.5
@@ -20,7 +25,7 @@ gravity = Vector2( 0, 0 )
 anim_speed = 2.0
 anim_speed_random = 0.5
 anim_offset = 1.0
-script = ExtResource( 1 )
+script = SubResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.6

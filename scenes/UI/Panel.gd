@@ -1,15 +1,23 @@
 extends CanvasLayer
 
+const BluePatch = preload("res://scenes/UI/blue_patch.png")
+const GreenPatch = preload("res://scenes/UI/green_patch.png")
+const RedPatch = preload("res://scenes/UI/red_patch.png")
+
 onready var lives_label = $LivesLabel
 onready var info_area_label = $InfoAreaLabel
 onready var item_texture = $ItemTexture
 onready var animation_player = $AnimationPlayer
 onready var tween = $Tween
-onready var thrust_bar = $BlueNinePatchRect
-onready var laser_bar = $GreenNinePatchRect
-onready var time_bar = $RedNinePatchRect
+onready var thrust_bar = $ThrustNinePatchRect
+onready var laser_bar = $LaserNinePatchRect
+onready var time_bar = $TimeNinePatchRect
 onready var health_sprite = $HealthSprite
 onready var texts = []
+
+enum Bar {
+	THRUST, LASER, TIME
+}
 
 func _ready():
 	lives_label.text = str(PlayerData.lives)
@@ -54,11 +62,23 @@ func on_health_changed(health):
 	health_sprite.frame = frame
 
 func on_thrust_changed(thrust):
+	change_color_bar(thrust, thrust_bar)
 	thrust_bar.rect_size.x = thrust
 
 func on_laser_changed(laser):
+	change_color_bar(laser, laser_bar)
 	laser_bar.rect_size.x = laser
 
 func on_time_changed(seconds_to_explosion, time_left):
 	if time_left > 0:
-		time_bar.rect_size.x = lerp(1.0, PlayerData.MAX_TIME, (float(time_left) / float(seconds_to_explosion)))
+		var length = lerp(1.0, PlayerData.MAX_TIME, (float(time_left) / float(seconds_to_explosion)))
+		change_color_bar(length, time_bar)
+		time_bar.rect_size.x = length
+
+func change_color_bar(value, bar):
+	if value > 74:
+		bar.texture = BluePatch
+	elif value > 34 and value <=74:
+		bar.texture = GreenPatch
+	else:
+		bar.texture = RedPatch

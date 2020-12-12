@@ -78,7 +78,6 @@ extents = Vector2( 8, 2 )
 collision_layer = 0
 collision_mask = 4
 script = ExtResource( 2 )
-crush_frequency = 1.0
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 8, -24 )

@@ -25,14 +25,6 @@ smoothing_speed = 0.0
 [node name="RemoteTransform2D" parent="Player" index="1"]
 remote_path = NodePath("../../Camera2D")
 
-[node name="Particles" parent="Player" index="3"]
-lifetime = 0.2
-explosiveness = 0.2
-lifetime_randomness = 0.1
-direction = Vector2( 0, 0 )
-spread = 0.0
-color = Color( 0.694118, 0.694118, 0.694118, 1 )
-
 [node name="StorageBase" parent="." instance=ExtResource( 1 )]
 [connection signal="item_picked" from="Player" to="UI" method="_on_Player_item_picked"]
 [connection signal="item_used" from="Player" to="UI" method="_on_Player_item_used"]

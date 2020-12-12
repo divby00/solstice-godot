@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Area2D
 
 signal enemy_attacked(enemy)
 signal enemy_attack_stopped(enemy)

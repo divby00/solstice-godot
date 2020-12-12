@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/UI/board.png" type="Texture" id=1]
 [ext_resource path="res://scenes/UI/Panel.gd" type="Script" id=2]
@@ -6,8 +6,6 @@
 [ext_resource path="res://scenes/UI/info_area.png" type="Texture" id=4]
 [ext_resource path="res://fonts/joystix monospace.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://scenes/UI/blue_patch.png" type="Texture" id=6]
-[ext_resource path="res://scenes/UI/red_patch.png" type="Texture" id=7]
-[ext_resource path="res://scenes/UI/green_patch.png" type="Texture" id=8]
 [ext_resource path="res://scenes/UI/health.png" type="Texture" id=9]
 
 [sub_resource type="Animation" id=1]
@@ -126,7 +124,7 @@ __meta__ = {
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="BlueNinePatchRect" type="NinePatchRect" parent="."]
+[node name="ThrustNinePatchRect" type="NinePatchRect" parent="."]
 margin_left = 136.0
 margin_top = 161.0
 margin_right = 248.0
@@ -140,12 +138,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GreenNinePatchRect" type="NinePatchRect" parent="."]
+[node name="LaserNinePatchRect" type="NinePatchRect" parent="."]
 margin_left = 136.0
 margin_top = 169.0
 margin_right = 248.0
 margin_bottom = 175.0
-texture = ExtResource( 8 )
+texture = ExtResource( 6 )
 patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
@@ -154,12 +152,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RedNinePatchRect" type="NinePatchRect" parent="."]
+[node name="TimeNinePatchRect" type="NinePatchRect" parent="."]
 margin_left = 136.0
 margin_top = 177.0
 margin_right = 248.0
 margin_bottom = 183.0
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2

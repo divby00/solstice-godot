@@ -14,6 +14,7 @@ var can_shoot = true
 
 func fire():
 	if can_shoot:
+		PlayerData.laser -= .25
 		audio_player.play()
 		can_shoot = false
 		animation_player.play("detonation")

@@ -2,15 +2,14 @@ extends Node2D
 
 signal lock_opened(lock)
 
-export(int) var OPENING_EXPLOSIONS = 8
+const BigExplosionParticles = preload("res://scenes/Effects/BigExplosionParticles.tscn")
 
-onready var closed_area = $ClosedArea
-onready var sprite = $Sprite
-
-const BigExplosionEffect = preload("res://scenes/Effects/BigExplosionEffect.tscn") 
-
+export(int) var OPENING_EXPLOSIONS = 5
 export(String) var opened_by = ""
 export(bool) var explodes_on_opening = false
+
+onready var sprite = $Sprite
+onready var closed_area = $ClosedArea
 
 var can_open = false
 
@@ -35,8 +34,10 @@ func open():
 					global_position.x + rand_range(0, sprite_size.x / sprite.hframes), 
 					global_position.y + rand_range((sprite_size.y / sprite.vframes) * -1, 0)
 			)
-			var explosion = BigExplosionEffect.instance()
+			var explosion = BigExplosionParticles.instance()
+			explosion.emitting = true
+			explosion.remove_when_finish = true
 			explosion.global_position = position
-			yield(get_tree().create_timer(rand_range(0.0, 0.1)), "timeout")
 			get_tree().current_scene.add_child(explosion)
+			yield(get_tree().create_timer(rand_range(0.0, 0.1)), "timeout")
 	queue_free()
