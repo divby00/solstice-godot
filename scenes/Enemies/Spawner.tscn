@@ -1,8 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Enemies/Spawner.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Enemies/blue_enemy_spawner.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 length = 1.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:rotation_degrees")
@@ -46,17 +47,17 @@ tracks/2/keys = {
 [node name="Spawner" type="Position2D" groups=[
 "SpawnerGroup",
 ]]
-position = Vector2( -0.460461, 0.543926 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 4.76837e-07, -4.76837e-07 )
 scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/spawn = SubResource( 2 )
+anims/spawn = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.47152
+wait_time = 6.45147
 one_shot = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

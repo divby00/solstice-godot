@@ -260,8 +260,8 @@ update_rotation = false
 update_scale = false
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
-hframes = 16
+texture = ExtResource( 4 )
+hframes = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 6 )

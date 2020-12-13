@@ -25,6 +25,9 @@ var facing = Facing.RIGHT
 var is_in_magnetic_area = false
 var item_definitions = ResourceLoader.item_defs.definitions
 
+func _ready():
+	ResourceLoader.player = self
+
 func _process(delta):
 	if Input.is_action_pressed("secondary"):
 		var selected_item = PlayerData.selected_item

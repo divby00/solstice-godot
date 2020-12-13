@@ -20,9 +20,9 @@ func fire():
 		animation_player.play("detonation")
 		if raycast.is_colliding():
 			var body = raycast.get_collider()
-			print(body is Enemy)
+			if body is Enemy:
+				body.health -= 1
 			var point = raycast.get_collision_point()
-			print(point.x)
 			var ray_length = abs(point.x - ray_position.global_position.x)
 			if ray_length > 7:
 				laser_texture.rect_size.x = ray_length
