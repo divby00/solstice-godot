@@ -21,10 +21,10 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 7.0
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 8.06226
+radius = 5.0
 
 [node name="Medusoid" type="Area2D" groups=[
 "EnemyGroup",

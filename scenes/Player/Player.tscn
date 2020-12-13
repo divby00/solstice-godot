@@ -218,10 +218,10 @@ tracks/2/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=6]
 radius = 7.0
 
-[sub_resource type="CanvasItemMaterial" id=9]
+[sub_resource type="CanvasItemMaterial" id=7]
 particles_animation = true
 particles_anim_h_frames = 4
 particles_anim_v_frames = 1
@@ -264,14 +264,14 @@ texture = ExtResource( 1 )
 hframes = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="InvincibleTimer" type="Timer" parent="."]
 wait_time = 2.5
 one_shot = true
 
 [node name="DamageParticles" type="CPUParticles2D" parent="."]
-material = SubResource( 9 )
+material = SubResource( 7 )
 emitting = false
 amount = 20
 lifetime = 0.6

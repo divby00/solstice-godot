@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/Enemies/Enemy.gd" type="Script" id=1]
 
-[node name="Enemy" type="KinematicBody2D" groups=[
+[node name="Enemy" type="Area2D" groups=[
 "EnemyGroup",
 ]]
 collision_layer = 8

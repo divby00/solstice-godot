@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://scenes/Enemies/Enemy.gd"
+}, {
 "base": "Resource",
 "class": "ItemDefs",
 "language": "GDScript",
 "path": "res://scenes/Items/ItemDefs.gd"
 } ]
 _global_script_class_icons={
+"Enemy": "",
 "ItemDefs": ""
 }
 

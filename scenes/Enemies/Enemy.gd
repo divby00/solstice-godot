@@ -1,5 +1,7 @@
 extends Area2D
 
+class_name Enemy
+
 signal enemy_attacked(enemy)
 signal enemy_attack_stopped(enemy)
 
