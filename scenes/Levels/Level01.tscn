@@ -155,6 +155,9 @@ collision_mask = 4
 position = Vector2( 0, 144 )
 shape = SubResource( 1 )
 
+[node name="Spawners" parent="." index="9"]
+MAX_ENEMIES = 33
+
 [node name="Spawner01" parent="Spawners" index="0" instance=ExtResource( 11 )]
 position = Vector2( 190.152, 173.341 )
 
@@ -162,97 +165,97 @@ position = Vector2( 190.152, 173.341 )
 position = Vector2( 60.1157, 234.947 )
 
 [node name="Spawner03" parent="Spawners" index="2" instance=ExtResource( 11 )]
-position = Vector2( 244.667, 220.685 )
+position = Vector2( 248, 240 )
 
 [node name="Spawner04" parent="Spawners" index="3" instance=ExtResource( 11 )]
-position = Vector2( 328.043, 185.797 )
+position = Vector2( 328, 184 )
 
 [node name="Spawner05" parent="Spawners" index="4" instance=ExtResource( 11 )]
-position = Vector2( 420.519, 230.351 )
+position = Vector2( 416, 208 )
 
 [node name="Spawner06" parent="Spawners" index="5" instance=ExtResource( 11 )]
-position = Vector2( 31.7235, 313.503 )
+position = Vector2( 296, 336 )
 
 [node name="Spawner07" parent="Spawners" index="6" instance=ExtResource( 11 )]
-position = Vector2( 226.702, 361.88 )
+position = Vector2( 416, 376 )
 
 [node name="Spawner08" parent="Spawners" index="7" instance=ExtResource( 11 )]
-position = Vector2( 422.643, 324.071 )
+position = Vector2( 224, 400 )
 
 [node name="Spawner09" parent="Spawners" index="8" instance=ExtResource( 11 )]
-position = Vector2( 318.016, 364.971 )
+position = Vector2( 160, 320 )
 
 [node name="Spawner10" parent="Spawners" index="9" instance=ExtResource( 11 )]
-position = Vector2( 177.127, 433.789 )
+position = Vector2( 144, 432 )
 
 [node name="Spawner11" parent="Spawners" index="10" instance=ExtResource( 11 )]
-position = Vector2( 200.629, 486.198 )
+position = Vector2( 208, 480 )
 
 [node name="Spawner12" parent="Spawners" index="11" instance=ExtResource( 11 )]
-position = Vector2( 303.435, 522.586 )
+position = Vector2( 32, 464 )
 
 [node name="Spawner13" parent="Spawners" index="12" instance=ExtResource( 11 )]
-position = Vector2( 397.155, 487.618 )
+position = Vector2( 288, 520 )
 
 [node name="Spawner14" parent="Spawners" index="13" instance=ExtResource( 11 )]
-position = Vector2( 308.49, 615.671 )
+position = Vector2( 384, 480 )
 
 [node name="Spawner15" parent="Spawners" index="14" instance=ExtResource( 11 )]
-position = Vector2( 383.832, 659.561 )
+position = Vector2( 408, 608 )
 
 [node name="Spawner16" parent="Spawners" index="15" instance=ExtResource( 11 )]
-position = Vector2( 307.578, 827.149 )
+position = Vector2( 352, 648 )
 
 [node name="Spawner17" parent="Spawners" index="16" instance=ExtResource( 11 )]
-position = Vector2( 483.184, 787.233 )
+position = Vector2( 168, 648 )
 
 [node name="Spawner18" parent="Spawners" index="17" instance=ExtResource( 11 )]
-position = Vector2( 587.558, 780.771 )
+position = Vector2( 96, 632 )
 
 [node name="Spawner19" parent="Spawners" index="18" instance=ExtResource( 11 )]
-position = Vector2( 131.566, 762.438 )
+position = Vector2( 328, 808 )
 
 [node name="Spawner20" parent="Spawners" index="19" instance=ExtResource( 11 )]
-position = Vector2( 32.2719, 799.237 )
+position = Vector2( 496, 776 )
 
 [node name="Spawner21" parent="Spawners" index="20" instance=ExtResource( 11 )]
-position = Vector2( 50.673, 618.405 )
+position = Vector2( 640, 792 )
 
 [node name="Spawner22" parent="Spawners" index="21" instance=ExtResource( 11 )]
-position = Vector2( 154.185, 633.324 )
+position = Vector2( 648, 640 )
 
 [node name="Spawner23" parent="Spawners" index="22" instance=ExtResource( 11 )]
-position = Vector2( 585.057, 28.2731 )
+position = Vector2( 704, 592 )
 
 [node name="Spawner24" parent="Spawners" index="23" instance=ExtResource( 11 )]
-position = Vector2( 704.463, 56.2625 )
+position = Vector2( 608, 480 )
 
 [node name="Spawner25" parent="Spawners" index="24" instance=ExtResource( 11 )]
-position = Vector2( 686.289, 148.586 )
+position = Vector2( 632, 432 )
 
 [node name="Spawner26" parent="Spawners" index="25" instance=ExtResource( 11 )]
-position = Vector2( 603.593, 190.564 )
+position = Vector2( 600, 320 )
 
 [node name="Spawner27" parent="Spawners" index="26" instance=ExtResource( 11 )]
-position = Vector2( 667.035, 293.803 )
+position = Vector2( 672, 256 )
 
 [node name="Spawner28" parent="Spawners" index="27" instance=ExtResource( 11 )]
-position = Vector2( 619.965, 387.582 )
+position = Vector2( 600, 168 )
 
 [node name="Spawner29" parent="Spawners" index="28" instance=ExtResource( 11 )]
-position = Vector2( 610.854, 428.637 )
+position = Vector2( 664, 104 )
 
 [node name="Spawner30" parent="Spawners" index="29" instance=ExtResource( 11 )]
-position = Vector2( 693.248, 555.617 )
+position = Vector2( 712, 64 )
 
 [node name="Spawner31" parent="Spawners" index="30" instance=ExtResource( 11 )]
-position = Vector2( 581.597, 602.523 )
+position = Vector2( 568, 48 )
 
 [node name="Spawner32" parent="Spawners" index="31" instance=ExtResource( 11 )]
-position = Vector2( 648.223, 643.611 )
+position = Vector2( 128, 768 )
 
 [node name="Spawner33" parent="Spawners" index="32" instance=ExtResource( 11 )]
-position = Vector2( 665.148, 375.66 )
+position = Vector2( 40, 792 )
 
 [node name="NuclearContainer" parent="." index="10"]
 position = Vector2( 64, 832 )

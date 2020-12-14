@@ -25,8 +25,7 @@ func load_level(level_key):
 	connect_player_data()
 	connect_enemies()
 	connect_rails()
-	connect_spawners()
-	
+
 func connect_items():
 	var items = get_tree().get_nodes_in_group("ItemGroup")
 	for item in items:
@@ -83,12 +82,12 @@ func set_initial_player_position():
 	player.global_position = start_position.global_position
 
 func connect_enemies():
-	var spawner_parent = LevelData.current_level.get_node("Spawners")
+	var spawners = LevelData.current_level.get_node("Spawners")
 	var enemies = get_tree().get_nodes_in_group("EnemyGroup")
 	for enemy in enemies:
 		enemy.connect("enemy_attacked", player, "on_enemy_attacked")
 		enemy.connect("enemy_attack_stopped", player, "on_enemy_attack_stopped")
-		enemy.connect("enemy_died", spawner_parent, "on_enemy_died")
+		enemy.connect("enemy_died", spawners, "on_enemy_died")
 
 func connect_rails():
 	var rails = get_tree().get_nodes_in_group("RailGroup")
@@ -101,9 +100,3 @@ func on_nuclear_waste_stored(storage):
 		sprite.texture = nuclear_waste_texture
 		sprite.global_position = Vector2(64, 328)
 		get_tree().current_scene.add_child(sprite)
-
-func connect_spawners():
-	var spawner_parent = LevelData.current_level.get_node("Spawners")
-	var spawners = get_tree().get_nodes_in_group("SpawnerGroup")
-	for spawner in spawners:
-		spawner.connect("enemy_appeared", spawner_parent, "on_enemy_appeared")

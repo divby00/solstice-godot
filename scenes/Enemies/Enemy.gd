@@ -15,7 +15,7 @@ onready var animation_player = $AnimationPlayer
 export(int) var MAX_HEALTH = 1
 export(int) var MAX_SPEED = 15
 export(float) var damage = .5
-export(int) var health = MAX_HEALTH setget set_health
+onready var health = MAX_HEALTH setget set_health
 
 var attacking = false
 var motion = Vector2.ZERO
@@ -50,17 +50,16 @@ func _on_Hitbox_body_exited(body):
 		attacking = false
 
 func set_health(value):
-	if value < MAX_HEALTH:
-		health = clamp(value, 0, 10)
-		if health == 0:
-			var explosion = GreenExplosionEffect.instance()
-			explosion.global_position = global_position
-			get_tree().current_scene.add_child(explosion)
-			emit_signal("enemy_died", self)
-		else:
-			timer.start()
-			status = Status.HURT
-			animation_player.play("hurt")
+	health = clamp(value, 0, MAX_HEALTH)
+	if health <= 0:
+		var explosion = GreenExplosionEffect.instance()
+		explosion.global_position = global_position
+		get_tree().current_scene.add_child(explosion)
+		emit_signal("enemy_died", self)
+	else:
+		timer.start()
+		status = Status.HURT
+		animation_player.play("hurt")
 
 func _on_Area2D_body_entered(body):
 	chasing_player = true
