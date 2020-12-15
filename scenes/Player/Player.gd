@@ -27,8 +27,14 @@ var item_definitions = ResourceLoader.item_defs.definitions
 
 func _ready():
 	ResourceLoader.player = self
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
+func _exit_tree():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _process(delta):
+	if Input.is_action_pressed("primary"):
+		laser.fire()
 	if Input.is_action_pressed("secondary"):
 		var selected_item = PlayerData.selected_item
 		match selected_item:
@@ -42,8 +48,6 @@ func _process(delta):
 				emit_signal("item_used")
 
 func _physics_process(delta):
-	if Input.is_action_pressed("primary"):
-		laser.fire()
 	var input_vector = get_input_vector()
 	apply_horizontal_force(input_vector, delta)
 	apply_vertical_force(input_vector, delta)
@@ -63,12 +67,8 @@ func get_input_vector():
 		particles.emitting = false
 	if input_vector.x < 0:
 		facing = Facing.LEFT
-		laser.scale.x = -1
-		laser.global_position.x = global_position.x - 8
 	elif input_vector.x > 0:
 		facing = Facing.RIGHT
-		laser.scale.x = 1
-		laser.global_position.x = global_position.x + 8
 	return input_vector
 
 func apply_horizontal_force(input_vector, delta):
@@ -158,10 +158,11 @@ func on_player_destroyed():
 func _on_InvincibleTimer_timeout():
 	pass
 
-func on_enemy_attacked(enemy):
+func on_enemy_attacked(damage):
 	if timer.is_stopped():
-		PlayerData.status = PlayerData.Status.DAMAGED
 		damage_particles.emitting = true
+		PlayerData.health -= damage
+		PlayerData.status = PlayerData.Status.DAMAGED
 
 func on_status_changed(old_status, new_status):
 	if old_status != new_status:
@@ -177,7 +178,7 @@ func on_status_changed(old_status, new_status):
 			PlayerData.Status.TELEPORT:
 				animation_player.play("teleport")
 
-func on_enemy_attack_stopped(enemy):
+func on_enemy_attack_stopped():
 	if timer.is_stopped():
 		if PlayerData.in_teleporter:
 			PlayerData.status = PlayerData.Status.TELEPORT

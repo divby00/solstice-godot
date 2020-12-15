@@ -5,8 +5,8 @@ class_name Enemy
 const GreenExplosionEffect = preload("res://scenes/Effects/GreenExplosionEffect.tscn")
 
 signal enemy_died(enemy)
-signal enemy_attacked(enemy)
-signal enemy_attack_stopped(enemy)
+signal enemy_attacked(damage)
+signal enemy_attack_stopped
 
 onready var sprite = $Sprite
 onready var timer = $HurtTimer
@@ -31,23 +31,20 @@ enum Status {
 
 func _ready():
 	set_physics_process(false)
-	motion = Vector2(1, 1)
+	motion = Vector2(rand_range(-1, 1), rand_range(-1, 1))
 	animation_player.play("spawn")
 
 func _process(delta):
-	if attacking and PlayerData.status != PlayerData.Status.INVINCIBLE:
-		PlayerData.health -= damage
-		emit_signal("enemy_attacked", self)
+	if attacking:
+		emit_signal("enemy_attacked", damage)
 	else:
-		emit_signal("enemy_attack_stopped", self)
+		emit_signal("enemy_attack_stopped")
 
 func _on_Hitbox_body_entered(body):
-	if body.is_in_group("PlayerGroup"):
-		attacking = true
+	attacking = true
 
 func _on_Hitbox_body_exited(body):
-	if body.is_in_group("PlayerGroup"):
-		attacking = false
+	attacking = false
 
 func set_health(value):
 	health = clamp(value, 0, MAX_HEALTH)
