@@ -6,7 +6,6 @@ signal explosion_triggered
 
 export(int) var seconds_to_explosion = 30
 
-onready var audio_player = $AudioStreamPlayer2D
 onready var explosion_timer = $ExplosionTimer
 var player_in_nuclear_storage = false
 var time_left = 0
@@ -17,7 +16,7 @@ func _ready():
 func _process(delta):
 	if player_in_nuclear_storage and Input.is_action_just_pressed("secondary") and PlayerData.selected_item == "nuclearwaste":
 		explosion_timer.stop()
-		audio_player.play()
+		SoundFx.play("secured")
 		emit_signal("nuclear_waste_stored", self)
 
 func _on_ActivateArea_body_entered(body):

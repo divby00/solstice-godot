@@ -3,8 +3,6 @@ extends Node2D
 signal lock_opened(lock)
 
 const BigExplosionParticles = preload("res://scenes/Effects/BigExplosionParticles.tscn")
-const Explosion = preload("res://scenes/Effects/explosion.ogg")
-const Opened = preload("res://scenes/Locks/opened.ogg")
 
 export(int) var OPENING_EXPLOSIONS = 5
 export(String) var opened_by = ""
@@ -12,7 +10,6 @@ export(bool) var explodes_on_opening = false
 
 onready var sprite = $Sprite
 onready var closed_area = $ClosedArea
-onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 var can_open = false
 
@@ -31,8 +28,7 @@ func _on_OpenerArea_body_exited(body):
 
 func open():
 	if explodes_on_opening:
-		audio_player.stream = Explosion
-		audio_player.play()
+		SoundFx.play("explosion")
 		var sprite_size = sprite.texture.get_size()
 		for i in OPENING_EXPLOSIONS:
 			var position = Vector2(
@@ -43,9 +39,9 @@ func open():
 			explosion.emitting = true
 			explosion.remove_when_finish = true
 			explosion.global_position = position
+			explosion.z_index = 2
 			get_tree().current_scene.add_child(explosion)
 			yield(get_tree().create_timer(rand_range(0.0, 0.1)), "timeout")
 	else:
-		audio_player.stream = Opened
-		audio_player.play()
+		SoundFx.play("opened")
 	queue_free()

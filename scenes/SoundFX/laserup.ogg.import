@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/laserup.ogg-cfbcb7114e5f82e62f4bd6c5556267d2.oggstr"
+
+[deps]
+
+source_file="res://scenes/SoundFX/laserup.ogg"
+dest_files=[ "res://.import/laserup.ogg-cfbcb7114e5f82e62f4bd6c5556267d2.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

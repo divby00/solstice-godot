@@ -12,10 +12,12 @@ const SpawnerTypes = [
 	"red", "green", "blue"
 ]
 
-onready var timer : Timer = $Timer
+onready var timer: Timer = $Timer
 onready var sprite: Sprite = $Sprite
-onready var original_position : Vector2 = global_position
-onready var animation_player : AnimationPlayer = $AnimationPlayer
+onready var original_position: Vector2 = global_position
+onready var animation_player: AnimationPlayer = $AnimationPlayer
+onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
 var ready = false
 
 signal enemy_appeared(enemy)
@@ -27,6 +29,7 @@ func _ready():
 	timer.start()
 
 func starts():
+	audio_player.play()
 	SpawnerTypes.shuffle()
 	sprite.texture = Spawners[SpawnerTypes[0]]
 	var offset: Vector2 = Vector2(rand_range(-4, 4), rand_range(-4, 4))

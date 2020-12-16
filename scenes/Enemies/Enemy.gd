@@ -49,10 +49,12 @@ func set_health(value):
 		var explosion = GreenExplosionEffect.instance()
 		explosion.global_position = global_position
 		get_tree().current_scene.add_child(explosion)
+		SoundFx.play("explosion")
 		emit_signal("enemy_died", self)
 	else:
 		timer.start()
 		status = Status.HURT
+		SoundFx.play("enemy_hurt")
 		animation_player.play("hurt")
 
 func _on_Area2D_body_entered(body):

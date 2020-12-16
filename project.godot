@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Solstice"
-run/main_scene="res://scenes/Intro/Intro.tscn"
+run/main_scene="res://scenes/World/World.tscn"
 boot_splash/image="res://big-icon.png"
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
@@ -45,13 +45,13 @@ ResourceLoader="*res://ResourceLoader.gd"
 InfoAreaTexts="*res://scenes/InfoAreas/InfoAreaTexts.gd"
 PlayerData="*res://scenes/Player/PlayerData.gd"
 LevelData="*res://scenes/Levels/LevelData.gd"
+SoundFx="*res://scenes/SoundFX/SoundFX.tscn"
 
 [display]
 
 window/size/width=256
 window/size/height=192
 window/size/resizable=false
-window/size/fullscreen=true
 window/size/test_width=1024
 window/size/test_height=768
 window/stretch/mode="viewport"

@@ -1,11 +1,5 @@
 extends KinematicBody2D
 
-const Accept = preload("res://scenes/Player/accept.ogg")
-const Hurt = preload("res://scenes/Player/hurt.ogg")
-const Explosion = preload("res://scenes/Effects/explosion.ogg")
-const ThrustUp = preload("res://scenes/Player/thrustup.ogg")
-const LaserUp = preload("res://scenes/Player/laserup.ogg")
-
 onready var laser = $Laser
 onready var invincible_timer = $InvincibleTimer
 onready var damage_timer = $DamageTimer
@@ -16,7 +10,6 @@ onready var damage_particles : CPUParticles2D = $DamageParticles
 onready var animation_player : AnimationPlayer = $AnimationPlayer
 onready var rebuild_particles : CPUParticles2D = $RebuildParticles
 onready var rebuild_timer: Timer = $RebuildTimer
-onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 export(int) var ACCELERATION = 400
 export(int) var MAX_SPEED = 80
@@ -50,13 +43,11 @@ func _process(delta):
 		var selected_item = PlayerData.selected_item
 		match selected_item:
 			"redbarrel":
-				audio_player.stream = ThrustUp
-				audio_player.play()
+				SoundFx.play("thrustup")
 				PlayerData.thrust = PlayerData.MAX_THRUST
 				emit_signal("item_used")
 			"battery":
-				audio_player.stream = LaserUp
-				audio_player.play()
+				SoundFx.play("laserup")
 				PlayerData.laser = PlayerData.MAX_LASER
 				emit_signal("item_used")
 
@@ -113,8 +104,7 @@ func update_animation(input_vector):
 		animation_player.play(current_animation)
 
 func on_item_picked(item):
-	audio_player.stream = Accept
-	audio_player.play()
+	SoundFx.play("accept")
 	if PlayerData.selected_item != null:
 		create_new_item(item)
 	PlayerData.selected_item = item.item_name
@@ -166,8 +156,7 @@ func on_player_destroyed():
 	set_process(false)
 	big_explosion.global_position = global_position
 	big_explosion.emitting = true
-	audio_player.stream = Explosion
-	audio_player.play()
+	SoundFx.play("explosion")
 	PlayerData.invincible = true
 	animation_player.play("rebuilding")
 	PlayerData.lives -= 1
@@ -185,8 +174,7 @@ func _on_InvincibleTimer_timeout():
 func on_enemy_attacked(damage):
 	if not PlayerData.invincible:
 		damage_particles.emitting = true
-		audio_player.stream = Hurt
-		audio_player.play()
+		SoundFx.play("hurt")
 		PlayerData.health -= damage
 		PlayerData.status = PlayerData.Status.DAMAGED
 

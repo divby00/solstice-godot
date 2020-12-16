@@ -11,7 +11,6 @@ export(String) var linked_teleporter = ""
 
 onready var label: Label = $Label
 onready var particles: CPUParticles2D = $CPUParticles2D
-onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 var player_on_charger = false
 
@@ -25,7 +24,7 @@ func _process(delta):
 
 func _on_ActivateArea_body_entered(body):
 	if get_parent().charges > 0:
-		audio_player.play()
+		SoundFx.play("teleport")
 		particles.emitting = true
 		emit_signal("teleporter_activated", self)
 

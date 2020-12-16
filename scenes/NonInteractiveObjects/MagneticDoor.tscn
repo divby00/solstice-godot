@@ -21,7 +21,7 @@ tracks/0/keys = {
 }
 
 [node name="MagneticDoor" instance=ExtResource( 1 )]
-z_index = 1
+z_index = 2
 
 [node name="AnimationPlayer" parent="." index="0"]
 autoplay = "animate"

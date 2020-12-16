@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/InfoAreas/InfoArea.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/NuclearContainer/NuclearContainer.gd" type="Script" id=2]
-[ext_resource path="res://scenes/NuclearContainer/secured.ogg" type="AudioStream" id=3]
 [ext_resource path="res://scenes/NuclearContainer/nuclear_container.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -36,9 +35,6 @@ text = "Place the nuclear waste in this container to deactivate it."
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InfoArea"]
 position = Vector2( 12, -16 )
 shape = SubResource( 2 )
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
 
 [node name="ExplosionTimer" type="Timer" parent="."]
 [connection signal="body_entered" from="ActivateArea" to="." method="_on_ActivateArea_body_entered"]
