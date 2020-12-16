@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/opened.ogg-d84c63d50bf6cc5d99bf97bac17c6f98.oggstr"
+
+[deps]
+
+source_file="res://scenes/Locks/opened.ogg"
+dest_files=[ "res://.import/opened.ogg-d84c63d50bf6cc5d99bf97bac17c6f98.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

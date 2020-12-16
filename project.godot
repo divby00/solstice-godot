@@ -18,16 +18,22 @@ _global_script_classes=[ {
 "class": "ItemDefs",
 "language": "GDScript",
 "path": "res://scenes/Items/ItemDefs.gd"
+}, {
+"base": "StaticBody2D",
+"class": "Teleporter",
+"language": "GDScript",
+"path": "res://scenes/Teleporter/Teleporter.gd"
 } ]
 _global_script_class_icons={
 "Enemy": "",
-"ItemDefs": ""
+"ItemDefs": "",
+"Teleporter": ""
 }
 
 [application]
 
 config/name="Solstice"
-run/main_scene="res://scenes/Love4Retro/Love4Retro.tscn"
+run/main_scene="res://scenes/Intro/Intro.tscn"
 boot_splash/image="res://big-icon.png"
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
@@ -72,6 +78,10 @@ texture={
 "size_limit": 0,
 "stream": false,
 "svg/scale": 1.0
+}
+ogg_vorbis={
+"loop": false,
+"loop_offset": 0
 }
 
 [input]

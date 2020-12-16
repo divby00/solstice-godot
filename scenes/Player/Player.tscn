@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/Player/player_rotation.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player/player_hurt.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/Player/Laser.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Effects/BigExplosionParticles.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/Player/smoke_particles.tres" type="Texture" id=10]
+[ext_resource path="res://scenes/Player/rebuild_particles.png" type="Texture" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "destroyed"
@@ -135,6 +136,22 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]
 }
 
+[sub_resource type="Animation" id=9]
+resource_name = "rebuilding"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 3, 2, 1, 0 ]
+}
+
 [sub_resource type="Animation" id=4]
 length = 0.8
 loop = true
@@ -233,9 +250,16 @@ particles_anim_h_frames = 4
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
+[sub_resource type="CanvasItemMaterial" id=10]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
 [node name="Player" type="KinematicBody2D" groups=[
 "PlayerGroup",
 ]]
+z_index = 1
 collision_layer = 4
 collision_mask = 3
 script = ExtResource( 5 )
@@ -251,6 +275,7 @@ autoplay = "rotation"
 anims/destroyed = SubResource( 1 )
 anims/hurt = SubResource( 2 )
 anims/invincible = SubResource( 3 )
+anims/rebuilding = SubResource( 9 )
 anims/rotation = SubResource( 4 )
 anims/teleport = SubResource( 5 )
 
@@ -266,14 +291,10 @@ hframes = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 6 )
 
-[node name="InvincibleTimer" type="Timer" parent="."]
-wait_time = 2.5
-one_shot = true
-
 [node name="DamageParticles" type="CPUParticles2D" parent="."]
 material = SubResource( 7 )
 emitting = false
-amount = 20
+amount = 40
 lifetime = 0.6
 one_shot = true
 lifetime_randomness = 0.2
@@ -298,7 +319,36 @@ emission_sphere_radius = 2.0
 gravity = Vector2( 0, 0 )
 anim_speed = 1.0
 
+[node name="RebuildParticles" type="CPUParticles2D" parent="."]
+material = SubResource( 10 )
+emitting = false
+amount = 50
+lifetime = 0.6
+one_shot = true
+texture = ExtResource( 11 )
+emission_shape = 1
+emission_sphere_radius = 32.0
+gravity = Vector2( 0, 0 )
+radial_accel = -100.0
+anim_speed = 1.0
+
 [node name="BigExplosionParticles" parent="." instance=ExtResource( 9 )]
 
 [node name="Laser" parent="." instance=ExtResource( 8 )]
+
+[node name="InvincibleTimer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[node name="DamageTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="RebuildTimer" type="Timer" parent="."]
+wait_time = 1.2
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 [connection signal="timeout" from="InvincibleTimer" to="." method="_on_InvincibleTimer_timeout"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_DamageTimer_timeout"]
+[connection signal="timeout" from="RebuildTimer" to="." method="_on_RebuildTimer_timeout"]

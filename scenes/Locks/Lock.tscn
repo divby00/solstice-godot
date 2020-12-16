@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/Locks/Lock.gd" type="Script" id=1]
 [ext_resource path="res://scenes/InfoAreas/InfoArea.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Effects/explosion.ogg" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "animate"
@@ -36,5 +37,8 @@ anims/animate = SubResource( 1 )
 [node name="Timer" type="Timer" parent="."]
 
 [node name="InfoArea" parent="." instance=ExtResource( 2 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 [connection signal="body_entered" from="OpenerArea" to="." method="_on_OpenerArea_body_entered"]
 [connection signal="body_exited" from="OpenerArea" to="." method="_on_OpenerArea_body_exited"]

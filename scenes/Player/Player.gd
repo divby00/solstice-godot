@@ -1,12 +1,22 @@
 extends KinematicBody2D
 
+const Accept = preload("res://scenes/Player/accept.ogg")
+const Hurt = preload("res://scenes/Player/hurt.ogg")
+const Explosion = preload("res://scenes/Effects/explosion.ogg")
+const ThrustUp = preload("res://scenes/Player/thrustup.ogg")
+const LaserUp = preload("res://scenes/Player/laserup.ogg")
+
 onready var laser = $Laser
-onready var timer = $InvincibleTimer
+onready var invincible_timer = $InvincibleTimer
+onready var damage_timer = $DamageTimer
 onready var sprite : Sprite = $Sprite
 onready var big_explosion = $BigExplosionParticles
 onready var particles : CPUParticles2D = $SmokeParticles
 onready var damage_particles : CPUParticles2D = $DamageParticles
 onready var animation_player : AnimationPlayer = $AnimationPlayer
+onready var rebuild_particles : CPUParticles2D = $RebuildParticles
+onready var rebuild_timer: Timer = $RebuildTimer
+onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 export(int) var ACCELERATION = 400
 export(int) var MAX_SPEED = 80
@@ -35,16 +45,19 @@ func _exit_tree():
 func _process(delta):
 	if Input.is_action_pressed("primary"):
 		laser.fire()
+	
 	if Input.is_action_pressed("secondary"):
 		var selected_item = PlayerData.selected_item
 		match selected_item:
 			"redbarrel":
+				audio_player.stream = ThrustUp
+				audio_player.play()
 				PlayerData.thrust = PlayerData.MAX_THRUST
-				PlayerData.selected_item = null
 				emit_signal("item_used")
 			"battery":
+				audio_player.stream = LaserUp
+				audio_player.play()
 				PlayerData.laser = PlayerData.MAX_LASER
-				PlayerData.selected_item = null
 				emit_signal("item_used")
 
 func _physics_process(delta):
@@ -100,6 +113,8 @@ func update_animation(input_vector):
 		animation_player.play(current_animation)
 
 func on_item_picked(item):
+	audio_player.stream = Accept
+	audio_player.play()
 	if PlayerData.selected_item != null:
 		create_new_item(item)
 	PlayerData.selected_item = item.item_name
@@ -113,24 +128,24 @@ func create_new_item(item):
 	get_tree().current_scene.add_child(item_scene)
 	
 func on_lock_opened(lock):
-	PlayerData.selected_item = null
 	emit_signal("item_used")
 
 func on_teleporter_charged(teleporter_group, teleporter):
-	PlayerData.selected_item = null
 	emit_signal("item_used")
 
 func on_teleporter_activated(teleporter_group, teleporter):
 	PlayerData.status = PlayerData.Status.TELEPORT
+	set_process(false)
 	set_physics_process(false)
 	for tele in teleporter_group.get_children():
-		if tele.name != teleporter.name:
+		if tele.name != teleporter.name and tele is Teleporter:
 			yield(get_tree().create_timer(.4), "timeout")
 			global_position.x = tele.global_position.x + 24
 			global_position.y  = tele.global_position.y - 16
 			tele.particles.emitting = true
 			yield(get_tree().create_timer(.4), "timeout")
 			PlayerData.status = PlayerData.Status.OK
+			set_process(true)
 			set_physics_process(true)
 
 func on_pass_dispatched(dispatcher):
@@ -144,23 +159,34 @@ func create_teleporter_pass(position: Vector2):
 	get_tree().current_scene.add_child(item_scene)
 
 func on_nuclear_waste_stored(storage):
-	PlayerData.selected_item = null
 	emit_signal("item_used")
 
 func on_player_destroyed():
+	set_physics_process(false)
+	set_process(false)
 	big_explosion.global_position = global_position
 	big_explosion.emitting = true
+	audio_player.stream = Explosion
+	audio_player.play()
+	PlayerData.invincible = true
+	animation_player.play("rebuilding")
 	PlayerData.lives -= 1
 	PlayerData.health = PlayerData.MAX_HEALTH
-	PlayerData.status = PlayerData.Status.INVINCIBLE
-	timer.start()
+	rebuild_particles.emitting = true
+	rebuild_timer.start()
+
+func _on_DamageTimer_timeout():
+	PlayerData.status = PlayerData.Status.OK
 
 func _on_InvincibleTimer_timeout():
-	pass
+	PlayerData.invincible = false
+	PlayerData.status = PlayerData.Status.OK
 
 func on_enemy_attacked(damage):
-	if timer.is_stopped():
+	if not PlayerData.invincible:
 		damage_particles.emitting = true
+		audio_player.stream = Hurt
+		audio_player.play()
 		PlayerData.health -= damage
 		PlayerData.status = PlayerData.Status.DAMAGED
 
@@ -171,21 +197,18 @@ func on_status_changed(old_status, new_status):
 				animation_player.play("rotation")
 			PlayerData.Status.DAMAGED:
 				animation_player.play("hurt")
+				damage_timer.start()
 			PlayerData.Status.DESTROYED:
 				animation_player.play("destroyed")
-			PlayerData.Status.INVINCIBLE:
-				animation_player.play("invincible")
 			PlayerData.Status.TELEPORT:
 				animation_player.play("teleport")
+			PlayerData.Status.INVINCIBLE:
+				invincible_timer.start()
+	if PlayerData.invincible:
+		animation_player.play("invincible")
 
-func on_enemy_attack_stopped():
-	if timer.is_stopped():
-		if PlayerData.in_teleporter:
-			PlayerData.status = PlayerData.Status.TELEPORT
-		else:
-			PlayerData.status = PlayerData.Status.OK
-	else:
-		PlayerData.status = PlayerData.Status.INVINCIBLE
+func on_item_used():
+	PlayerData.selected_item = null
 
 func on_explosion_triggered():
 	pass
@@ -195,3 +218,9 @@ func on_player_has_to_move(direction):
 		motion.x = Vector2.LEFT.x * 75
 	else:
 		motion.x = Vector2.RIGHT.x * 75
+
+func _on_RebuildTimer_timeout():
+	set_physics_process(true)
+	set_process(true)
+	PlayerData.status = PlayerData.Status.INVINCIBLE
+	PlayerData.invincible = true

@@ -3,6 +3,7 @@ extends Node
 const MAX_CHARGES = 10
 onready var animatorA = $TeleporterA/AnimationPlayer
 onready var animatorB = $TeleporterB/AnimationPlayer
+onready var audio_player = $AudioStreamPlayer
 
 signal teleporter_charged(teleporter_group, teleporter)
 signal teleporter_activated(teleporter_group, teleporter)
@@ -44,6 +45,7 @@ func _on_TeleporterB_player_over_charger(teleporter):
 
 func charge_teleporter(teleporter):
 	if Input.is_action_just_pressed("secondary") and PlayerData.selected_item == 'teleportpass':
+		audio_player.play()
 		self.charges += 2
 		emit_signal("teleporter_charged", self, teleporter)
 

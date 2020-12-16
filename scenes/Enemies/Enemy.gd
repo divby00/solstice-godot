@@ -6,7 +6,6 @@ const GreenExplosionEffect = preload("res://scenes/Effects/GreenExplosionEffect.
 
 signal enemy_died(enemy)
 signal enemy_attacked(damage)
-signal enemy_attack_stopped
 
 onready var sprite = $Sprite
 onready var timer = $HurtTimer
@@ -37,8 +36,6 @@ func _ready():
 func _process(delta):
 	if attacking:
 		emit_signal("enemy_attacked", damage)
-	else:
-		emit_signal("enemy_attack_stopped")
 
 func _on_Hitbox_body_entered(body):
 	attacking = true

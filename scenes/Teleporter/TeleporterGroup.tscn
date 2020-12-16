@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Teleporter/Teleporter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Teleporter/TeleporterGroup.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Teleporter/teleporter_loaded.ogg" type="AudioStream" id=3]
 
 [node name="TeleporterGroup" type="Node" groups=[
 "TeleporterGroup",
@@ -16,6 +17,9 @@ linked_teleporter = "teleB"
 position = Vector2( 128, 0 )
 teleporter_name = "teleB"
 linked_teleporter = "teleA"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 [connection signal="player_over_charger" from="TeleporterA" to="." method="_on_TeleporterA_player_over_charger"]
 [connection signal="teleporter_activated" from="TeleporterA" to="." method="_on_TeleporterA_teleporter_activated"]
 [connection signal="player_over_charger" from="TeleporterB" to="." method="_on_TeleporterB_player_over_charger"]

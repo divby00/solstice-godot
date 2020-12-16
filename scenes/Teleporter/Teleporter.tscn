@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Teleporter/teleporter.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Teleporter/Teleporter.gd" type="Script" id=2]
 [ext_resource path="res://fonts/joystix.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scenes/InfoAreas/InfoArea.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Teleporter/teleport.ogg" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "charged"
@@ -145,6 +146,9 @@ text = "Use a teleporter pass to activate, once it's activated touch the upper b
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InfoArea"]
 position = Vector2( 24, -28 )
 shape = SubResource( 7 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 [connection signal="body_entered" from="ActivateArea" to="." method="_on_ActivateArea_body_entered"]
 [connection signal="body_entered" from="LoadingArea" to="." method="_on_LoadingArea_body_entered"]
 [connection signal="body_exited" from="LoadingArea" to="." method="_on_LoadingArea_body_exited"]

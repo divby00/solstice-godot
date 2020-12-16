@@ -70,6 +70,7 @@ func connect_player_data():
 	PlayerData.connect("time_changed", panel, "on_time_changed")
 	PlayerData.connect("player_destroyed", player, "on_player_destroyed")
 	PlayerData.connect("status_changed", player, "on_status_changed")
+	player.connect("item_used", player, "on_item_used")
 
 func set_camera_limits(level):
 	camera.limit_left = level.camera_limit_left
@@ -86,7 +87,6 @@ func connect_enemies():
 	var enemies = get_tree().get_nodes_in_group("EnemyGroup")
 	for enemy in enemies:
 		enemy.connect("enemy_attacked", player, "on_enemy_attacked")
-		enemy.connect("enemy_attack_stopped", player, "on_enemy_attack_stopped")
 		enemy.connect("enemy_died", spawners, "on_enemy_died")
 
 func connect_rails():
