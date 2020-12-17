@@ -8,11 +8,11 @@ onready var panel = $UI/Panel
 onready var storage_base = $StorageBase
 
 func _ready():
-	load_level("1")
+	load_level("2")
 	
 func load_level(level_key):
 	LevelData.current_level = LevelData.levels[level_key].instance()
-	LevelData.current_level_number = 1
+	LevelData.current_level_number = 2
 	set_camera_limits(LevelData.current_level)
 	get_tree().current_scene.add_child_below_node(camera, LevelData.current_level, false)
 	call_deferred("set_initial_player_position")

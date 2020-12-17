@@ -51,8 +51,9 @@ func append_text(text):
 		texts.append(text)
 
 func _on_Tween_tween_completed(object, key):
-	texts.remove(0)
-	init_tween()
+	if texts.size() > 0:
+		texts.remove(0)
+		init_tween()
 
 func on_lives_changed(lives):
 	lives_label.text = str(lives)
