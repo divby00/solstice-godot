@@ -8,23 +8,27 @@ onready var panel = $UI/Panel
 onready var storage_base = $StorageBase
 
 func _ready():
-	load_level("2")
-	
-func load_level(level_key):
-	LevelData.current_level = LevelData.levels[level_key].instance()
-	LevelData.current_level_number = 2
-	set_camera_limits(LevelData.current_level)
-	get_tree().current_scene.add_child_below_node(camera, LevelData.current_level, false)
-	call_deferred("set_initial_player_position")
+	load_level("01")
 	connect_items()
-	connect_locks()
 	connect_teleporters()
 	connect_teleporter_pass_dispatchers()
 	connect_info_areas()
 	connect_nuclear_containers()
+	connect_locks()
 	connect_player_data()
 	connect_enemies()
 	connect_rails()
+	connect_elevator()
+	
+func load_level(level_key):
+	var level = get_tree().get_nodes_in_group("LevelGroup")
+	if level.size() > 0:
+		level[0].queue_free()
+	LevelData.current_level = LevelData.levels[level_key].instance()
+	LevelData.current_level_number = int(level_key)
+	set_camera_limits(LevelData.current_level)
+	get_tree().current_scene.add_child_below_node(camera, LevelData.current_level, false)
+	call_deferred("set_initial_player_position")
 
 func connect_items():
 	var items = get_tree().get_nodes_in_group("ItemGroup")
@@ -94,9 +98,17 @@ func connect_rails():
 	for rail in rails:
 		rail.connect("player_has_to_move", player, "on_player_has_to_move")
 
+func connect_elevator():
+	var elevators = get_tree().get_nodes_in_group("ElevatorGroup")
+	for elevator in elevators:
+		elevator.connect("elevator_activated", self, "on_elevator_activated")
+
 func on_nuclear_waste_stored(storage):
 	if LevelData.current_level_number == 1:
 		var sprite = Sprite.new()
 		sprite.texture = nuclear_waste_texture
 		sprite.global_position = Vector2(64, 328)
 		get_tree().current_scene.add_child(sprite)
+
+func on_elevator_activated(level_pass):
+	load_level(level_pass.substr(4, 2))

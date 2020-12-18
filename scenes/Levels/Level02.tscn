@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scenes/Levels/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Levels/EquinoxMap2.png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://scenes/NonInteractiveObjects/MagneticDoor.tscn" type="PackedScene" id=17]
 [ext_resource path="res://scenes/MagneticArea/MagneticArea.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scenes/Items/ItemDrill.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/Enemies/Spawner.tscn" type="PackedScene" id=20]
 
 [sub_resource type="Animation" id=1]
 resource_name = "animate"
@@ -231,8 +232,92 @@ position = Vector2( 752, 496 )
 [node name="SteelLock" parent="Locks" index="1" instance=ExtResource( 15 )]
 position = Vector2( 72, 128 )
 
-[node name="Spawners" parent="." index="7"]
-visible = false
+[node name="Spawner1" parent="Spawners" index="0" instance=ExtResource( 20 )]
+position = Vector2( 144, 200 )
+
+[node name="Spawner2" parent="Spawners" index="1" instance=ExtResource( 20 )]
+position = Vector2( 256, 232 )
+
+[node name="Spawner3" parent="Spawners" index="2" instance=ExtResource( 20 )]
+position = Vector2( 392, 176 )
+
+[node name="Spawner4" parent="Spawners" index="3" instance=ExtResource( 20 )]
+position = Vector2( 432, 40 )
+
+[node name="Spawner5" parent="Spawners" index="4" instance=ExtResource( 20 )]
+position = Vector2( 312, 64 )
+
+[node name="Spawner6" parent="Spawners" index="5" instance=ExtResource( 20 )]
+position = Vector2( 40, 40 )
+
+[node name="Spawner7" parent="Spawners" index="6" instance=ExtResource( 20 )]
+position = Vector2( 128, 96 )
+
+[node name="Spawner8" parent="Spawners" index="7" instance=ExtResource( 20 )]
+position = Vector2( 552, 72 )
+
+[node name="Spawner9" parent="Spawners" index="8" instance=ExtResource( 20 )]
+position = Vector2( 768, 80 )
+
+[node name="Spawner10" parent="Spawners" index="9" instance=ExtResource( 20 )]
+position = Vector2( 984, 56 )
+
+[node name="Spawner11" parent="Spawners" index="10" instance=ExtResource( 20 )]
+position = Vector2( 952, 216 )
+
+[node name="Spawner12" parent="Spawners" index="11" instance=ExtResource( 20 )]
+position = Vector2( 752, 192 )
+
+[node name="Spawner13" parent="Spawners" index="12" instance=ExtResource( 20 )]
+position = Vector2( 792, 232 )
+
+[node name="Spawner14" parent="Spawners" index="13" instance=ExtResource( 20 )]
+position = Vector2( 552, 224 )
+
+[node name="Spawner15" parent="Spawners" index="14" instance=ExtResource( 20 )]
+position = Vector2( 904, 328 )
+
+[node name="Spawner16" parent="Spawners" index="15" instance=ExtResource( 20 )]
+position = Vector2( 928, 376 )
+
+[node name="Spawner17" parent="Spawners" index="16" instance=ExtResource( 20 )]
+position = Vector2( 944, 496 )
+
+[node name="Spawner18" parent="Spawners" index="17" instance=ExtResource( 20 )]
+position = Vector2( 832, 528 )
+
+[node name="Spawner19" parent="Spawners" index="18" instance=ExtResource( 20 )]
+position = Vector2( 688, 480 )
+
+[node name="Spawner20" parent="Spawners" index="19" instance=ExtResource( 20 )]
+position = Vector2( 608, 520 )
+
+[node name="Spawner21" parent="Spawners" index="20" instance=ExtResource( 20 )]
+position = Vector2( 632, 664 )
+
+[node name="Spawner22" parent="Spawners" index="21" instance=ExtResource( 20 )]
+position = Vector2( 896, 664 )
+
+[node name="Spawner23" parent="Spawners" index="22" instance=ExtResource( 20 )]
+position = Vector2( 960, 624 )
+
+[node name="Spawner24" parent="Spawners" index="23" instance=ExtResource( 20 )]
+position = Vector2( 192, 336 )
+
+[node name="Spawner25" parent="Spawners" index="24" instance=ExtResource( 20 )]
+position = Vector2( 56, 368 )
+
+[node name="Spawner26" parent="Spawners" index="25" instance=ExtResource( 20 )]
+position = Vector2( 264, 376 )
+
+[node name="Spawner27" parent="Spawners" index="26" instance=ExtResource( 20 )]
+position = Vector2( 576, 376 )
+
+[node name="Spawner28" parent="Spawners" index="27" instance=ExtResource( 20 )]
+position = Vector2( 704, 344 )
+
+[node name="Spawner29" parent="Spawners" index="28" instance=ExtResource( 20 )]
+position = Vector2( 520, 360 )
 
 [node name="NuclearContainer" parent="." index="8"]
 position = Vector2( 120, 376 )

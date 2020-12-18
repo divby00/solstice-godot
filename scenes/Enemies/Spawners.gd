@@ -16,7 +16,7 @@ func _process(delta):
 func get_ready_spawners():
 	var ready_spawners = []
 	for spawner in spawners:
-		if spawner.ready:
+		if spawner != null and spawner.ready:
 			ready_spawners.append(spawner)
 	return ready_spawners
 
