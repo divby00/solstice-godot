@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/Intro/intro-background.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Intro/intro-title.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://fonts/joystix.tres" type="DynamicFont" id=4]
 [ext_resource path="res://scenes/Intro/Intro.gd" type="Script" id=5]
 [ext_resource path="res://music/girl_from_mars.ogg" type="AudioStream" id=6]
+[ext_resource path="res://scenes/Intro/credits_dithering.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "scroll"
@@ -126,27 +127,38 @@ scale_amount_curve = SubResource( 3 )
 
 [node name="TitleSprite" type="Sprite" parent="."]
 position = Vector2( 324, 24 )
-scale = Vector2( 1, 1e-05 )
 texture = ExtResource( 2 )
 vframes = 5
+frame = 4
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 145.043, 96 )
+position = Vector2( 128, 96 )
 current = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LabelSkip" type="Label" parent="CanvasLayer"]
-margin_left = 48.0
-margin_top = 176.0
-margin_right = 200.0
-margin_bottom = 181.0
+margin_top = 168.0
+margin_right = 256.0
+margin_bottom = 192.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
 custom_fonts/font = ExtResource( 4 )
-text = "PRESS ENTER TO SKIP"
+text = "PRESS ANY BUTTON TO SKIP"
 align = 1
-valign = 3
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditsDithering" type="TextureRect" parent="CanvasLayer"]
+margin_top = 160.0
+margin_right = 256.0
+margin_bottom = 192.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -176,8 +188,12 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 autoplay = true
+
+[node name="CreditsTween" type="Tween" parent="."]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="tween_all_completed" from="CreditsTween" to="." method="_on_CreditsTween_tween_all_completed"]
+[connection signal="tween_step" from="CreditsTween" to="." method="_on_CreditsTween_tween_step"]

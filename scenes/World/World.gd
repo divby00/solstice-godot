@@ -9,6 +9,19 @@ onready var storage_base = $StorageBase
 
 func _ready():
 	load_level("01")
+	
+func load_level(level_key):
+	var enemies = get_tree().get_nodes_in_group("EnemyGroup")
+	for enemy in enemies:
+		enemy.queue_free()
+	var level = get_tree().get_nodes_in_group("LevelGroup")
+	if level.size() > 0:
+		level[0].queue_free()
+	LevelData.current_level = LevelData.levels[level_key].instance()
+	LevelData.current_level_number = int(level_key)
+	set_camera_limits(LevelData.current_level)
+	get_tree().current_scene.add_child_below_node(camera, LevelData.current_level, false)
+	call_deferred("set_initial_player_position")
 	connect_items()
 	connect_teleporters()
 	connect_teleporter_pass_dispatchers()
@@ -19,16 +32,6 @@ func _ready():
 	connect_enemies()
 	connect_rails()
 	connect_elevator()
-	
-func load_level(level_key):
-	var level = get_tree().get_nodes_in_group("LevelGroup")
-	if level.size() > 0:
-		level[0].queue_free()
-	LevelData.current_level = LevelData.levels[level_key].instance()
-	LevelData.current_level_number = int(level_key)
-	set_camera_limits(LevelData.current_level)
-	get_tree().current_scene.add_child_below_node(camera, LevelData.current_level, false)
-	call_deferred("set_initial_player_position")
 
 func connect_items():
 	var items = get_tree().get_nodes_in_group("ItemGroup")

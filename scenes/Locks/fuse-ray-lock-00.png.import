@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dither.png-8de4a8c7d10b07f5175dfd8ce5097612.stex"
+path="res://.import/fuse-ray-lock-00.png-acd75451906188f91528ccf95cf8c634.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Love4Retro/dither.png"
-dest_files=[ "res://.import/dither.png-8de4a8c7d10b07f5175dfd8ce5097612.stex" ]
+source_file="res://scenes/Locks/fuse-ray-lock-00.png"
+dest_files=[ "res://.import/fuse-ray-lock-00.png-acd75451906188f91528ccf95cf8c634.stex" ]
 
 [params]
 

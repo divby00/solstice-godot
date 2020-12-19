@@ -25,6 +25,8 @@ texture = ExtResource( 1 )
 polygon = PoolVector2Array( 0, -8, 8, -24, 40, -24, 48, -8, 48, 0, 0, 0 )
 
 [node name="ActivateArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActivateArea"]
 position = Vector2( 24, -26 )

@@ -2,47 +2,120 @@ extends Node2D
 
 const BlueStarEffect = preload("res://scenes/Effects/BlueStarEffect.tscn")
 
-onready var timer = $Timer
-onready var camera = $Camera2D
-onready var label = $CanvasLayer/CenterContainer/VBoxContainer/Label
-onready var label_skip = $CanvasLayer/LabelSkip
+onready var timer: Timer = $Timer
+onready var camera: Camera2D = $Camera2D
+onready var label: Label = $CanvasLayer/CenterContainer/VBoxContainer/Label
+onready var label_skip: Label = $CanvasLayer/LabelSkip
 onready var animation_player: AnimationPlayer = $AnimationPlayer
-onready var title_sprite = $TitleSprite
-onready var polygon = $Polygon2D
+onready var title_sprite: Sprite = $TitleSprite
+onready var polygon: Polygon2D = $Polygon2D
+onready var credits_tween: Tween = $CreditsTween
+
+var status = Status.SCROLLING
+
+enum Status {
+	SCROLLING,
+	TITLE_APPEARING,
+	IDLE,
+	IN_MENU,
+}
+
+var credits = [
+	"2020 Love4Retro games",
+	"Solstice is an Equinox remake",
+	"Program and graphics by:",
+	"Divby0",
+	"Music by:",
+	"Drozerix",
+	"This is free software",
+	"We hope you enjoy it!",
+	"Thank you Raffaele Cecco!",
+]
 
 var messages = [
 	"In the near future...",
 	"...the world's most powerful\nnuclear plant is going\nto blow!!!"
 ]
 
+var credits_index = 0
+var tween_steps = 0
+var primary_press: float = 0
+var secondary_press: float = 0
+
 func _ready():
 	label.text = messages[0]
 	for _i in range(100):
-		var star_position = Vector2(rand_range(0, 500), rand_range(0, 192))
-		if Geometry.is_point_in_polygon(star_position, polygon.polygon):
-			var blue_star_effect = BlueStarEffect.instance()
-			blue_star_effect.global_position = star_position
-			polygon.add_child(blue_star_effect)
+		create_star(Vector2(rand_range(0, 500), rand_range(0, 192)))
 
-func _process(_delta):
-	if Input.is_action_just_pressed("secondary") and animation_player.is_playing():
-		animation_player.stop()
-		animation_player.play("title")
-		camera.position.x = 324
-		timer.stop()
-		label.text = ""
-		label_skip.text = "PRESS ENTER TO START"
-		
-	if Input.is_action_just_pressed("secondary") and not animation_player.is_playing():
-		# warning-ignore:return_value_discarded
-		get_tree().change_scene("res://scenes/World/World.tscn")
+func skip_scrolling():
+	animation_player.stop()
+	status = Status.TITLE_APPEARING
+	animation_player.play("title")
+	camera.position.x = 324
+	timer.stop()
+	label.text = ""
+	label_skip.text = ""
+
+func start_menu():
+	label_skip.rect_position = Vector2(0, 192)
+	label.text = "HOLD PRIMARY BUTTON TO START\n\nHOLD SECONDARY BUTTON TO QUIT"
+	label.align = HALIGN_CENTER
+	start_tween()
+
+func _input(event):
+	if (event is InputEventKey and event.pressed) or event is InputEventMouseButton:
+		if status == Status.SCROLLING:
+			skip_scrolling()
+		if status == Status.IDLE:
+			status = Status.IN_MENU
+			label_skip.text = ""
+			label_skip.rect_position = Vector2(0, 192)
+			start_menu()
+
+func _process(delta):
+	if status == Status.IN_MENU:
+		if primary_press >= .5 and Input.is_action_pressed("primary"):
+			get_tree().change_scene("res://scenes/World/World.tscn")
+		elif primary_press < .5:
+			primary_press += delta
+		if secondary_press >= .5 and Input.is_action_pressed("secondary"):
+			get_tree().quit()
+		elif secondary_press < .5:
+			secondary_press += delta
+
+func create_star(star_position):
+	if Geometry.is_point_in_polygon(star_position, polygon.polygon):
+		var blue_star_effect = BlueStarEffect.instance()
+		blue_star_effect.global_position = star_position
+		polygon.add_child(blue_star_effect)
 
 func _on_Timer_timeout():
 	label.text = messages[1]
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "scroll":
-		label.text = ""
-		label_skip.text = "PRESS ENTER TO START"
-		title_sprite.visible = true
-		animation_player.play("title")
+	if anim_name == "scroll": # Camera stops moving
+		skip_scrolling()
+	if anim_name == "title": # Title has appeared, waiting for keypress
+		status = Status.IDLE
+		label_skip.text = "- PRESS ANY BUTTON -"
+
+func start_tween():
+	tween_steps = 0
+	label_skip.rect_position.y = 192
+	label_skip.text = credits[credits_index]
+	credits_tween.interpolate_property(label_skip, "rect_position", Vector2(0, 192), Vector2(0, 152), 2.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	credits_tween.start()
+
+func _on_CreditsTween_tween_step(object, key, elapsed, value):
+	tween_steps += 1
+	if tween_steps == 70:
+		label_skip.rect_position.y = 168
+		credits_tween.stop(label_skip, "rect_position")
+		yield(get_tree().create_timer(1), "timeout")
+		credits_tween.resume(label_skip, "rect_position")
+
+func _on_CreditsTween_tween_all_completed():
+	credits_index += 1
+	if credits_index >= credits.size():
+		credits_index = 0
+	start_tween()

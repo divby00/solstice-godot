@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/Rail/rail_texture.tres" type="Texture" id=1]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=1]
 script/source = "tool
 extends StaticBody2D
 
@@ -37,16 +37,16 @@ func _on_MovingArea_body_exited(body):
 	moving_player = false
 "
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 12, 4 )
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 296, 4 )
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 12, 1 )
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 296, 1 )
 
 [node name="Rail" type="StaticBody2D" groups=[
 "RailGroup",
 ]]
-script = SubResource( 2 )
+script = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -56,14 +56,13 @@ margin_top = -8.0
 margin_right = 24.0
 texture = ExtResource( 1 )
 stretch_mode = 2
-flip_h = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 12, -4 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="MovingArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -71,6 +70,6 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MovingArea"]
 position = Vector2( 12, -9 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 [connection signal="body_entered" from="MovingArea" to="." method="_on_MovingArea_body_entered"]
 [connection signal="body_exited" from="MovingArea" to="." method="_on_MovingArea_body_exited"]
