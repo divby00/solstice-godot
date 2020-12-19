@@ -34,6 +34,7 @@ func _ready():
 	animation_player.play("spawn")
 
 func _process(delta):
+	chasing_player = global_position.distance_to(ResourceLoader.player.global_position) < 64
 	if attacking:
 		emit_signal("enemy_attacked", damage)
 
@@ -56,12 +57,6 @@ func set_health(value):
 		status = Status.HURT
 		SoundFx.play("enemy_hurt")
 		animation_player.play("hurt")
-
-func _on_Area2D_body_entered(body):
-	chasing_player = true
-
-func _on_Area2D_body_exited(body):
-	chasing_player = false
 
 func _on_VisibilityNotifier2D_screen_entered():
 	set_physics_process(true)

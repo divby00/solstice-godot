@@ -16,8 +16,10 @@ export(int) var MAX_SPEED = 80
 export(int) var GRAVITY = 150
 export(float) var FRICTION = .2
 
+signal player_damaged
 signal item_picked(item)
 signal item_used
+signal player_activated_elevator(level_pass)
 
 enum Facing {
 	LEFT, RIGHT
@@ -177,6 +179,7 @@ func on_enemy_attacked(damage):
 		SoundFx.play("hurt")
 		PlayerData.health -= damage
 		PlayerData.status = PlayerData.Status.DAMAGED
+		emit_signal("player_damaged")
 
 func on_status_changed(old_status, new_status):
 	if old_status != new_status:
@@ -212,3 +215,7 @@ func _on_RebuildTimer_timeout():
 	set_process(true)
 	PlayerData.status = PlayerData.Status.INVINCIBLE
 	PlayerData.invincible = true
+
+func on_elevator_activated(level_pass):
+	emit_signal("item_used")
+	emit_signal("player_activated_elevator", level_pass)

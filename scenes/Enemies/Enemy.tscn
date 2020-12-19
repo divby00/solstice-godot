@@ -1,9 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://scenes/Enemies/Enemy.gd" type="Script" id=1]
-
-[sub_resource type="CircleShape2D" id=1]
-radius = 64.0
 
 [node name="Enemy" type="KinematicBody2D" groups=[
 "EnemyGroup",
@@ -24,13 +21,6 @@ collision_mask = 4
 wait_time = 0.3
 one_shot = true
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 1 )
-
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 0, -5.66244e-07 )
 scale = Vector2( 0.8, 0.8 )
@@ -38,6 +28,4 @@ scale = Vector2( 0.8, 0.8 )
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
 [connection signal="body_exited" from="Hitbox" to="." method="_on_Hitbox_body_exited"]
 [connection signal="timeout" from="HurtTimer" to="." method="_on_HurtTimer_timeout"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]

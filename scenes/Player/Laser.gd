@@ -1,6 +1,7 @@
 extends Node2D
 
 const RedStarParticle = preload("res://scenes/Effects/RedStarParticle.tscn")
+const GreenStarParticle = preload("res://scenes/Effects/GreenStarParticle.tscn")
 
 onready var cursor: Sprite = $Cursor
 onready var animation_player = $AnimationPlayer
@@ -29,11 +30,14 @@ func fire():
 		audio_player.play()
 		if raycast.is_colliding():
 			var body = raycast.get_collider()
-			if body is Enemy:
-				body.health -= 1
 			var point = raycast.get_collision_point()
 			ray.set_point_position(1, to_local(point))
-			var particles = RedStarParticle.instance()
+			var particles = null
+			if body is Enemy:
+				body.health -= 1
+				particles = GreenStarParticle.instance()
+			else:
+				particles = RedStarParticle.instance()
 			particles.global_position = point
 			particles.emitting = true
 			get_tree().current_scene.add_child(particles)

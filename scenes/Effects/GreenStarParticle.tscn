@@ -4,4 +4,5 @@
 [ext_resource path="res://scenes/Effects/green_star_particle.png" type="Texture" id=2]
 
 [node name="GreenStarParticle" instance=ExtResource( 1 )]
+amount = 10
 texture = ExtResource( 2 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/Intro/intro-background.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Intro/intro-title.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/Intro/Intro.gd" type="Script" id=5]
 [ext_resource path="res://music/girl_from_mars.ogg" type="AudioStream" id=6]
 [ext_resource path="res://scenes/Intro/credits_dithering.png" type="Texture" id=7]
+[ext_resource path="res://scenes/Transitions/FadeTransition.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "scroll"
@@ -127,13 +128,31 @@ scale_amount_curve = SubResource( 3 )
 
 [node name="TitleSprite" type="Sprite" parent="."]
 position = Vector2( 324, 24 )
+scale = Vector2( 1, 1e-05 )
 texture = ExtResource( 2 )
 vframes = 5
-frame = 4
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 128, 96 )
 current = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="TransitionTimer" type="Timer" parent="."]
+wait_time = 1.2
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+
+[node name="CreditsTween" type="Tween" parent="."]
+
+[node name="CreditsTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -183,17 +202,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-autostart = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-autoplay = true
-
-[node name="CreditsTween" type="Tween" parent="."]
+[node name="FadeTransition" parent="." instance=ExtResource( 8 )]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="TransitionTimer" to="." method="_on_TransitionTimer_timeout"]
 [connection signal="tween_all_completed" from="CreditsTween" to="." method="_on_CreditsTween_tween_all_completed"]
 [connection signal="tween_step" from="CreditsTween" to="." method="_on_CreditsTween_tween_step"]
+[connection signal="timeout" from="CreditsTimer" to="." method="_on_CreditsTimer_timeout"]

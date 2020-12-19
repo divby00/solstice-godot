@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dither_05.png-c5bb621975c293d300c59a155cbff8d9.stex"
+path="res://.import/dither_02.png-88b3abf0bcd98e94fd1cdf3249c5d4c0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Love4Retro/dither_05.png"
-dest_files=[ "res://.import/dither_05.png-c5bb621975c293d300c59a155cbff8d9.stex" ]
+source_file="res://scenes/Transitions/dither_02.png"
+dest_files=[ "res://.import/dither_02.png-88b3abf0bcd98e94fd1cdf3249c5d4c0.stex" ]
 
 [params]
 

@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Transitions/dither_in.tres" type="Texture" id=1]
+[ext_resource path="res://scenes/Transitions/FadeTransition.gd" type="Script" id=2]
+
+[node name="FadeTransition" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Fading" type="TextureRect" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -96.0
+margin_right = 256.0
+margin_bottom = 96.0
+texture = ExtResource( 1 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimerIn" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
+[node name="TimerOut" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+[connection signal="timeout" from="TimerIn" to="." method="_on_TimerIn_timeout"]
+[connection signal="timeout" from="TimerOut" to="." method="_on_TimerOut_timeout"]

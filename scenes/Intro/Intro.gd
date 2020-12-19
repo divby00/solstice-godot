@@ -3,13 +3,16 @@ extends Node2D
 const BlueStarEffect = preload("res://scenes/Effects/BlueStarEffect.tscn")
 
 onready var timer: Timer = $Timer
+onready var credits_timer: Timer = $CreditsTimer
+onready var transition_timer: Timer = $TransitionTimer
 onready var camera: Camera2D = $Camera2D
-onready var label: Label = $CanvasLayer/CenterContainer/VBoxContainer/Label
-onready var label_skip: Label = $CanvasLayer/LabelSkip
-onready var animation_player: AnimationPlayer = $AnimationPlayer
-onready var title_sprite: Sprite = $TitleSprite
 onready var polygon: Polygon2D = $Polygon2D
+onready var title_sprite: Sprite = $TitleSprite
 onready var credits_tween: Tween = $CreditsTween
+onready var label_skip: Label = $CanvasLayer/LabelSkip
+onready var fade_transition = $FadeTransition
+onready var animation_player: AnimationPlayer = $AnimationPlayer
+onready var label: Label = $CanvasLayer/CenterContainer/VBoxContainer/Label
 
 var status = Status.SCROLLING
 
@@ -46,6 +49,7 @@ func _ready():
 	label.text = messages[0]
 	for _i in range(100):
 		create_star(Vector2(rand_range(0, 500), rand_range(0, 192)))
+	fade_transition.fadein()
 
 func skip_scrolling():
 	animation_player.stop()
@@ -58,7 +62,7 @@ func skip_scrolling():
 
 func start_menu():
 	label_skip.rect_position = Vector2(0, 192)
-	label.text = "HOLD PRIMARY BUTTON TO START\n\nHOLD SECONDARY BUTTON TO QUIT"
+	label.text = "PRIMARY BUTTON TO START\n\nSECONDARY BUTTON TO QUIT"
 	label.align = HALIGN_CENTER
 	start_tween()
 
@@ -75,11 +79,11 @@ func _input(event):
 func _process(delta):
 	if status == Status.IN_MENU:
 		if primary_press >= .5 and Input.is_action_pressed("primary"):
-			get_tree().change_scene("res://scenes/World/World.tscn")
+			start_game()
 		elif primary_press < .5:
 			primary_press += delta
 		if secondary_press >= .5 and Input.is_action_pressed("secondary"):
-			get_tree().quit()
+			quit_game()
 		elif secondary_press < .5:
 			secondary_press += delta
 
@@ -111,11 +115,24 @@ func _on_CreditsTween_tween_step(object, key, elapsed, value):
 	if tween_steps == 70:
 		label_skip.rect_position.y = 168
 		credits_tween.stop(label_skip, "rect_position")
-		yield(get_tree().create_timer(1), "timeout")
-		credits_tween.resume(label_skip, "rect_position")
+		credits_timer.start()
 
 func _on_CreditsTween_tween_all_completed():
 	credits_index += 1
 	if credits_index >= credits.size():
 		credits_index = 0
 	start_tween()
+
+func start_game():
+	transition_timer.start()
+	fade_transition.fadeout()
+
+func quit_game():
+	fade_transition.fadeout()
+	get_tree().quit()
+
+func _on_TransitionTimer_timeout():
+	get_tree().change_scene("res://scenes/World/World.tscn")
+
+func _on_CreditsTimer_timeout():
+	credits_tween.resume(label_skip, "rect_position")

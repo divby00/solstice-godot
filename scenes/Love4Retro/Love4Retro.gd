@@ -1,22 +1,17 @@
 extends Node2D
 
-const dither_out: AnimatedTexture = preload("res://scenes/Love4Retro/dither_out.tres")
+onready var timer = $Timer
+onready var fade_transition = $FadeTransition
 
-onready var timer_idle = $TimerIdle
-onready var timer_out = $TimerOut
-onready var fading = $Fading
+func _ready():
+	fade_transition.fadein()
 
-func _on_TimerIn_timeout():
+func _on_FadeTransition_fadein_finished():
 	SoundFx.play("love4retro")
-	timer_idle.start()
+	timer.start()
 
-func _on_TimerIdle_timeout():
-	dither_out.current_frame = 0
-	dither_out.oneshot = true
-	fading.texture = dither_out
-	timer_out.start()
+func _on_Timer_timeout():
+	fade_transition.fadeout()
 
-func _on_TimerOut_timeout():
-	# warning-ignore:return_value_discarded
+func _on_FadeTransition_fadeout_finished():
 	get_tree().change_scene("res://scenes/Intro/Intro.tscn")
-
