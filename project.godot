@@ -35,7 +35,6 @@ _global_script_class_icons={
 config/name="Solstice"
 run/main_scene="res://scenes/World/World.tscn"
 run/disable_stdout=true
-run/disable_stderr=true
 boot_splash/image="res://big-icon.png"
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )

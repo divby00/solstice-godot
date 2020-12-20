@@ -23,10 +23,10 @@
 [ext_resource path="res://scenes/Items/ItemPass02.tscn" type="PackedScene" id=23]
 [ext_resource path="res://scenes/Items/ItemPass01.tscn" type="PackedScene" id=24]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 152 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8, 32 )
 
 [node name="Level01" instance=ExtResource( 20 )]
@@ -160,7 +160,7 @@ margin_bottom = 296.0
 
 [node name="CollisionShape2D" parent="MagneticArea/ActiveArea/Area2D" index="0"]
 position = Vector2( 12, 152 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Bottom" parent="MagneticArea" index="2"]
 position = Vector2( 0, 300 )
@@ -278,7 +278,7 @@ text = "Elevator. Use the security pass 2 to travel to next level."
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Elevator/InfoArea" index="0"]
 position = Vector2( 0, -32 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="TeleportPassDispatcher" parent="." index="12"]
 position = Vector2( 568, 832 )

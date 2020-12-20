@@ -15,7 +15,7 @@ var new_level = null
 
 func _ready():
 	set_process(false)
-	load_level("04")
+	load_level("05")
 	
 func load_level(level_key):
 	var enemies = get_tree().get_nodes_in_group("EnemyGroup")
