@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/StorageBase/StorageBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://music/sexxxy_bit_3.ogg" type="AudioStream" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/UI/UI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/World/World.gd" type="Script" id=5]
 [ext_resource path="res://scenes/Transitions/CircleTransition.tscn" type="PackedScene" id=6]
+[ext_resource path="res://fonts/joystix.tres" type="DynamicFont" id=7]
 
 [node name="World" type="Node"]
 script = ExtResource( 5 )
@@ -39,6 +40,19 @@ one_shot = true
 
 [node name="CircleTransition" parent="." instance=ExtResource( 6 )]
 
+[node name="LevelChangeLabel" type="Label" parent="CircleTransition"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -32.0
+margin_bottom = -18.0
+custom_fonts/font = ExtResource( 7 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TransitionOutTimer" type="Timer" parent="."]
 wait_time = 0.6
 one_shot = true
@@ -52,3 +66,5 @@ one_shot = true
 [editable path="UI/Panel"]
 
 [editable path="Player"]
+
+[editable path="CircleTransition"]

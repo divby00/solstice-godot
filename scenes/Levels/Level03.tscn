@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/Levels/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Levels/EquinoxMap3.png" type="Texture" id=2]
@@ -21,6 +21,9 @@
 [ext_resource path="res://scenes/NonInteractiveObjects/MagneticDoor.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scenes/Enemies/Spawner.tscn" type="PackedScene" id=20]
 [ext_resource path="res://scenes/Locks/FuseLock.tscn" type="PackedScene" id=21]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 4, 32 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 148 )
@@ -114,6 +117,7 @@ margin_bottom = -16.0
 
 [node name="CollisionShape2D" parent="Locks/FuseLock/ClosedArea" index="0"]
 position = Vector2( -116, -48 )
+shape = SubResource( 2 )
 
 [node name="Spawner" parent="Spawners" index="0" instance=ExtResource( 20 )]
 position = Vector2( 592, 488 )
@@ -225,9 +229,21 @@ position = Vector2( 184, 840 )
 [node name="MagneticArea" parent="." index="12" instance=ExtResource( 4 )]
 position = Vector2( 448, 160 )
 
-[node name="CollisionShape2D" parent="MagneticArea" index="0"]
-position = Vector2( 4, 52 )
+[node name="Top" parent="MagneticArea" index="0"]
+position = Vector2( 4, -112 )
+
+[node name="ActiveArea" parent="MagneticArea" index="1"]
+margin_left = -8.0
+margin_top = -96.0
+margin_right = 16.0
+margin_bottom = 200.0
+
+[node name="CollisionShape2D" parent="MagneticArea/ActiveArea/Area2D" index="0"]
+position = Vector2( 12, 148 )
 shape = SubResource( 1 )
+
+[node name="Bottom" parent="MagneticArea" index="2"]
+position = Vector2( 4, 204 )
 
 [node name="OneWayPass" parent="." index="13" instance=ExtResource( 16 )]
 position = Vector2( 160, 144 )
@@ -237,7 +253,6 @@ position = Vector2( 160, 160 )
 
 [node name="Rail" parent="." index="15" instance=ExtResource( 17 )]
 position = Vector2( 64, 408 )
-direction = 0
 
 [node name="TextureRect" parent="Rail" index="0"]
 margin_right = 592.0

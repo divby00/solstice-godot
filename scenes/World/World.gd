@@ -9,12 +9,13 @@ onready var panel = $UI/Panel
 onready var storage_base = $StorageBase
 onready var circle_transition = $CircleTransition
 onready var transition_out_timer = $TransitionOutTimer
+onready var level_change_label = $CircleTransition/LevelChangeLabel
 
 var new_level = null
 
 func _ready():
 	set_process(false)
-	load_level("01")
+	load_level("04")
 	
 func load_level(level_key):
 	var enemies = get_tree().get_nodes_in_group("EnemyGroup")
@@ -118,11 +119,15 @@ func connect_elevator():
 func on_nuclear_waste_stored(storage):
 	if LevelData.current_level_number == 1:
 		var sprite = Sprite.new()
+		sprite.name = "CustomNuclearWaste"
 		sprite.texture = nuclear_waste_texture
 		sprite.global_position = Vector2(64, 328)
 		get_tree().current_scene.add_child(sprite)
 
 func on_player_activated_elevator(level_pass):
+	var custom_nuclear_waste = get_node("CustomNuclearWaste")
+	if custom_nuclear_waste != null:
+		custom_nuclear_waste.queue_free()
 	new_level = level_pass.substr(4, 2)
 	PlayerData.selected_item = null
 	circle_transition.fadeout()
@@ -142,4 +147,7 @@ func _process(delta):
 	camera.offset_v = rand_range(-.03, .03)
 
 func _on_TransitionOutTimer_timeout():
+	level_change_label.text = "Entering level " + str(new_level) + "..."
+	yield(get_tree().create_timer(1), "timeout")
+	level_change_label.text = ""
 	load_level(new_level)

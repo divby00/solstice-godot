@@ -50,6 +50,7 @@ script = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+direction = 0
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_top = -8.0
