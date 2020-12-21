@@ -16,7 +16,7 @@ func _ready():
 func _process(_delta):
 	if player_in_nuclear_storage and Input.is_action_just_pressed("secondary") and PlayerData.selected_item == "nuclearwaste":
 		explosion_timer.stop()
-		SoundFx.play("secured")
+		SoundFx.play("area_is_secured")
 		emit_signal("nuclear_waste_stored", self)
 
 func _on_ActivateArea_body_entered(_body):

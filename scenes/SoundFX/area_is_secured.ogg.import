@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/area_is_secured.ogg-40f184bc322663487dac18e03c083c7d.oggstr"
+
+[deps]
+
+source_file="res://scenes/SoundFX/area_is_secured.ogg"
+dest_files=[ "res://.import/area_is_secured.ogg-40f184bc322663487dac18e03c083c7d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -15,7 +15,7 @@ var new_level = null
 
 func _ready():
 	set_process(false)
-	load_level("06")
+	load_level("00")
 	
 func load_level(level_key):
 	var enemies = get_tree().get_nodes_in_group("EnemyGroup")
@@ -146,7 +146,8 @@ func _process(_delta):
 	camera.offset_v = rand_range(-.03, .03)
 
 func _on_TransitionOutTimer_timeout():
-	level_change_label.text = "Entering level " + str(new_level) + "..."
-	yield(get_tree().create_timer(1), "timeout")
+	level_change_label.text = "Entering area " + str(new_level) + "..."
+	SoundFx.play("enter_level_" + str(new_level))
+	yield(get_tree().create_timer(1.5), "timeout")
 	level_change_label.text = ""
 	load_level(new_level)

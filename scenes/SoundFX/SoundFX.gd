@@ -20,10 +20,19 @@ var sounds = {
 	"pickup": preload("res://scenes/SoundFX/pickup.ogg"),
 	"player_hit": preload("res://scenes/SoundFX/player_hit.ogg"),
 	"powerup": preload("res://scenes/SoundFX/powerup.ogg"),
-	"secured": preload("res://scenes/SoundFX/secured.ogg"),
 	"teleport": preload("res://scenes/SoundFX/teleport.ogg"),
 	"teleporter_loaded": preload("res://scenes/SoundFX/teleporter_loaded.ogg"),
 	"thrustup": preload("res://scenes/SoundFX/thrustup.ogg"),
+	"area_is_secured": preload("res://scenes/SoundFX/area_is_secured.ogg"),
+	"enter_level_01": preload("res://scenes/SoundFX/entering_level_1.ogg"),
+	"enter_level_02": preload("res://scenes/SoundFX/entering_level_2.ogg"),
+	"enter_level_03": preload("res://scenes/SoundFX/entering_level_3.ogg"),
+	"enter_level_04": preload("res://scenes/SoundFX/entering_level_4.ogg"),
+	"enter_level_05": preload("res://scenes/SoundFX/entering_level_5.ogg"),
+	"enter_level_06": preload("res://scenes/SoundFX/entering_level_6.ogg"),
+	"enter_level_07": preload("res://scenes/SoundFX/entering_level_7.ogg"),
+	"enter_level_08": preload("res://scenes/SoundFX/entering_level_8.ogg"),
+	"menace_over": preload("res://scenes/SoundFX/menace_over.ogg"),
 }
 
 func play(sound_stream, pitch_scale = 1, volume_db = 0):
