@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/entering_area_5.ogg-b30c8d264a3a0f001014cd35ba60766f.oggstr"
+
+[deps]
+
+source_file="res://scenes/SoundFX/entering_area_5.ogg"
+dest_files=[ "res://.import/entering_area_5.ogg-b30c8d264a3a0f001014cd35ba60766f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

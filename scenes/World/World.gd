@@ -145,9 +145,16 @@ func _process(_delta):
 	camera.offset_h = rand_range(-.03, .03)
 	camera.offset_v = rand_range(-.03, .03)
 
+func _input(event):
+	if event is InputEventKey:
+		if OS.get_scancode_string(event.scancode) == "F11":
+			OS.window_fullscreen = !OS.window_fullscreen
+			if not OS.window_fullscreen:
+				OS.window_size = Vector2(1024, 768)
+
 func _on_TransitionOutTimer_timeout():
 	level_change_label.text = "Entering area " + str(new_level) + "..."
-	SoundFx.play("enter_level_" + str(new_level))
+	SoundFx.play("enter_area_" + str(new_level))
 	yield(get_tree().create_timer(1.5), "timeout")
 	level_change_label.text = ""
 	load_level(new_level)
