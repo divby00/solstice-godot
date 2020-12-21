@@ -18,18 +18,18 @@ func _ready():
 	label.visible = Engine.is_editor_hint()
 	label.text = "Name: " + teleporter_name + "\nLinked to: " + linked_teleporter
 
-func _process(delta):
+func _process(_delta):
 	if player_on_charger:
 		emit_signal("player_over_charger", self)
 
-func _on_ActivateArea_body_entered(body):
+func _on_ActivateArea_body_entered(_body):
 	if get_parent().charges > 0:
 		SoundFx.play("teleport")
 		particles.emitting = true
 		emit_signal("teleporter_activated", self)
 
-func _on_LoadingArea_body_entered(body):
+func _on_LoadingArea_body_entered(_body):
 	player_on_charger = true
 
-func _on_LoadingArea_body_exited(body):
+func _on_LoadingArea_body_exited(_body):
 	player_on_charger = false

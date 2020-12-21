@@ -110,7 +110,7 @@ func start_tween():
 	credits_tween.interpolate_property(label_skip, "rect_position", Vector2(0, 192), Vector2(0, 152), 2.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	credits_tween.start()
 
-func _on_CreditsTween_tween_step(object, key, elapsed, value):
+func _on_CreditsTween_tween_step(_object, _key, _elapsed, _value):
 	tween_steps += 1
 	if tween_steps == 70:
 		label_skip.rect_position.y = 168

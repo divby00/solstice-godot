@@ -24,6 +24,7 @@ tracks/0/keys = {
 extents = Vector2( 6, 3 )
 
 [node name="Blob" instance=ExtResource( 2 )]
+z_index = 2
 
 [node name="AnimationPlayer" parent="." index="0"]
 autoplay = "animate"

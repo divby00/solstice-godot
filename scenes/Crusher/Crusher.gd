@@ -7,7 +7,7 @@ onready var animation_player = $AnimationPlayer
 func _ready():
 	timer.wait_time = crush_frequency
 
-func _on_Hitbox_body_entered(body):
+func _on_Hitbox_body_entered(_body):
 	if PlayerData.status != PlayerData.Status.INVINCIBLE:
 		PlayerData.health -= 75
 

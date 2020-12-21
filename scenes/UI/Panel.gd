@@ -50,7 +50,7 @@ func append_text(text):
 	if not texts.has(text):
 		texts.append(text)
 
-func _on_Tween_tween_completed(object, key):
+func _on_Tween_tween_completed(_object, _key):
 	if texts.size() > 0:
 		texts.remove(0)
 		init_tween()

@@ -6,7 +6,7 @@ export(int) var MAX_ENEMIES = 50
 onready var enemies: int = 0 setget set_enemies
 onready var spawners = get_tree().get_nodes_in_group("SpawnerGroup")
 
-func _process(delta):
+func _process(_delta):
 	if enemies < MAX_ENEMIES:
 		var ready_spawners = get_ready_spawners()
 		if ready_spawners.size() > 0:

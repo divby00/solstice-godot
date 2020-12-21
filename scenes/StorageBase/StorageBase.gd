@@ -7,7 +7,7 @@ onready var background = $Background
 func _ready():
 	set_process(false)
 
-func _process(delta):
+func _process(_delta):
 	for sealed_container in sealed_containers:
 		var container = get_node("Background/WasteSprite" + str(sealed_container))
 		container.visible = true
@@ -16,7 +16,7 @@ func add_container(level_number):
 	if not sealed_containers.has(level_number):
 		sealed_containers.append(level_number)
 
-func on_nuclear_waste_stored(storage):
+func on_nuclear_waste_stored(_storage):
 	set_process(true)
 	add_container(LevelData.current_level_number)
 	background.visible = true

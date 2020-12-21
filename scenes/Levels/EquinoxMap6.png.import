@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/big_jellyfish.png-0be8d0cb7facbf3d532e045875b91480.stex"
+path="res://.import/EquinoxMap6.png-5db5cc5c2b1a1bbca64cd4b21ea91cf0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/NonInteractiveObjects/big_jellyfish.png"
-dest_files=[ "res://.import/big_jellyfish.png-0be8d0cb7facbf3d532e045875b91480.stex" ]
+source_file="res://scenes/Levels/EquinoxMap6.png"
+dest_files=[ "res://.import/EquinoxMap6.png-5db5cc5c2b1a1bbca64cd4b21ea91cf0.stex" ]
 
 [params]
 

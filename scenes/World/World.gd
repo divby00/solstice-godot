@@ -15,7 +15,7 @@ var new_level = null
 
 func _ready():
 	set_process(false)
-	load_level("05")
+	load_level("06")
 	
 func load_level(level_key):
 	var enemies = get_tree().get_nodes_in_group("EnemyGroup")
@@ -116,7 +116,7 @@ func connect_elevator():
 	for elevator in elevators:
 		Utils.connect_signal(elevator, "elevator_activated", player, "on_elevator_activated")
 
-func on_nuclear_waste_stored(storage):
+func on_nuclear_waste_stored(_storage):
 	if LevelData.current_level_number == 1:
 		var sprite = Sprite.new()
 		sprite.name = "CustomNuclearWaste"
@@ -125,9 +125,8 @@ func on_nuclear_waste_stored(storage):
 		get_tree().current_scene.add_child(sprite)
 
 func on_player_activated_elevator(level_pass):
-	var custom_nuclear_waste = get_node("CustomNuclearWaste")
-	if custom_nuclear_waste != null:
-		custom_nuclear_waste.queue_free()
+	if has_node("CustomNuclearWaste"):
+		get_node("CustomNuclearWaste").queue_free()
 	new_level = level_pass.substr(4, 2)
 	PlayerData.selected_item = null
 	circle_transition.fadeout()
@@ -142,7 +141,7 @@ func _on_CameraShakeTimer_timeout():
 	camera.offset_v = 0
 	set_process(false)
 
-func _process(delta):
+func _process(_delta):
 	camera.offset_h = rand_range(-.03, .03)
 	camera.offset_v = rand_range(-.03, .03)
 

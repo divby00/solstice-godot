@@ -13,7 +13,7 @@ onready var closed_area = $ClosedArea
 
 var can_open = false
 
-func _process(delta):
+func _process(_delta):
 	if can_open and Input.is_action_just_pressed("secondary"):
 		open()
 		emit_signal("lock_opened", self)
@@ -23,7 +23,7 @@ func _on_OpenerArea_body_entered(body):
 		if PlayerData.selected_item == opened_by:
 			can_open = true
 
-func _on_OpenerArea_body_exited(body):
+func _on_OpenerArea_body_exited(_body):
 	can_open = false
 
 func open():

@@ -13,16 +13,16 @@ var time_left = 0
 func _ready():
 	time_left = seconds_to_explosion
 
-func _process(delta):
+func _process(_delta):
 	if player_in_nuclear_storage and Input.is_action_just_pressed("secondary") and PlayerData.selected_item == "nuclearwaste":
 		explosion_timer.stop()
 		SoundFx.play("secured")
 		emit_signal("nuclear_waste_stored", self)
 
-func _on_ActivateArea_body_entered(body):
+func _on_ActivateArea_body_entered(_body):
 	player_in_nuclear_storage = true
 
-func _on_ActivateArea_body_exited(body):
+func _on_ActivateArea_body_exited(_body):
 	player_in_nuclear_storage = false
 
 func _on_ExplosionTimer_timeout():

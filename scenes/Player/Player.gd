@@ -37,7 +37,7 @@ func _ready():
 func _exit_tree():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("primary"):
 		laser.fire()
 	
@@ -98,7 +98,7 @@ func apply_gravity(delta):
 	if !is_on_floor() and !is_in_magnetic_area and PlayerData.status != PlayerData.Status.TELEPORT:
 		motion.y += GRAVITY * delta
 
-func update_animation(input_vector):
+func update_animation(_input_vector):
 	var current_animation = animation_player.current_animation
 	if facing == Facing.LEFT:
 		animation_player.play_backwards(current_animation)
@@ -119,10 +119,10 @@ func create_new_item(item):
 	item_scene.connect("item_picked", self, "on_item_picked")
 	get_tree().current_scene.add_child(item_scene)
 	
-func on_lock_opened(lock):
+func on_lock_opened(_lock):
 	emit_signal("item_used")
 
-func on_teleporter_charged(teleporter_group, teleporter):
+func on_teleporter_charged(_teleporter_group, _teleporter):
 	emit_signal("item_used")
 
 func on_teleporter_activated(teleporter_group, teleporter):
@@ -150,7 +150,7 @@ func create_teleporter_pass(position: Vector2):
 	item_scene.connect("item_picked", self, "on_item_picked")
 	get_tree().current_scene.add_child(item_scene)
 
-func on_nuclear_waste_stored(storage):
+func on_nuclear_waste_stored(_storage):
 	emit_signal("item_used")
 
 func on_player_destroyed():

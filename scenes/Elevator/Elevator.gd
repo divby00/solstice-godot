@@ -7,13 +7,13 @@ onready var activate_area: Area2D = $ActivateArea
 
 var player_in_elevator = false
 
-func _process(delta):
+func _process(_delta):
 	if player_in_elevator and Input.is_action_just_pressed("secondary"):
 		emit_signal("elevator_activated", PlayerData.selected_item)
 
-func _on_ActivateArea_body_entered(body):
+func _on_ActivateArea_body_entered(_body):
 	if items.has(PlayerData.selected_item):
 		player_in_elevator = true
 
-func _on_ActivateArea_body_exited(body):
+func _on_ActivateArea_body_exited(_body):
 	player_in_elevator = false

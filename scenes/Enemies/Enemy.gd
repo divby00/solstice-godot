@@ -33,15 +33,15 @@ func _ready():
 	motion = Vector2(rand_range(-1, 1), rand_range(-1, 1))
 	animation_player.play("spawn")
 
-func _process(delta):
+func _process(_delta):
 	chasing_player = global_position.distance_to(ResourceLoader.player.global_position) < 64
 	if attacking:
 		emit_signal("enemy_attacked", damage)
 
-func _on_Hitbox_body_entered(body):
+func _on_Hitbox_body_entered(_body):
 	attacking = true
 
-func _on_Hitbox_body_exited(body):
+func _on_Hitbox_body_exited(_body):
 	attacking = false
 
 func set_health(value):

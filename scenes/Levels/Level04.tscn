@@ -22,22 +22,22 @@
 [ext_resource path="res://scenes/Items/ItemTnt.tscn" type="PackedScene" id=20]
 [ext_resource path="res://scenes/Enemies/Spawner.tscn" type="PackedScene" id=21]
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 16 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 12, 96 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 120, 4 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 120, 1 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 160, 4 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 160, 1 )
 
 [node name="Level04" instance=ExtResource( 1 )]
@@ -120,7 +120,7 @@ position = Vector2( 155, 8 )
 
 [node name="CollisionShape2D" parent="Locks/FuseLock/ClosedArea" index="0"]
 position = Vector2( 9, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="DumpLock" parent="Locks" index="2" instance=ExtResource( 15 )]
 position = Vector2( 232, 544 )
@@ -287,7 +287,7 @@ margin_bottom = 240.0
 
 [node name="CollisionShape2D" parent="MagneticArea/ActiveArea/Area2D" index="0"]
 position = Vector2( 12, 96 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Bottom" parent="MagneticArea" index="2"]
 position = Vector2( 44, 244 )
@@ -303,11 +303,11 @@ margin_right = 120.0
 
 [node name="CollisionShape2D" parent="Rail" index="1"]
 position = Vector2( 1, -4 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D" parent="Rail/MovingArea" index="0"]
 position = Vector2( 1, -9 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Rail2" parent="." index="19" instance=ExtResource( 17 )]
 position = Vector2( 1015, 536 )
@@ -320,11 +320,11 @@ margin_right = 169.0
 
 [node name="CollisionShape2D" parent="Rail2" index="1"]
 position = Vector2( 9, -4 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape2D" parent="Rail2/MovingArea" index="0"]
 position = Vector2( 9, -9 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="Crusher" parent="." index="20" instance=ExtResource( 18 )]
 position = Vector2( 144, 120 )

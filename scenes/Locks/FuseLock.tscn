@@ -18,6 +18,10 @@ extents = Vector2( 20, 20 )
 script = ExtResource( 2 )
 opened_by = "fuse"
 
+[node name="OpenerArea" parent="." index="0"]
+collision_layer = 0
+collision_mask = 4
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpenerArea" index="0"]
 position = Vector2( 12, -12 )
 shape = SubResource( 1 )
@@ -33,6 +37,9 @@ stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ClosedArea" parent="." index="2"]
+collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClosedArea" index="0"]
 shape = SubResource( 2 )
