@@ -33,7 +33,20 @@ var sounds = {
 	"enter_area_07": preload("res://scenes/SoundFX/entering_area_7.ogg"),
 	"enter_area_08": preload("res://scenes/SoundFX/entering_area_8.ogg"),
 	"menace_over": preload("res://scenes/SoundFX/menace_over.ogg"),
+	"game_over": preload("res://scenes/SoundFX/game_over.ogg"),
+	"nuclear_explosion": preload("res://scenes/SoundFX/nuclear_explosion.ogg"),
 }
+
+func play_with_priority(sound_stream):
+	var free_sound_player = null
+	for sound_player in sound_players:
+		if not sound_player.playing:
+			free_sound_player = sound_player
+	if free_sound_player == null:
+		sound_players[0].stop()
+		free_sound_player = sound_players[0]
+		free_sound_player.stream = sounds[sound_stream]
+		free_sound_player.play()
 
 func play(sound_stream, pitch_scale = 1, volume_db = 0):
 	for sound_player in sound_players:

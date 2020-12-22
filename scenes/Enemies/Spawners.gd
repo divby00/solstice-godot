@@ -27,7 +27,6 @@ func spawn_enemy(spawner):
 	enemy.global_position = spawner.global_position
 	enemy.connect("enemy_attacked", ResourceLoader.player, "on_enemy_attacked")
 	enemy.connect("enemy_died", self, "on_enemy_died")
-	yield(get_tree().create_timer(.9), "timeout")
 	get_tree().current_scene.add_child(enemy)
 
 func on_enemy_died(enemy):

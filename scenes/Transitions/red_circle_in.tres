@@ -1,0 +1,27 @@
+[gd_resource type="AnimatedTexture" load_steps=8 format=2]
+
+[ext_resource path="res://scenes/Transitions/red_circle_03.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Transitions/red_circle_02.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Transitions/red_circle_00.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Transitions/red_circle_01.png" type="Texture" id=4]
+[ext_resource path="res://scenes/Transitions/red_circle_05.png" type="Texture" id=5]
+[ext_resource path="res://scenes/Transitions/red_circle_04.png" type="Texture" id=6]
+[ext_resource path="res://scenes/Transitions/red_circle_06.png" type="Texture" id=7]
+
+[resource]
+frames = 7
+oneshot = true
+fps = 12.0
+frame_0/texture = ExtResource( 3 )
+frame_1/texture = ExtResource( 4 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 2 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 1 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 6 )
+frame_4/delay_sec = 0.0
+frame_5/texture = ExtResource( 5 )
+frame_5/delay_sec = 0.0
+frame_6/texture = ExtResource( 7 )
+frame_6/delay_sec = 0.0

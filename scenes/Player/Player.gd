@@ -16,6 +16,7 @@ export(int) var MAX_SPEED = 80
 export(int) var GRAVITY = 150
 export(float) var FRICTION = .2
 
+signal player_game_over
 signal player_damaged
 signal item_picked(item)
 signal item_used
@@ -158,13 +159,16 @@ func on_player_destroyed():
 	set_process(false)
 	big_explosion.global_position = global_position
 	big_explosion.emitting = true
-	SoundFx.play("explosion")
-	PlayerData.invincible = true
-	animation_player.play("rebuilding")
+	SoundFx.play_with_priority("explosion")
 	PlayerData.lives -= 1
 	PlayerData.health = PlayerData.MAX_HEALTH
-	rebuild_particles.emitting = true
-	rebuild_timer.start()
+	if PlayerData.lives > 0:
+		PlayerData.invincible = true
+		animation_player.play("rebuilding")
+		rebuild_particles.emitting = true
+		rebuild_timer.start()
+	else:
+		emit_signal("player_game_over")
 
 func _on_DamageTimer_timeout():
 	PlayerData.status = PlayerData.Status.OK

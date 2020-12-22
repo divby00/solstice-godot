@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dither_04.png-c0067e257477802277ace9aa072a8fa2.stex"
+path="res://.import/red_circle_03.png-4f0bce71d7dd13edc92dc48f7a2d8a6c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Transitions/dither_04.png"
-dest_files=[ "res://.import/dither_04.png-c0067e257477802277ace9aa072a8fa2.stex" ]
+source_file="res://scenes/Transitions/red_circle_03.png"
+dest_files=[ "res://.import/red_circle_03.png-4f0bce71d7dd13edc92dc48f7a2d8a6c.stex" ]
 
 [params]
 

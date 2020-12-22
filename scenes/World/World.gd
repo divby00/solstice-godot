@@ -4,20 +4,22 @@ const nuclear_waste_texture = preload("res://scenes/StorageBase/nuclear_waste.pn
 
 onready var player = $Player
 onready var camera = $Camera2D
-onready var camera_shake_timer = $CameraShakeTimer
 onready var panel = $UI/Panel
+onready var transition = $Transition
+onready var game_over_transition = $GameOverTransition
 onready var storage_base = $StorageBase
-onready var circle_transition = $CircleTransition
-onready var transition_out_timer = $TransitionOutTimer
-onready var level_change_label = $CircleTransition/LevelChangeLabel
+onready var camera_shake_timer = $CameraShakeTimer
+onready var level_change_label = $LevelChange/Label
 
 var new_level = null
 
 func _ready():
 	set_process(false)
-	load_level("00")
+	load_level("01")
 	
 func load_level(level_key):
+	if level_key != "00":
+		SoundFx.play("enter_area_" + str(level_key))
 	var enemies = get_tree().get_nodes_in_group("EnemyGroup")
 	for enemy in enemies:
 		enemy.queue_free()
@@ -39,7 +41,8 @@ func load_level(level_key):
 	connect_enemies()
 	connect_rails()
 	connect_elevator()
-	circle_transition.fadein()
+	transition.fadein()
+	#animation_player.play("new_area")
 
 func connect_items():
 	var items = get_tree().get_nodes_in_group("ItemGroup")
@@ -86,6 +89,7 @@ func connect_player_data():
 	Utils.connect_signal(PlayerData, "player_destroyed", player, "on_player_destroyed")
 	Utils.connect_signal(PlayerData, "status_changed", player, "on_status_changed")
 	Utils.connect_signal(player, "item_used", player, "on_item_used")
+	Utils.connect_signal(player, "player_game_over", self, "on_game_over")
 	Utils.connect_signal(player, "player_damaged", self, "on_player_damaged")
 	Utils.connect_signal(player, "player_activated_elevator", self, "on_player_activated_elevator")
 
@@ -129,8 +133,7 @@ func on_player_activated_elevator(level_pass):
 		get_node("CustomNuclearWaste").queue_free()
 	new_level = level_pass.substr(4, 2)
 	PlayerData.selected_item = null
-	circle_transition.fadeout()
-	transition_out_timer.start()
+	transition.fadeout()
 
 func on_player_damaged():
 	set_process(true)
@@ -141,20 +144,22 @@ func _on_CameraShakeTimer_timeout():
 	camera.offset_v = 0
 	set_process(false)
 
+func _input(_event):
+	if Input.is_action_just_pressed("fullscreen"):
+		OS.window_fullscreen = !OS.window_fullscreen
+		if not OS.window_fullscreen:
+			OS.window_size = Vector2(1024, 768)
+
 func _process(_delta):
 	camera.offset_h = rand_range(-.03, .03)
 	camera.offset_v = rand_range(-.03, .03)
 
-func _input(event):
-	if event is InputEventKey:
-		if OS.get_scancode_string(event.scancode) == "F11":
-			OS.window_fullscreen = !OS.window_fullscreen
-			if not OS.window_fullscreen:
-				OS.window_size = Vector2(1024, 768)
-
-func _on_TransitionOutTimer_timeout():
-	level_change_label.text = "Entering area " + str(new_level) + "..."
-	SoundFx.play("enter_area_" + str(new_level))
-	yield(get_tree().create_timer(1.5), "timeout")
-	level_change_label.text = ""
+func _on_Transition_fadeout_finished(_transition_name):
 	load_level(new_level)
+
+func on_game_over():
+	game_over_transition.fadeout()
+	
+func _on_GameOverTransition_fadeout_finished(transition_name):
+	PlayerData.reset()
+	get_tree().change_scene("res://scenes/GameOver/GameOver.tscn")

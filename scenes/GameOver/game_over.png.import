@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dither_00.png-c9cca2824ec843c6ec63c67fcf784d16.stex"
+path="res://.import/game_over.png-5d2b60f55dfe807dec72a6da400ae797.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Transitions/dither_00.png"
-dest_files=[ "res://.import/dither_00.png-c9cca2824ec843c6ec63c67fcf784d16.stex" ]
+source_file="res://scenes/GameOver/game_over.png"
+dest_files=[ "res://.import/game_over.png-5d2b60f55dfe807dec72a6da400ae797.stex" ]
 
 [params]
 

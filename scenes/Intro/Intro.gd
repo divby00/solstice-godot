@@ -4,13 +4,12 @@ const BlueStarEffect = preload("res://scenes/Effects/BlueStarEffect.tscn")
 
 onready var timer: Timer = $Timer
 onready var credits_timer: Timer = $CreditsTimer
-onready var transition_timer: Timer = $TransitionTimer
 onready var camera: Camera2D = $Camera2D
 onready var polygon: Polygon2D = $Polygon2D
 onready var title_sprite: Sprite = $TitleSprite
 onready var credits_tween: Tween = $CreditsTween
 onready var label_skip: Label = $CanvasLayer/LabelSkip
-onready var fade_transition = $FadeTransition
+onready var transition = $CircleTransition
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var label: Label = $CanvasLayer/CenterContainer/VBoxContainer/Label
 
@@ -49,7 +48,7 @@ func _ready():
 	label.text = messages[0]
 	for _i in range(100):
 		create_star(Vector2(rand_range(0, 500), rand_range(0, 192)))
-	fade_transition.fadein()
+	transition.fadein()
 
 func skip_scrolling():
 	animation_player.stop()
@@ -124,15 +123,19 @@ func _on_CreditsTween_tween_all_completed():
 	start_tween()
 
 func start_game():
-	transition_timer.start()
-	fade_transition.fadeout()
+	transition.fadeout("start")
 
 func quit_game():
-	fade_transition.fadeout()
-	get_tree().quit()
-
-func _on_TransitionTimer_timeout():
-	get_tree().change_scene("res://scenes/World/World.tscn")
+	transition.fadeout("quit")
 
 func _on_CreditsTimer_timeout():
 	credits_tween.resume(label_skip, "rect_position")
+
+func _on_CircleTransition_fadeout_finished(transition_name):
+	if transition_name == "start":
+		visible = false
+		get_tree().change_scene("res://scenes/World/World.tscn")
+	else:
+		visible = false
+		get_tree().quit()
+

@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/Intro/Intro.gd" type="Script" id=5]
 [ext_resource path="res://music/girl_from_mars.ogg" type="AudioStream" id=6]
 [ext_resource path="res://scenes/Intro/credits_dithering.png" type="Texture" id=7]
-[ext_resource path="res://scenes/Transitions/FadeTransition.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Transitions/CircleTransition.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "scroll"
@@ -141,10 +141,6 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
-[node name="TransitionTimer" type="Timer" parent="."]
-wait_time = 1.2
-one_shot = true
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 autoplay = true
@@ -203,10 +199,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FadeTransition" parent="." instance=ExtResource( 8 )]
+[node name="CircleTransition" parent="." instance=ExtResource( 8 )]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="timeout" from="TransitionTimer" to="." method="_on_TransitionTimer_timeout"]
 [connection signal="tween_all_completed" from="CreditsTween" to="." method="_on_CreditsTween_tween_all_completed"]
 [connection signal="tween_step" from="CreditsTween" to="." method="_on_CreditsTween_tween_step"]
 [connection signal="timeout" from="CreditsTimer" to="." method="_on_CreditsTimer_timeout"]
+[connection signal="fadeout_finished" from="CircleTransition" to="." method="_on_CircleTransition_fadeout_finished"]

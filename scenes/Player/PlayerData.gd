@@ -42,7 +42,6 @@ func set_health(value):
 func set_lives(value):
 	lives = clamp(value, 0, MAX_LIVES)
 	if lives == 0:
-		emit_signal("lives_changed", lives)
 		emit_signal("game_over")
 	else:
 		emit_signal("lives_changed", lives)
@@ -64,3 +63,13 @@ func set_status(value):
 	var new_status = value
 	status = value
 	emit_signal("status_changed", old_status, new_status)
+
+func reset():
+	health = MAX_HEALTH
+	lives = MAX_LIVES
+	thrust = MAX_THRUST
+	laser = MAX_LASER
+	time = MAX_TIME
+	selected_item = null
+	status = Status.OK
+	invincible = false
