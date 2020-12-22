@@ -1,10 +1,11 @@
 extends KinematicBody2D
 
+const BigExplosion = preload("res://scenes/Effects/BigExplosionParticles.tscn")
+
 onready var laser = $Laser
 onready var invincible_timer = $InvincibleTimer
 onready var damage_timer = $DamageTimer
 onready var sprite : Sprite = $Sprite
-onready var big_explosion = $BigExplosionParticles
 onready var particles : CPUParticles2D = $SmokeParticles
 onready var damage_particles : CPUParticles2D = $DamageParticles
 onready var animation_player : AnimationPlayer = $AnimationPlayer
@@ -18,7 +19,7 @@ export(float) var FRICTION = .2
 
 signal player_game_over
 signal player_damaged
-signal item_picked(item)
+signal item_picked(item_texture)
 signal item_used
 signal player_activated_elevator(level_pass)
 
@@ -157,9 +158,13 @@ func on_nuclear_waste_stored(_storage):
 func on_player_destroyed():
 	set_physics_process(false)
 	set_process(false)
-	big_explosion.global_position = global_position
-	big_explosion.emitting = true
-	SoundFx.play_with_priority("explosion")
+	var position = Vector2(global_position.x + rand_range(-8, +8), global_position.y + rand_range(-8, +8))
+	var explosion = BigExplosion.instance()
+	explosion.emitting = true
+	explosion.remove_when_finish = true
+	explosion.global_position = position
+	explosion.z_index = 2
+	get_tree().current_scene.add_child(explosion)
 	PlayerData.lives -= 1
 	PlayerData.health = PlayerData.MAX_HEALTH
 	if PlayerData.lives > 0:

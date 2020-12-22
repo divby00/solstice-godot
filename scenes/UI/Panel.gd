@@ -55,6 +55,12 @@ func _on_Tween_tween_completed(_object, _key):
 		texts.remove(0)
 		init_tween()
 
+func on_item_picked(texture):
+	item_texture.texture = texture
+
+func on_item_used():
+	item_texture.texture = null
+
 func on_lives_changed(lives):
 	lives_label.text = str(lives)
 

@@ -10,12 +10,13 @@ onready var game_over_transition = $GameOverTransition
 onready var storage_base = $StorageBase
 onready var camera_shake_timer = $CameraShakeTimer
 onready var level_change_label = $LevelChange/Label
+onready var animation_player = $AnimationPlayer
 
 var new_level = null
 
 func _ready():
 	set_process(false)
-	load_level("01")
+	load_level("00")
 	
 func load_level(level_key):
 	if level_key != "00":
@@ -42,7 +43,8 @@ func load_level(level_key):
 	connect_rails()
 	connect_elevator()
 	transition.fadein()
-	#animation_player.play("new_area")
+	level_change_label.text = "Area " + str(LevelData.current_level_number)
+	animation_player.play("new_area")
 
 func connect_items():
 	var items = get_tree().get_nodes_in_group("ItemGroup")
@@ -88,7 +90,9 @@ func connect_player_data():
 	Utils.connect_signal(PlayerData, "time_changed", panel, "on_time_changed")
 	Utils.connect_signal(PlayerData, "player_destroyed", player, "on_player_destroyed")
 	Utils.connect_signal(PlayerData, "status_changed", player, "on_status_changed")
+	Utils.connect_signal(player, "item_picked", panel, "on_item_picked")
 	Utils.connect_signal(player, "item_used", player, "on_item_used")
+	Utils.connect_signal(player, "item_used", panel, "on_item_used")
 	Utils.connect_signal(player, "player_game_over", self, "on_game_over")
 	Utils.connect_signal(player, "player_damaged", self, "on_player_damaged")
 	Utils.connect_signal(player, "player_activated_elevator", self, "on_player_activated_elevator")

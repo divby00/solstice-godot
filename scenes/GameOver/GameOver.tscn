@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/GameOver/game_over.png" type="Texture" id=1]
 [ext_resource path="res://fonts/joystix monospace.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://fonts/joystix.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scenes/GameOver/GameOver.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Transitions/CircleTransition.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/SoundFX/nuclear_explosion.ogg" type="AudioStream" id=6]
+[ext_resource path="res://scenes/SoundFX/game_over.ogg" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 10
@@ -68,6 +70,12 @@ wait_time = 4.0
 one_shot = true
 
 [node name="CircleTransition" parent="." instance=ExtResource( 5 )]
+
+[node name="ExplosionAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="VoiceAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="VoiceTimer" to="." method="_on_VoiceTimer_timeout"]
 [connection signal="fadein_finished" from="CircleTransition" to="." method="_on_CircleTransition_fadein_finished"]

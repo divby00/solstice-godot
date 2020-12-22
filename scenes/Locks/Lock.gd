@@ -28,7 +28,6 @@ func _on_OpenerArea_body_exited(_body):
 
 func open():
 	if explodes_on_opening:
-		SoundFx.play("explosion")
 		var sprite_size = sprite.texture.get_size()
 		for i in OPENING_EXPLOSIONS:
 			var position = Vector2(

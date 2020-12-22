@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/Effects/BigExplosionParticles.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Effects/big_explosion.tres" type="Texture" id=2]
+[ext_resource path="res://scenes/SoundFX/explosion.ogg" type="AudioStream" id=3]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 particles_animation = true
@@ -27,4 +28,7 @@ script = ExtResource( 1 )
 wait_time = 0.6
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

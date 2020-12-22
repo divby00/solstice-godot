@@ -3,10 +3,12 @@ extends Node2D
 onready var timer = $Timer
 onready var voice_timer = $VoiceTimer
 onready var transition = $CircleTransition
+onready var voice_audio_player = $VoiceAudioPlayer
+onready var explosion_audio_player = $ExplosionAudioPlayer
 
 func _ready():
 	transition.fadein()
-	SoundFx.play_with_priority("nuclear_explosion")
+	explosion_audio_player.play()
 
 func _on_Timer_timeout():
 	transition.fadeout()
@@ -20,4 +22,4 @@ func _on_CircleTransition_fadeout_finished(_transition_name):
 	get_tree().change_scene("res://scenes/Intro/Intro.tscn")
 
 func _on_VoiceTimer_timeout():
-	SoundFx.play("game_over")
+	voice_audio_player.play()

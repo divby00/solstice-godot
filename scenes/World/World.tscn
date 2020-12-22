@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/StorageBase/StorageBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Player/Player.tscn" type="PackedScene" id=3]
@@ -6,6 +6,22 @@
 [ext_resource path="res://scenes/World/World.gd" type="Script" id=5]
 [ext_resource path="res://scenes/Transitions/CircleTransition.tscn" type="PackedScene" id=6]
 [ext_resource path="res://fonts/joystix.tres" type="DynamicFont" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "new_area"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("LevelChange/Label:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.7, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 256, 64 ), Vector2( 0, 64 ), Vector2( 0, 64 ), Vector2( -256, 64 ) ]
+}
 
 [node name="World" type="Node"]
 script = ExtResource( 5 )
@@ -43,14 +59,18 @@ one_shot = true
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = -96.0
-margin_bottom = 5.0
+margin_top = -32.0
+margin_bottom = -8.0
 custom_fonts/font = ExtResource( 7 )
+text = "sdfsdfsdfsd"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/new_area = SubResource( 1 )
 [connection signal="timeout" from="CameraShakeTimer" to="." method="_on_CameraShakeTimer_timeout"]
 [connection signal="fadeout_finished" from="Transition" to="." method="_on_Transition_fadeout_finished"]
 [connection signal="fadeout_finished" from="GameOverTransition" to="." method="_on_GameOverTransition_fadeout_finished"]
