@@ -73,3 +73,12 @@ func reset():
 	selected_item = null
 	status = Status.OK
 	invincible = false
+
+func reset_between_levels():
+	health = MAX_HEALTH
+	thrust = MAX_THRUST
+	laser = MAX_LASER
+	time = MAX_TIME
+	selected_item = null
+	status = Status.OK
+	invincible = false

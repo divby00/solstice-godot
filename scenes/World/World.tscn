@@ -62,7 +62,6 @@ anchor_bottom = 0.5
 margin_top = -32.0
 margin_bottom = -8.0
 custom_fonts/font = ExtResource( 7 )
-text = "sdfsdfsdfsd"
 align = 1
 valign = 1
 __meta__ = {

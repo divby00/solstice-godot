@@ -16,22 +16,20 @@ var new_level = null
 
 func _ready():
 	set_process(false)
-	load_level("00")
+	load_level("01")
 	
 func load_level(level_key):
 	if level_key != "00":
 		SoundFx.play("enter_area_" + str(level_key))
-	var enemies = get_tree().get_nodes_in_group("EnemyGroup")
-	for enemy in enemies:
-		enemy.queue_free()
-	var level = get_tree().get_nodes_in_group("LevelGroup")
-	if level.size() > 0:
-		level[0].queue_free()
+	remove_level()
 	LevelData.current_level = LevelData.levels[level_key].instance()
 	LevelData.current_level_number = int(level_key)
 	set_camera_limits(LevelData.current_level)
 	get_tree().current_scene.add_child_below_node(camera, LevelData.current_level, false)
-	call_deferred("set_initial_player_position")
+	connect_signals()
+	level_init()
+
+func connect_signals():
 	connect_items()
 	connect_teleporters()
 	connect_teleporter_pass_dispatchers()
@@ -42,9 +40,40 @@ func load_level(level_key):
 	connect_enemies()
 	connect_rails()
 	connect_elevator()
+
+func level_init():
+	call_deferred("set_initial_player_position")
+	PlayerData.reset_between_levels()
+	panel.init_panel()
 	transition.fadein()
 	level_change_label.text = "Area " + str(LevelData.current_level_number)
 	animation_player.play("new_area")
+
+func remove_level():
+	var level = get_tree().get_nodes_in_group("LevelGroup")
+	if level.size() > 0:
+		remove_items()
+		remove_spawners()
+		remove_enemies()
+		level[0].queue_free()
+
+func remove_spawners():
+	var spawners = get_tree().get_nodes_in_group("SpawnerGroup")
+	for spawner in spawners:
+		spawner.queue_free()
+	var parent_spawners = get_tree().get_nodes_in_group("ParentSpawnerGroup")
+	for parent_spawner in parent_spawners:
+		parent_spawner.queue_free()
+
+func remove_items():
+	var items = get_tree().get_nodes_in_group("ItemGroup")
+	for item in items:
+		item.queue_free()
+
+func remove_enemies():
+	var enemies = get_tree().get_nodes_in_group("EnemyGroup")
+	for enemy in enemies:
+		enemy.queue_free()
 
 func connect_items():
 	var items = get_tree().get_nodes_in_group("ItemGroup")

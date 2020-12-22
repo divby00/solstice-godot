@@ -33,7 +33,7 @@ position = Vector2( 24, -26 )
 shape = SubResource( 1 )
 
 [node name="InfoArea" parent="." instance=ExtResource( 3 )]
-text = "Stay over it to recover your health or activate it to exchange one of your droid's lives for a teleporter pass."
+text = "Teleporter pass dispatcher. Stay over it to recover your health or activate it to exchange one of your droid's lifes for a teleporter pass."
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InfoArea"]
 position = Vector2( 24, -14 )
@@ -54,3 +54,5 @@ gravity = Vector2( 0, -100 )
 position = Vector2( 48, 0 )
 [connection signal="body_entered" from="ActivateArea" to="." method="_on_ActivateArea_body_entered"]
 [connection signal="body_exited" from="ActivateArea" to="." method="_on_ActivateArea_body_exited"]
+
+[editable path="InfoArea"]

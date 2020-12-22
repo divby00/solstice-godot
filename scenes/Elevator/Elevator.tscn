@@ -21,6 +21,7 @@ texture = ExtResource( 1 )
 polygon = PoolVector2Array( 7, -72, 33, -72, 40, -65, 40, 0, 31, 0, 31, -48, 9, -48, 9, -16, 0, -16, 0, -65 )
 
 [node name="InfoArea" parent="." instance=ExtResource( 3 )]
+text = "Elevator. Once the nuclear container is stored in the containment area, use the security pass in the elevator to access to the next area."
 
 [node name="ActivateArea" type="Area2D" parent="."]
 collision_layer = 0

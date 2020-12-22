@@ -19,6 +19,12 @@ enum Bar {
 	THRUST, LASER, TIME
 }
 
+func init_panel():
+	on_health_changed(PlayerData.MAX_HEALTH)
+	on_laser_changed(PlayerData.MAX_LASER)
+	on_thrust_changed(PlayerData.MAX_THRUST)
+	on_time_changed(PlayerData.MAX_TIME, PlayerData.MAX_TIME)
+
 func _ready():
 	lives_label.text = str(PlayerData.lives)
 	item_texture.texture = null
