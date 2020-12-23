@@ -16,7 +16,7 @@ var new_level = null
 
 func _ready():
 	set_process(false)
-	load_level("00")
+	load_level("01")
 	
 func load_level(level_key):
 	if level_key != "00":
