@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/StorageBase/StorageBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Pause/Pause.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/UI/UI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/World/World.gd" type="Script" id=5]
@@ -70,6 +71,8 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/new_area = SubResource( 1 )
+
+[node name="Pause" parent="." instance=ExtResource( 2 )]
 [connection signal="timeout" from="CameraShakeTimer" to="." method="_on_CameraShakeTimer_timeout"]
 [connection signal="fadeout_finished" from="Transition" to="." method="_on_Transition_fadeout_finished"]
 [connection signal="fadeout_finished" from="GameOverTransition" to="." method="_on_GameOverTransition_fadeout_finished"]

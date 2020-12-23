@@ -16,7 +16,7 @@ var new_level = null
 
 func _ready():
 	set_process(false)
-	load_level("01")
+	load_level("00")
 	
 func load_level(level_key):
 	if level_key != "00":
@@ -159,7 +159,8 @@ func on_nuclear_waste_stored(_storage):
 		sprite.name = "CustomNuclearWaste"
 		sprite.texture = nuclear_waste_texture
 		sprite.global_position = Vector2(64, 328)
-		get_tree().current_scene.add_child(sprite)
+		owner.add_child(sprite)
+		#get_tree().current_scene.add_child(sprite)
 
 func on_player_activated_elevator(level_pass):
 	if has_node("CustomNuclearWaste"):

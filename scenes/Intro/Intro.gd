@@ -61,7 +61,7 @@ func skip_scrolling():
 
 func start_menu():
 	label_skip.rect_position = Vector2(0, 192)
-	label.text = "PRIMARY BUTTON TO START\n\nSECONDARY BUTTON TO QUIT"
+	label.text = "LEFT BUTTON TO START\n\nRIGHT BUTTON TO QUIT"
 	label.align = HALIGN_CENTER
 	start_tween()
 
@@ -77,13 +77,13 @@ func _input(event):
 
 func _process(delta):
 	if status == Status.IN_MENU:
-		if primary_press >= .5 and Input.is_action_pressed("primary"):
+		if primary_press >= .8 and Input.is_action_pressed("primary"):
 			start_game()
-		elif primary_press < .5:
+		elif primary_press < .8:
 			primary_press += delta
 		if secondary_press >= .5 and Input.is_action_pressed("secondary"):
 			quit_game()
-		elif secondary_press < .5:
+		elif secondary_press < .8:
 			secondary_press += delta
 
 func create_star(star_position):
@@ -136,6 +136,8 @@ func _on_CircleTransition_fadeout_finished(transition_name):
 		visible = false
 		get_tree().change_scene("res://scenes/World/World.tscn")
 	else:
+		label.visible = false
+		label_skip.visible = false
 		visible = false
 		get_tree().quit()
 
