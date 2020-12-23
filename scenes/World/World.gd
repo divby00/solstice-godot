@@ -159,8 +159,7 @@ func on_nuclear_waste_stored(_storage):
 		sprite.name = "CustomNuclearWaste"
 		sprite.texture = nuclear_waste_texture
 		sprite.global_position = Vector2(64, 328)
-		owner.add_child(sprite)
-		#get_tree().current_scene.add_child(sprite)
+		get_tree().current_scene.add_child(sprite)
 
 func on_player_activated_elevator(level_pass):
 	if has_node("CustomNuclearWaste"):

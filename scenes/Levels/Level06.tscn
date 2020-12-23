@@ -353,10 +353,12 @@ linked_teleporter = "teleC"
 
 [node name="Rail" parent="." index="15" instance=ExtResource( 22 )]
 position = Vector2( 248, 640 )
+direction = 1
 
 [node name="TextureRect" parent="Rail" index="0"]
 margin_left = -32.0
 margin_right = 56.0
+flip_h = true
 
 [node name="CollisionShape2D" parent="Rail" index="1"]
 shape = SubResource( 6 )

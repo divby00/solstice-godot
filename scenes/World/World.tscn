@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/StorageBase/StorageBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Pause/Pause.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/World/World.gd" type="Script" id=5]
 [ext_resource path="res://scenes/Transitions/CircleTransition.tscn" type="PackedScene" id=6]
 [ext_resource path="res://fonts/joystix.tres" type="DynamicFont" id=7]
+[ext_resource path="res://scenes/Pause/small_ingame_message.png" type="Texture" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "new_area"
@@ -22,6 +23,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 256, 64 ), Vector2( 0, 64 ), Vector2( 0, 64 ), Vector2( -256, 64 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LevelChange/TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LevelChange/Label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [node name="World" type="Node"]
@@ -56,11 +81,24 @@ one_shot = true
 
 [node name="LevelChange" type="CanvasLayer" parent="."]
 
+[node name="TextureRect" type="TextureRect" parent="LevelChange"]
+margin_top = 52.0
+margin_right = 256.0
+margin_bottom = 100.0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Label" type="Label" parent="LevelChange"]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
+margin_left = 256.0
 margin_top = -32.0
+margin_right = 256.0
 margin_bottom = -8.0
 custom_fonts/font = ExtResource( 7 )
 align = 1

@@ -40,7 +40,6 @@ func open():
 			explosion.global_position = position
 			explosion.z_index = 2
 			get_tree().current_scene.add_child(explosion)
-			yield(get_tree().create_timer(rand_range(0.0, 0.1)), "timeout")
 	else:
 		SoundFx.play("opened")
 	queue_free()
