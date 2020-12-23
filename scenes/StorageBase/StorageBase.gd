@@ -3,6 +3,7 @@ extends CanvasLayer
 var sealed_containers = []
 
 onready var background = $Background
+onready var transition = $CircleTransition
 
 func _ready():
 	set_process(false)
@@ -23,3 +24,9 @@ func on_nuclear_waste_stored(_storage):
 	yield(get_tree().create_timer(.75), "timeout")
 	background.visible = false
 	set_process(false)
+	if LevelData.current_level_number == 8:
+		transition.fadeout("ending")
+
+func _on_CircleTransition_fadeout_finished(transition_name):
+	if transition_name == "ending":
+		get_tree().change_scene("res://scenes/Ending/Ending.tscn")

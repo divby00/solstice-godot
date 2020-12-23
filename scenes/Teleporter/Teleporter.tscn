@@ -140,7 +140,7 @@ shape = SubResource( 6 )
 [node name="Timer" type="Timer" parent="."]
 
 [node name="InfoArea" parent="." instance=ExtResource( 4 )]
-text = "Use a teleporter pass to activate, once it's activated touch the upper ball to travel"
+text = "Teleporter. Use a teleporter pass to activate, once it's activated touch the upper ball to travel"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InfoArea"]
 position = Vector2( 24, -28 )

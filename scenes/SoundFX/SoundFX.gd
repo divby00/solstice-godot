@@ -32,7 +32,7 @@ var sounds = {
 	"enter_area_06": preload("res://scenes/SoundFX/entering_area_6.ogg"),
 	"enter_area_07": preload("res://scenes/SoundFX/entering_area_7.ogg"),
 	"enter_area_08": preload("res://scenes/SoundFX/entering_area_8.ogg"),
-	"menace_over": preload("res://scenes/SoundFX/menace_over.ogg"),
+	"congrats": preload("res://scenes/SoundFX/congrats.ogg"),
 	"game_over": preload("res://scenes/SoundFX/game_over.ogg"),
 	"nuclear_explosion": preload("res://scenes/SoundFX/nuclear_explosion.ogg"),
 }

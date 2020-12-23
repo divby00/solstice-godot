@@ -9,6 +9,7 @@ onready var levels = {
 	"05": preload("res://scenes/Levels/Level05.tscn"),
 	"06": preload("res://scenes/Levels/Level06.tscn"),
 	"07": preload("res://scenes/Levels/Level07.tscn"),
+	"08": preload("res://scenes/Levels/Level08.tscn"),
 }
 
 var current_level = null
