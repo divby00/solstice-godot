@@ -14,12 +14,14 @@ onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var label: Label = $CanvasLayer/CenterContainer/VBoxContainer/Label
 
 var status = Status.SCROLLING
+var message_index = 0
 
 enum Status {
 	SCROLLING,
 	TITLE_APPEARING,
 	IDLE,
 	IN_MENU,
+	WORKING,
 }
 
 var credits = [
@@ -36,7 +38,8 @@ var credits = [
 
 var messages = [
 	"In the near future...",
-	"...the world's most powerful\nnuclear plant is going\nto blow!!!"
+	"...unknow entities have taken\nover the most powerful nuclear\npower plant in the world!",
+	"The threat of a nuclear winter\nis bigger than ever..."
 ]
 
 var credits_index = 0
@@ -45,7 +48,7 @@ var primary_press: float = 0
 var secondary_press: float = 0
 
 func _ready():
-	label.text = messages[0]
+	label.text = messages[message_index]
 	for _i in range(100):
 		create_star(Vector2(rand_range(0, 500), rand_range(0, 192)))
 	transition.fadein()
@@ -77,11 +80,11 @@ func _input(event):
 
 func _process(delta):
 	if status == Status.IN_MENU:
-		if primary_press >= .8 and Input.is_action_pressed("primary"):
+		if primary_press >= .8 and Input.is_action_just_pressed("primary") and not transition.running:
 			start_game()
 		elif primary_press < .8:
 			primary_press += delta
-		if secondary_press >= .5 and Input.is_action_pressed("secondary"):
+		if secondary_press >= .8 and Input.is_action_just_pressed("secondary") and not transition.running:
 			quit_game()
 		elif secondary_press < .8:
 			secondary_press += delta
@@ -93,7 +96,8 @@ func create_star(star_position):
 		polygon.add_child(blue_star_effect)
 
 func _on_Timer_timeout():
-	label.text = messages[1]
+	message_index += 1
+	label.text = messages[message_index]
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "scroll": # Camera stops moving

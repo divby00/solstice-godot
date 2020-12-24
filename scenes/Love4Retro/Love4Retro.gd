@@ -3,7 +3,10 @@ extends Node2D
 onready var timer = $Timer
 onready var transition = $CircleTransition
 
+const Cursor = preload("res://scenes/Player/big_cursor.png")
+
 func _ready():
+	#Input.set_custom_mouse_cursor(Cursor, Input.CURSOR_ARROW, Vector2(7, 7))
 	transition.fadein()
 
 func _on_CircleTransition_fadein_finished(_transition_name):

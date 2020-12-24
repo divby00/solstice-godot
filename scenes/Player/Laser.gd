@@ -3,7 +3,6 @@ extends Node2D
 const RedStarParticle = preload("res://scenes/Effects/RedStarParticle.tscn")
 const GreenStarParticle = preload("res://scenes/Effects/GreenStarParticle.tscn")
 
-onready var cursor: Sprite = $Cursor
 onready var animation_player = $AnimationPlayer
 onready var timer: Timer = $Timer
 onready var recharge_timer: Timer = $RechargeTimer
@@ -16,11 +15,8 @@ onready var ray: Line2D = $Line2D
 var can_shoot = true
 
 func _process(_delta):
-	var mouse_position = get_global_mouse_position()
-	cursor.global_position = Vector2(int(mouse_position.x), int(mouse_position.y))
-	var direction = (cursor.global_position - global_position).normalized()
+	var direction = (get_global_mouse_position() - global_position).normalized()
 	rotation = direction.angle()
-	cursor.rotation = -rotation
 
 func fire():
 	if can_shoot and PlayerData.laser > 5:

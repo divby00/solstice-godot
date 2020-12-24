@@ -12,7 +12,7 @@ func _process(delta):
 	if game_paused:
 		if press < .8:
 			press += delta
-		if press >= .8 and Input.is_action_pressed("secondary"):
+		if press >= .8 and Input.is_action_pressed("secondary") and not transition.running:
 			back_to_menu()
 
 func _input(_event):

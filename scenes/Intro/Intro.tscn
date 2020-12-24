@@ -11,7 +11,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "scroll"
-length = 7.0
+length = 9.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera2D:position")
 tracks/0/interp = 2
@@ -19,7 +19,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 7 ),
+"times": PoolRealArray( 0, 9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 128, 96 ), Vector2( 324, 96 ) ]
@@ -84,6 +84,8 @@ _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.856818 ), 0.0, 0.0, 0, 
 script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -0.0722222 )
+scale = Vector2( 1, 0.855556 )
 texture = ExtResource( 1 )
 offset = Vector2( 252, 112 )
 
@@ -138,7 +140,6 @@ current = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
-one_shot = true
 autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

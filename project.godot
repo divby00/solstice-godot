@@ -35,7 +35,6 @@ _global_script_class_icons={
 config/name="Solstice"
 config/description="Equinox remake"
 run/main_scene="res://scenes/Love4Retro/Love4Retro.tscn"
-run/disable_stdout=true
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
@@ -58,6 +57,8 @@ window/size/resizable=false
 window/size/fullscreen=true
 window/size/test_width=1024
 window/size/test_height=768
+mouse_cursor/custom_image="res://scenes/Player/big_cursor.png"
+mouse_cursor/custom_image_hotspot=Vector2( 30, 30 )
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

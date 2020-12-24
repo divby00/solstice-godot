@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/Pause/ingame_message.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Transitions/CircleTransition.tscn" type="PackedScene" id=4]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "pause_off"
 length = 0.2
 step = 0.05
@@ -58,8 +58,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 56 ), Vector2( -208, 56 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "pause_on"
+[sub_resource type="Animation" id=2]
 length = 0.2
 step = 0.05
 tracks/0/type = "value"
@@ -148,8 +147,8 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/pause_off = SubResource( 2 )
-anims/pause_on = SubResource( 1 )
+anims/pause_off = SubResource( 1 )
+anims/pause_on = SubResource( 2 )
 
 [node name="CircleTransition" parent="." instance=ExtResource( 4 )]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

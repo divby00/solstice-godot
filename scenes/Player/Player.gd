@@ -34,10 +34,6 @@ var item_definitions = ResourceLoader.item_defs.definitions
 
 func _ready():
 	ResourceLoader.player = self
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-
-func _exit_tree():
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _process(_delta):
 	if Input.is_action_pressed("primary"):

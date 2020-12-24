@@ -29,10 +29,10 @@ extents = Vector2( 12, 152 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8, 32 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 32, 8 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 8, 16 )
 
 [node name="Level01" instance=ExtResource( 20 )]
@@ -255,7 +255,7 @@ position = Vector2( 128, 432 )
 
 [node name="CollisionShape2D" parent="Containment2" index="0"]
 position = Vector2( 32, -8 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="TextureRect" parent="Containment2" index="1"]
 margin_right = 56.0
@@ -275,7 +275,7 @@ rotation = 1.5708
 
 [node name="CollisionShape2D" parent="Containment3" index="0"]
 rotation = 1.5708
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [editable path="TeleporterGroup"]
 

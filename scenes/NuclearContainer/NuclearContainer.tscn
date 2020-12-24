@@ -30,7 +30,7 @@ position = Vector2( 12, -16 )
 shape = SubResource( 1 )
 
 [node name="InfoArea" parent="." instance=ExtResource( 1 )]
-text = "Place the nuclear waste in this container to deactivate it."
+text = "Nuclear deactivator. Use the nuclear barrel in this container to deactivate and send it to the containment area."
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InfoArea"]
 position = Vector2( 12, -16 )

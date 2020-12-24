@@ -39,7 +39,7 @@ texture = ExtResource( 2 )
 hframes = 2
 
 [node name="InfoArea" parent="." index="5"]
-text = "Use a drill to remove the plate."
+text = "Steel plate. Use a drill to remove it."
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InfoArea" index="0"]
 position = Vector2( 4, -8 )

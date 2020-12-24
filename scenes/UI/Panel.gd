@@ -40,8 +40,7 @@ func init_tween():
 	if text != null:
 		var length = text.length()
 		info_area_label.text = text
-		var duration = clamp(0.10 * length, 2, 10)
-		tween.interpolate_property(info_area_label, "rect_position", Vector2(256, 144), Vector2(length * -8, 144), duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		tween.interpolate_property(info_area_label, "rect_position", Vector2(256, 144), Vector2(length * -8, 144), 15, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		tween.start()
 	else:
 		animation_player.play_backwards("animate_no_tween")
