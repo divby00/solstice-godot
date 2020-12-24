@@ -12,7 +12,8 @@ func _ready():
 	transition.fadein()
 
 func _input(event):
-	if finished == true and ((event is InputEventKey and event.pressed) or event is InputEventMouseButton):
+	if finished == true and not transition.running \
+			and ((event is InputEventKey and event.pressed) or event is InputEventMouseButton):
 		transition.fadeout()
 
 func _on_AnimationPlayer_animation_finished(anim_name):
