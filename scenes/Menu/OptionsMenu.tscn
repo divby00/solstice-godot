@@ -5,14 +5,14 @@
 [ext_resource path="res://fonts/joystix.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scenes/Menu/OptionsMenu.gd" type="Script" id=4]
 
-[node name="OptionsMenu" type="Node2D"]
+[node name="OptionsMenu" type="CanvasLayer"]
 script = ExtResource( 4 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-margin_left = 72.0
-margin_top = 32.0
-margin_right = 184.0
-margin_bottom = 136.0
+margin_left = 64.0
+margin_top = 40.0
+margin_right = 192.0
+margin_bottom = 152.0
 texture = ExtResource( 2 )
 patch_margin_left = 8
 patch_margin_top = 8
@@ -23,10 +23,10 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
-margin_left = 8.0
+margin_left = 16.0
 margin_top = 8.0
-margin_right = 104.0
-margin_bottom = 96.0
+margin_right = 112.0
+margin_bottom = 104.0
 theme = ExtResource( 1 )
 alignment = 1
 __meta__ = {
@@ -34,9 +34,8 @@ __meta__ = {
 }
 
 [node name="FullscreenCheckBox" type="CheckBox" parent="NinePatchRect/VBoxContainer"]
-margin_top = 7.0
 margin_right = 96.0
-margin_bottom = 17.0
+margin_bottom = 10.0
 theme = ExtResource( 1 )
 text = "fullscreen"
 align = 1
@@ -45,14 +44,14 @@ __meta__ = {
 }
 
 [node name="HSeparator" type="HSeparator" parent="NinePatchRect/VBoxContainer"]
-margin_top = 23.0
+margin_top = 16.0
 margin_right = 96.0
-margin_bottom = 27.0
+margin_bottom = 20.0
 
 [node name="SoundLabel" type="Label" parent="NinePatchRect/VBoxContainer"]
-margin_top = 33.0
+margin_top = 26.0
 margin_right = 96.0
-margin_bottom = 38.0
+margin_bottom = 31.0
 custom_fonts/font = ExtResource( 3 )
 custom_constants/shadow_offset_x = 0
 custom_constants/line_spacing = 0
@@ -65,21 +64,22 @@ __meta__ = {
 }
 
 [node name="SoundSlider" type="HSlider" parent="NinePatchRect/VBoxContainer"]
-margin_top = 44.0
+margin_top = 37.0
 margin_right = 96.0
-margin_bottom = 54.0
+margin_bottom = 47.0
 size_flags_vertical = 1
 theme = ExtResource( 1 )
-max_value = 10.0
+max_value = 1.0
+step = 0.1
 tick_count = 9
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MusicLabel" type="Label" parent="NinePatchRect/VBoxContainer"]
-margin_top = 60.0
+margin_top = 53.0
 margin_right = 96.0
-margin_bottom = 65.0
+margin_bottom = 58.0
 theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 3 )
 custom_constants/shadow_offset_x = 0
@@ -93,16 +93,29 @@ __meta__ = {
 }
 
 [node name="MusicSlider" type="HSlider" parent="NinePatchRect/VBoxContainer"]
-margin_top = 71.0
+margin_top = 64.0
 margin_right = 96.0
-margin_bottom = 81.0
+margin_bottom = 74.0
 theme = ExtResource( 1 )
-max_value = 10.0
-rounded = true
-tick_count = 11
+max_value = 1.0
+step = 0.1
+tick_count = 9
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HSeparator2" type="HSeparator" parent="NinePatchRect/VBoxContainer"]
+margin_top = 80.0
+margin_right = 96.0
+margin_bottom = 84.0
+
+[node name="BackButton" type="Button" parent="NinePatchRect/VBoxContainer"]
+margin_top = 90.0
+margin_right = 96.0
+margin_bottom = 95.0
+theme = ExtResource( 1 )
+text = "BACK"
 [connection signal="toggled" from="NinePatchRect/VBoxContainer/FullscreenCheckBox" to="." method="_on_FullscreenCheckBox_toggled"]
 [connection signal="value_changed" from="NinePatchRect/VBoxContainer/SoundSlider" to="." method="_on_SoundSlider_value_changed"]
 [connection signal="value_changed" from="NinePatchRect/VBoxContainer/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]

@@ -12,6 +12,8 @@ onready var label_skip: Label = $CanvasLayer/LabelSkip
 onready var transition = $CircleTransition
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var label: Label = $CanvasLayer/CenterContainer/VBoxContainer/Label
+onready var main_menu = $MainMenu/NinePatchRect
+onready var options_menu = $OptionsMenu/NinePatchRect
 
 var status = Status.SCROLLING
 var message_index = 0
@@ -44,8 +46,6 @@ var messages = [
 
 var credits_index = 0
 var tween_steps = 0
-var primary_press: float = 0
-var secondary_press: float = 0
 
 func _ready():
 	label.text = messages[message_index]
@@ -64,9 +64,9 @@ func skip_scrolling():
 
 func start_menu():
 	label_skip.rect_position = Vector2(0, 192)
-	label.text = "LEFT BUTTON TO START\n\nRIGHT BUTTON TO QUIT"
-	label.align = HALIGN_CENTER
+	label.visible = false
 	start_tween()
+	main_menu.visible = true
 
 func _input(event):
 	if (event is InputEventKey and event.pressed) or event is InputEventMouseButton:
@@ -77,17 +77,6 @@ func _input(event):
 			label_skip.text = ""
 			label_skip.rect_position = Vector2(0, 192)
 			start_menu()
-
-func _process(delta):
-	if status == Status.IN_MENU:
-		if primary_press >= .8 and Input.is_action_just_pressed("primary") and not transition.running:
-			start_game()
-		elif primary_press < .8:
-			primary_press += delta
-		if secondary_press >= .8 and Input.is_action_just_pressed("secondary") and not transition.running:
-			quit_game()
-		elif secondary_press < .8:
-			secondary_press += delta
 
 func create_star(star_position):
 	if Geometry.is_point_in_polygon(star_position, polygon.polygon):
@@ -142,6 +131,34 @@ func _on_CircleTransition_fadeout_finished(transition_name):
 	else:
 		label.visible = false
 		label_skip.visible = false
+		main_menu.visible = false
 		visible = false
 		get_tree().quit()
 
+func _on_MainMenu_button_pressed(button_name):
+	if button_name == "start":
+		start_game()
+	elif button_name == "options":
+		start_options()
+	elif button_name == "instructions":
+		pass
+	elif button_name == "quit":
+		quit_game()
+	
+func start_options():
+	main_menu.visible = !main_menu.visible
+	options_menu.visible = !options_menu.visible
+
+func _on_OptionsMenu_return_to_main_menu():
+	main_menu.visible = !main_menu.visible
+	options_menu.visible = !options_menu.visible
+
+func _on_OptionsMenu_fullscreen_toggled(button_pressed):
+	Configuration.fullscreen = button_pressed
+
+func _on_OptionsMenu_music_volume_changed(volume):
+	Configuration.music_volume = volume
+
+func _on_OptionsMenu_sound_volume_changed(volume):
+	#SoundFx.play("blip")
+	Configuration.sfx_volume = volume

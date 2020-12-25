@@ -37,22 +37,10 @@ var sounds = {
 	"nuclear_explosion": preload("res://scenes/SoundFX/nuclear_explosion.ogg"),
 }
 
-func play_with_priority(sound_stream):
-	var free_sound_player = null
-	for sound_player in sound_players:
-		if not sound_player.playing:
-			free_sound_player = sound_player
-	if free_sound_player == null:
-		sound_players[0].stop()
-		free_sound_player = sound_players[0]
-		free_sound_player.stream = sounds[sound_stream]
-		free_sound_player.play()
-
-func play(sound_stream, pitch_scale = 1, volume_db = 0):
+func play(sound_stream, pitch_scale = 1):
 	for sound_player in sound_players:
 		if not sound_player.playing:
 			sound_player.pitch_scale = pitch_scale
-			sound_player.volume_db = volume_db
 			sound_player.stream = sounds[sound_stream]
 			sound_player.play()
 			return

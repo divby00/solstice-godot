@@ -49,3 +49,4 @@ position = Vector2( 8, 64 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 autoplay = true
+bus = "Music"

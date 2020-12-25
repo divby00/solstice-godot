@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/Intro/intro-background.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Intro/intro-title.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://music/girl_from_mars.ogg" type="AudioStream" id=6]
 [ext_resource path="res://scenes/Intro/credits_dithering.png" type="Texture" id=7]
 [ext_resource path="res://scenes/Transitions/CircleTransition.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Menu/MainMenu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Menu/OptionsMenu.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "scroll"
@@ -145,6 +147,7 @@ autostart = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 autoplay = true
+bus = "Music"
 
 [node name="CreditsTween" type="Tween" parent="."]
 
@@ -200,10 +203,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="MainMenu" parent="." instance=ExtResource( 9 )]
+
+[node name="NinePatchRect" parent="MainMenu" index="0"]
+visible = false
+
+[node name="OptionsMenu" parent="." instance=ExtResource( 10 )]
+
+[node name="NinePatchRect" parent="OptionsMenu" index="0"]
+visible = false
+
 [node name="CircleTransition" parent="." instance=ExtResource( 8 )]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="tween_all_completed" from="CreditsTween" to="." method="_on_CreditsTween_tween_all_completed"]
 [connection signal="tween_step" from="CreditsTween" to="." method="_on_CreditsTween_tween_step"]
 [connection signal="timeout" from="CreditsTimer" to="." method="_on_CreditsTimer_timeout"]
+[connection signal="button_pressed" from="MainMenu" to="." method="_on_MainMenu_button_pressed"]
+[connection signal="fullscreen_toggled" from="OptionsMenu" to="." method="_on_OptionsMenu_fullscreen_toggled"]
+[connection signal="music_volume_changed" from="OptionsMenu" to="." method="_on_OptionsMenu_music_volume_changed"]
+[connection signal="return_to_main_menu" from="OptionsMenu" to="." method="_on_OptionsMenu_return_to_main_menu"]
+[connection signal="sound_volume_changed" from="OptionsMenu" to="." method="_on_OptionsMenu_sound_volume_changed"]
 [connection signal="fadeout_finished" from="CircleTransition" to="." method="_on_CircleTransition_fadeout_finished"]
+
+[editable path="MainMenu"]
+
+[editable path="OptionsMenu"]

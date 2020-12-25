@@ -5,14 +5,14 @@
 [ext_resource path="res://scenes/Menu/solstice_ui_theme.tres" type="Theme" id=3]
 [ext_resource path="res://scenes/Menu/MainMenu.gd" type="Script" id=4]
 
-[node name="MainMenu" type="Node2D"]
+[node name="MainMenu" type="CanvasLayer"]
 script = ExtResource( 4 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-margin_left = 72.0
-margin_top = 32.0
-margin_right = 184.0
-margin_bottom = 95.0
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 192.0
+margin_bottom = 128.0
 texture = ExtResource( 2 )
 patch_margin_left = 8
 patch_margin_top = 8
@@ -25,7 +25,7 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 104.0
+margin_right = 120.0
 margin_bottom = 56.0
 theme = ExtResource( 3 )
 alignment = 1
@@ -35,7 +35,7 @@ __meta__ = {
 
 [node name="StartButton" type="Button" parent="NinePatchRect/VBoxContainer"]
 margin_top = 5.0
-margin_right = 96.0
+margin_right = 112.0
 margin_bottom = 10.0
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 1 )
@@ -46,7 +46,7 @@ __meta__ = {
 
 [node name="OptionsButton" type="Button" parent="NinePatchRect/VBoxContainer"]
 margin_top = 16.0
-margin_right = 96.0
+margin_right = 112.0
 margin_bottom = 21.0
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 1 )
@@ -57,7 +57,7 @@ __meta__ = {
 
 [node name="InstructionsButton" type="Button" parent="NinePatchRect/VBoxContainer"]
 margin_top = 27.0
-margin_right = 96.0
+margin_right = 112.0
 margin_bottom = 32.0
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 1 )
@@ -68,7 +68,7 @@ __meta__ = {
 
 [node name="QuitButton" type="Button" parent="NinePatchRect/VBoxContainer"]
 margin_top = 38.0
-margin_right = 96.0
+margin_right = 112.0
 margin_bottom = 43.0
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 1 )

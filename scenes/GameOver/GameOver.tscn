@@ -73,9 +73,11 @@ one_shot = true
 
 [node name="ExplosionAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+bus = "SFX"
 
 [node name="VoiceAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+bus = "SFX"
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="VoiceTimer" to="." method="_on_VoiceTimer_timeout"]
 [connection signal="fadein_finished" from="CircleTransition" to="." method="_on_CircleTransition_fadein_finished"]

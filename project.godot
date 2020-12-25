@@ -48,6 +48,7 @@ PlayerData="*res://scenes/Player/PlayerData.gd"
 LevelData="*res://scenes/Levels/LevelData.gd"
 SoundFx="*res://scenes/SoundFX/SoundFX.tscn"
 Utils="*res://Utils.gd"
+Configuration="*res://Configuration.gd"
 
 [display]
 

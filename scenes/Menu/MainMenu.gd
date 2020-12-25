@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 signal button_pressed(button_name)
 
