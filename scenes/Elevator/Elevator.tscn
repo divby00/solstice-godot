@@ -32,3 +32,5 @@ position = Vector2( 20, -24 )
 shape = SubResource( 1 )
 [connection signal="body_entered" from="ActivateArea" to="." method="_on_ActivateArea_body_entered"]
 [connection signal="body_exited" from="ActivateArea" to="." method="_on_ActivateArea_body_exited"]
+
+[editable path="InfoArea"]

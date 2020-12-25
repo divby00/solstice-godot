@@ -103,7 +103,7 @@ color = Color( 1, 1, 1, 0 )
 polygon = PoolVector2Array( 1, 3, 275, 0, 264, 22, 267, 43, 278, 58, 297, 68, 296, 97, 315, 119, 338, 118, 350, 100, 349, 67, 362, 60, 378, 39, 381, 16, 372, 0, 503, 0, 503, 126, 426, 126, 419, 108, 401, 104, 376, 107, 370, 130, 1, 132 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2( 387, 119 )
+position = Vector2( 387, 102 )
 amount = 30
 preprocess = 10.0
 texture = ExtResource( 3 )
@@ -116,7 +116,7 @@ damping_random = 1.0
 scale_amount_curve = SubResource( 3 )
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
-position = Vector2( 406, 119 )
+position = Vector2( 406, 102 )
 amount = 30
 preprocess = 10.0
 texture = ExtResource( 3 )

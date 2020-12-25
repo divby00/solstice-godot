@@ -103,7 +103,9 @@ func connect_info_areas():
 
 func connect_nuclear_containers():
 	var nuclear_containers = get_tree().get_nodes_in_group("NuclearStorageGroup")
+	var elevators = get_tree().get_nodes_in_group("ElevatorGroup")
 	for nuclear_container in nuclear_containers:
+		Utils.connect_signal(nuclear_container, "nuclear_waste_stored", elevators[0], "on_nuclear_waste_stored")
 		Utils.connect_signal(nuclear_container, "nuclear_waste_stored", player, "on_nuclear_waste_stored")
 		Utils.connect_signal(nuclear_container, "nuclear_waste_stored", storage_base, "on_nuclear_waste_stored")
 		Utils.connect_signal(nuclear_container, "nuclear_waste_stored", self, "on_nuclear_waste_stored")

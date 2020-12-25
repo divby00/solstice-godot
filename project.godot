@@ -54,11 +54,10 @@ Utils="*res://Utils.gd"
 window/size/width=256
 window/size/height=192
 window/size/resizable=false
-window/size/fullscreen=true
 window/size/test_width=1024
 window/size/test_height=768
 mouse_cursor/custom_image="res://scenes/Player/big_cursor.png"
-mouse_cursor/custom_image_hotspot=Vector2( 30, 30 )
+mouse_cursor/custom_image_hotspot=Vector2( 35, 35 )
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

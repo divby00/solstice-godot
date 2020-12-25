@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://fonts/joystix.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/Menu/menu_panel.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Menu/solstice_ui_theme.tres" type="Theme" id=3]
+[ext_resource path="res://scenes/Menu/MainMenu.gd" type="Script" id=4]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_left = 72.0
+margin_top = 32.0
+margin_right = 184.0
+margin_bottom = 95.0
+texture = ExtResource( 2 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 104.0
+margin_bottom = 56.0
+theme = ExtResource( 3 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="Button" parent="NinePatchRect/VBoxContainer"]
+margin_top = 5.0
+margin_right = 96.0
+margin_bottom = 10.0
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsButton" type="Button" parent="NinePatchRect/VBoxContainer"]
+margin_top = 16.0
+margin_right = 96.0
+margin_bottom = 21.0
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+text = "Options"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InstructionsButton" type="Button" parent="NinePatchRect/VBoxContainer"]
+margin_top = 27.0
+margin_right = 96.0
+margin_bottom = 32.0
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+text = "Instructions"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="Button" parent="NinePatchRect/VBoxContainer"]
+margin_top = 38.0
+margin_right = 96.0
+margin_bottom = 43.0
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/InstructionsButton" to="." method="_on_InstructionsButton_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
