@@ -29,4 +29,4 @@ func on_nuclear_waste_stored(_storage):
 
 func _on_CircleTransition_fadeout_finished(transition_name):
 	if transition_name == "ending":
-		get_tree().change_scene("res://scenes/Ending/Ending.tscn")
+		get_tree().change_scene_to(ResourceLoader.Ending)

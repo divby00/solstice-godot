@@ -20,8 +20,6 @@ onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var ready = false
 
-signal enemy_appeared(enemy)
-
 func _ready():
 	if Engine.is_editor_hint():
 		animation_player.play("spawn")

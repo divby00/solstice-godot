@@ -33,6 +33,8 @@ var credits = [
 	"Jesus Chicharro 'Divby0'",
 	"Music by:",
 	"Nick Monson 'Drozerix'",
+	"Help and support by:",
+	"Miguel Angel Jimenez Santana",
 	"This is free software",
 	"We hope you enjoy it!",
 	"Thank you Raffaele Cecco!",
@@ -52,6 +54,11 @@ func _ready():
 	for _i in range(100):
 		create_star(Vector2(rand_range(0, 500), rand_range(0, 192)))
 	transition.fadein()
+
+func _exit_tree():
+	var stars = get_tree().get_nodes_in_group("BlueStarGroup")
+	for star in stars:
+		star.queue_free()
 
 func skip_scrolling():
 	animation_player.stop()
@@ -76,7 +83,7 @@ func _input(event):
 			status = Status.IN_MENU
 			label_skip.text = ""
 			label_skip.rect_position = Vector2(0, 192)
-			start_menu()
+			call_deferred("start_menu")
 
 func create_star(star_position):
 	if Geometry.is_point_in_polygon(star_position, polygon.polygon):
@@ -93,7 +100,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		skip_scrolling()
 	if anim_name == "title": # Title has appeared, waiting for keypress
 		status = Status.IDLE
-		label_skip.text = "- PRESS ANY BUTTON -"
+		label_skip.text = "PRESS BUTTON - F1 FOR HELP"
 
 func start_tween():
 	tween_steps = 0
@@ -127,7 +134,7 @@ func _on_CreditsTimer_timeout():
 func _on_CircleTransition_fadeout_finished(transition_name):
 	if transition_name == "start":
 		visible = false
-		get_tree().change_scene("res://scenes/World/World.tscn")
+		get_tree().change_scene_to(ResourceLoader.WorldScene)
 	else:
 		label.visible = false
 		label_skip.visible = false
@@ -140,18 +147,16 @@ func _on_MainMenu_button_pressed(button_name):
 		start_game()
 	elif button_name == "options":
 		start_options()
-	elif button_name == "instructions":
-		pass
 	elif button_name == "quit":
 		quit_game()
 	
 func start_options():
-	main_menu.visible = !main_menu.visible
-	options_menu.visible = !options_menu.visible
+	main_menu.visible = false
+	options_menu.visible = true
 
 func _on_OptionsMenu_return_to_main_menu():
-	main_menu.visible = !main_menu.visible
-	options_menu.visible = !options_menu.visible
+	main_menu.visible = true
+	options_menu.visible = false
 
 func _on_OptionsMenu_fullscreen_toggled(button_pressed):
 	Configuration.fullscreen = button_pressed
@@ -160,5 +165,7 @@ func _on_OptionsMenu_music_volume_changed(volume):
 	Configuration.music_volume = volume
 
 func _on_OptionsMenu_sound_volume_changed(volume):
-	#SoundFx.play("blip")
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear2db(volume))
+	if options_menu != null and options_menu.visible:
+		SoundFx.play("blip")
 	Configuration.sfx_volume = volume

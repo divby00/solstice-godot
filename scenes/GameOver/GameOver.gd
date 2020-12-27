@@ -19,7 +19,7 @@ func _on_CircleTransition_fadein_finished(_transition_name):
 
 func _on_CircleTransition_fadeout_finished(_transition_name):
 	visible = false
-	get_tree().change_scene("res://scenes/Intro/Intro.tscn")
+	get_tree().change_scene_to(ResourceLoader.Intro)
 
 func _on_VoiceTimer_timeout():
 	voice_audio_player.play()

@@ -58,7 +58,9 @@ tracks/0/keys = {
 [sub_resource type="CircleShape2D" id=4]
 radius = 4.0
 
-[node name="BlueStarEffect" type="Area2D"]
+[node name="BlueStarEffect" type="Area2D" groups=[
+"BlueStarGroup",
+]]
 collision_layer = 2147483649
 script = ExtResource( 2 )
 

@@ -16,7 +16,7 @@ var new_level = null
 
 func _ready():
 	set_process(false)
-	load_level("02")
+	load_level("01")
 	
 func load_level(level_key):
 	if level_key != "00":
@@ -179,12 +179,6 @@ func _on_CameraShakeTimer_timeout():
 	camera.offset_v = 0
 	set_process(false)
 
-func _input(_event):
-	if Input.is_action_just_pressed("fullscreen"):
-		OS.window_fullscreen = !OS.window_fullscreen
-		if not OS.window_fullscreen:
-			OS.window_size = Vector2(1024, 768)
-
 func _process(_delta):
 	camera.offset_h = rand_range(-.03, .03)
 	camera.offset_v = rand_range(-.03, .03)
@@ -197,4 +191,4 @@ func on_game_over():
 	
 func _on_GameOverTransition_fadeout_finished(transition_name):
 	PlayerData.reset()
-	get_tree().change_scene("res://scenes/GameOver/GameOver.tscn")
+	get_tree().change_scene_to(ResourceLoader.GameOver)

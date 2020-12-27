@@ -1,0 +1,1417 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://scenes/solstice_ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://fonts/joystix monospace.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/Help/move_up.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Help/move_left.png" type="Texture" id=4]
+[ext_resource path="res://scenes/Help/move_right.png" type="Texture" id=5]
+[ext_resource path="res://scenes/Help/move_shoot.png" type="Texture" id=6]
+[ext_resource path="res://scenes/Help/help-stabilizer.png" type="Texture" id=7]
+[ext_resource path="res://scenes/Help/elevator.png" type="Texture" id=8]
+[ext_resource path="res://scenes/Help/teleporter_inactive.png" type="Texture" id=9]
+[ext_resource path="res://scenes/Help/teleporter_usage.png" type="Texture" id=10]
+[ext_resource path="res://scenes/Help/teleporter_active.png" type="Texture" id=11]
+[ext_resource path="res://scenes/Help/teleport_pass_dispatcher.png" type="Texture" id=12]
+[ext_resource path="res://scenes/Help/magnetic_area.png" type="Texture" id=13]
+[ext_resource path="res://scenes/Help/fuse_box.png" type="Texture" id=14]
+[ext_resource path="res://scenes/Help/rubbish.png" type="Texture" id=15]
+[ext_resource path="res://scenes/Help/steel_plate.png" type="Texture" id=16]
+[ext_resource path="res://scenes/Help/stone.png" type="Texture" id=17]
+[ext_resource path="res://scenes/Help/locked_door.png" type="Texture" id=18]
+[ext_resource path="res://scenes/Help/laser.png" type="Texture" id=19]
+[ext_resource path="res://scenes/Help/battery.png" type="Texture" id=20]
+[ext_resource path="res://scenes/Help/fuse.png" type="Texture" id=21]
+[ext_resource path="res://scenes/Help/tnt.png" type="Texture" id=22]
+[ext_resource path="res://scenes/Help/drill.png" type="Texture" id=23]
+[ext_resource path="res://scenes/Help/goma2.png" type="Texture" id=24]
+[ext_resource path="res://scenes/Help/nuclear_waste.png" type="Texture" id=25]
+[ext_resource path="res://scenes/Help/red_barrel.png" type="Texture" id=26]
+[ext_resource path="res://scenes/Help/bomb.png" type="Texture" id=27]
+[ext_resource path="res://scenes/Help/key.png" type="Texture" id=28]
+[ext_resource path="res://scenes/Help/teleporter_pass.png" type="Texture" id=29]
+[ext_resource path="res://scenes/Help/pass.png" type="Texture" id=30]
+[ext_resource path="res://scenes/Menu/Help.gd" type="Script" id=31]
+
+[sub_resource type="DynamicFont" id=1]
+size = 10
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="Help" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_vertical_guides_": [ 256.0 ]
+}
+
+[node name="Control" type="Control" parent="."]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+theme = ExtResource( 1 )
+custom_constants/hseparation = 0
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mission" type="Tabs" parent="Control/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 13.0
+margin_right = -1.0
+margin_bottom = -1.0
+theme = ExtResource( 1 )
+tab_align = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/Mission"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 3.0
+margin_right = -7.0
+margin_bottom = -7.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Mission/ScrollContainer"]
+margin_right = 216.0
+margin_bottom = 348.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Mission/ScrollContainer/VBoxContainer"]
+margin_right = 216.0
+margin_bottom = 42.0
+custom_colors/font_color = Color( 0.639216, 0.807843, 0.152941, 1 )
+text = "
+SOLSTICE
+--------"
+align = 1
+
+[node name="Label" type="Label" parent="Control/TabContainer/Mission/ScrollContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 216.0
+margin_bottom = 348.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "You control a droid with
+the mission to stabilize a
+nuclear power plant and
+mining facility under the
+attack of unknown entities.
+
+The facility has 8 areas,
+each area has an unstable
+nuclear container that you
+need to put into the
+nuclear stabilizer to send
+it back to the containment
+area, the only place out of
+the attackers' reach.
+
+Secure the unstable nuclear
+container before it reaches
+the critical point and it
+explodes.
+
+Once it's secured find the
+security card to the next
+area and use it in the
+elevator to travel to the
+new area."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controls" type="Tabs" parent="Control/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 13.0
+margin_right = -1.0
+margin_bottom = -1.0
+theme = ExtResource( 1 )
+tab_align = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/Controls"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 3.0
+margin_right = -7.0
+margin_bottom = -7.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Controls/ScrollContainer"]
+margin_right = 208.0
+margin_bottom = 282.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer"]
+margin_right = 208.0
+margin_bottom = 32.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_right = 120.0
+margin_bottom = 32.0
+
+[node name="Label" type="Label" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 120.0
+margin_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Cursor up / W:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 120.0
+margin_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Go UP / Thrust."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_left = 124.0
+margin_right = 140.0
+margin_bottom = 32.0
+texture = ExtResource( 3 )
+stretch_mode = 6
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer"]
+margin_top = 38.0
+margin_right = 208.0
+margin_bottom = 68.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 136.0
+margin_bottom = 30.0
+
+[node name="Label" type="Label" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+margin_right = 136.0
+margin_bottom = 12.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Cursor left / A:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+margin_top = 18.0
+margin_right = 136.0
+margin_bottom = 30.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Move to the left."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 140.0
+margin_right = 172.0
+margin_bottom = 30.0
+texture = ExtResource( 4 )
+stretch_mode = 6
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer"]
+margin_top = 74.0
+margin_right = 208.0
+margin_bottom = 104.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer3"]
+margin_right = 144.0
+margin_bottom = 30.0
+
+[node name="Label" type="Label" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
+margin_right = 144.0
+margin_bottom = 12.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Cursor right / D:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
+margin_top = 18.0
+margin_right = 144.0
+margin_bottom = 30.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Move to the right."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 148.0
+margin_right = 180.0
+margin_bottom = 30.0
+texture = ExtResource( 5 )
+stretch_mode = 6
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer"]
+margin_top = 110.0
+margin_right = 208.0
+margin_bottom = 152.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer4"]
+margin_right = 184.0
+margin_bottom = 42.0
+
+[node name="Label" type="Label" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer4/VBoxContainer"]
+margin_right = 184.0
+margin_bottom = 12.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Cursor down / S:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer4/VBoxContainer"]
+margin_top = 18.0
+margin_right = 184.0
+margin_bottom = 42.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Pick or exchange items.
+Use pass dispatcher."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer"]
+margin_top = 158.0
+margin_right = 208.0
+margin_bottom = 210.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer5"]
+margin_right = 208.0
+margin_bottom = 52.0
+
+[node name="Label" type="Label" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer5/VBoxContainer"]
+margin_right = 208.0
+margin_bottom = 12.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Left mouse button / Space:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer5/VBoxContainer"]
+margin_top = 18.0
+margin_right = 208.0
+margin_bottom = 30.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Fire."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer5/VBoxContainer"]
+margin_top = 36.0
+margin_right = 208.0
+margin_bottom = 52.0
+texture = ExtResource( 6 )
+stretch_mode = 4
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer"]
+margin_top = 216.0
+margin_right = 208.0
+margin_bottom = 246.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer6"]
+margin_right = 192.0
+margin_bottom = 30.0
+
+[node name="Label" type="Label" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer6/VBoxContainer"]
+margin_right = 192.0
+margin_bottom = 12.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Right mouse button or E:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer6/VBoxContainer"]
+margin_top = 18.0
+margin_right = 192.0
+margin_bottom = 30.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Use item."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer"]
+margin_top = 252.0
+margin_right = 208.0
+margin_bottom = 282.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer7"]
+margin_right = 168.0
+margin_bottom = 30.0
+
+[node name="Label" type="Label" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer7/VBoxContainer"]
+margin_right = 168.0
+margin_bottom = 12.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "F1:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Controls/ScrollContainer/VBoxContainer/HBoxContainer7/VBoxContainer"]
+margin_top = 18.0
+margin_right = 168.0
+margin_bottom = 30.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Help. (This section)."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Objects" type="Tabs" parent="Control/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 13.0
+margin_right = -1.0
+margin_bottom = -1.0
+theme = ExtResource( 1 )
+tab_align = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/Objects"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 3.0
+margin_right = -7.0
+margin_bottom = -7.0
+theme = ExtResource( 1 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer"]
+margin_right = 224.0
+margin_bottom = 2509.0
+
+[node name="Label" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_right = 224.0
+margin_bottom = 24.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.639216, 0.807843, 0.152941, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "
+INTERACTIVE OBJECTS
+-------------------"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_right = 224.0
+margin_bottom = 24.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "You will find different
+objects spread everywhere."
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 30.0
+margin_right = 224.0
+margin_bottom = 134.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer"]
+margin_right = 224.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+text = "Nuclear stabilizer"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 50.0
+texture = ExtResource( 7 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer"]
+margin_top = 56.0
+margin_right = 224.0
+margin_bottom = 104.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Use the stabilizer to
+secure the unstable nuclear
+container and stop the
+countdown in the area."
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 140.0
+margin_right = 224.0
+margin_bottom = 296.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer2"]
+margin_right = 224.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+text = "Elevator"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer2"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 90.0
+texture = ExtResource( 8 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer2"]
+margin_top = 96.0
+margin_right = 224.0
+margin_bottom = 156.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Once you have secured the
+area, you can use the
+elevator with a security
+pass to travel to the next
+area."
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 302.0
+margin_right = 224.0
+margin_bottom = 781.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer3"]
+margin_right = 224.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+text = "Teleporter"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer3"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 74.0
+texture = ExtResource( 9 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer3"]
+margin_top = 80.0
+margin_right = 224.0
+margin_bottom = 368.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "The teleporters are
+installed in pairs and they
+connect areas that are not
+accessible otherwise. 
+
+Teleporters are activated
+with a teleport pass that
+can be used on any of the
+linked teleporters.
+
+A single pass allows two
+trips in either direction
+between each pair of
+teleporters.
+
+The passes are cumulative,
+i.e. if you use one pass
+you will have 2 uses but if
+you use 2 passes you will
+have 4.
+
+Active teleporters can be
+distinguished by the green
+lights."
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer3"]
+margin_top = 374.0
+margin_right = 224.0
+margin_bottom = 394.0
+texture = ExtResource( 11 )
+stretch_mode = 6
+
+[node name="Label4" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer3"]
+margin_top = 400.0
+margin_right = 224.0
+margin_bottom = 448.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "To use the teleporter, move
+your droid to the upper
+activation zone once it's
+activated."
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer3"]
+margin_top = 454.0
+margin_right = 224.0
+margin_bottom = 479.0
+texture = ExtResource( 10 )
+stretch_mode = 6
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 787.0
+margin_right = 224.0
+margin_bottom = 951.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer4"]
+margin_right = 224.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+text = "Teleporter pass dispatcher"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer4"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 50.0
+texture = ExtResource( 12 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer4"]
+margin_top = 56.0
+margin_right = 224.0
+margin_bottom = 164.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "This strange device is
+useful for 2 reasons:
+
+- Stay over it to repair
+  your droid.
+- Press down to change one
+  of your droid's lifes for
+  a teleporter pass.
+"
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 957.0
+margin_right = 224.0
+margin_bottom = 1049.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer5"]
+margin_right = 224.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+text = "Magnetic area"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer5"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 50.0
+texture = ExtResource( 13 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer5"]
+margin_top = 56.0
+margin_right = 224.0
+margin_bottom = 92.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Use it to travel to upper
+zones without wasting your
+droid's fuel."
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 1055.0
+margin_right = 224.0
+margin_bottom = 1265.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer6"]
+margin_right = 224.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+text = "Laser barrier"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer6"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 114.0
+texture = ExtResource( 19 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer6"]
+margin_top = 120.0
+margin_right = 224.0
+margin_bottom = 180.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "This barrier blocks some
+zones, you can remove the
+barrier by finding a fuse
+and putting it into the
+fuse box."
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer6"]
+margin_top = 186.0
+margin_right = 224.0
+margin_bottom = 210.0
+texture = ExtResource( 14 )
+stretch_mode = 6
+
+[node name="VBoxContainer7" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 1271.0
+margin_right = 224.0
+margin_bottom = 1339.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer7"]
+margin_right = 224.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+text = "Rubbish"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer7"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 50.0
+texture = ExtResource( 15 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer7"]
+margin_top = 56.0
+margin_right = 224.0
+margin_bottom = 68.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Use TNT to blow it!"
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer8" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 1345.0
+margin_right = 224.0
+margin_bottom = 1397.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer8"]
+margin_right = 224.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+text = "Stone"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer8"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 34.0
+texture = ExtResource( 17 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer8"]
+margin_top = 40.0
+margin_right = 224.0
+margin_bottom = 52.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Use GOMA-2 to blow it!"
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer9" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 1403.0
+margin_right = 224.0
+margin_bottom = 1471.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer9"]
+margin_right = 224.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+text = "Locked door"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer9"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 50.0
+texture = ExtResource( 18 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer9"]
+margin_top = 56.0
+margin_right = 224.0
+margin_bottom = 68.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Use a key to open it."
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer10" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 1477.0
+margin_right = 224.0
+margin_bottom = 1529.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer10"]
+margin_right = 224.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+text = "Steel plate"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer10"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 34.0
+texture = ExtResource( 16 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer10"]
+margin_top = 40.0
+margin_right = 224.0
+margin_bottom = 52.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Use a drill to remove it."
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelItems" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 1535.0
+margin_right = 224.0
+margin_bottom = 1595.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.639216, 0.807843, 0.152941, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "
+ITEMS
+-----"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelItems2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 1535.0
+margin_right = 224.0
+margin_bottom = 1595.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Your droid can pick and
+carry some items:"
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer11" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 1601.0
+margin_right = 224.0
+margin_bottom = 1689.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer11"]
+margin_right = 224.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+text = "Unstable nuclear container"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer11"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 34.0
+texture = ExtResource( 25 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer11"]
+margin_top = 40.0
+margin_right = 224.0
+margin_bottom = 88.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "This is your main objective:
+Find it and take it into
+the nuclear stabilizer
+before everything blows!"
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer12" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 1695.0
+margin_right = 224.0
+margin_bottom = 1783.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer12"]
+margin_right = 224.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+text = "Battery"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer12"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 34.0
+texture = ExtResource( 20 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer12"]
+margin_top = 40.0
+margin_right = 224.0
+margin_bottom = 88.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Recharges your laser
+completely. Don't run out
+of lasers or you won't last
+long."
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer13" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 1789.0
+margin_right = 224.0
+margin_bottom = 1865.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer13"]
+margin_right = 224.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+text = "Fuel"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer13"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 34.0
+texture = ExtResource( 26 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer13"]
+margin_top = 40.0
+margin_right = 224.0
+margin_bottom = 76.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Refills your droid's fuel
+tank. Watch your fuel or
+you won't last long."
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer14" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 1871.0
+margin_right = 224.0
+margin_bottom = 1947.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer14"]
+margin_right = 224.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+text = "Teleporter pass"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer14"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 34.0
+texture = ExtResource( 29 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer14"]
+margin_top = 40.0
+margin_right = 224.0
+margin_bottom = 76.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Use it on a teleporter
+platform to activate the
+linked teleporters."
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer21" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 1953.0
+margin_right = 224.0
+margin_bottom = 2029.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer21"]
+margin_right = 224.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+text = "Security pass"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer21"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 34.0
+texture = ExtResource( 30 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer21"]
+margin_top = 40.0
+margin_right = 224.0
+margin_bottom = 76.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Once the area is secured,
+use it inside the elevator
+to go to the next area."
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer20" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 2035.0
+margin_right = 224.0
+margin_bottom = 2099.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer20"]
+margin_right = 224.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+text = "Drill"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer20"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 34.0
+texture = ExtResource( 23 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer20"]
+margin_top = 40.0
+margin_right = 224.0
+margin_bottom = 64.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Use it to remove steel
+plates."
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer15" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 2105.0
+margin_right = 224.0
+margin_bottom = 2169.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer15"]
+margin_right = 224.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+text = "Fuse"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer15"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 34.0
+texture = ExtResource( 21 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer15"]
+margin_top = 40.0
+margin_right = 224.0
+margin_bottom = 64.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Use it in the fuse box to
+remove laser barriers."
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer16" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 2175.0
+margin_right = 224.0
+margin_bottom = 2239.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer16"]
+margin_right = 224.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+text = "TNT"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer16"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 34.0
+texture = ExtResource( 22 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer16"]
+margin_top = 40.0
+margin_right = 224.0
+margin_bottom = 64.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Use this explosive to blow
+rubbish."
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer17" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 2245.0
+margin_right = 224.0
+margin_bottom = 2309.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer17"]
+margin_right = 224.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+text = "GOMA-2"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer17"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 34.0
+texture = ExtResource( 24 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer17"]
+margin_top = 40.0
+margin_right = 224.0
+margin_bottom = 64.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Use this explosive to blow
+stone blocks."
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer18" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 2315.0
+margin_right = 224.0
+margin_bottom = 2367.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer18"]
+margin_right = 224.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+text = "Key"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer18"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 34.0
+texture = ExtResource( 28 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer18"]
+margin_top = 40.0
+margin_right = 224.0
+margin_bottom = 52.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Use it to open doors."
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer19" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 2373.0
+margin_right = 224.0
+margin_bottom = 2461.0
+
+[node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer19"]
+margin_right = 224.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0.968627, 0.886275, 0.419608, 1 )
+text = "Bomb"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer19"]
+margin_top = 18.0
+margin_right = 224.0
+margin_bottom = 34.0
+texture = ExtResource( 27 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer19"]
+margin_top = 40.0
+margin_right = 224.0
+margin_bottom = 88.0
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = 0
+text = "Once it's equipped, use it
+at any time to destroy all
+the enemies in the whole
+area."
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseButton" type="Button" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 239.0
+margin_top = 9.0
+margin_right = -8.71875
+margin_bottom = -178.0
+theme = ExtResource( 1 )
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Control/CloseButton" to="." method="_on_CloseButton_pressed"]
