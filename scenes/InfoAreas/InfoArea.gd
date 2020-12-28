@@ -1,20 +1,13 @@
 extends Area2D
 
 signal info_area_entered(info_area)
+signal info_area_exited(info_area)
 
 export(String) var text = ""
-var player_into_info_area = false
-var can_emit = true
-
-func _process(_delta):
-	if player_into_info_area and can_emit and not InfoAreaTexts.texts.has(text):
-		InfoAreaTexts.texts.append(text)
-		SoundFx.play("ding")
-		emit_signal("info_area_entered", self)
-		can_emit = false
 
 func _on_InfoArea_body_entered(_body):
-	player_into_info_area = true
+	SoundFx.play("ding")
+	emit_signal("info_area_entered", self)
 
 func _on_InfoArea_body_exited(_body):
-	player_into_info_area = false
+	emit_signal("info_area_exited", self)

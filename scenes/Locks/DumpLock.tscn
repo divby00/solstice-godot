@@ -33,7 +33,7 @@ texture = ExtResource( 2 )
 hframes = 2
 
 [node name="InfoArea" parent="." index="5"]
-text = "Rubbish. Use TNT to remove it."
+text = "Rubbish"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InfoArea" index="0"]
 position = Vector2( 16, -16 )

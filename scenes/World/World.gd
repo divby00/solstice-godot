@@ -1,6 +1,8 @@
 extends Node
 
 const nuclear_waste_texture = preload("res://scenes/StorageBase/nuclear_waste.png")
+const red_circle_in = preload("res://scenes/Transitions/red_circle_in.tres")
+const red_circle_out = preload("res://scenes/Transitions/red_circle_out.tres")
 
 onready var player = $Player
 onready var camera = $Camera2D
@@ -110,6 +112,7 @@ func connect_info_areas():
 	var info_areas = get_tree().get_nodes_in_group("InfoAreaGroup")
 	for info_area in info_areas:
 		Utils.connect_signal(info_area, "info_area_entered", panel, "on_info_area_entered")
+		Utils.connect_signal(info_area, "info_area_exited", panel, "on_info_area_exited")
 
 func connect_nuclear_containers():
 	var nuclear_containers = get_tree().get_nodes_in_group("NuclearStorageGroup")
@@ -120,7 +123,7 @@ func connect_nuclear_containers():
 		Utils.connect_signal(nuclear_container, "nuclear_waste_stored", storage_base, "on_nuclear_waste_stored")
 		Utils.connect_signal(nuclear_container, "nuclear_waste_stored", self, "on_nuclear_waste_stored")
 		Utils.connect_signal(nuclear_container, "time_tick_finished", panel, "on_time_changed")
-		Utils.connect_signal(nuclear_container, "explosion_triggered", player, "on_explosion_triggered")
+		Utils.connect_signal(nuclear_container, "explosion_triggered", self, "on_explosion_triggered")
 		nuclear_container.explosion_timer.start()
 
 func connect_player_data():
@@ -200,6 +203,15 @@ func _on_Transition_fadeout_finished(_transition_name):
 func on_game_over():
 	game_over_transition.fadeout()
 	
-func _on_GameOverTransition_fadeout_finished(transition_name):
+func _on_GameOverTransition_fadeout_finished(_transition_name):
 	PlayerData.reset()
 	get_tree().change_scene_to(ResourceLoader.GameOver)
+
+func on_explosion_triggered():
+	set_process(false)
+	transition.circle_in = red_circle_in
+	transition.fadein("explosion")
+
+func _on_Transition_fadein_finished(transition_name):
+	if transition_name == "explosion":
+		get_tree().change_scene_to(ResourceLoader.TimeOver)

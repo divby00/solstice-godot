@@ -234,6 +234,9 @@ shape = SubResource( 3 )
 [node name="Bottom" parent="MagneticArea" index="2"]
 position = Vector2( 364, 260 )
 
+[node name="CollisionShape2D" parent="MagneticArea/InfoArea" index="0"]
+position = Vector2( 364, 52 )
+
 [node name="TeleporterGroup" parent="." index="11" instance=ExtResource( 2 )]
 
 [node name="TeleporterA" parent="TeleporterGroup" index="0"]

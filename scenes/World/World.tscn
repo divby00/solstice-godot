@@ -120,6 +120,7 @@ anims/new_area = SubResource( 1 )
 [connection signal="pause_shown" from="Pause" to="Help" method="_on_Pause_pause_shown"]
 [connection signal="help_hidden" from="Help" to="Pause" method="_on_Help_help_hidden"]
 [connection signal="help_shown" from="Help" to="Pause" method="_on_Help_help_shown"]
+[connection signal="fadein_finished" from="Transition" to="." method="_on_Transition_fadein_finished"]
 [connection signal="fadeout_finished" from="Transition" to="." method="_on_Transition_fadeout_finished"]
 
 [editable path="UI"]

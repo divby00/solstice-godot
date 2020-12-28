@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/UI/board.png" type="Texture" id=1]
 [ext_resource path="res://scenes/UI/Panel.gd" type="Script" id=2]
@@ -10,37 +10,6 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "animate"
-length = 0.5
-step = 0.05
-tracks/0/type = "method"
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.5 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "init_tween"
-} ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "animate_no_tween"
 length = 0.5
 step = 0.05
 tracks/0/type = "value"
@@ -56,7 +25,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 }
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 10
 extra_spacing_top = -2
 extra_spacing_bottom = -2
@@ -110,19 +79,18 @@ vframes = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/animate = SubResource( 1 )
-anims/animate_no_tween = SubResource( 2 )
 
 [node name="InfoAreaLabel" type="Label" parent="."]
-margin_left = 256.0
+visible = false
 margin_top = 144.0
-margin_right = 584.0
+margin_right = 256.0
 margin_bottom = 152.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
+text = "bbbbbbb"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Tween" type="Tween" parent="."]
 
 [node name="ThrustNinePatchRect" type="NinePatchRect" parent="."]
 margin_left = 136.0
@@ -170,4 +138,4 @@ __meta__ = {
 position = Vector2( 52, 168 )
 texture = ExtResource( 9 )
 hframes = 9
-[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

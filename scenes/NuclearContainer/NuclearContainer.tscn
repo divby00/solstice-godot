@@ -15,7 +15,7 @@ extents = Vector2( 20, 16 )
 ]]
 z_index = 2
 script = ExtResource( 2 )
-seconds_to_explosion = 300
+seconds_to_explosion = 224
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 12, -16 )
@@ -30,7 +30,7 @@ position = Vector2( 12, -16 )
 shape = SubResource( 1 )
 
 [node name="InfoArea" parent="." instance=ExtResource( 1 )]
-text = "Nuclear deactivator. Use the nuclear barrel in this container to deactivate and send it to the containment area."
+text = "Nuclear stabilizer"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InfoArea"]
 position = Vector2( 12, -16 )

@@ -4,7 +4,7 @@ signal time_tick_finished(seconds_to_explosion, time_left)
 signal nuclear_waste_stored(storage)
 signal explosion_triggered
 
-export(int) var seconds_to_explosion = 30
+export(int) var seconds_to_explosion = 240
 
 onready var explosion_timer = $ExplosionTimer
 var player_in_nuclear_storage = false

@@ -26,13 +26,13 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 152 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8, 32 )
-
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 32, 8 )
 
 [sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 40, 16 )
+
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 8, 16 )
 
 [node name="Level01" instance=ExtResource( 20 )]
@@ -165,6 +165,9 @@ shape = SubResource( 1 )
 [node name="Bottom" parent="MagneticArea" index="2"]
 position = Vector2( 0, 300 )
 
+[node name="CollisionShape2D" parent="MagneticArea/InfoArea" index="0"]
+position = Vector2( 0, -28 )
+
 [node name="Spawners" parent="." index="8"]
 MAX_ENEMIES = 33
 
@@ -237,10 +240,6 @@ position = Vector2( 688, 832 )
 [node name="InfoArea" parent="Elevator" index="2"]
 text = "Elevator. Use the security pass to travel to next level."
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Elevator/InfoArea" index="0"]
-position = Vector2( 0, -32 )
-shape = SubResource( 2 )
-
 [node name="TeleportPassDispatcher" parent="." index="11"]
 position = Vector2( 568, 832 )
 
@@ -255,7 +254,7 @@ position = Vector2( 128, 432 )
 
 [node name="CollisionShape2D" parent="Containment2" index="0"]
 position = Vector2( 32, -8 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="TextureRect" parent="Containment2" index="1"]
 margin_right = 56.0
@@ -269,13 +268,17 @@ margin_right = 64.0
 position = Vector2( 32, -8 )
 emission_rect_extents = Vector2( 32, 1 )
 
+[node name="CollisionShape2D" parent="Containment2/InfoArea" index="0"]
+position = Vector2( 32, -8 )
+shape = SubResource( 4 )
+
 [node name="Containment3" parent="." index="15" instance=ExtResource( 21 )]
 position = Vector2( 240, 384 )
 rotation = 1.5708
 
 [node name="CollisionShape2D" parent="Containment3" index="0"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [editable path="TeleporterGroup"]
 

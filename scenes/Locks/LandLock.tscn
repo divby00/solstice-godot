@@ -37,7 +37,7 @@ texture = ExtResource( 2 )
 hframes = 2
 
 [node name="InfoArea" parent="." index="5"]
-text = "Rubbish. Use C-4 to remove it."
+text = "Stone block"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InfoArea" index="0"]
 position = Vector2( 16, -8 )

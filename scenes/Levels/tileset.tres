@@ -856,7 +856,7 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 "shape": SubResource( 11 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-10/z_index = 0
+10/z_index = 2
 11/name = "tileset.png 11"
 11/texture = ExtResource( 1 )
 11/tex_offset = Vector2( 0, 0 )
@@ -2676,7 +2676,7 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 "shape": SubResource( 26 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-122/z_index = 0
+122/z_index = 2
 123/name = "tileset.png 123"
 123/texture = ExtResource( 1 )
 123/tex_offset = Vector2( 0, 0 )
@@ -2697,7 +2697,7 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 "shape": SubResource( 27 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-123/z_index = 0
+123/z_index = 2
 124/name = "tileset.png 124"
 124/texture = ExtResource( 1 )
 124/tex_offset = Vector2( 0, 0 )
@@ -2718,7 +2718,7 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 "shape": SubResource( 28 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-124/z_index = 0
+124/z_index = 2
 125/name = "tileset.png 125"
 125/texture = ExtResource( 1 )
 125/tex_offset = Vector2( 0, 0 )
@@ -3508,7 +3508,7 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 "shape": SubResource( 89 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-158/z_index = 0
+158/z_index = 2
 159/name = "tileset.png 159"
 159/texture = ExtResource( 1 )
 159/tex_offset = Vector2( 0, 0 )
@@ -3554,7 +3554,7 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 "shape": SubResource( 93 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-159/z_index = 0
+159/z_index = 2
 160/name = "tileset.png 160"
 160/texture = ExtResource( 1 )
 160/tex_offset = Vector2( 0, 0 )

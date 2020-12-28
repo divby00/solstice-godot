@@ -338,6 +338,9 @@ shape = SubResource( 6 )
 [node name="Bottom" parent="MagneticArea" index="2"]
 position = Vector2( 20, 244 )
 
+[node name="CollisionShape2D" parent="MagneticArea/InfoArea" index="0"]
+position = Vector2( 20, -100 )
+
 [node name="AudioStreamPlayer" parent="." index="13"]
 stream = ExtResource( 22 )
 

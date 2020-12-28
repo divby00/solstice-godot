@@ -251,6 +251,9 @@ shape = SubResource( 2 )
 [node name="Bottom" parent="MagneticArea" index="2"]
 position = Vector2( 44, 244 )
 
+[node name="CollisionShape2D" parent="MagneticArea/InfoArea" index="0"]
+position = Vector2( 44, 28 )
+
 [node name="Rail" parent="." index="17" instance=ExtResource( 17 )]
 position = Vector2( 551, 536 )
 collision_layer = 0

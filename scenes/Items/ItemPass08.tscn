@@ -9,3 +9,6 @@ item_name = "pass08"
 [node name="Sprite" parent="." index="1"]
 position = Vector2( 8, -8 )
 texture = ExtResource( 2 )
+
+[node name="InfoArea" parent="." index="3"]
+text = "Security pass"

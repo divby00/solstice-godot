@@ -305,6 +305,9 @@ shape = SubResource( 3 )
 [node name="Bottom" parent="MagneticArea" index="2"]
 position = Vector2( 20, 236 )
 
+[node name="CollisionShape2D" parent="MagneticArea/InfoArea" index="0"]
+position = Vector2( 20, 12 )
+
 [node name="MagneticArea2" parent="." index="11" instance=ExtResource( 3 )]
 position = Vector2( 320, 488 )
 
@@ -318,6 +321,9 @@ shape = SubResource( 4 )
 [node name="Bottom" parent="MagneticArea2" index="2"]
 position = Vector2( 20, 204 )
 
+[node name="CollisionShape2D" parent="MagneticArea2/InfoArea" index="0"]
+position = Vector2( 20, 12 )
+
 [node name="MagneticArea3" parent="." index="12" instance=ExtResource( 3 )]
 position = Vector2( 336, 912 )
 
@@ -330,6 +336,9 @@ shape = SubResource( 5 )
 
 [node name="Bottom" parent="MagneticArea3" index="2"]
 position = Vector2( 20, 156 )
+
+[node name="CollisionShape2D" parent="MagneticArea3/InfoArea" index="0"]
+position = Vector2( 20, 12 )
 
 [node name="TeleporterGroup" parent="." index="13" instance=ExtResource( 4 )]
 

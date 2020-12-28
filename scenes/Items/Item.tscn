@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Items/Item.gd" type="Script" id=1]
+[ext_resource path="res://scenes/InfoAreas/InfoArea.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -22,6 +23,9 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8, 8 )
+
 [node name="Item" type="Area2D" groups=[
 "ItemGroup",
 ]]
@@ -39,5 +43,11 @@ hframes = 4
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "animate"
 anims/animate = SubResource( 2 )
+
+[node name="InfoArea" parent="." instance=ExtResource( 2 )]
+position = Vector2( 8, -8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InfoArea"]
+shape = SubResource( 3 )
 [connection signal="body_entered" from="." to="." method="_on_Item_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_Item_body_exited"]

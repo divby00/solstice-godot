@@ -206,9 +206,6 @@ func on_status_changed(old_status, new_status):
 func on_item_used():
 	PlayerData.selected_item = null
 
-func on_explosion_triggered():
-	pass
-
 func on_player_has_to_move(direction):
 	if direction == 0:
 		motion.x = Vector2.LEFT.x * 75

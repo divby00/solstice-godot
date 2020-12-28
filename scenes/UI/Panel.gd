@@ -7,13 +7,11 @@ const RedPatch = preload("res://scenes/UI/red_patch.png")
 onready var lives_label = $LivesLabel
 onready var info_area_label = $InfoAreaLabel
 onready var item_texture = $ItemTexture
-onready var animation_player = $AnimationPlayer
-onready var tween = $Tween
+onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var thrust_bar = $ThrustNinePatchRect
 onready var laser_bar = $LaserNinePatchRect
 onready var time_bar = $TimeNinePatchRect
 onready var health_sprite = $HealthSprite
-onready var texts = []
 
 enum Bar {
 	THRUST, LASER, TIME
@@ -30,35 +28,13 @@ func _ready():
 	item_texture.texture = null
 
 func on_info_area_entered(info_area):
-	append_text(info_area.text)
-	if not tween.is_active():
-		animation_player.play("animate")
+	info_area_label.visible = false
+	info_area_label.text = info_area.text
+	animation_player.play("animate")
 
-func init_tween():
-	info_area_label.rect_position.x = 256
-	var text = pick_text()
-	if text != null:
-		var length = text.length()
-		info_area_label.text = text
-		tween.interpolate_property(info_area_label, "rect_position", Vector2(256, 144), Vector2(length * -8, 144), 15, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		tween.start()
-	else:
-		animation_player.play_backwards("animate_no_tween")
-
-func pick_text():
-	var text = null
-	if not texts.empty():
-		text = texts[0]
-	return text
-		
-func append_text(text):
-	if not texts.has(text):
-		texts.append(text)
-
-func _on_Tween_tween_completed(_object, _key):
-	if texts.size() > 0:
-		texts.remove(0)
-		init_tween()
+func on_info_area_exited(info_area):
+	info_area_label.text = ""
+	animation_player.play_backwards("animate")
 
 func on_item_picked(texture):
 	item_texture.texture = texture
@@ -94,3 +70,6 @@ func change_color_bar(value, bar):
 		bar.texture = GreenPatch
 	else:
 		bar.texture = RedPatch
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	info_area_label.visible = true

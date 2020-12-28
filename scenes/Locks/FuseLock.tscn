@@ -50,7 +50,7 @@ texture = ExtResource( 3 )
 hframes = 2
 
 [node name="InfoArea" parent="." index="6"]
-text = "Fuse box. Complete the circuit with the other fuse to disable the laser lock."
+text = "Fuse box"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InfoArea" index="0"]
 position = Vector2( 12, -12 )
