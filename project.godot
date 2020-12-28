@@ -35,6 +35,7 @@ _global_script_class_icons={
 config/name="Solstice"
 config/description="Equinox remake"
 run/main_scene="res://scenes/Love4Retro/Love4Retro.tscn"
+boot_splash/fullsize=false
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
@@ -53,6 +54,7 @@ LevelData="*res://scenes/Levels/LevelData.gd"
 SoundFx="*res://scenes/SoundFX/SoundFX.tscn"
 Utils="*res://scenes/Utils.gd"
 Configuration="*res://scenes/Configuration.gd"
+GameState="*res://scenes/GameState.gd"
 
 [display]
 

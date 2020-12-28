@@ -16,7 +16,12 @@ var new_level = null
 
 func _ready():
 	set_process(false)
-	load_level("01")
+	if GameState.loading:
+		var saved_data = GameState.load()
+		if saved_data != null:
+			load_level(saved_data.level)
+	else:
+		load_level("01")
 	
 func load_level(level_key):
 	if level_key != "00":
@@ -44,6 +49,9 @@ func connect_signals():
 func level_init():
 	call_deferred("set_initial_player_position")
 	PlayerData.reset_between_levels()
+	if GameState.loading:
+		var saved_game = GameState.load()
+		PlayerData.lives = saved_game.lifes
 	panel.init_panel()
 	transition.fadein()
 	level_change_label.text = "Area " + str(LevelData.current_level_number)
@@ -184,6 +192,7 @@ func _process(_delta):
 	camera.offset_v = rand_range(-.03, .03)
 
 func _on_Transition_fadeout_finished(_transition_name):
+	GameState.save({"level": new_level, "lifes": PlayerData.lives})
 	load_level(new_level)
 
 func on_game_over():

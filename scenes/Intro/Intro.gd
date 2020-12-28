@@ -123,6 +123,7 @@ func _on_CreditsTween_tween_all_completed():
 	start_tween()
 
 func start_game():
+	GameState.loading = false
 	transition.fadeout("start")
 
 func quit_game():
@@ -132,7 +133,7 @@ func _on_CreditsTimer_timeout():
 	credits_tween.resume(label_skip, "rect_position")
 
 func _on_CircleTransition_fadeout_finished(transition_name):
-	if transition_name == "start":
+	if transition_name == "start" or transition_name == "continue":
 		visible = false
 		get_tree().change_scene_to(ResourceLoader.WorldScene)
 	else:
@@ -145,10 +146,16 @@ func _on_CircleTransition_fadeout_finished(transition_name):
 func _on_MainMenu_button_pressed(button_name):
 	if button_name == "start":
 		start_game()
+	elif button_name == "continue":
+		continue_game()
 	elif button_name == "options":
 		start_options()
 	elif button_name == "quit":
 		quit_game()
+
+func continue_game():
+	GameState.loading = true
+	transition.fadeout("continue")
 	
 func start_options():
 	main_menu.visible = false

@@ -9,8 +9,6 @@ var elevator_usable = false
 var player_in_elevator = false
 
 func _process(_delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		print(elevator_usable)
 	if player_in_elevator and Input.is_action_just_pressed("secondary") and elevator_usable:
 		emit_signal("elevator_activated", PlayerData.selected_item)
 
