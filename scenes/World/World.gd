@@ -29,6 +29,8 @@ func load_level(level_key):
 	remove_level()
 	LevelData.current_level = LevelData.levels[level_key].instance()
 	LevelData.current_level_number = int(level_key)
+	for i in LevelData.current_level_number:
+		storage_base.sealed_containers.append(i + 1)
 	set_camera_limits(LevelData.current_level)
 	get_tree().current_scene.add_child_below_node(camera, LevelData.current_level, false)
 	connect_signals()
