@@ -152,6 +152,7 @@ help={
 2d_physics/layer_2="Item"
 2d_physics/layer_3="Player"
 2d_physics/layer_4="Enemy"
+2d_physics/layer_5="Bullet"
 
 [rendering]
 
@@ -161,3 +162,7 @@ vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_clear_color=Color( 0, 0, 0, 1 )
 quality/dynamic_fonts/use_oversampling=false
+
+[world]
+
+2d/cell_size=32

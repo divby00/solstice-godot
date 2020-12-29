@@ -115,5 +115,5 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource( 4 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
 shape = SubResource( 5 )

@@ -48,7 +48,7 @@ func set_health(value):
 	health = clamp(value, 0, MAX_HEALTH)
 	if health <= 0:
 		var explosion = GreenExplosionEffect.instance()
-		explosion.global_position = global_position
+		explosion.global_position = position
 		get_tree().current_scene.add_child(explosion)
 		SoundFx.play("explosion")
 		emit_signal("enemy_died", self)

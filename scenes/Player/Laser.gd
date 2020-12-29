@@ -29,7 +29,8 @@ func fire():
 			var point = raycast.get_collision_point()
 			ray.set_point_position(1, to_local(point))
 			var particles = null
-			if body is Enemy:
+			#if body is Enemy:
+			if body.is_in_group("EnemyGroup"):
 				body.health -= 1
 				particles = GreenStarParticle.instance()
 			else:
