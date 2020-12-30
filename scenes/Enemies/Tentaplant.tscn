@@ -5,12 +5,12 @@
 [ext_resource path="res://scenes/Enemies/Tentaplant.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Enemies/enemy_hurt.shader" type="Shader" id=5]
 
-[sub_resource type="ShaderMaterial" id=7]
+[sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 5 )
 shader_param/color = Color( 0.745098, 0.14902, 0.2, 1 )
 shader_param/active = false
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -51,7 +51,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -83,7 +83,7 @@ tracks/1/keys = {
 "EnemyGroup",
 ]]
 collision_layer = 8
-collision_mask = 13
+collision_mask = 12
 script = ExtResource( 4 )
 
 [node name="DetectionArea" type="Area2D" parent="."]
@@ -94,7 +94,7 @@ collision_mask = 4
 polygon = PoolVector2Array( 8, 0, 96, 128, -96, 128, -8, 0 )
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 7 )
+material = SubResource( 1 )
 position = Vector2( 0, 16 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, -9.53674e-07 )
@@ -102,8 +102,8 @@ hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-anims/fire = SubResource( 3 )
-anims/idle = SubResource( 5 )
+anims/fire = SubResource( 2 )
+anims/idle = SubResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( 8, 0, 16, 8, 16, 16, 8, 24, -8, 24, -16, 16, -16, 8, -8, 0 )

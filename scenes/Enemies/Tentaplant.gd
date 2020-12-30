@@ -28,22 +28,22 @@ func fire_bullet():
 	if fire_type == 0:
 		create_bullet(-40, 40, 20)
 	else:
-		create_bullet(-20, 20, 20)
+		create_bullet(-15, 15, 10)
 
 func create_bullet(from, to, step):
 	for i in range(from, to + 1, step):
 		var bullet = Bullet.instance()
+		get_tree().current_scene.add_child(bullet)
 		bullet.global_position = cursor.global_position
 		bullet.direction = direction.rotated(deg2rad(i + rand_range(-0, 0)))
-		get_tree().current_scene.add_child(bullet)
 
 func set_health(value):
 	health = clamp(value, 0, max_health)
 	if health == 0:
 		var explosion = BigExplosion.instance()
-		explosion.global_position = global_position
-		explosion.emitting = true
 		get_tree().current_scene.add_child(explosion)
+		explosion.global_position = cursor.global_position
+		explosion.emitting = true
 		queue_free()
 		#emit_signal("enemy_died", self)
 	else:
