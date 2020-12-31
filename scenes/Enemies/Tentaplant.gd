@@ -45,10 +45,11 @@ func set_health(value):
 		explosion.global_position = cursor.global_position
 		explosion.emitting = true
 		queue_free()
-		#emit_signal("enemy_died", self)
+		emit_signal("enemy_died", self)
 	else:
 		SoundFx.play("enemy_hurt")
-		bullet_timer.start()
+		if bullet_timer.is_stopped():
+			bullet_timer.start()
 		end_alert_timer.start()
 		shader_timer.start()
 		sprite.material.set_shader_param("active", true)
