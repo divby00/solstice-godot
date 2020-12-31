@@ -13,10 +13,12 @@ onready var storage_base = $StorageBase
 onready var camera_shake_timer = $CameraShakeTimer
 onready var level_change_label = $LevelChange/Label
 onready var animation_player = $AnimationPlayer
+onready var help = $Help
 
 var new_level = null
 
 func _ready():
+	help.help_is_posible = false
 	set_process(false)
 	if GameState.loading:
 		var saved_data = GameState.load()
@@ -56,6 +58,8 @@ func level_init():
 	if GameState.loading:
 		var saved_game = GameState.load()
 		PlayerData.lives = saved_game.lifes
+	else:
+		PlayerData.lives = PlayerData.MAX_LIVES
 	panel.init_panel()
 	transition.fadein()
 	level_change_label.text = "Area " + str(LevelData.current_level_number)
@@ -213,5 +217,6 @@ func on_explosion_triggered():
 	transition.fadein("explosion")
 
 func _on_Transition_fadein_finished(transition_name):
+	help.help_is_posible = true
 	if transition_name == "explosion":
 		get_tree().change_scene_to(ResourceLoader.TimeOver)

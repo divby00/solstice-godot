@@ -14,6 +14,7 @@ onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var label: Label = $CanvasLayer/CenterContainer/VBoxContainer/Label
 onready var main_menu = $MainMenu/NinePatchRect
 onready var options_menu = $OptionsMenu/NinePatchRect
+onready var help = $Help
 
 var status = Status.SCROLLING
 var message_index = 0
@@ -50,6 +51,7 @@ var credits_index = 0
 var tween_steps = 0
 
 func _ready():
+	help.help_is_posible = false
 	label.text = messages[message_index]
 	for _i in range(100):
 		create_star(Vector2(rand_range(0, 500), rand_range(0, 192)))
@@ -132,15 +134,17 @@ func quit_game():
 func _on_CreditsTimer_timeout():
 	credits_tween.resume(label_skip, "rect_position")
 
+func _on_CircleTransition_fadein_finished(transition_name):
+	help.help_is_posible = true
+
 func _on_CircleTransition_fadeout_finished(transition_name):
+	visible = false
 	if transition_name == "start" or transition_name == "continue":
-		visible = false
 		get_tree().change_scene_to(ResourceLoader.WorldScene)
 	else:
 		label.visible = false
 		label_skip.visible = false
 		main_menu.visible = false
-		visible = false
 		get_tree().quit()
 
 func _on_MainMenu_button_pressed(button_name):

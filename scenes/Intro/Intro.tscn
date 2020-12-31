@@ -224,6 +224,7 @@ visible = false
 [connection signal="music_volume_changed" from="OptionsMenu" to="." method="_on_OptionsMenu_music_volume_changed"]
 [connection signal="return_to_main_menu" from="OptionsMenu" to="." method="_on_OptionsMenu_return_to_main_menu"]
 [connection signal="sound_volume_changed" from="OptionsMenu" to="." method="_on_OptionsMenu_sound_volume_changed"]
+[connection signal="fadein_finished" from="CircleTransition" to="." method="_on_CircleTransition_fadein_finished"]
 [connection signal="fadeout_finished" from="CircleTransition" to="." method="_on_CircleTransition_fadeout_finished"]
 
 [editable path="MainMenu"]
