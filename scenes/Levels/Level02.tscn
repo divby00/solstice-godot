@@ -22,25 +22,6 @@
 [ext_resource path="res://scenes/Locks/StoneLock/StoneLock.tscn" type="PackedScene" id=21]
 [ext_resource path="res://resources/music/bit_loader.ogg" type="AudioStream" id=22]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "animate"
 length = 0.4

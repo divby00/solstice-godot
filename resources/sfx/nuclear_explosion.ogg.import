@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/nuclear_explosion.ogg-577dbb3ecc3dedb3b4c19049859a21dd.oggstr"
+
+[deps]
+
+source_file="res://resources/sfx/nuclear_explosion.ogg"
+dest_files=[ "res://.import/nuclear_explosion.ogg-577dbb3ecc3dedb3b4c19049859a21dd.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

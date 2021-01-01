@@ -22,22 +22,6 @@
 [ext_resource path="res://scenes/Enemies/Spawner/Spawner.tscn" type="PackedScene" id=21]
 [ext_resource path="res://resources/music/wrath_of_the_djinn.ogg" type="AudioStream" id=22]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 16 )
 

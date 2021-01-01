@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/wrath_of_the_djinn.ogg-712c60acd10df899a2a7801357f7ce0b.oggstr"
+
+[deps]
+
+source_file="res://resources/music/wrath_of_the_djinn.ogg"
+dest_files=[ "res://.import/wrath_of_the_djinn.ogg-712c60acd10df899a2a7801357f7ce0b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

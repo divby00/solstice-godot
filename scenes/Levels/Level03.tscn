@@ -22,19 +22,6 @@
 [ext_resource path="res://scenes/Locks/FuseLock/FuseLock.tscn" type="PackedScene" id=21]
 [ext_resource path="res://resources/music/crush.ogg" type="AudioStream" id=22]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 32 )
 

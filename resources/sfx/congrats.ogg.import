@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/congrats.ogg-600a8ba68d802f3a89d9f6e1be8870a9.oggstr"
+
+[deps]
+
+source_file="res://resources/sfx/congrats.ogg"
+dest_files=[ "res://.import/congrats.ogg-600a8ba68d802f3a89d9f6e1be8870a9.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

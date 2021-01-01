@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/teleporter_loaded.ogg-ba4def6bfb8cf31e27cc36bda6bc8534.oggstr"
+
+[deps]
+
+source_file="res://resources/sfx/teleporter_loaded.ogg"
+dest_files=[ "res://.import/teleporter_loaded.ogg-ba4def6bfb8cf31e27cc36bda6bc8534.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

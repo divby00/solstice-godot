@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sexxxy_bit_3.ogg-fc2009f96322d235460fae23ccbf0914.oggstr"
+
+[deps]
+
+source_file="res://resources/music/sexxxy_bit_3.ogg"
+dest_files=[ "res://.import/sexxxy_bit_3.ogg-fc2009f96322d235460fae23ccbf0914.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

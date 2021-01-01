@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/blip.ogg-d6c5e52e7ce107e341b395eac3770251.oggstr"
+
+[deps]
+
+source_file="res://resources/sfx/blip.ogg"
+dest_files=[ "res://.import/blip.ogg-d6c5e52e7ce107e341b395eac3770251.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
