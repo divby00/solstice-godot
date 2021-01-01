@@ -30,5 +30,6 @@ func _on_AnimationPlayer_animation_started(anim_name):
 
 func _on_CircleTransition_fadeout_finished(transition_name):
 	visible = false
+	GameState.remove()
 	get_tree().change_scene_to(ResourceLoader.Intro)
 	

@@ -17,3 +17,7 @@ func load():
 		data = f.get_var()
 	f.close()
 	return data
+
+func remove():
+	var dir = Directory.new()
+	dir.remove("user://savedata.bin")
