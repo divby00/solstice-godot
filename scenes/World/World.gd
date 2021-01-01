@@ -13,8 +13,10 @@ onready var storage_base = $StorageBase
 onready var camera_shake_timer = $CameraShakeTimer
 onready var level_change_label = $LevelChange/Label
 onready var animation_player = $AnimationPlayer
+onready var pause = $Pause
 onready var help = $Help
 
+var cheats = false
 var new_level = null
 
 func _ready():
@@ -51,6 +53,7 @@ func connect_signals():
 	connect_enemies()
 	connect_rails()
 	connect_elevator()
+	connect_cheats()
 
 func level_init():
 	call_deferred("set_initial_player_position")
@@ -59,7 +62,7 @@ func level_init():
 		var saved_game = GameState.load()
 		PlayerData.lives = saved_game.lifes
 	else:
-		PlayerData.lives = PlayerData.MAX_LIVES
+		PlayerData.lives = PlayerData.LIVES
 	panel.init_panel()
 	transition.fadein()
 	level_change_label.text = "Area " + str(LevelData.current_level_number)
@@ -172,6 +175,9 @@ func connect_elevator():
 	for elevator in elevators:
 		Utils.connect_signal(elevator, "elevator_activated", player, "on_elevator_activated")
 
+func connect_cheats():
+	Utils.connect_signal(pause, "cheats_activated", self, "on_cheats_activated")
+
 func on_nuclear_waste_stored(_storage):
 	if LevelData.current_level_number == 1:
 		var sprite = Sprite.new()
@@ -220,3 +226,10 @@ func _on_Transition_fadein_finished(transition_name):
 	help.help_is_posible = true
 	if transition_name == "explosion":
 		get_tree().change_scene_to(ResourceLoader.TimeOver)
+
+func on_cheats_activated():
+	cheats = true
+
+func _input(event):
+	if cheats and (Input.is_key_pressed(KEY_KP_ADD) or Input.is_key_pressed(KEY_PLUS)):
+		PlayerData.lives += 1

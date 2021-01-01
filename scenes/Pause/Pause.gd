@@ -2,34 +2,39 @@ extends CanvasLayer
 
 signal pause_shown
 signal pause_hidden
+signal cheats_activated
 
-onready var label = $Label
+onready var cheats_label = $Cheats
+onready var control = $Control
 onready var texture = $TextureRect
 onready var animation_player = $AnimationPlayer
 onready var transition = $CircleTransition
 
-var press = 0.0
+var cheats = false setget set_cheats
 var pause_is_possible = true
 var game_paused = false setget set_game_paused
 
-func _process(delta):
-	if game_paused:
-		if press < .8:
-			press += delta
-		if press >= .8 and Input.is_action_pressed("secondary") and not transition.running:
-			back_to_menu()
+func _ready():
+	cheats_label.visible = self.cheats
 
 func _input(_event):
 	if Input.is_action_just_pressed("ui_cancel") and pause_is_possible:
 		self.game_paused = !self.game_paused
+	
+	if self.game_paused:
+		if Input.is_key_pressed(KEY_P) and Input.is_key_pressed(KEY_O) \
+				and Input.is_key_pressed(KEY_K) and Input.is_key_pressed(KEY_E):
+			self.cheats = true
 
 func set_game_paused(value):
 	game_paused = value
 	if game_paused:
+		cheats_label.visible = self.cheats
 		get_tree().paused = game_paused
 		animation_player.play("pause_on")
 		emit_signal("pause_shown")
 	else:
+		cheats_label.visible = false
 		animation_player.play("pause_off")
 		emit_signal("pause_hidden")
 
@@ -38,7 +43,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		get_tree().paused = game_paused
 
 func back_to_menu():
-	label.visible = false
+	cheats_label.visible = false
+	control.visible = false
 	texture.visible = false
 	transition.fadeout()
 
@@ -51,3 +57,12 @@ func _on_Help_help_hidden():
 
 func _on_Help_help_shown():
 	pause_is_possible = false
+
+func _on_Button_pressed():
+	back_to_menu()
+
+func set_cheats(value):
+	cheats = value
+	if cheats:
+		emit_signal("cheats_activated")
+		cheats_label.visible = true

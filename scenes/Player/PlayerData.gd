@@ -1,6 +1,7 @@
 extends Node
 
-export(int) var MAX_LIVES = 3
+export(int) var LIVES = 3
+export(int) var MAX_LIVES = 9
 export(int) var MAX_HEALTH = 112
 export(int) var MAX_THRUST = 112
 export(int) var MAX_LASER = 112
@@ -24,7 +25,7 @@ enum Status {
 }
 
 var health = MAX_HEALTH setget set_health
-var lives = MAX_LIVES setget set_lives
+var lives = LIVES setget set_lives
 var thrust = MAX_THRUST setget set_thrust
 var laser = MAX_LASER setget set_laser
 var time = MAX_TIME setget set_time
@@ -66,7 +67,7 @@ func set_status(value):
 
 func reset():
 	health = MAX_HEALTH
-	lives = MAX_LIVES
+	lives = LIVES
 	thrust = MAX_THRUST
 	laser = MAX_LASER
 	time = MAX_TIME

@@ -1,17 +1,18 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Pause/Pause.gd" type="Script" id=1]
-[ext_resource path="res://fonts/joystix.tres" type="DynamicFont" id=2]
+[ext_resource path="res://fonts/joystix-normal.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scenes/Pause/ingame_message.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Transitions/CircleTransition.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/solstice_ui_theme.tres" type="Theme" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "pause_off"
 length = 0.2
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("Label:visible")
-tracks/0/interp = 1
+tracks/0/path = NodePath("TextureRect:visible")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -22,48 +23,36 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("TextureRect:visible")
-tracks/1/interp = 1
+tracks/1/path = NodePath("Control:rect_position")
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -192, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Label:custom_colors/font_color")
+tracks/2/path = NodePath("Control:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.615686, 0.615686, 0.615686, 1 ), Color( 0.184314, 0.282353, 0.305882, 1 ), Color( 0.105882, 0.14902, 0.196078, 1 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Label:rect_position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 56 ), Vector2( -208, 56 ) ]
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=2]
 length = 0.2
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("Label:visible")
-tracks/0/interp = 1
+tracks/0/path = NodePath("TextureRect:visible")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -74,40 +63,28 @@ tracks/0/keys = {
 "values": [ true ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("TextureRect:visible")
-tracks/1/interp = 1
+tracks/1/path = NodePath("Control:rect_position")
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 184, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Label:custom_colors/font_color")
+tracks/2/path = NodePath("Control:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Color( 0.105882, 0.14902, 0.196078, 1 ), Color( 0.184314, 0.282353, 0.305882, 1 ), Color( 0.615686, 0.615686, 0.615686, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Label:rect_position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 208, 56 ), Vector2( 0, 56 ) ]
+"values": [ true ]
 }
 
 [node name="Pause" type="CanvasLayer"]
@@ -125,22 +102,38 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="Control" type="Control" parent="."]
 visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -128.0
-margin_top = -40.0
+margin_top = -34.0
 margin_right = 128.0
-margin_bottom = -8.0
+margin_bottom = -26.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "PAUSE
-RIGHT BUTTON TO QUIT"
+text = "PAUSE"
 align = 1
-valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Control"]
+margin_left = 72.0
+margin_top = 71.0
+margin_right = 184.0
+margin_bottom = 83.0
+theme = ExtResource( 5 )
+text = "RETURN TO MENU"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -150,5 +143,17 @@ anims/pause_off = SubResource( 1 )
 anims/pause_on = SubResource( 2 )
 
 [node name="CircleTransition" parent="." instance=ExtResource( 4 )]
+
+[node name="Cheats" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+margin_bottom = 12.0
+theme = ExtResource( 5 )
+text = "Cheats on"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Control/Button" to="." method="_on_Button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="fadeout_finished" from="CircleTransition" to="." method="_on_CircleTransition_fadeout_finished"]

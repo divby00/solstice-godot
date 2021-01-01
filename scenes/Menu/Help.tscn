@@ -498,7 +498,7 @@ margin_bottom = 2509.0
 
 [node name="Label" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
 margin_right = 224.0
-margin_bottom = 24.0
+margin_bottom = 36.0
 size_flags_vertical = 1
 theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 1 )
@@ -514,8 +514,9 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
+margin_top = 42.0
 margin_right = 224.0
-margin_bottom = 24.0
+margin_bottom = 66.0
 size_flags_vertical = 1
 theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 1 )
@@ -530,9 +531,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 30.0
+margin_top = 72.0
 margin_right = 224.0
-margin_bottom = 134.0
+margin_bottom = 176.0
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer"]
 margin_right = 224.0
@@ -568,9 +569,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 140.0
+margin_top = 182.0
 margin_right = 224.0
-margin_bottom = 296.0
+margin_bottom = 338.0
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer2"]
 margin_right = 224.0
@@ -607,9 +608,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 302.0
+margin_top = 344.0
 margin_right = 224.0
-margin_bottom = 781.0
+margin_bottom = 823.0
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer3"]
 margin_right = 224.0
@@ -698,9 +699,9 @@ texture = ExtResource( 10 )
 stretch_mode = 6
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 787.0
+margin_top = 829.0
 margin_right = 224.0
-margin_bottom = 951.0
+margin_bottom = 993.0
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer4"]
 margin_right = 224.0
@@ -732,7 +733,7 @@ useful for 2 reasons:
 - Stay over it to repair
   your droid.
 - Press down to change one
-  of your droid's lifes for
+  of your droid's lives for
   a teleporter pass.
 "
 align = 3
@@ -741,9 +742,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer5" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 957.0
+margin_top = 999.0
 margin_right = 224.0
-margin_bottom = 1049.0
+margin_bottom = 1091.0
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer5"]
 margin_right = 224.0
@@ -778,9 +779,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer6" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 1055.0
+margin_top = 1097.0
 margin_right = 224.0
-margin_bottom = 1265.0
+margin_bottom = 1307.0
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer6"]
 margin_right = 224.0
@@ -824,9 +825,9 @@ texture = ExtResource( 14 )
 stretch_mode = 6
 
 [node name="VBoxContainer7" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 1271.0
+margin_top = 1313.0
 margin_right = 224.0
-margin_bottom = 1339.0
+margin_bottom = 1381.0
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer7"]
 margin_right = 224.0
@@ -859,9 +860,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer8" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 1345.0
+margin_top = 1387.0
 margin_right = 224.0
-margin_bottom = 1397.0
+margin_bottom = 1439.0
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer8"]
 margin_right = 224.0
@@ -894,9 +895,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer9" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 1403.0
+margin_top = 1445.0
 margin_right = 224.0
-margin_bottom = 1471.0
+margin_bottom = 1513.0
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer9"]
 margin_right = 224.0
@@ -929,9 +930,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer10" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 1477.0
+margin_top = 1519.0
 margin_right = 224.0
-margin_bottom = 1529.0
+margin_bottom = 1571.0
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer10"]
 margin_right = 224.0
@@ -964,9 +965,9 @@ __meta__ = {
 }
 
 [node name="LabelItems" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 1535.0
+margin_top = 1577.0
 margin_right = 224.0
-margin_bottom = 1595.0
+margin_bottom = 1613.0
 size_flags_vertical = 1
 theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 1 )
@@ -982,9 +983,9 @@ __meta__ = {
 }
 
 [node name="LabelItems2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 1535.0
+margin_top = 1619.0
 margin_right = 224.0
-margin_bottom = 1595.0
+margin_bottom = 1643.0
 size_flags_vertical = 1
 theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 1 )
@@ -999,9 +1000,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer11" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 1601.0
+margin_top = 1649.0
 margin_right = 224.0
-margin_bottom = 1689.0
+margin_bottom = 1737.0
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer11"]
 margin_right = 224.0
@@ -1037,9 +1038,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer12" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 1695.0
+margin_top = 1743.0
 margin_right = 224.0
-margin_bottom = 1783.0
+margin_bottom = 1831.0
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer12"]
 margin_right = 224.0
@@ -1075,9 +1076,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer13" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 1789.0
+margin_top = 1837.0
 margin_right = 224.0
-margin_bottom = 1865.0
+margin_bottom = 1913.0
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer13"]
 margin_right = 224.0
@@ -1112,9 +1113,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer14" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 1871.0
+margin_top = 1919.0
 margin_right = 224.0
-margin_bottom = 1947.0
+margin_bottom = 1995.0
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer14"]
 margin_right = 224.0
@@ -1149,9 +1150,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer21" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 1953.0
+margin_top = 2001.0
 margin_right = 224.0
-margin_bottom = 2029.0
+margin_bottom = 2077.0
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer21"]
 margin_right = 224.0
@@ -1186,9 +1187,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer20" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 2035.0
+margin_top = 2083.0
 margin_right = 224.0
-margin_bottom = 2099.0
+margin_bottom = 2147.0
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer20"]
 margin_right = 224.0
@@ -1222,9 +1223,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer15" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 2105.0
+margin_top = 2153.0
 margin_right = 224.0
-margin_bottom = 2169.0
+margin_bottom = 2217.0
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer15"]
 margin_right = 224.0
@@ -1258,9 +1259,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer16" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 2175.0
+margin_top = 2223.0
 margin_right = 224.0
-margin_bottom = 2239.0
+margin_bottom = 2287.0
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer16"]
 margin_right = 224.0
@@ -1294,9 +1295,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer17" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 2245.0
+margin_top = 2293.0
 margin_right = 224.0
-margin_bottom = 2309.0
+margin_bottom = 2357.0
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer17"]
 margin_right = 224.0
@@ -1330,9 +1331,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer18" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 2315.0
+margin_top = 2363.0
 margin_right = 224.0
-margin_bottom = 2367.0
+margin_bottom = 2415.0
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer18"]
 margin_right = 224.0
@@ -1365,9 +1366,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer19" type="VBoxContainer" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer"]
-margin_top = 2373.0
+margin_top = 2421.0
 margin_right = 224.0
-margin_bottom = 2461.0
+margin_bottom = 2509.0
 
 [node name="Label2" type="Label" parent="Control/TabContainer/Objects/ScrollContainer/VBoxContainer/VBoxContainer19"]
 margin_right = 224.0
