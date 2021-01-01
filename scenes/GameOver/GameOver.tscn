@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/GameOver/game_over.png" type="Texture" id=1]
 [ext_resource path="res://fonts/joystix monospace.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://scenes/Transitions/CircleTransition.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/SoundFX/nuclear_explosion.ogg" type="AudioStream" id=6]
 [ext_resource path="res://scenes/SoundFX/game_over.ogg" type="AudioStream" id=7]
+[ext_resource path="res://scenes/Transitions/red_circle_out.tres" type="Texture" id=8]
+[ext_resource path="res://scenes/solstice_ui_theme.tres" type="Theme" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 10
@@ -32,6 +34,7 @@ margin_left = 32.0
 margin_top = 24.0
 margin_right = 224.0
 margin_bottom = 44.0
+theme = ExtResource( 9 )
 custom_fonts/font = SubResource( 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/line_spacing = 10
@@ -52,6 +55,7 @@ margin_left = 92.0
 margin_top = 80.0
 margin_right = 164.0
 margin_bottom = 85.0
+theme = ExtResource( 9 )
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.698039, 0.862745, 0.937255, 1 )
 text = "GAME OVER"
@@ -70,6 +74,7 @@ wait_time = 4.0
 one_shot = true
 
 [node name="CircleTransition" parent="." instance=ExtResource( 5 )]
+circle_in = ExtResource( 8 )
 
 [node name="ExplosionAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )

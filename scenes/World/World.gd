@@ -2,19 +2,18 @@ extends Node
 
 const nuclear_waste_texture = preload("res://scenes/StorageBase/nuclear_waste.png")
 const red_circle_in = preload("res://scenes/Transitions/red_circle_in.tres")
-const red_circle_out = preload("res://scenes/Transitions/red_circle_out.tres")
 
 onready var player = $Player
 onready var camera = $Camera2D
 onready var panel = $UI/Panel
-onready var transition = $Transition
-onready var game_over_transition = $GameOverTransition
-onready var storage_base = $StorageBase
+onready var transition = $UI/Transition
+onready var game_over_transition = $UI/GameOverTransition
+onready var storage_base = $UI/StorageBase
 onready var camera_shake_timer = $CameraShakeTimer
-onready var level_change_label = $LevelChange/Label
+onready var level_change_label = $UI/LevelChange/Label
 onready var animation_player = $AnimationPlayer
-onready var pause = $Pause
-onready var help = $Help
+onready var pause = $UI/Pause
+onready var help = $UI/Help
 
 var cheats = false
 var new_level = null
