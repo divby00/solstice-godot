@@ -54,10 +54,10 @@ func set_health(value):
 		shader_timer.start()
 		sprite.material.set_shader_param("active", true)
 
-func _on_DetectionArea_body_entered(body):
+func _on_DetectionArea_body_entered(_body):
 	bullet_timer.start()
 
-func _on_DetectionArea_body_exited(body):
+func _on_DetectionArea_body_exited(_body):
 	end_alert_timer.start()
 
 func _on_BulletTimer_timeout():
@@ -69,5 +69,5 @@ func _on_EndAlertTimer_timeout():
 func _on_ShaderTimer_timeout():
 	sprite.material.set_shader_param("active", false)
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	animation_player.play("idle")

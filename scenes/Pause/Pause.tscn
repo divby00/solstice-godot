@@ -4,11 +4,7 @@
 [ext_resource path="res://resources/fonts/joystix-normal.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scenes/Pause/ingame_message.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Transition/Transition.tscn" type="PackedScene" id=4]
-[ext_resource path="res://resources/solstice_ui_theme.tres" type="Theme" id=5]
-
-
-
-
+[ext_resource path="res://resources/solstice_theme.tres" type="Theme" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "pause_off"
@@ -146,7 +142,7 @@ __meta__ = {
 anims/pause_off = SubResource( 1 )
 anims/pause_on = SubResource( 2 )
 
-[node name="CircleTransition" parent="." instance=ExtResource( 4 )]
+[node name="Transition" parent="." instance=ExtResource( 4 )]
 
 [node name="Cheats" type="Label" parent="."]
 visible = false
@@ -160,4 +156,4 @@ __meta__ = {
 }
 [connection signal="pressed" from="Control/Button" to="." method="_on_Button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-[connection signal="fadeout_finished" from="CircleTransition" to="." method="_on_CircleTransition_fadeout_finished"]
+[connection signal="fadeout_finished" from="Transition" to="." method="_on_Transition_fadeout_finished"]

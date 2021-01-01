@@ -35,6 +35,7 @@ _global_script_class_icons={
 config/name="Solstice"
 config/description="Equinox remake"
 run/main_scene="res://scenes/Love4Retro/Love4Retro.tscn"
+boot_splash/image="res://resources/textures/splash.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
@@ -43,17 +44,17 @@ config/windows_native_icon="res://solstice.ico"
 
 [audio]
 
-default_bus_layout="res://resources/default_bus_layout.tres"
+default_bus_layout="res://resources/bus_layout.tres"
 
 [autoload]
 
-ResourceLoader="*res://scenes/ResourceLoader.gd"
-PlayerData="*res://scenes/Player/PlayerData.gd"
-LevelData="*res://scenes/Levels/LevelData.gd"
+ResourceLoader="*res://scripts/ResourceLoader.gd"
+PlayerData="*res://scripts/PlayerData.gd"
+LevelData="*res://scripts/LevelData.gd"
 SoundFx="*res://scenes/SoundFX/SoundFX.tscn"
-Utils="*res://scenes/Utils.gd"
-Configuration="*res://scenes/Configuration.gd"
-GameState="*res://scenes/GameState.gd"
+Utils="*res://scripts/Utils.gd"
+Configuration="*res://scripts/Configuration.gd"
+GameState="*res://scripts/GameState.gd"
 
 [display]
 
@@ -62,7 +63,7 @@ window/size/height=192
 window/size/resizable=false
 window/size/test_width=1024
 window/size/test_height=768
-mouse_cursor/custom_image="res://scenes/Player/big_cursor.png"
+mouse_cursor/custom_image="res://resources/textures/cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2( 35, 35 )
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"

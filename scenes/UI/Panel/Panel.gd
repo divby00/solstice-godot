@@ -32,7 +32,7 @@ func on_info_area_entered(info_area):
 	info_area_label.text = info_area.text
 	animation_player.play("animate")
 
-func on_info_area_exited(info_area):
+func on_info_area_exited(_info_area):
 	info_area_label.text = ""
 	animation_player.play_backwards("animate")
 
@@ -71,5 +71,5 @@ func change_color_bar(value, bar):
 	else:
 		bar.texture = RedPatch
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	info_area_label.visible = true

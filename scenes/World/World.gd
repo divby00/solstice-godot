@@ -1,6 +1,6 @@
 extends Node
 
-const nuclear_waste_texture = preload("res://scenes/StorageBase/nuclear_waste.png")
+const nuclear_waste_texture = preload("res://scenes/UI/StorageBase/nuclear_waste.png")
 const red_circle_in = preload("res://resources/animated_textures/red_circle_in.tres")
 
 onready var player = $Player
@@ -214,6 +214,7 @@ func on_game_over():
 	
 func _on_GameOverTransition_fadeout_finished(_transition_name):
 	PlayerData.reset()
+# warning-ignore:return_value_discarded
 	get_tree().change_scene_to(ResourceLoader.GameOver)
 
 func on_explosion_triggered():
@@ -224,11 +225,12 @@ func on_explosion_triggered():
 func _on_Transition_fadein_finished(transition_name):
 	help.help_is_posible = true
 	if transition_name == "explosion":
+# warning-ignore:return_value_discarded
 		get_tree().change_scene_to(ResourceLoader.TimeOver)
 
 func on_cheats_activated():
 	cheats = true
 
-func _input(event):
+func _input(_event):
 	if cheats and (Input.is_key_pressed(KEY_KP_ADD) or Input.is_key_pressed(KEY_PLUS)):
 		PlayerData.lives += 1

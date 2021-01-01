@@ -16,8 +16,8 @@ var running = false
 func _ready():
 	fading.hide()
 
-func fadein(transition_name="transition"):
-	self.transition_name = transition_name
+func fadein(transit_name="transition"):
+	self.transition_name = transit_name
 	fading.show()
 	circle_in.current_frame = 0
 	circle_in.oneshot = true
@@ -30,8 +30,8 @@ func _on_TimerIn_timeout():
 	running = false
 	emit_signal("fadein_finished", transition_name)
 
-func fadeout(transition_name="transition"):
-	self.transition_name = transition_name
+func fadeout(transit_name="transition"):
+	self.transition_name = transit_name
 	fading.show()
 	circle_out.current_frame = 0
 	circle_out.oneshot = true

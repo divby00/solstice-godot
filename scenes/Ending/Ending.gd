@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var label = $Label
-onready var transition = $CircleTransition
+onready var transition = $Transition
 onready var love4retro = $Love4Retro
 onready var animation_player = $AnimationPlayer
 onready var voice_player = $VoicePlayer
@@ -28,8 +28,9 @@ func _on_AnimationPlayer_animation_started(anim_name):
 		love4retro.visible = true
 		finished = true
 
-func _on_CircleTransition_fadeout_finished(transition_name):
+func _on_Transition_fadeout_finished(_transition_name):
 	visible = false
 	GameState.remove()
+# warning-ignore:return_value_discarded
 	get_tree().change_scene_to(ResourceLoader.Intro)
 	

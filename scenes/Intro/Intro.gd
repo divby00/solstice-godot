@@ -4,20 +4,17 @@ const BlueStar = preload("res://scenes/Effects/BlueStar/BlueStar.tscn")
 
 onready var help = $Help
 onready var timer: Timer = $Timer
-onready var credits_timer: Timer = $CreditsTimer
+onready var transition = $Transition
 onready var camera: Camera2D = $Camera2D
 onready var polygon: Polygon2D = $Polygon2D
+onready var main_menu = $MainMenu/NinePatchRect
 onready var title_sprite: Sprite = $TitleSprite
 onready var credits_tween: Tween = $CreditsTween
+onready var credits_timer: Timer = $CreditsTimer
+onready var options_menu = $OptionsMenu/NinePatchRect
 onready var label_skip: Label = $CanvasLayer/LabelSkip
-onready var transition = $CircleTransition
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var label: Label = $CanvasLayer/CenterContainer/VBoxContainer/Label
-onready var main_menu = $MainMenu/NinePatchRect
-onready var options_menu = $OptionsMenu/NinePatchRect
-
-var status = Status.SCROLLING
-var message_index = 0
 
 enum Status {
 	SCROLLING,
@@ -26,6 +23,11 @@ enum Status {
 	IN_MENU,
 	WORKING,
 }
+
+var tween_steps = 0
+var credits_index = 0
+var message_index = 0
+var status = Status.SCROLLING
 
 var credits = [
 	"2020 Love4Retro games",
@@ -46,9 +48,6 @@ var messages = [
 	"...unknow entities have taken\nover the most powerful nuclear\npower plant in the world!",
 	"The threat of a nuclear winter\nis bigger than ever..."
 ]
-
-var credits_index = 0
-var tween_steps = 0
 
 func _ready():
 	help.help_is_posible = false
@@ -108,13 +107,16 @@ func start_tween():
 	tween_steps = 0
 	label_skip.rect_position.y = 192
 	label_skip.text = credits[credits_index]
+# warning-ignore:return_value_discarded
 	credits_tween.interpolate_property(label_skip, "rect_position", Vector2(0, 192), Vector2(0, 152), 2.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+# warning-ignore:return_value_discarded
 	credits_tween.start()
 
 func _on_CreditsTween_tween_step(_object, _key, _elapsed, _value):
 	tween_steps += 1
 	if tween_steps == 70:
 		label_skip.rect_position.y = 168
+# warning-ignore:return_value_discarded
 		credits_tween.stop(label_skip, "rect_position")
 		credits_timer.start()
 
@@ -132,14 +134,16 @@ func quit_game():
 	transition.fadeout("quit")
 
 func _on_CreditsTimer_timeout():
+# warning-ignore:return_value_discarded
 	credits_tween.resume(label_skip, "rect_position")
 
-func _on_CircleTransition_fadein_finished(transition_name):
+func _on_Transition_fadein_finished(_transition_name):
 	help.help_is_posible = true
 
-func _on_CircleTransition_fadeout_finished(transition_name):
+func _on_Transition_fadeout_finished(transition_name):
 	visible = false
 	if transition_name == "start" or transition_name == "continue":
+# warning-ignore:return_value_discarded
 		get_tree().change_scene_to(ResourceLoader.WorldScene)
 	else:
 		label.visible = false

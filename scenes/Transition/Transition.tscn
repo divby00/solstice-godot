@@ -4,8 +4,7 @@
 [ext_resource path="res://resources/animated_textures/circle_out.tres" type="Texture" id=2]
 [ext_resource path="res://resources/animated_textures/circle_in.tres" type="Texture" id=3]
 
-
-[node name="CircleTransition" type="CanvasLayer"]
+[node name="Transition" type="CanvasLayer"]
 script = ExtResource( 1 )
 circle_in = ExtResource( 3 )
 circle_out = ExtResource( 2 )

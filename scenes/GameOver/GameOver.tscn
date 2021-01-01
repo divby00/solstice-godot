@@ -8,13 +8,7 @@
 [ext_resource path="res://resources/sfx/nuclear_explosion.ogg" type="AudioStream" id=6]
 [ext_resource path="res://resources/sfx/game_over.ogg" type="AudioStream" id=7]
 [ext_resource path="res://resources/animated_textures/red_circle_out.tres" type="Texture" id=8]
-[ext_resource path="res://resources/solstice_ui_theme.tres" type="Theme" id=9]
-
-
-
-
-
-
+[ext_resource path="res://resources/solstice_theme.tres" type="Theme" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 10
@@ -79,7 +73,7 @@ one_shot = true
 wait_time = 4.0
 one_shot = true
 
-[node name="CircleTransition" parent="." instance=ExtResource( 5 )]
+[node name="Transition" parent="." instance=ExtResource( 5 )]
 circle_in = ExtResource( 8 )
 
 [node name="ExplosionAudioPlayer" type="AudioStreamPlayer" parent="."]
@@ -91,5 +85,5 @@ stream = ExtResource( 7 )
 bus = "SFX"
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="VoiceTimer" to="." method="_on_VoiceTimer_timeout"]
-[connection signal="fadein_finished" from="CircleTransition" to="." method="_on_CircleTransition_fadein_finished"]
-[connection signal="fadeout_finished" from="CircleTransition" to="." method="_on_CircleTransition_fadeout_finished"]
+[connection signal="fadein_finished" from="Transition" to="." method="_on_Transition_fadein_finished"]
+[connection signal="fadeout_finished" from="Transition" to="." method="_on_Transition_fadeout_finished"]

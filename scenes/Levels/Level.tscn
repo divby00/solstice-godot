@@ -1,13 +1,15 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Levels/Level.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Levels/tileset.tres" type="TileSet" id=2]
-[ext_resource path="res://scenes/Levels/background.tres" type="TileSet" id=3]
+[ext_resource path="res://resources/tilesets/tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://resources/tilesets/background.tres" type="TileSet" id=3]
 [ext_resource path="res://scenes/Enemies/Spawner/Spawners.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/NuclearContainer/NuclearContainer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Elevator/Elevator.tscn" type="PackedScene" id=6]
 [ext_resource path="res://resources/music/sexxxy_bit_3.ogg" type="AudioStream" id=7]
 [ext_resource path="res://scenes/TeleportPassDispatcher/TeleportPassDispatcher.tscn" type="PackedScene" id=8]
+
+
 
 
 

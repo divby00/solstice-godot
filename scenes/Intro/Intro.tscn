@@ -8,16 +8,9 @@
 [ext_resource path="res://resources/music/girl_from_mars.ogg" type="AudioStream" id=6]
 [ext_resource path="res://scenes/Intro/credits_dithering.png" type="Texture" id=7]
 [ext_resource path="res://scenes/Transition/Transition.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/Menu/MainMenu/MainMenu.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/Menu/OptionsMenu/OptionsMenu.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/UI/MainMenu/MainMenu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/UI/OptionsMenu/OptionsMenu.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/Help/Help.tscn" type="PackedScene" id=11]
-
-
-
-
-
-
-
 
 [sub_resource type="Animation" id=1]
 resource_name = "scroll"
@@ -220,7 +213,7 @@ visible = false
 
 [node name="OptionsMenu" parent="." instance=ExtResource( 10 )]
 
-[node name="CircleTransition" parent="." instance=ExtResource( 8 )]
+[node name="Transition" parent="." instance=ExtResource( 8 )]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="tween_all_completed" from="CreditsTween" to="." method="_on_CreditsTween_tween_all_completed"]
@@ -231,8 +224,8 @@ visible = false
 [connection signal="music_volume_changed" from="OptionsMenu" to="." method="_on_OptionsMenu_music_volume_changed"]
 [connection signal="return_to_main_menu" from="OptionsMenu" to="." method="_on_OptionsMenu_return_to_main_menu"]
 [connection signal="sound_volume_changed" from="OptionsMenu" to="." method="_on_OptionsMenu_sound_volume_changed"]
-[connection signal="fadein_finished" from="CircleTransition" to="." method="_on_CircleTransition_fadein_finished"]
-[connection signal="fadeout_finished" from="CircleTransition" to="." method="_on_CircleTransition_fadeout_finished"]
+[connection signal="fadein_finished" from="Transition" to="." method="_on_Transition_fadein_finished"]
+[connection signal="fadeout_finished" from="Transition" to="." method="_on_Transition_fadeout_finished"]
 
 [editable path="MainMenu"]
 

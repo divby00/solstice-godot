@@ -1,6 +1,6 @@
 [gd_scene load_steps=33 format=2]
 
-[ext_resource path="res://resources/solstice_ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://resources/solstice_theme.tres" type="Theme" id=1]
 [ext_resource path="res://resources/fonts/joystix monospace.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://scenes/Help/move_left.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Help/Help.gd" type="Script" id=4]
@@ -31,6 +31,7 @@
 [ext_resource path="res://scenes/Help/key.png" type="Texture" id=29]
 [ext_resource path="res://scenes/Help/bomb.png" type="Texture" id=30]
 [ext_resource path="res://scenes/Help/pass.png" type="Texture" id=31]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 10

@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Transition/Transition.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/UI/StorageBase/StorageBase.gd" type="Script" id=2]
+[ext_resource path="res://scenes/UI/StorageBase/storage_base.png" type="Texture" id=3]
+[ext_resource path="res://scenes/UI/StorageBase/nuclear_waste.png" type="Texture" id=4]
+
+[node name="StorageBase" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Background" type="Sprite" parent="."]
+visible = false
+position = Vector2( 128, 72 )
+texture = ExtResource( 3 )
+
+[node name="WasteSprite1" type="Sprite" parent="Background"]
+visible = false
+position = Vector2( -64, -32 )
+texture = ExtResource( 4 )
+
+[node name="WasteSprite2" type="Sprite" parent="Background"]
+visible = false
+position = Vector2( -24, -32 )
+texture = ExtResource( 4 )
+
+[node name="WasteSprite3" type="Sprite" parent="Background"]
+visible = false
+position = Vector2( 16, -32 )
+texture = ExtResource( 4 )
+
+[node name="WasteSprite4" type="Sprite" parent="Background"]
+visible = false
+position = Vector2( 56, -32 )
+texture = ExtResource( 4 )
+
+[node name="WasteSprite5" type="Sprite" parent="Background"]
+visible = false
+position = Vector2( -64, 8 )
+texture = ExtResource( 4 )
+
+[node name="WasteSprite6" type="Sprite" parent="Background"]
+visible = false
+position = Vector2( -24, 8 )
+texture = ExtResource( 4 )
+
+[node name="WasteSprite7" type="Sprite" parent="Background"]
+visible = false
+position = Vector2( 16, 8 )
+texture = ExtResource( 4 )
+
+[node name="WasteSprite8" type="Sprite" parent="Background"]
+visible = false
+position = Vector2( 56, 8 )
+texture = ExtResource( 4 )
+
+[node name="Transition" parent="." instance=ExtResource( 1 )]
+[connection signal="fadeout_finished" from="Transition" to="." method="_on_Transition_fadeout_finished"]
