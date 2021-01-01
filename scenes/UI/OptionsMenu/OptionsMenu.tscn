@@ -5,7 +5,6 @@
 [ext_resource path="res://resources/solstice_theme.tres" type="Theme" id=3]
 [ext_resource path="res://scenes/UI/menu_panel.png" type="Texture" id=4]
 
-
 [node name="OptionsMenu" type="CanvasLayer"]
 script = ExtResource( 2 )
 
