@@ -3,8 +3,8 @@ extends KinematicBody2D
 signal enemy_died(enemy)
 signal enemy_attacked(damage)
 
-const Bullet = preload("res://scenes/Enemies/Bullet.tscn")
-const BigExplosion = preload("res://scenes/Effects/BigExplosionParticles.tscn")
+const Bullet = preload("res://scenes/Enemies/Bullet/Bullet.tscn")
+const BigExplosion = preload("res://scenes/Effects/BigExplosion/BigExplosion.tscn")
 
 onready var sprite = $Sprite
 onready var shader_timer = $ShaderTimer

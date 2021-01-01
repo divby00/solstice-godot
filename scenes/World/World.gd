@@ -1,7 +1,7 @@
 extends Node
 
 const nuclear_waste_texture = preload("res://scenes/StorageBase/nuclear_waste.png")
-const red_circle_in = preload("res://scenes/Transitions/red_circle_in.tres")
+const red_circle_in = preload("res://resources/animated_textures/red_circle_in.tres")
 
 onready var player = $Player
 onready var camera = $Camera2D

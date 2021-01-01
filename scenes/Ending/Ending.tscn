@@ -1,14 +1,19 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://fonts/joystix monospace.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://resources/fonts/joystix monospace.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/Ending/ending.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Ending/bottom.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Ending/top.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Ending/Ending.gd" type="Script" id=5]
-[ext_resource path="res://music/poppy_flower_girls.ogg" type="AudioStream" id=6]
-[ext_resource path="res://scenes/Transitions/CircleTransition.tscn" type="PackedScene" id=7]
-[ext_resource path="res://fonts/joystix.tres" type="DynamicFont" id=8]
-[ext_resource path="res://scenes/SoundFX/congrats.ogg" type="AudioStream" id=9]
+[ext_resource path="res://resources/music/poppy_flower_girls.ogg" type="AudioStream" id=6]
+[ext_resource path="res://scenes/Transition/Transition.tscn" type="PackedScene" id=7]
+[ext_resource path="res://resources/fonts/joystix.tres" type="DynamicFont" id=8]
+[ext_resource path="res://resources/sfx/congrats.ogg" type="AudioStream" id=9]
+
+
+
+
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 10

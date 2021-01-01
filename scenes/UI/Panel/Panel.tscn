@@ -1,0 +1,141 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://resources/fonts/joystix.tres" type="DynamicFont" id=1]
+[ext_resource path="res://resources/fonts/joystix monospace.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/UI/Panel/blue_patch.png" type="Texture" id=3]
+[ext_resource path="res://scenes/UI/Panel/Panel.gd" type="Script" id=4]
+[ext_resource path="res://scenes/UI/Panel/panel.png" type="Texture" id=5]
+[ext_resource path="res://scenes/UI/Panel/info_area.png" type="Texture" id=6]
+[ext_resource path="res://scenes/UI/Panel/health.png" type="Texture" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "animate"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+size = 10
+extra_spacing_top = -2
+extra_spacing_bottom = -2
+font_data = ExtResource( 2 )
+
+[node name="Panel" type="CanvasLayer"]
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -128.0
+margin_top = -48.0
+margin_right = 128.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LivesLabel" type="Label" parent="."]
+margin_left = 48.0
+margin_top = 178.0
+margin_right = 56.0
+margin_bottom = 188.0
+custom_fonts/font = ExtResource( 1 )
+custom_constants/line_spacing = 0
+custom_constants/shadow_offset_y = 0
+text = "3
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemTexture" type="TextureRect" parent="."]
+margin_left = 12.0
+margin_top = 160.0
+margin_right = 28.0
+margin_bottom = 176.0
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 128, 148 )
+texture = ExtResource( 6 )
+vframes = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/animate = SubResource( 1 )
+
+[node name="InfoAreaLabel" type="Label" parent="."]
+visible = false
+margin_top = 144.0
+margin_right = 256.0
+margin_bottom = 152.0
+custom_fonts/font = SubResource( 2 )
+text = "bbbbbbb"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ThrustNinePatchRect" type="NinePatchRect" parent="."]
+margin_left = 136.0
+margin_top = 161.0
+margin_right = 248.0
+margin_bottom = 167.0
+texture = ExtResource( 3 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LaserNinePatchRect" type="NinePatchRect" parent="."]
+margin_left = 136.0
+margin_top = 169.0
+margin_right = 248.0
+margin_bottom = 175.0
+texture = ExtResource( 3 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeNinePatchRect" type="NinePatchRect" parent="."]
+margin_left = 136.0
+margin_top = 177.0
+margin_right = 248.0
+margin_bottom = 183.0
+texture = ExtResource( 3 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthSprite" type="Sprite" parent="."]
+position = Vector2( 52, 168 )
+texture = ExtResource( 7 )
+hframes = 9
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

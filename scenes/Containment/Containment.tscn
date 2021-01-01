@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://scenes/Containment/right.tres" type="Texture" id=1]
-[ext_resource path="res://scenes/Containment/left.tres" type="Texture" id=2]
-[ext_resource path="res://scenes/Containment/ray.tres" type="Texture" id=3]
+[ext_resource path="res://resources/animated_textures/containment_right.tres" type="Texture" id=1]
+[ext_resource path="res://resources/animated_textures/containment_left.tres" type="Texture" id=2]
+[ext_resource path="res://resources/animated_textures/containment_ray.tres" type="Texture" id=3]
 [ext_resource path="res://scenes/InfoAreas/InfoArea.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]

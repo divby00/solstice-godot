@@ -2,7 +2,7 @@ extends Node2D
 
 signal lock_opened(lock)
 
-const BigExplosionParticles = preload("res://scenes/Effects/BigExplosionParticles.tscn")
+const BigExplosion = preload("res://scenes/Effects/BigExplosion/BigExplosion.tscn")
 
 export(int) var OPENING_EXPLOSIONS = 5
 export(String) var opened_by = ""
@@ -34,7 +34,7 @@ func open():
 					global_position.x + rand_range(0, sprite_size.x / sprite.hframes), 
 					global_position.y + rand_range((sprite_size.y / sprite.vframes) * -1, 0)
 			)
-			var explosion = BigExplosionParticles.instance()
+			var explosion = BigExplosion.instance()
 			explosion.emitting = true
 			explosion.remove_when_finish = true
 			explosion.global_position = position

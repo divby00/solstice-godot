@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/Love4Retro/love4retro.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Love4Retro/Love4Retro.gd" type="Script" id=2]
-[ext_resource path="res://scenes/Transitions/CircleTransition.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Transition/Transition.tscn" type="PackedScene" id=3]
 
 [node name="Love4Retro" type="Node2D"]
 script = ExtResource( 2 )

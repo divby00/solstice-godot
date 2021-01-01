@@ -6,21 +6,34 @@
 [ext_resource path="res://scenes/NonInteractiveObjects/Beholder.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/NonInteractiveObjects/BigDrill.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/NonInteractiveObjects/Sponge.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/Locks/DoorLock.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/Items/ItemBattery.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/Items/ItemFuse.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/Items/ItemKey.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/Items/ItemNuclearWaste.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/Items/ItemPass04.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/Items/ItemRedBarrel.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/Items/ItemBomb.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/Locks/DoorLock/DoorLock.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Items/ItemBattery/ItemBattery.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Items/ItemFuse/ItemFuse.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Items/ItemKey/ItemKey.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Items/ItemNuclearWaste/ItemNuclearWaste.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/Items/ItemPass04/ItemPass04.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/Items/ItemFuel/ItemFuel.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/Items/ItemBomb/ItemBomb.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/OneWayPass/OneWayPass.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/Rail/Rail.tscn" type="PackedScene" id=17]
-[ext_resource path="res://scenes/Items/ItemTeleportPass.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scenes/Items/ItemTeleportPass/ItemTeleportPass.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scenes/NonInteractiveObjects/MagneticDoor.tscn" type="PackedScene" id=19]
-[ext_resource path="res://scenes/Enemies/Spawner.tscn" type="PackedScene" id=20]
-[ext_resource path="res://scenes/Locks/FuseLock.tscn" type="PackedScene" id=21]
-[ext_resource path="res://music/crush.ogg" type="AudioStream" id=22]
+[ext_resource path="res://scenes/Enemies/Spawner/Spawner.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/Locks/FuseLock/FuseLock.tscn" type="PackedScene" id=21]
+[ext_resource path="res://resources/music/crush.ogg" type="AudioStream" id=22]
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 32 )

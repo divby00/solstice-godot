@@ -4,24 +4,44 @@
 [ext_resource path="res://scenes/MagneticArea/MagneticArea.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Teleporter/TeleporterGroup.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/NonInteractiveObjects/Beholder.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/Items/ItemDrill.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/Items/ItemFuse.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/Items/ItemBattery.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/Items/ItemNuclearWaste.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/Items/ItemPass07.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/Items/ItemRedBarrel.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/Items/ItemTeleportPass.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/Items/ItemTnt.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/Items/ItemLandmine.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/Locks/DumpLock.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/Locks/LandLock.tscn" type="PackedScene" id=16]
-[ext_resource path="res://scenes/Locks/SteelLock.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/Items/ItemDrill/ItemDrill.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Items/ItemFuse/ItemFuse.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Items/ItemBattery/ItemBattery.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Items/ItemNuclearWaste/ItemNuclearWaste.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Items/ItemPass07/ItemPass07.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Items/ItemFuel/ItemFuel.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Items/ItemTeleportPass/ItemTeleportPass.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/Items/ItemTnt/ItemTnt.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/Items/ItemGoma2/ItemGoma2.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/Locks/RubbishLock/RubbishLock.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/Locks/StoneLock/StoneLock.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/Locks/SteelLock/SteelLock.tscn" type="PackedScene" id=17]
 [ext_resource path="res://scenes/NonInteractiveObjects/MagneticDoor.tscn" type="PackedScene" id=18]
-[ext_resource path="res://scenes/Locks/FuseLock.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/Locks/FuseLock/FuseLock.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scenes/NonInteractiveObjects/Blob.tscn" type="PackedScene" id=20]
-[ext_resource path="res://scenes/Enemies/Spawner.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/Enemies/Spawner/Spawner.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/Rail/Rail.tscn" type="PackedScene" id=22]
-[ext_resource path="res://music/bit_loader.ogg" type="AudioStream" id=23]
+[ext_resource path="res://resources/music/bit_loader.ogg" type="AudioStream" id=23]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 24 )

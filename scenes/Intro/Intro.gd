@@ -1,7 +1,8 @@
 extends Node2D
 
-const BlueStarEffect = preload("res://scenes/Effects/BlueStarEffect.tscn")
+const BlueStar = preload("res://scenes/Effects/BlueStar/BlueStar.tscn")
 
+onready var help = $Help
 onready var timer: Timer = $Timer
 onready var credits_timer: Timer = $CreditsTimer
 onready var camera: Camera2D = $Camera2D
@@ -14,7 +15,6 @@ onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var label: Label = $CanvasLayer/CenterContainer/VBoxContainer/Label
 onready var main_menu = $MainMenu/NinePatchRect
 onready var options_menu = $OptionsMenu/NinePatchRect
-onready var help = $Help
 
 var status = Status.SCROLLING
 var message_index = 0
@@ -89,9 +89,9 @@ func _input(event):
 
 func create_star(star_position):
 	if Geometry.is_point_in_polygon(star_position, polygon.polygon):
-		var blue_star_effect = BlueStarEffect.instance()
-		blue_star_effect.global_position = star_position
-		polygon.add_child(blue_star_effect)
+		var blue_star = BlueStar.instance()
+		blue_star.global_position = star_position
+		polygon.add_child(blue_star)
 
 func _on_Timer_timeout():
 	message_index += 1

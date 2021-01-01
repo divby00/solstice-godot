@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/green_star_particle.png-d83825d8217ad7140b0a86fa67065ab5.stex"
+
+[resource]
+atlas = SubResource( 1 )
+region = Rect2( 0, 0, 32, 8 )

@@ -1,10 +1,14 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Pause/Pause.gd" type="Script" id=1]
-[ext_resource path="res://fonts/joystix-normal.tres" type="DynamicFont" id=2]
+[ext_resource path="res://resources/fonts/joystix-normal.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scenes/Pause/ingame_message.png" type="Texture" id=3]
-[ext_resource path="res://scenes/Transitions/CircleTransition.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/solstice_ui_theme.tres" type="Theme" id=5]
+[ext_resource path="res://scenes/Transition/Transition.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/solstice_ui_theme.tres" type="Theme" id=5]
+
+
+
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "pause_off"

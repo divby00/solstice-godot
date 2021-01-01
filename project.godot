@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "ItemDefs",
 "language": "GDScript",
-"path": "res://scenes/Items/ItemDefs.gd"
+"path": "res://scenes/Items/ItemDefinitions.gd"
 }, {
 "base": "StaticBody2D",
 "class": "Teleporter",
@@ -43,7 +43,7 @@ config/windows_native_icon="res://solstice.ico"
 
 [audio]
 
-default_bus_layout="res://scenes/default_bus_layout.tres"
+default_bus_layout="res://resources/default_bus_layout.tres"
 
 [autoload]
 

@@ -5,11 +5,16 @@
 [ext_resource path="res://scenes/Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/UI/UI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/World/World.gd" type="Script" id=5]
-[ext_resource path="res://scenes/Transitions/CircleTransition.tscn" type="PackedScene" id=6]
-[ext_resource path="res://fonts/joystix.tres" type="DynamicFont" id=7]
+[ext_resource path="res://scenes/Transition/Transition.tscn" type="PackedScene" id=6]
+[ext_resource path="res://resources/fonts/joystix.tres" type="DynamicFont" id=7]
 [ext_resource path="res://scenes/Pause/small_ingame_message.png" type="Texture" id=8]
-[ext_resource path="res://scenes/Menu/Help.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/Transitions/red_circle_in.tres" type="Texture" id=10]
+[ext_resource path="res://scenes/Help/Help.tscn" type="PackedScene" id=9]
+[ext_resource path="res://resources/animated_textures/red_circle_in.tres" type="Texture" id=10]
+
+
+
+
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "new_area"

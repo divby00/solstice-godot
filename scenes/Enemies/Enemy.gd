@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 class_name Enemy
 
-const GreenExplosionEffect = preload("res://scenes/Effects/GreenExplosionEffect.tscn")
+const GreenExplosion = preload("res://scenes/Effects/GreenExplosion/GreenExplosion.tscn")
 
 signal enemy_died(enemy)
 signal enemy_attacked(damage)
@@ -47,7 +47,7 @@ func _on_Hitbox_body_exited(_body):
 func set_health(value):
 	health = clamp(value, 0, MAX_HEALTH)
 	if health <= 0:
-		var explosion = GreenExplosionEffect.instance()
+		var explosion = GreenExplosion.instance()
 		explosion.global_position = position
 		get_tree().current_scene.add_child(explosion)
 		SoundFx.play("explosion")

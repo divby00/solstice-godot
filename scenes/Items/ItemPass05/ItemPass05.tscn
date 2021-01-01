@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Items/Item.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Items/ItemPass05/item-pass-05.png" type="Texture" id=2]
+
+[node name="ItemPass05" instance=ExtResource( 1 )]
+item_name = "pass05"
+
+[node name="Sprite" parent="." index="1"]
+position = Vector2( 8, -8 )
+texture = ExtResource( 2 )
+
+[node name="InfoArea" parent="." index="3"]
+text = "Security pass"

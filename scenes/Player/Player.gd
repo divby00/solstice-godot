@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const BigExplosion = preload("res://scenes/Effects/BigExplosionParticles.tscn")
+const BigExplosion = preload("res://scenes/Effects/BigExplosion/BigExplosion.tscn")
 
 onready var laser = $Laser
 onready var invincible_timer = $InvincibleTimer
