@@ -4,14 +4,14 @@
 [ext_resource path="res://scenes/Items/ItemPass02/ItemPass02.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Items/ItemPass01/ItemPass01.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Items/ItemPass03/ItemPass03.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Enemies/EyesBlob/EyesBlob.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Items/ItemPass04/ItemPass04.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Items/ItemPass05/ItemPass05.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Items/ItemPass06/ItemPass06.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Items/ItemPass07/ItemPass07.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/Items/ItemPass08/ItemPass08.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/Enemies/ExplosiveBlob/ExposiveBlob.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Enemies/Medusoid/Medusoid.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/Enemies/Worm/Worm.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/Enemies/EnemyBase.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/Enemies/TentaclePlant/TentaclePlant.tscn" type="PackedScene" id=14]
 
 [node name="Level00" instance=ExtResource( 1 )]
@@ -53,15 +53,21 @@ position = Vector2( 24, 256 )
 [node name="Elevator" parent="." index="8"]
 position = Vector2( 216, 256 )
 
-[node name="ExposiveBlob" parent="." index="11" instance=ExtResource( 11 )]
-position = Vector2( -8, 248 )
-
-[node name="Worm" parent="." index="12" instance=ExtResource( 12 )]
+[node name="Worm" parent="." index="11" instance=ExtResource( 12 )]
 position = Vector2( 336, 96 )
 rotation = -1.5708
 
-[node name="EnemyBase" parent="." index="13" instance=ExtResource( 13 )]
-position = Vector2( 136, 104 )
-
-[node name="TentaclePlant" parent="." index="14" instance=ExtResource( 14 )]
+[node name="TentaclePlant" parent="." index="12" instance=ExtResource( 14 )]
 position = Vector2( 112, 136 )
+
+[node name="EyesBlob" parent="." index="13" instance=ExtResource( 5 )]
+position = Vector2( -8, 237 )
+
+[node name="EyesBlob2" parent="." index="14" instance=ExtResource( 5 )]
+position = Vector2( -94, 173 )
+rotation = 1.5708
+
+[node name="Medusoid" parent="." index="15" instance=ExtResource( 11 )]
+position = Vector2( 107, 110 )
+
+[editable path="TentaclePlant"]

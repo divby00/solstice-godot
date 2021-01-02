@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Enemies/EyesBlob/eyes_blob.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Enemies/EyesBlob/EyesBlob.gd" type="Script" id=3]
+[ext_resource path="res://resources/shaders/enemy_hurt.shader" type="Shader" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 4 )
+shader_param/color = Color( 0.745098, 0.14902, 0.2, 1 )
+shader_param/active = false
+
+[sub_resource type="Animation" id=2]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 12, 12 )
+
+[node name="EyesBlob" instance=ExtResource( 1 )]
+position = Vector2( 0, -12 )
+script = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="0"]
+material = SubResource( 1 )
+texture = ExtResource( 2 )
+hframes = 8
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "idle"
+anims/idle = SubResource( 2 )
+
+[node name="Hurtbox" parent="." index="2"]
+collision_mask = 12
+health = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="6"]
+polygon = PoolVector2Array( -10, -6, -4, -9, 3, -9, 8, -6, 9, 10, -10, 10 )

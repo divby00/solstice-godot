@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/blue_medusoid_spawn.png-49ad1fb5f0e006e800f8808a40e80890.stex"
+path="res://.import/eyes_blob.png-72ee598b0122e03509f87a4d0562c83a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Enemies/BlueMedusoid/blue_medusoid_spawn.png"
-dest_files=[ "res://.import/blue_medusoid_spawn.png-49ad1fb5f0e006e800f8808a40e80890.stex" ]
+source_file="res://scenes/Enemies/EyesBlob/eyes_blob.png"
+dest_files=[ "res://.import/eyes_blob.png-72ee598b0122e03509f87a4d0562c83a.stex" ]
 
 [params]
 

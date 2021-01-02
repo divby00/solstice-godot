@@ -1,6 +1,6 @@
 extends Node2D
 
-const BlueMedusoid = preload("res://scenes/Enemies/BlueMedusoid/BlueMedusoid.tscn")
+const Medusoid = preload("res://scenes/Enemies/Medusoid/Medusoid.tscn")
 
 export(int) var MAX_ENEMIES = 50
 onready var enemies: int = 0 setget set_enemies
@@ -23,7 +23,7 @@ func get_ready_spawners():
 func spawn_enemy(spawner):
 	spawner.starts()
 	self.enemies += 1
-	var enemy = BlueMedusoid.instance()
+	var enemy = Medusoid.instance()
 	enemy.global_position = spawner.global_position
 	enemy.connect("enemy_attacked", ResourceLoader.player, "on_enemy_attacked")
 	enemy.connect("enemy_died", self, "on_enemy_died")

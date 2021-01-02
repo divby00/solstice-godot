@@ -1,4 +1,4 @@
-extends "res://scenes/Enemies/EnemyBase.gd"
+extends "res://scenes/Enemies/Enemy.gd"
 
 export(float) var shoot_frequency = .3
 

@@ -1,7 +1,5 @@
 extends Position2D
 
-const BlueMedusoid = preload("res://scenes/Enemies/BlueMedusoid/BlueMedusoid.tscn")
-
 const Spawners = {
 	"red": preload("res://scenes/Enemies/Spawner/red_enemy_spawner.png"),
 	"green": preload("res://scenes/Enemies/Spawner/green_enemy_spawner.png"),
