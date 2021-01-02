@@ -4,7 +4,6 @@
 [ext_resource path="res://scenes/Enemies/Spawner/blue_enemy_spawner.png" type="Texture" id=2]
 [ext_resource path="res://resources/sfx/enemy_spawn.ogg" type="AudioStream" id=3]
 
-
 [sub_resource type="Animation" id=1]
 length = 1.8
 tracks/0/type = "value"

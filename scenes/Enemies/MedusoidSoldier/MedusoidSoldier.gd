@@ -2,6 +2,7 @@ extends "res://scenes/Enemies/Enemy.gd"
 
 const GreenExplosion = preload("res://scenes/Effects/GreenExplosion/GreenExplosion.tscn")
 
+onready var shoot_timer = $ShootTimer
 onready var animation_player = $AnimationPlayer
 
 var motion = Vector2.ZERO
@@ -10,13 +11,14 @@ var chasing_player = false
 func _ready():
 	motion = Vector2(rand_range(-1, 1), rand_range(-1, 1))
 	animation_player.play("spawn")
+	shoot_timer.wait_time = rand_range(0.5, 2.0)
 
 func _process(_delta):
-	chasing_player = global_position.distance_to(ResourceLoader.player.global_position) < 60
+	chasing_player = global_position.distance_to(ResourceLoader.player.global_position) < 80
 
 func _physics_process(_delta):
 	if chasing_player:
-		motion = Vector2(ResourceLoader.player.global_position - global_position).normalized() * 1.1
+		motion = Vector2(ResourceLoader.player.global_position - global_position).normalized() * 1.2
 	var collision = move_and_collide(motion)
 	if collision:
 		if not chasing_player:
@@ -33,3 +35,10 @@ func on_enemy_died():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "spawn":
 		animation_player.play("idle")
+
+func _on_ShootTimer_timeout():
+	shoot_timer.wait_time = rand_range(0.5, 2.0)
+	shoot_timer.start()
+	if in_screen:
+		var direction = (ResourceLoader.player.global_position - global_position).normalized()
+		.create_bullet(direction, 1, 1, 1)

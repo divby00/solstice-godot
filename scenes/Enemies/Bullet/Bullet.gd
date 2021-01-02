@@ -4,7 +4,7 @@ signal enemy_attacked(strength)
 
 const GreenExplosion = preload("res://scenes/Effects/GreenExplosion/GreenExplosion.tscn")
 
-export(int) var speed = 100
+export(int) var speed = 125
 export(int) var energy = 10
 var direction = Vector2.ZERO
 

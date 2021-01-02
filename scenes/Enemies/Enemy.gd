@@ -13,6 +13,8 @@ onready var hurtbox = $Hurtbox
 onready var shader_timer = $ShaderTimer
 onready var bullet_position = $BulletPosition
 
+var in_screen = false
+
 func _ready():
 	set_process(false)
 	set_physics_process(false)
@@ -51,7 +53,9 @@ func _on_ShaderTimer_timeout():
 func _on_VisibilityNotifier2D_screen_entered():
 	set_process(true)
 	set_physics_process(true)
+	in_screen = true
 
 func _on_VisibilityNotifier2D_screen_exited():
 	set_process(false)
 	set_physics_process(false)
+	in_screen = false

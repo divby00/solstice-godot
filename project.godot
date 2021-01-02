@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "KinematicBody2D",
-"class": "Enemy",
-"language": "GDScript",
-"path": "res://scenes/Enemies/Enemy.gd"
-}, {
 "base": "Resource",
 "class": "ItemDefs",
 "language": "GDScript",
@@ -25,7 +20,6 @@ _global_script_classes=[ {
 "path": "res://scenes/Teleporter/Teleporter.gd"
 } ]
 _global_script_class_icons={
-"Enemy": "",
 "ItemDefs": "",
 "Teleporter": ""
 }
@@ -34,7 +28,7 @@ _global_script_class_icons={
 
 config/name="Solstice"
 config/description="Equinox remake"
-run/main_scene="res://scenes/Love4Retro/Love4Retro.tscn"
+run/main_scene="res://scenes/World/World.tscn"
 boot_splash/image="res://resources/textures/splash.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false

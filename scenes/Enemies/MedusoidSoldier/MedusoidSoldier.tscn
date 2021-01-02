@@ -1,0 +1,113 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/shaders/enemy_hurt.shader" type="Shader" id=2]
+[ext_resource path="res://scenes/Enemies/MedusoidSoldier/medusoid_soldier.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Enemies/MedusoidSoldier/medusoid_soldier_spawn.png" type="Texture" id=4]
+[ext_resource path="res://scenes/Enemies/MedusoidSoldier/MedusoidSoldier.gd" type="Script" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0.745098, 0.14902, 0.2, 1 )
+shader_param/active = false
+
+[sub_resource type="Animation" id=5]
+resource_name = "idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "spawn"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 8.0
+
+[node name="MedusoidSoldier" instance=ExtResource( 1 )]
+collision_mask = 1
+script = ExtResource( 5 )
+
+[node name="Sprite" parent="." index="0"]
+material = SubResource( 1 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "idle"
+anims/idle = SubResource( 5 )
+anims/spawn = SubResource( 6 )
+
+[node name="Hurtbox" parent="." index="2"]
+health = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource( 3 )
+
+[node name="Hitbox" parent="." index="3"]
+damage = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="7"]
+shape = SubResource( 2 )
+
+[node name="ShootTimer" type="Timer" parent="." index="8"]
+one_shot = true
+autostart = true
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
