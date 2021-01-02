@@ -240,9 +240,6 @@ position = Vector2( 64, 832 )
 [node name="Elevator" parent="." index="10"]
 position = Vector2( 688, 832 )
 
-[node name="InfoArea" parent="Elevator" index="2"]
-text = "Elevator. Use the security pass to travel to next level."
-
 [node name="TeleportPassDispatcher" parent="." index="11"]
 position = Vector2( 568, 832 )
 

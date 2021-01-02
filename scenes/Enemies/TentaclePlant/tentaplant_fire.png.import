@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tentaplant_idle.png-42d92f0c38be90216e5da93140626ddf.stex"
+path="res://.import/tentaplant_fire.png-e984bce1977efe57249b1da61e527081.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Enemies/Tentaplant/tentaplant_idle.png"
-dest_files=[ "res://.import/tentaplant_idle.png-42d92f0c38be90216e5da93140626ddf.stex" ]
+source_file="res://scenes/Enemies/TentaclePlant/tentaplant_fire.png"
+dest_files=[ "res://.import/tentaplant_fire.png-e984bce1977efe57249b1da61e527081.stex" ]
 
 [params]
 

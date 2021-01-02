@@ -1,12 +1,15 @@
 extends Area2D
 
-signal player_damaged(strength)
+signal enemy_attacked(strength)
 
 const GreenExplosion = preload("res://scenes/Effects/GreenExplosion/GreenExplosion.tscn")
 
 export(int) var speed = 100
-export(int) var energy = 5
+export(int) var energy = 10
 var direction = Vector2.ZERO
+
+func _enter_tree():
+	Utils.connect_signal(self, "enemy_attacked", ResourceLoader.player, "on_enemy_attacked")
 
 func _process(_delta):
 	global_position += direction * _delta * speed
@@ -17,7 +20,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_Bullet_body_entered(body):
 	if body.is_in_group("PlayerGroup"):
 		explode()
-		emit_signal("player_damaged", energy)
+		emit_signal("enemy_attacked", energy)
 		queue_free()
 	else:
 		explode()

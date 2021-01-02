@@ -11,8 +11,6 @@
 [ext_resource path="res://resources/animated_textures/smoke_particles.tres" type="Texture" id=10]
 [ext_resource path="res://scenes/Player/rebuild_particles.png" type="Texture" id=11]
 
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "destroyed"
 length = 0.5
