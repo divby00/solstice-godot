@@ -10,11 +10,6 @@
 [ext_resource path="res://resources/fonts/joystix.tres" type="DynamicFont" id=8]
 [ext_resource path="res://resources/sfx/congrats.ogg" type="AudioStream" id=9]
 
-
-
-
-
-
 [sub_resource type="DynamicFont" id=1]
 size = 10
 outline_size = 1
@@ -168,7 +163,7 @@ margin_top = 176.0
 margin_right = 256.0
 margin_bottom = 192.0
 custom_fonts/font = ExtResource( 8 )
-text = "2020 love4retro"
+text = "2021 love4retro games"
 align = 1
 valign = 1
 __meta__ = {

@@ -30,7 +30,7 @@ var message_index = 0
 var status = Status.SCROLLING
 
 var credits = [
-	"2020 Love4Retro games",
+	"2021 Love4Retro games",
 	"Solstice is an Equinox remake",
 	"Program and graphics by:",
 	"Jesus Chicharro",

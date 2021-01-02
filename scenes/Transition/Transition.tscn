@@ -22,11 +22,11 @@ __meta__ = {
 }
 
 [node name="TimerIn" type="Timer" parent="."]
-wait_time = 0.6
+wait_time = 0.8
 one_shot = true
 
 [node name="TimerOut" type="Timer" parent="."]
-wait_time = 0.6
+wait_time = 0.8
 one_shot = true
 [connection signal="timeout" from="TimerIn" to="." method="_on_TimerIn_timeout"]
 [connection signal="timeout" from="TimerOut" to="." method="_on_TimerOut_timeout"]

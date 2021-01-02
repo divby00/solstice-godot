@@ -9,10 +9,6 @@
 [ext_resource path="res://resources/music/sexxxy_bit_3.ogg" type="AudioStream" id=7]
 [ext_resource path="res://scenes/TeleportPassDispatcher/TeleportPassDispatcher.tscn" type="PackedScene" id=8]
 
-
-
-
-
 [node name="Level" type="Node2D" groups=[
 "LevelGroup",
 ]]
@@ -27,7 +23,9 @@ collision_layer = 0
 collision_mask = 0
 format = 1
 
-[node name="Map" type="TileMap" parent="."]
+[node name="Map" type="TileMap" parent="." groups=[
+"WallGroup",
+]]
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 8, 8 )
 collision_mask = 0
