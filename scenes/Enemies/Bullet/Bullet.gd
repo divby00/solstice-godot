@@ -22,7 +22,7 @@ func _on_Bullet_body_entered(body):
 		explode()
 		emit_signal("enemy_attacked", energy)
 		queue_free()
-	else:
+	elif not body.is_in_group("EnemyGroup"):
 		explode()
 		queue_free()
 

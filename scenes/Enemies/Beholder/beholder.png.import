@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/beholder.png-6e2bc8e081e18c9052ecb014a3027d23.stex"
+path="res://.import/beholder.png-03b47dad40053d05bef068356debe43f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/NonInteractiveObjects/beholder.png"
-dest_files=[ "res://.import/beholder.png-6e2bc8e081e18c9052ecb014a3027d23.stex" ]
+source_file="res://scenes/Enemies/Beholder/beholder.png"
+dest_files=[ "res://.import/beholder.png-03b47dad40053d05bef068356debe43f.stex" ]
 
 [params]
 

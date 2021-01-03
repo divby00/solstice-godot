@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/Teleporter/TeleporterGroup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/NonInteractiveObjects/MagneticDoor.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/NonInteractiveObjects/Beholder.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Enemies/Beholder/Beholder.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/NonInteractiveObjects/BigDrill.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/NonInteractiveObjects/Sponge.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/MagneticArea/MagneticArea.tscn" type="PackedScene" id=6]
@@ -63,19 +63,13 @@ position = Vector2( 160, 520 )
 [node name="BigDrillDecoration2" parent="Decoration" index="3" instance=ExtResource( 4 )]
 position = Vector2( 600, 664 )
 
-[node name="BeholderDecoration" parent="Decoration" index="4" instance=ExtResource( 3 )]
-position = Vector2( 56, 664 )
-
-[node name="BeholderDecoration2" parent="Decoration" index="5" instance=ExtResource( 3 )]
-position = Vector2( 384, 808 )
-
-[node name="MagneticDoorDecoration" parent="Decoration" index="6" instance=ExtResource( 2 )]
+[node name="MagneticDoorDecoration" parent="Decoration" index="4" instance=ExtResource( 2 )]
 position = Vector2( 448, 248 )
 
-[node name="MagneticDoorDecoration2" parent="Decoration" index="7" instance=ExtResource( 2 )]
+[node name="MagneticDoorDecoration2" parent="Decoration" index="5" instance=ExtResource( 2 )]
 position = Vector2( 448, 360 )
 
-[node name="MagneticDoorDecoration3" parent="Decoration" index="8" instance=ExtResource( 2 )]
+[node name="MagneticDoorDecoration3" parent="Decoration" index="6" instance=ExtResource( 2 )]
 position = Vector2( 448, 528 )
 
 [node name="ItemTnt" parent="Items" index="0" instance=ExtResource( 7 )]
@@ -287,6 +281,12 @@ shape = SubResource( 5 )
 
 [node name="CollisionShape2D" parent="Containment3/InfoArea" index="0"]
 scale = Vector2( 1e-05, 1e-05 )
+
+[node name="Beholder" parent="." index="16" instance=ExtResource( 3 )]
+position = Vector2( 384, 832 )
+
+[node name="Beholder2" parent="." index="17" instance=ExtResource( 3 )]
+position = Vector2( 56, 688 )
 
 [editable path="TeleporterGroup"]
 

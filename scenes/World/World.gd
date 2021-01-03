@@ -26,7 +26,7 @@ func _ready():
 		if saved_data != null:
 			load_level(saved_data.level)
 	else:
-		load_level("01")
+		load_level("02")
 	
 func load_level(level_key):
 	if level_key != "00":
