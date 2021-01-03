@@ -28,7 +28,7 @@ func create_bullet(direction, from, to, step, energy=15):
 		get_tree().current_scene.add_child(bullet)
 		bullet.energy = energy
 		bullet.global_position = bullet_position.global_position
-		bullet.direction = direction.rotated(deg2rad(i + rand_range(-0, 0)))
+		bullet.direction = direction.rotated(deg2rad(i))
 
 func on_enemy_hurt():
 	SoundFx.play("enemy_hurt")

@@ -1,37 +1,47 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://scenes/Enemies/Turret/turret.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Enemies/Turret/turret.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Enemies/Turret/Turret.gd" type="Script" id=3]
+[ext_resource path="res://scenes/Enemies/Turret/enemy_shoot.png" type="Texture" id=4]
+[ext_resource path="res://resources/shaders/enemy_hurt.shader" type="Shader" id=5]
 
-[sub_resource type="Animation" id=1]
-resource_name = "animate"
-length = 0.8
-loop = true
-step = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3 ]
-}
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/color = Color( 0.745098, 0.14902, 0.2, 1 )
+shader_param/active = false
 
-[node name="Turret" type="KinematicBody2D"]
-collision_layer = 8
-collision_mask = 28
-
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Turret" instance=ExtResource( 1 )]
 position = Vector2( 0, -16 )
-texture = ExtResource( 1 )
-hframes = 4
-frame = 2
+script = ExtResource( 3 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/animate = SubResource( 1 )
+[node name="Sprite" parent="." index="0"]
+material = SubResource( 1 )
+texture = ExtResource( 2 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -14, 0, -14, -22, -7, -32, 7, -32, 14, -22, 14, 0 )
+[node name="Hurtbox" parent="." index="2"]
+health = 10
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox" index="0"]
+polygon = PoolVector2Array( -10, -9, -8, -13, -5, -15, 5, -15, 8, -13, 10, -9 )
+
+[node name="VisibilityNotifier2D" parent="." index="6"]
+position = Vector2( -2.38419e-07, 0 )
+scale = Vector2( 1.6, 1.6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="7"]
+polygon = PoolVector2Array( 14, -5, 14, 5, 14, 16, -14, 16, -14, -5, -9, -9, -5, -14, 5, -14, 9, -9 )
+
+[node name="LeftShootSprite" type="Sprite" parent="." index="8"]
+position = Vector2( -16, 11 )
+scale = Vector2( -1, 1 )
+texture = ExtResource( 4 )
+hframes = 3
+frame = 1
+
+[node name="RightShootSprite" type="Sprite" parent="." index="9"]
+position = Vector2( 16, 11 )
+texture = ExtResource( 4 )
+hframes = 3
+frame = 1

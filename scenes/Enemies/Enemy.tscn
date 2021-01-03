@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Enemies/Hitbox/Hitbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Enemies/Hurtbox/Hurtbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://resources/shaders/enemy_hurt.shader" type="Shader" id=4]
+[ext_resource path="res://scenes/Enemies/Turret/enemy_shoot.png" type="Texture" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -12,8 +13,9 @@ shader_param/color = Color( 0.745098, 0.14902, 0.2, 1 )
 shader_param/active = false
 
 [sub_resource type="Animation" id=2]
-length = 0.4
+length = 0.8
 loop = true
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -21,10 +23,123 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LeftShootSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LeftShootSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.4, 0.45, 0.5, 0.55 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 0, 1, 2, 1, 0, 1, 2 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LeftShootSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("RightShootSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.4, 0.45, 0.5, 0.55 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 0, 1, 2, 1, 0, 1, 2 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("RightShootSprite:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("RightShootSprite:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 16, 11 ), Vector2( 20, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("LeftShootSprite:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( -16, 11 ), Vector2( -20, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("BulletPosition:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.05, 0.45 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 10 ), Vector2( 0, 0 ) ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.05, 0.45 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "fire"
+}, {
+"args": [  ],
+"method": "fire"
+} ]
 }
 
 [node name="Enemy" type="KinematicBody2D" groups=[

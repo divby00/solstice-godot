@@ -139,7 +139,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DetectionArea" index="0"]
-polygon = PoolVector2Array( 8, 0, 96, 128, -96, 128, -8, 0 )
+polygon = PoolVector2Array( 8, 0, 64, 64, -64, 64, -8, 0 )
 
 [node name="VisibilityNotifier2D" parent="." index="10"]
 position = Vector2( 0, 12 )

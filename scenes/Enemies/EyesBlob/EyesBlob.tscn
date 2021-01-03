@@ -45,7 +45,7 @@ anims/idle = SubResource( 2 )
 
 [node name="Hurtbox" parent="." index="2"]
 collision_mask = 12
-health = 2
+health = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource( 3 )

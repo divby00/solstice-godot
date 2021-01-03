@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scenes/Levels/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Enemies/Beholder/Beholder.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Items/ItemTeleportPass/ItemTeleportPass.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/NonInteractiveObjects/BigDrill.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Enemies/EyesBlob/EyesBlob.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Items/ItemFuel/ItemFuel.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Items/ItemBattery/ItemBattery.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Items/ItemTnt/ItemTnt.tscn" type="PackedScene" id=8]
@@ -21,6 +22,7 @@
 [ext_resource path="res://scenes/Enemies/Spawner/Spawner.tscn" type="PackedScene" id=20]
 [ext_resource path="res://scenes/Locks/StoneLock/StoneLock.tscn" type="PackedScene" id=21]
 [ext_resource path="res://resources/music/bit_loader.ogg" type="AudioStream" id=22]
+[ext_resource path="res://scenes/Enemies/TentaclePlant/TentaclePlant.tscn" type="PackedScene" id=23]
 
 [sub_resource type="Animation" id=1]
 resource_name = "animate"
@@ -350,6 +352,30 @@ shape = SubResource( 7 )
 
 [node name="Beholder" parent="." index="15" instance=ExtResource( 2 )]
 position = Vector2( 912, 128 )
+
+[node name="TentaclePlant" parent="." index="16" instance=ExtResource( 23 )]
+position = Vector2( 392, 16 )
+
+[node name="TentaclePlant2" parent="." index="17" instance=ExtResource( 23 )]
+position = Vector2( 1008, 512 )
+rotation = 1.5708
+
+[node name="TentaclePlant3" parent="." index="18" instance=ExtResource( 23 )]
+position = Vector2( 192, 304 )
+
+[node name="EyesBlob" parent="." index="19" instance=ExtResource( 5 )]
+position = Vector2( 612, 549 )
+
+[node name="EyesBlob2" parent="." index="20" instance=ExtResource( 5 )]
+position = Vector2( 556, 261 )
+
+[node name="EyesBlob3" parent="." index="21" instance=ExtResource( 5 )]
+position = Vector2( 668, 476 )
+rotation = 3.14159
+
+[node name="EyesBlob4" parent="." index="22" instance=ExtResource( 5 )]
+position = Vector2( 540, 660 )
+rotation = 1.5708
 
 [editable path="Decoration/MagneticDoor"]
 
