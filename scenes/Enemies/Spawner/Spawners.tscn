@@ -9,3 +9,4 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
+MAX_ENEMIES = 30

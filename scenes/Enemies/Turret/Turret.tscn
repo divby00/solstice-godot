@@ -26,6 +26,9 @@ health = 10
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox" index="0"]
 polygon = PoolVector2Array( -10, -9, -8, -13, -5, -15, 5, -15, 8, -13, 10, -9 )
 
+[node name="BulletPosition" parent="." index="5"]
+position = Vector2( 0, 10 )
+
 [node name="VisibilityNotifier2D" parent="." index="6"]
 position = Vector2( -2.38419e-07, 0 )
 scale = Vector2( 1.6, 1.6 )
@@ -38,10 +41,8 @@ position = Vector2( -16, 11 )
 scale = Vector2( -1, 1 )
 texture = ExtResource( 4 )
 hframes = 3
-frame = 1
 
 [node name="RightShootSprite" type="Sprite" parent="." index="9"]
 position = Vector2( 16, 11 )
 texture = ExtResource( 4 )
 hframes = 3
-frame = 1

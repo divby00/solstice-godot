@@ -1,5 +1,6 @@
 extends Node2D
 
+const EvilOwl = preload("res://scenes/Enemies/EvilOwl/EvilOwl.tscn")
 const Medusoid = preload("res://scenes/Enemies/Medusoid/Medusoid.tscn")
 const MedusoidSoldier = preload("res://scenes/Enemies/MedusoidSoldier/MedusoidSoldier.tscn")
 
@@ -24,8 +25,15 @@ func get_ready_spawners():
 func spawn_enemy(spawner):
 	spawner.starts()
 	self.enemies += 1
-	var type = randi() % 2
-	var enemy = Medusoid.instance() if type == 0 else MedusoidSoldier.instance()
+	var type = randi() % 3
+	var enemy = null
+	if type == 0:
+		enemy = Medusoid.instance()
+	elif type == 1:
+		enemy = MedusoidSoldier.instance()
+	elif type == 2:
+		enemy = EvilOwl.instance()
+		
 	enemy.global_position = spawner.global_position
 	enemy.connect("enemy_attacked", ResourceLoader.player, "on_enemy_attacked")
 	enemy.connect("enemy_died", self, "on_enemy_died")

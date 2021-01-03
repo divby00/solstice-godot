@@ -28,7 +28,7 @@ _global_script_class_icons={
 
 config/name="Solstice"
 config/description="Equinox remake"
-run/main_scene="res://scenes/World/World.tscn"
+run/main_scene="res://scenes/Love4Retro/Love4Retro.tscn"
 boot_splash/image="res://resources/textures/splash.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false

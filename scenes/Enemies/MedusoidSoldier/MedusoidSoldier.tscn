@@ -6,6 +6,12 @@
 [ext_resource path="res://scenes/Enemies/MedusoidSoldier/medusoid_soldier_spawn.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Enemies/MedusoidSoldier/MedusoidSoldier.gd" type="Script" id=5]
 
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0.745098, 0.14902, 0.2, 1 )
+shader_param/active = false
+
 [sub_resource type="Animation" id=2]
 resource_name = "idle"
 length = 0.4
@@ -72,28 +78,26 @@ radius = 7.0
 [sub_resource type="CircleShape2D" id=6]
 radius = 8.0
 
-[sub_resource type="ShaderMaterial" id=1]
-resource_local_to_scene = true
-shader = ExtResource( 2 )
-shader_param/color = Color( 0.745098, 0.14902, 0.2, 1 )
-shader_param/active = false
-
 [node name="MedusoidSoldier" instance=ExtResource( 1 )]
 collision_mask = 1
 script = ExtResource( 5 )
 
-[node name="AnimationPlayer" parent="." index="0"]
+[node name="Sprite" parent="." index="0"]
+material = SubResource( 1 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" parent="." index="1"]
 autoplay = "idle"
 anims/idle = SubResource( 2 )
 anims/spawn = SubResource( 3 )
 
-[node name="Hurtbox" parent="." index="1"]
+[node name="Hurtbox" parent="." index="2"]
 health = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource( 4 )
 
-[node name="Hitbox" parent="." index="2"]
+[node name="Hitbox" parent="." index="3"]
 damage = 0.4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
@@ -111,9 +115,5 @@ position = Vector2( -1, 0 )
 enabled = true
 cast_to = Vector2( 0, 0 )
 collision_mask = 5
-
-[node name="Sprite" parent="." index="9"]
-material = SubResource( 1 )
-texture = ExtResource( 3 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
