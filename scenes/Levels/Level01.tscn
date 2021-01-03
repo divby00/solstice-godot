@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scenes/Teleporter/TeleporterGroup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/NonInteractiveObjects/MagneticDoor.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://scenes/Items/ItemBomb/ItemBomb.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/Items/ItemKey/ItemKey.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/Items/ItemNuclearWaste/ItemNuclearWaste.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/RadioactiveMud/RadioactiveMud.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Locks/RubbishLock/RubbishLock.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/Locks/DoorLock/DoorLock.tscn" type="PackedScene" id=17]
 [ext_resource path="res://scenes/Locks/SteelLock/SteelLock.tscn" type="PackedScene" id=18]
@@ -37,6 +38,55 @@ extents = Vector2( 40, 16 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 8, 16 )
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends Area2D
+
+signal player_collided(damage)
+
+export(float) var damage = 2.0
+
+var player_collision = false
+
+func _process(_delta):
+	if player_collision:
+		emit_signal(\"player_collided\", damage)
+
+func _on_Hitbox_body_entered(body):
+	player_collision = true
+
+func _on_Hitbox_body_exited(body):
+	player_collision = false
+"
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 56, 1 )
+
+[sub_resource type="GDScript" id=8]
+script/source = "extends Area2D
+
+signal player_collided(damage)
+
+export(float) var damage = 2.0
+
+var player_collision = false
+
+func _process(_delta):
+	if player_collision:
+		emit_signal(\"player_collided\", damage)
+
+func _on_Hitbox_body_entered(body):
+	player_collision = true
+
+func _on_Hitbox_body_exited(body):
+	player_collision = false
+"
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 12, 1 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 12, 1 )
 
 [node name="Level01" instance=ExtResource( 20 )]
 camera_limit_bottom = 864
@@ -288,6 +338,73 @@ position = Vector2( 384, 832 )
 [node name="Beholder2" parent="." index="17" instance=ExtResource( 3 )]
 position = Vector2( 56, 688 )
 
+[node name="RadioactiveMud" parent="." index="18" instance=ExtResource( 15 )]
+position = Vector2( 720, 104 )
+rotation = -1.5708
+scale = Vector2( -1, 1 )
+
+[node name="LeftTexture" parent="RadioactiveMud" index="0"]
+margin_left = -5.0
+margin_right = 0.0
+
+[node name="CenterTexture" parent="RadioactiveMud" index="1"]
+margin_left = 0.0
+margin_right = 384.0
+
+[node name="RightTexture" parent="RadioactiveMud" index="2"]
+margin_left = 384.0
+margin_right = 388.0
+
+[node name="Hitbox" parent="RadioactiveMud" index="3"]
+script = SubResource( 6 )
+damage = 2.0
+
+[node name="CollisionShape2D" parent="RadioactiveMud/Hitbox" index="0"]
+position = Vector2( 192, -1 )
+
+[node name="RadioactiveMud4" parent="." index="19" instance=ExtResource( 15 )]
+position = Vector2( 568, 122 )
+rotation = 1.5708
+
+[node name="LeftTexture" parent="RadioactiveMud4" index="0"]
+margin_left = 78.0
+margin_top = 3.0
+margin_right = 83.0
+margin_bottom = 8.0
+
+[node name="CenterTexture" parent="RadioactiveMud4" index="1"]
+margin_left = 83.0
+margin_top = 3.0
+margin_right = 187.0
+margin_bottom = 8.0
+
+[node name="RightTexture" parent="RadioactiveMud4" index="2"]
+margin_left = 187.0
+margin_top = 3.0
+margin_right = 191.0
+margin_bottom = 8.0
+
+[node name="CollisionShape2D" parent="RadioactiveMud4/Hitbox" index="0"]
+position = Vector2( 134, 7 )
+shape = SubResource( 7 )
+
+[node name="RadioactiveMud2" parent="." index="20" instance=ExtResource( 15 )]
+position = Vector2( 160, 256 )
+
+[node name="Hitbox" parent="RadioactiveMud2" index="3"]
+script = SubResource( 8 )
+damage = 2.0
+
+[node name="CollisionShape2D" parent="RadioactiveMud2/Hitbox" index="0"]
+shape = SubResource( 9 )
+
+[node name="RadioactiveMud3" parent="." index="21" instance=ExtResource( 15 )]
+position = Vector2( 16, 225 )
+rotation = 1.5708
+
+[node name="CollisionShape2D" parent="RadioactiveMud3/Hitbox" index="0"]
+shape = SubResource( 10 )
+
 [editable path="TeleporterGroup"]
 
 [editable path="MagneticArea"]
@@ -301,3 +418,11 @@ position = Vector2( 56, 688 )
 [editable path="Containment2"]
 
 [editable path="Containment3"]
+
+[editable path="RadioactiveMud"]
+
+[editable path="RadioactiveMud4"]
+
+[editable path="RadioactiveMud2"]
+
+[editable path="RadioactiveMud3"]
