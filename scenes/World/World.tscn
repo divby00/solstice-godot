@@ -8,7 +8,7 @@
 [ext_resource path="res://scenes/Transition/Transition.tscn" type="PackedScene" id=6]
 [ext_resource path="res://resources/fonts/joystix.tres" type="DynamicFont" id=7]
 [ext_resource path="res://scenes/Pause/small_ingame_message.png" type="Texture" id=8]
-[ext_resource path="res://scenes/Help/Help.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/UI/Help/Help.tscn" type="PackedScene" id=9]
 [ext_resource path="res://resources/animated_textures/red_circle_in.tres" type="Texture" id=10]
 
 [sub_resource type="Animation" id=1]
@@ -118,8 +118,6 @@ __meta__ = {
 [node name="Transition" parent="UI" instance=ExtResource( 6 )]
 [connection signal="timeout" from="CameraShakeTimer" to="." method="_on_CameraShakeTimer_timeout"]
 [connection signal="fadeout_finished" from="UI/GameOverTransition" to="." method="_on_GameOverTransition_fadeout_finished"]
-[connection signal="pause_hidden" from="UI/Pause" to="UI/Help" method="_on_Pause_pause_hidden"]
-[connection signal="pause_shown" from="UI/Pause" to="UI/Help" method="_on_Pause_pause_shown"]
 [connection signal="help_hidden" from="UI/Help" to="UI/Pause" method="_on_Help_help_hidden"]
 [connection signal="help_shown" from="UI/Help" to="UI/Pause" method="_on_Help_help_shown"]
 [connection signal="fadein_finished" from="UI/Transition" to="." method="_on_Transition_fadein_finished"]

@@ -55,6 +55,14 @@ func _process(_delta):
 				SoundFx.play("laserup")
 				PlayerData.laser = PlayerData.MAX_LASER
 				emit_signal("item_used")
+	
+	if Input.is_action_just_released("plasma"):
+		if not plasma.visible and PlayerData.plasma > 0:
+			plasma.visible = true
+			plasma_timer.wait_time = PlayerData.plasma * .5
+			plasma_timer.start()
+			plasma_timer_tick.start()
+			plasma_collider.disabled = false
 
 func _physics_process(delta):
 	var input_vector = get_input_vector()
@@ -64,21 +72,6 @@ func _physics_process(delta):
 	apply_gravity(delta)
 	update_animation(input_vector)
 	motion = move_and_slide(motion, Vector2.UP)
-
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.is_pressed():
-			if event.button_index == BUTTON_WHEEL_UP and not plasma.visible and PlayerData.plasma > 0:
-				plasma.visible = true
-				plasma_timer.wait_time = PlayerData.plasma * .5
-				plasma_timer.start()
-				plasma_timer_tick.start()
-				plasma_collider.disabled = false
-#			if event.button_index == BUTTON_WHEEL_DOWN and plasma.visible:
-#				plasma.visible = 0
-#				plasma_timer.stop()
-#				plasma_timer_tick.stop()
-#				plasma_collider.disabled = true
 
 func get_input_vector():
 	var input_vector = Vector2.ZERO
@@ -244,6 +237,7 @@ func _on_InvincibleTimer_timeout():
 	PlayerData.status = PlayerData.Status.OK
 
 func _on_PlasmaTimer_timeout():
+	plasma_collider.disabled = true
 	plasma.visible = false
 	plasma_timer_tick.stop()
 	PlayerData.plasma = 0

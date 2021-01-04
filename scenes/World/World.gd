@@ -26,7 +26,7 @@ func _ready():
 		if saved_data != null:
 			load_level(saved_data.level)
 	else:
-		load_level("00")
+		load_level("01")
 	
 func load_level(level_key):
 	if level_key != "00":
@@ -235,3 +235,10 @@ func on_cheats_activated():
 func _input(_event):
 	if cheats and (Input.is_key_pressed(KEY_KP_ADD) or Input.is_key_pressed(KEY_PLUS)):
 		PlayerData.lives += 1
+
+func _on_Help_help_hidden():
+	pass # Replace with function body.
+
+
+func _on_Help_help_shown():
+	pass # Replace with function body.

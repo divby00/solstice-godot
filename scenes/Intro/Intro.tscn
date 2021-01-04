@@ -10,7 +10,7 @@
 [ext_resource path="res://scenes/Transition/Transition.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/UI/MainMenu/MainMenu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/UI/OptionsMenu/OptionsMenu.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/Help/Help.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/UI/Help/Help.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "scroll"
@@ -192,9 +192,9 @@ __meta__ = {
 [node name="NinePatchRect" parent="MainMenu" index="0"]
 visible = false
 
-[node name="Help" parent="." instance=ExtResource( 11 )]
-
 [node name="OptionsMenu" parent="." instance=ExtResource( 10 )]
+
+[node name="Help" parent="." instance=ExtResource( 11 )]
 
 [node name="Transition" parent="." instance=ExtResource( 8 )]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
