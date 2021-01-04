@@ -13,6 +13,7 @@ extents = Vector2( 4, 8 )
 extents = Vector2( 12, 8 )
 
 [node name="SteelLock" instance=ExtResource( 1 )]
+z_index = 2
 opened_by = "drill"
 
 [node name="OpenerArea" parent="." index="0"]

@@ -109,9 +109,11 @@ position = Vector2( 448, 816 )
 
 [node name="BigDrillDecoration" parent="Decoration" index="2" instance=ExtResource( 4 )]
 position = Vector2( 160, 520 )
+z_index = 2
 
 [node name="BigDrillDecoration2" parent="Decoration" index="3" instance=ExtResource( 4 )]
 position = Vector2( 600, 664 )
+z_index = 2
 
 [node name="MagneticDoorDecoration" parent="Decoration" index="4" instance=ExtResource( 2 )]
 position = Vector2( 448, 248 )
@@ -334,9 +336,11 @@ scale = Vector2( 1e-05, 1e-05 )
 
 [node name="Beholder" parent="." index="16" instance=ExtResource( 3 )]
 position = Vector2( 384, 832 )
+z_index = 1
 
 [node name="Beholder2" parent="." index="17" instance=ExtResource( 3 )]
 position = Vector2( 56, 688 )
+z_index = 1
 
 [node name="RadioactiveMud" parent="." index="18" instance=ExtResource( 15 )]
 position = Vector2( 720, 104 )

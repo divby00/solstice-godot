@@ -20,10 +20,10 @@ enum Status {
 
 export(int) var LIVES = 3
 export(int) var MAX_LIVES = 9
-export(int) var MAX_HEALTH = 112 - 32
-export(int) var MAX_THRUST = 112 - 32
-export(int) var MAX_LASER = 112 - 32
-export(int) var MAX_TIME = 112 - 32
+export(int) var MAX_HEALTH = 112
+export(int) var MAX_THRUST = 112
+export(int) var MAX_LASER = 112
+export(int) var MAX_TIME = 112
 export(int) var MAX_PLASMA = 17
 
 var invincible = false

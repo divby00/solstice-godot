@@ -22,6 +22,7 @@ tracks/0/keys = {
 [node name="Lock" type="Node2D" groups=[
 "LockGroup",
 ]]
+z_index = 2
 script = ExtResource( 1 )
 
 [node name="OpenerArea" type="Area2D" parent="."]

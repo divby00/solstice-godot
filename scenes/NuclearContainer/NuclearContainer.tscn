@@ -13,7 +13,7 @@ extents = Vector2( 20, 16 )
 [node name="NuclearContainer" type="Node2D" groups=[
 "NuclearStorageGroup",
 ]]
-z_index = 2
+z_index = 3
 script = ExtResource( 2 )
 seconds_to_explosion = 224
 

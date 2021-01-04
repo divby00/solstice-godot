@@ -57,15 +57,17 @@ func on_plasma_changed(plasma):
 
 func on_thrust_changed(thrust):
 	change_color_bar(thrust, thrust_bar)
-	thrust_bar.rect_size.x = thrust
+	var length = lerp(1.0, 80.0, (float(thrust) / float(PlayerData.MAX_THRUST)))
+	thrust_bar.rect_size.x = length
 
 func on_laser_changed(laser):
 	change_color_bar(laser, laser_bar)
-	laser_bar.rect_size.x = laser
+	var length = lerp(1.0, 80.0, (float(laser) / float(PlayerData.MAX_LASER)))
+	laser_bar.rect_size.x = length
 
 func on_time_changed(seconds_to_explosion, time_left):
 	if time_left > 0:
-		var length = lerp(1.0, PlayerData.MAX_TIME, (float(time_left) / float(seconds_to_explosion)))
+		var length = lerp(1.0, 80.0, (float(time_left) / float(seconds_to_explosion)))
 		change_color_bar(length, time_bar)
 		time_bar.rect_size.x = length
 

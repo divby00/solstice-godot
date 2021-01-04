@@ -235,10 +235,3 @@ func on_cheats_activated():
 func _input(_event):
 	if cheats and (Input.is_key_pressed(KEY_KP_ADD) or Input.is_key_pressed(KEY_PLUS)):
 		PlayerData.lives += 1
-
-func _on_Help_help_hidden():
-	pass # Replace with function body.
-
-
-func _on_Help_help_shown():
-	pass # Replace with function body.

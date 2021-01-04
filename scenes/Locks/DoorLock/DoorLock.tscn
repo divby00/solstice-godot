@@ -13,6 +13,7 @@ extents = Vector2( 8, 16 )
 extents = Vector2( 16, 16 )
 
 [node name="DoorLock" instance=ExtResource( 1 )]
+z_index = 2
 opened_by = "key"
 
 [node name="OpenerArea" parent="." index="0"]
