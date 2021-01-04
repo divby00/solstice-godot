@@ -36,7 +36,6 @@ func open():
 			)
 			var explosion = BigExplosion.instance()
 			explosion.emitting = true
-			explosion.remove_when_finish = true
 			explosion.global_position = position
 			explosion.z_index = 2
 			get_tree().current_scene.add_child(explosion)

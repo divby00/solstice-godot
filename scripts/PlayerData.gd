@@ -1,12 +1,5 @@
 extends Node
 
-export(int) var LIVES = 3
-export(int) var MAX_LIVES = 9
-export(int) var MAX_HEALTH = 112
-export(int) var MAX_THRUST = 112
-export(int) var MAX_LASER = 112
-export(int) var MAX_TIME = 112
-
 signal game_over
 signal player_destroyed
 signal health_changed(health)
@@ -24,18 +17,26 @@ enum Status {
 	TELEPORT
 }
 
-var health = MAX_HEALTH setget set_health
-var lives = LIVES setget set_lives
-var thrust = MAX_THRUST setget set_thrust
-var laser = MAX_LASER setget set_laser
-var time = MAX_TIME setget set_time
-var selected_item = null
-var status = Status.OK setget set_status
+export(int) var LIVES = 3
+export(int) var MAX_LIVES = 9
+export(int) var MAX_HEALTH = 112
+export(int) var MAX_THRUST = 112
+export(int) var MAX_LASER = 112
+export(int) var MAX_TIME = 112
+
 var invincible = false
+var selected_item = null
+var lives = LIVES setget set_lives
+var time = MAX_TIME setget set_time
+var laser = MAX_LASER setget set_laser
+var status = Status.OK setget set_status
+var health = MAX_HEALTH setget set_health
+var thrust = MAX_THRUST setget set_thrust
 
 func set_health(value):
 	health = clamp(value, 0, MAX_HEALTH)
 	if health == 0:
+		health = MAX_HEALTH
 		emit_signal("player_destroyed")
 	else:
 		emit_signal("health_changed", health)

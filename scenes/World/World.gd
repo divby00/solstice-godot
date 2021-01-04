@@ -1,19 +1,19 @@
 extends Node
 
-const nuclear_waste_texture = preload("res://scenes/UI/StorageBase/nuclear_waste.png")
 const red_circle_in = preload("res://resources/animated_textures/red_circle_in.tres")
+const nuclear_waste_texture = preload("res://scenes/UI/StorageBase/nuclear_waste.png")
 
+onready var help = $UI/Help
 onready var player = $Player
-onready var camera = $Camera2D
 onready var panel = $UI/Panel
+onready var pause = $UI/Pause
+onready var camera = $Camera2D
 onready var transition = $UI/Transition
-onready var game_over_transition = $UI/GameOverTransition
 onready var storage_base = $UI/StorageBase
+onready var animation_player = $AnimationPlayer
 onready var camera_shake_timer = $CameraShakeTimer
 onready var level_change_label = $UI/LevelChange/Label
-onready var animation_player = $AnimationPlayer
-onready var pause = $UI/Pause
-onready var help = $UI/Help
+onready var game_over_transition = $UI/GameOverTransition
 
 var cheats = false
 var new_level = null
@@ -26,7 +26,7 @@ func _ready():
 		if saved_data != null:
 			load_level(saved_data.level)
 	else:
-		load_level("01")
+		load_level("00")
 	
 func load_level(level_key):
 	if level_key != "00":
@@ -60,7 +60,7 @@ func level_init():
 	if GameState.loading:
 		var saved_game = GameState.load()
 		PlayerData.lives = saved_game.lifes
-	else:
+	if LevelData.current_level_number == 1 or LevelData.current_level_number == 0:
 		PlayerData.lives = PlayerData.LIVES
 	panel.init_panel()
 	transition.fadein()
@@ -202,8 +202,8 @@ func _on_CameraShakeTimer_timeout():
 	set_process(false)
 
 func _process(_delta):
-	camera.offset_h = rand_range(-.03, .03)
-	camera.offset_v = rand_range(-.03, .03)
+	camera.offset_h = rand_range(-.05, .05)
+	camera.offset_v = rand_range(-.05, .05)
 
 func _on_Transition_fadeout_finished(_transition_name):
 	GameState.save({"level": new_level, "lifes": PlayerData.lives})
