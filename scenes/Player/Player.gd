@@ -58,11 +58,16 @@ func _process(_delta):
 	
 	if Input.is_action_just_released("plasma"):
 		if not plasma.visible and PlayerData.plasma > 0:
+			PlayerData.status = PlayerData.Status.INVINCIBLE
+			PlayerData.invincible = true
 			plasma.visible = true
 			plasma_timer.wait_time = PlayerData.plasma * .5
+			invincible_timer.wait_time = plasma_timer.wait_time
 			plasma_timer.start()
 			plasma_timer_tick.start()
+			invincible_timer.start()
 			plasma_collider.disabled = false
+			animation_player.play("invincible")
 
 func _physics_process(delta):
 	var input_vector = get_input_vector()
@@ -203,6 +208,8 @@ func on_status_changed(old_status, new_status):
 			PlayerData.Status.TELEPORT:
 				animation_player.play("teleport")
 			PlayerData.Status.INVINCIBLE:
+				if invincible_timer.is_stopped():
+					invincible_timer.wait_time = 2.5
 				invincible_timer.start()
 	if PlayerData.invincible:
 		animation_player.play("invincible")
@@ -217,8 +224,8 @@ func on_player_has_to_move(direction):
 		motion.x = Vector2.RIGHT.x * 75
 
 func on_elevator_activated(level_pass):
-	emit_signal("item_used")
 	emit_signal("player_activated_elevator", level_pass)
+	emit_signal("item_used")
 
 func on_player_got_powerup(_powerup):
 	PlayerData.plasma += 1
@@ -241,6 +248,8 @@ func _on_PlasmaTimer_timeout():
 	plasma.visible = false
 	plasma_timer_tick.stop()
 	PlayerData.plasma = 0
+	PlayerData.invincible = false
+	PlayerData.status = PlayerData.Status.OK
 
 func _on_PlasmaTimerTick_timeout():
 	PlayerData.plasma -= 1

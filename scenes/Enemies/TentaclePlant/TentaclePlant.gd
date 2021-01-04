@@ -28,6 +28,12 @@ func on_enemy_hurt():
 	shader_timer.start()
 	emit_signal("enemy_hurt")
 
+func on_enemy_died():
+	.create_big_explosion()
+	for _i in range(2):
+		.create_powerup(Vector2(rand_range(-8, 8), rand_range(0, 16)))
+	queue_free()
+
 func _on_BulletTimer_timeout():
 	animation_player.play("fire")
 

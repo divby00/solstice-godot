@@ -19,4 +19,6 @@ func on_enemy_died():
 	explosion.emitting = true
 	emit_signal("enemy_died", self)
 	.create_bullet(Vector2.ONE, 22.5, 360, 22.5)
+	for _i in range(3):
+		.create_powerup(Vector2(rand_range(-4, 4), rand_range(-4, 4)))
 	queue_free()

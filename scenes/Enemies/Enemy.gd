@@ -45,13 +45,10 @@ func create_explosion(explosion):
 	emit_signal("enemy_died", self)
 	queue_free()
 
-func create_powerup():
-	var create = 0
-	#var create = randi() % 4
-	if create == 0:
-		var powerup = PlasmaPowerup.instance()
-		get_tree().current_scene.call_deferred("add_child", powerup)
-		powerup.global_position = global_position
+func create_powerup(optional_transform=Vector2.ZERO):
+	var powerup = PlasmaPowerup.instance()
+	get_tree().current_scene.call_deferred("add_child", powerup)
+	powerup.global_position = global_position + optional_transform
 
 func on_enemy_hurt():
 	SoundFx.play("enemy_hurt")
