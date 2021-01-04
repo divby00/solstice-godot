@@ -9,11 +9,15 @@ signal player_activated_elevator(level_pass)
 const BigExplosion = preload("res://scenes/Effects/BigExplosion/BigExplosion.tscn")
 
 onready var laser = $Laser
+onready var plasma = $Plasma
 onready var sprite : Sprite = $Sprite
+onready var plasma_timer = $PlasmaTimer
 onready var damage_timer = $DamageTimer
 onready var invincible_timer = $InvincibleTimer
 onready var rebuild_timer: Timer = $RebuildTimer
+onready var plasma_collider = $Plasma/CollisionShape2D
 onready var particles : CPUParticles2D = $SmokeParticles
+onready var plasma_timer_tick = $PlasmaTimer/PlasmaTimerTick
 onready var damage_particles : CPUParticles2D = $DamageParticles
 onready var animation_player : AnimationPlayer = $AnimationPlayer
 onready var rebuild_particles : CPUParticles2D = $RebuildParticles
@@ -27,6 +31,7 @@ export(int) var MAX_SPEED = 80
 export(int) var GRAVITY = 150
 export(float) var FRICTION = .2
 
+var plasma_on = false
 var motion = Vector2.ZERO
 var facing = Facing.RIGHT
 var is_in_magnetic_area = false
@@ -59,6 +64,21 @@ func _physics_process(delta):
 	apply_gravity(delta)
 	update_animation(input_vector)
 	motion = move_and_slide(motion, Vector2.UP)
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			if event.button_index == BUTTON_WHEEL_UP and not plasma.visible and PlayerData.plasma > 0:
+				plasma.visible = true
+				plasma_timer.wait_time = PlayerData.plasma * .5
+				plasma_timer.start()
+				plasma_timer_tick.start()
+				plasma_collider.disabled = false
+#			if event.button_index == BUTTON_WHEEL_DOWN and plasma.visible:
+#				plasma.visible = 0
+#				plasma_timer.stop()
+#				plasma_timer_tick.stop()
+#				plasma_collider.disabled = true
 
 func get_input_vector():
 	var input_vector = Vector2.ZERO
@@ -207,6 +227,9 @@ func on_elevator_activated(level_pass):
 	emit_signal("item_used")
 	emit_signal("player_activated_elevator", level_pass)
 
+func on_player_got_powerup(_powerup):
+	PlayerData.plasma += 1
+
 func _on_RebuildTimer_timeout():
 	set_physics_process(true)
 	set_process(true)
@@ -220,3 +243,10 @@ func _on_InvincibleTimer_timeout():
 	PlayerData.invincible = false
 	PlayerData.status = PlayerData.Status.OK
 
+func _on_PlasmaTimer_timeout():
+	plasma.visible = false
+	plasma_timer_tick.stop()
+	PlayerData.plasma = 0
+
+func _on_PlasmaTimerTick_timeout():
+	PlayerData.plasma -= 1

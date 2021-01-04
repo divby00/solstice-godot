@@ -92,6 +92,7 @@ position = Vector2( 107, 110 )
 position = Vector2( 88, 8 )
 
 [node name="Beholder" parent="." index="17" instance=ExtResource( 16 )]
+visible = false
 position = Vector2( 168, 120 )
 
 [node name="Turret" parent="." index="18" instance=ExtResource( 17 )]

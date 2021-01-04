@@ -134,6 +134,7 @@ func connect_nuclear_containers():
 
 func connect_player_data():
 	Utils.connect_signal(PlayerData, "health_changed", panel, "on_health_changed")
+	Utils.connect_signal(PlayerData, "plasma_changed", panel, "on_plasma_changed")
 	Utils.connect_signal(PlayerData, "lives_changed", panel, "on_lives_changed")
 	Utils.connect_signal(PlayerData, "thrust_changed", panel, "on_thrust_changed")
 	Utils.connect_signal(PlayerData, "laser_changed", panel, "on_laser_changed")

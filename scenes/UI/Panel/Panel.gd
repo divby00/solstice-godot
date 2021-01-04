@@ -1,25 +1,27 @@
 extends CanvasLayer
 
+const RedPatch = preload("res://scenes/UI/Panel/red_patch.png")
 const BluePatch = preload("res://scenes/UI/Panel/blue_patch.png")
 const GreenPatch = preload("res://scenes/UI/Panel/green_patch.png")
-const RedPatch = preload("res://scenes/UI/Panel/red_patch.png")
 
 onready var lives_label = $LivesLabel
-onready var info_area_label = $InfoAreaLabel
 onready var item_texture = $ItemTexture
-onready var animation_player: AnimationPlayer = $AnimationPlayer
-onready var thrust_bar = $ThrustNinePatchRect
-onready var laser_bar = $LaserNinePatchRect
-onready var time_bar = $TimeNinePatchRect
 onready var health_sprite = $HealthSprite
+onready var plasma_sprite = $PlasmaSprite
+onready var time_bar = $TimeNinePatchRect
+onready var laser_bar = $LaserNinePatchRect
+onready var info_area_label = $InfoAreaLabel
+onready var thrust_bar = $ThrustNinePatchRect
+onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 enum Bar {
 	THRUST, LASER, TIME
 }
 
 func init_panel():
-	on_health_changed(PlayerData.MAX_HEALTH)
+	on_plasma_changed(0)
 	on_laser_changed(PlayerData.MAX_LASER)
+	on_health_changed(PlayerData.MAX_HEALTH)
 	on_thrust_changed(PlayerData.MAX_THRUST)
 	on_time_changed(PlayerData.MAX_TIME, PlayerData.MAX_TIME)
 
@@ -49,6 +51,10 @@ func on_health_changed(health):
 	var frame = lerp(9.0, 0.0, (float(health) / float(PlayerData.MAX_HEALTH)))
 	health_sprite.frame = frame
 
+func on_plasma_changed(plasma):
+	var frame = lerp(0.0, 17.0, (float(plasma) / float(PlayerData.MAX_PLASMA)))
+	plasma_sprite.frame = clamp(frame, 0, 16)
+
 func on_thrust_changed(thrust):
 	change_color_bar(thrust, thrust_bar)
 	thrust_bar.rect_size.x = thrust
@@ -64,9 +70,9 @@ func on_time_changed(seconds_to_explosion, time_left):
 		time_bar.rect_size.x = length
 
 func change_color_bar(value, bar):
-	if value > 74:
+	if value > 54:
 		bar.texture = BluePatch
-	elif value > 34 and value <=74:
+	elif value > 27 and value <=54:
 		bar.texture = GreenPatch
 	else:
 		bar.texture = RedPatch

@@ -9,7 +9,7 @@ func _ready():
 
 func _on_Hitbox_body_entered(_body):
 	if PlayerData.status != PlayerData.Status.INVINCIBLE:
-		PlayerData.health -= 75
+		PlayerData.health = 0
 
 func _on_Timer_timeout():
 	animation_player.play("animate")

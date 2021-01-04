@@ -6,6 +6,8 @@ signal enemy_attacked(damage)
 
 const Bullet = preload("res://scenes/Enemies/Bullet/Bullet.tscn")
 const BigExplosion = preload("res://scenes/Effects/BigExplosion/BigExplosion.tscn")
+const PlasmaPowerup = preload("res://scenes/Enemies/PlasmaPowerup/PlasmaPowerup.tscn")
+const GreenExplosion = preload("res://scenes/Effects/GreenExplosion/GreenExplosion.tscn")
 
 onready var sprite = $Sprite
 onready var hitbox = $Hitbox
@@ -25,10 +27,31 @@ func _ready():
 func create_bullet(direction, from, to, step, energy=15):
 	for i in range(from, to + 1, step):
 		var bullet = Bullet.instance()
-		get_tree().current_scene.add_child(bullet)
+		get_tree().current_scene.call_deferred("add_child", bullet)
 		bullet.energy = energy
 		bullet.global_position = bullet_position.global_position
 		bullet.direction = direction.rotated(deg2rad(i))
+
+func create_big_explosion():
+	create_explosion(BigExplosion.instance())
+
+func create_green_explosion():
+	create_explosion(GreenExplosion.instance())
+
+func create_explosion(explosion):
+	get_tree().current_scene.add_child(explosion)
+	explosion.global_position = global_position
+	SoundFx.play("explosion", 1.0 + rand_range(-0.2, 0.2))
+	emit_signal("enemy_died", self)
+	queue_free()
+
+func create_powerup():
+	var create = 0
+	#var create = randi() % 4
+	if create == 0:
+		var powerup = PlasmaPowerup.instance()
+		get_tree().current_scene.call_deferred("add_child", powerup)
+		powerup.global_position = global_position
 
 func on_enemy_hurt():
 	SoundFx.play("enemy_hurt")
@@ -37,11 +60,8 @@ func on_enemy_hurt():
 	emit_signal("enemy_hurt")
 
 func on_enemy_died():
-	var explosion = BigExplosion.instance()
-	get_tree().current_scene.add_child(explosion)
-	explosion.global_position = global_position
-	explosion.emitting = true
-	emit_signal("enemy_died", self)
+	create_big_explosion()
+	create_powerup()
 	queue_free()
 
 func on_player_collided(damage):

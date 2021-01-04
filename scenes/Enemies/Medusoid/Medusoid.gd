@@ -1,7 +1,5 @@
 extends "res://scenes/Enemies/Enemy.gd"
 
-const GreenExplosion = preload("res://scenes/Effects/GreenExplosion/GreenExplosion.tscn")
-
 onready var animation_player = $AnimationPlayer
 
 var motion = Vector2.ZERO
@@ -23,12 +21,8 @@ func _physics_process(_delta):
 			motion = motion.bounce(collision.normal)
 
 func on_enemy_died():
-	var explosion = GreenExplosion.instance()
-	get_tree().current_scene.add_child(explosion)
-	explosion.global_position = global_position
-	SoundFx.play("explosion", 1.0 + rand_range(-0.2, 0.2))
-	emit_signal("enemy_died", self)
-	queue_free()
+	.create_powerup()
+	.create_green_explosion()
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "spawn":

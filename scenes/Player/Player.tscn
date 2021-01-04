@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/Player/player_rotation.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player/player_hurt.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/Player/player_teleport.png" type="Texture" id=6]
 [ext_resource path="res://resources/animated_textures/damage_particles.tres" type="Texture" id=7]
 [ext_resource path="res://scenes/Player/Laser/Laser.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Player/Plasma/Plasma.tscn" type="PackedScene" id=9]
 [ext_resource path="res://resources/animated_textures/smoke_particles.tres" type="Texture" id=10]
 [ext_resource path="res://scenes/Player/rebuild_particles.png" type="Texture" id=11]
 
@@ -283,10 +284,6 @@ remote_path = NodePath(".")
 update_rotation = false
 update_scale = false
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 4 )
-hframes = 5
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 7 )
 
@@ -333,6 +330,14 @@ anim_speed = 1.0
 
 [node name="Laser" parent="." instance=ExtResource( 8 )]
 
+[node name="Plasma" parent="." instance=ExtResource( 9 )]
+visible = false
+position = Vector2( 1, 0 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+hframes = 5
+
 [node name="InvincibleTimer" type="Timer" parent="."]
 wait_time = 2.5
 one_shot = true
@@ -344,6 +349,15 @@ one_shot = true
 [node name="RebuildTimer" type="Timer" parent="."]
 wait_time = 1.2
 one_shot = true
+
+[node name="PlasmaTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="PlasmaTimerTick" type="Timer" parent="PlasmaTimer"]
+wait_time = 0.5
 [connection signal="timeout" from="InvincibleTimer" to="." method="_on_InvincibleTimer_timeout"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_DamageTimer_timeout"]
 [connection signal="timeout" from="RebuildTimer" to="." method="_on_RebuildTimer_timeout"]
+[connection signal="timeout" from="PlasmaTimer" to="." method="_on_PlasmaTimer_timeout"]
+[connection signal="timeout" from="PlasmaTimer/PlasmaTimerTick" to="." method="_on_PlasmaTimerTick_timeout"]
