@@ -8,6 +8,7 @@ onready var animation_player = $AnimationPlayer
 var angle = 0
 
 func _ready():
+	angle = randi() % 360 * sign(rand_range(-1, 1))
 	Utils.connect_signal(self, "player_got_powerup", ResourceLoader.player, "on_player_got_powerup")
 
 func _process(delta):
