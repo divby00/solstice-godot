@@ -39,7 +39,7 @@ extents = Vector2( 80, 4 )
 extents = Vector2( 80, 1 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 12, 76 )
+extents = Vector2( 12, 80 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 12, 96 )
@@ -277,15 +277,15 @@ position = Vector2( 640, 160 )
 [node name="MagneticArea" parent="." index="16" instance=ExtResource( 15 )]
 position = Vector2( 592, 216 )
 
-[node name="ActiveArea" parent="MagneticArea" index="1"]
+[node name="Bottom" parent="MagneticArea" index="1"]
+position = Vector2( 20, 188 )
+
+[node name="Texture" parent="MagneticArea/Active" index="0"]
 margin_bottom = 184.0
 
-[node name="CollisionShape2D" parent="MagneticArea/ActiveArea/Area2D" index="0"]
-position = Vector2( 12, 76 )
+[node name="CollisionShape2D" parent="MagneticArea/Active/Area2D" index="0"]
+position = Vector2( 12, 80 )
 shape = SubResource( 7 )
-
-[node name="Bottom" parent="MagneticArea" index="2"]
-position = Vector2( 20, 188 )
 
 [node name="CollisionShape2D" parent="MagneticArea/InfoArea" index="0"]
 position = Vector2( 20, 12 )
@@ -293,15 +293,15 @@ position = Vector2( 20, 12 )
 [node name="MagneticArea2" parent="." index="17" instance=ExtResource( 15 )]
 position = Vector2( 832, 176 )
 
-[node name="ActiveArea" parent="MagneticArea2" index="1"]
+[node name="Bottom" parent="MagneticArea2" index="1"]
+position = Vector2( 20, 228 )
+
+[node name="Texture" parent="MagneticArea2/Active" index="0"]
 margin_bottom = 224.0
 
-[node name="CollisionShape2D" parent="MagneticArea2/ActiveArea/Area2D" index="0"]
+[node name="CollisionShape2D" parent="MagneticArea2/Active/Area2D" index="0"]
 position = Vector2( 12, 96 )
 shape = SubResource( 8 )
-
-[node name="Bottom" parent="MagneticArea2" index="2"]
-position = Vector2( 20, 228 )
 
 [node name="CollisionShape2D" parent="MagneticArea2/InfoArea" index="0"]
 position = Vector2( 20, 12 )

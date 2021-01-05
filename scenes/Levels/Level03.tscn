@@ -29,7 +29,7 @@
 extents = Vector2( 4, 32 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 12, 148 )
+extents = Vector2( 12, 152 )
 
 [node name="Level03" instance=ExtResource( 1 )]
 camera_limit_bottom = 868
@@ -194,18 +194,18 @@ position = Vector2( 448, 160 )
 [node name="Top" parent="MagneticArea" index="0"]
 position = Vector2( 4, -112 )
 
-[node name="ActiveArea" parent="MagneticArea" index="1"]
+[node name="Bottom" parent="MagneticArea" index="1"]
+position = Vector2( 4, 204 )
+
+[node name="Texture" parent="MagneticArea/Active" index="0"]
 margin_left = -8.0
 margin_top = -96.0
 margin_right = 16.0
 margin_bottom = 200.0
 
-[node name="CollisionShape2D" parent="MagneticArea/ActiveArea/Area2D" index="0"]
-position = Vector2( 12, 148 )
+[node name="CollisionShape2D" parent="MagneticArea/Active/Area2D" index="0"]
+position = Vector2( -4, 24 )
 shape = SubResource( 2 )
-
-[node name="Bottom" parent="MagneticArea" index="2"]
-position = Vector2( 4, 204 )
 
 [node name="CollisionShape2D" parent="MagneticArea/InfoArea" index="0"]
 position = Vector2( 4, -116 )

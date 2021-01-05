@@ -29,19 +29,19 @@ extents = Vector2( 4, 24 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 20, 16 )
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 12, 100 )
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 12, 84 )
-
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 12, 60 )
+extents = Vector2( 12, 104 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 44, 4 )
+extents = Vector2( 12, 84 )
 
 [sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 12, 64 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 44, 4 )
+
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 44, 1 )
 
 [node name="Level06" instance=ExtResource( 1 )]
@@ -292,15 +292,15 @@ position = Vector2( 24, 168 )
 [node name="CollisionShape2D" parent="MagneticArea/Top/StaticBody2D" index="0"]
 shape = SubResource( 2 )
 
-[node name="ActiveArea" parent="MagneticArea" index="1"]
+[node name="Bottom" parent="MagneticArea" index="1"]
+position = Vector2( 20, 236 )
+
+[node name="Texture" parent="MagneticArea/Active" index="0"]
 margin_bottom = 232.0
 
-[node name="CollisionShape2D" parent="MagneticArea/ActiveArea/Area2D" index="0"]
-position = Vector2( 12, 100 )
-shape = SubResource( 3 )
-
-[node name="Bottom" parent="MagneticArea" index="2"]
-position = Vector2( 20, 236 )
+[node name="CollisionShape2D" parent="MagneticArea/Active/Area2D" index="0"]
+position = Vector2( 12, 104 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape2D" parent="MagneticArea/InfoArea" index="0"]
 position = Vector2( 20, 12 )
@@ -308,15 +308,15 @@ position = Vector2( 20, 12 )
 [node name="MagneticArea2" parent="." index="11" instance=ExtResource( 3 )]
 position = Vector2( 320, 488 )
 
-[node name="ActiveArea" parent="MagneticArea2" index="1"]
+[node name="Bottom" parent="MagneticArea2" index="1"]
+position = Vector2( 20, 204 )
+
+[node name="Texture" parent="MagneticArea2/Active" index="0"]
 margin_bottom = 200.0
 
-[node name="CollisionShape2D" parent="MagneticArea2/ActiveArea/Area2D" index="0"]
+[node name="CollisionShape2D" parent="MagneticArea2/Active/Area2D" index="0"]
 position = Vector2( 12, 84 )
-shape = SubResource( 4 )
-
-[node name="Bottom" parent="MagneticArea2" index="2"]
-position = Vector2( 20, 204 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D" parent="MagneticArea2/InfoArea" index="0"]
 position = Vector2( 20, 12 )
@@ -324,15 +324,15 @@ position = Vector2( 20, 12 )
 [node name="MagneticArea3" parent="." index="12" instance=ExtResource( 3 )]
 position = Vector2( 336, 912 )
 
-[node name="ActiveArea" parent="MagneticArea3" index="1"]
+[node name="Bottom" parent="MagneticArea3" index="1"]
+position = Vector2( 20, 156 )
+
+[node name="Texture" parent="MagneticArea3/Active" index="0"]
 margin_bottom = 152.0
 
-[node name="CollisionShape2D" parent="MagneticArea3/ActiveArea/Area2D" index="0"]
-position = Vector2( 12, 60 )
-shape = SubResource( 5 )
-
-[node name="Bottom" parent="MagneticArea3" index="2"]
-position = Vector2( 20, 156 )
+[node name="CollisionShape2D" parent="MagneticArea3/Active/Area2D" index="0"]
+position = Vector2( 12, 64 )
+shape = SubResource( 7 )
 
 [node name="CollisionShape2D" parent="MagneticArea3/InfoArea" index="0"]
 position = Vector2( 20, 12 )
@@ -367,10 +367,10 @@ margin_right = 56.0
 flip_h = true
 
 [node name="CollisionShape2D" parent="Rail" index="1"]
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D" parent="Rail/MovingArea" index="0"]
-shape = SubResource( 7 )
+shape = SubResource( 4 )
 
 [node name="AudioStreamPlayer" parent="." index="16"]
 stream = ExtResource( 23 )

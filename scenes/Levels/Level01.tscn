@@ -24,7 +24,7 @@
 [ext_resource path="res://scenes/Items/ItemPass02/ItemPass02.tscn" type="PackedScene" id=23]
 [ext_resource path="res://scenes/Items/ItemPass01/ItemPass01.tscn" type="PackedScene" id=24]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 12, 152 )
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -201,18 +201,18 @@ position = Vector2( 468, 240 )
 [node name="Top" parent="MagneticArea" index="0"]
 position = Vector2( 0, -24 )
 
-[node name="ActiveArea" parent="MagneticArea" index="1"]
+[node name="Bottom" parent="MagneticArea" index="1"]
+position = Vector2( 0, 300 )
+
+[node name="Texture" parent="MagneticArea/Active" index="0"]
 margin_left = -12.0
 margin_top = -8.0
 margin_right = 12.0
 margin_bottom = 296.0
 
-[node name="CollisionShape2D" parent="MagneticArea/ActiveArea/Area2D" index="0"]
-position = Vector2( 12, 152 )
-shape = SubResource( 1 )
-
-[node name="Bottom" parent="MagneticArea" index="2"]
-position = Vector2( 0, 300 )
+[node name="CollisionShape2D" parent="MagneticArea/Active/Area2D" index="0"]
+position = Vector2( -8, 112 )
+shape = SubResource( 11 )
 
 [node name="CollisionShape2D" parent="MagneticArea/InfoArea" index="0"]
 position = Vector2( 0, -28 )

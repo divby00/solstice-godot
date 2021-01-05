@@ -109,10 +109,10 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 12, 160 )
-
 [sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 12, 161 )
+
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 4, 44 )
 
 [node name="Level02" instance=ExtResource( 1 )]
@@ -329,16 +329,16 @@ position = Vector2( 624, 152 )
 [node name="Top" parent="MagneticArea" index="0"]
 position = Vector2( 20, -96 )
 
-[node name="ActiveArea" parent="MagneticArea" index="1"]
+[node name="Bottom" parent="MagneticArea" index="1"]
+position = Vector2( 20, 244 )
+
+[node name="Texture" parent="MagneticArea/Active" index="0"]
 margin_top = -80.0
 margin_bottom = 240.0
 
-[node name="CollisionShape2D" parent="MagneticArea/ActiveArea/Area2D" index="0"]
-position = Vector2( 12, 160 )
-shape = SubResource( 6 )
-
-[node name="Bottom" parent="MagneticArea" index="2"]
-position = Vector2( 20, 244 )
+[node name="CollisionShape2D" parent="MagneticArea/Active/Area2D" index="0"]
+position = Vector2( 12, 49 )
+shape = SubResource( 7 )
 
 [node name="CollisionShape2D" parent="MagneticArea/InfoArea" index="0"]
 position = Vector2( 20, -100 )
@@ -351,7 +351,7 @@ position = Vector2( 4, 220 )
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWall" index="0"]
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="Beholder" parent="." index="15" instance=ExtResource( 2 )]
 position = Vector2( 912, 128 )

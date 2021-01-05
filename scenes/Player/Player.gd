@@ -3,6 +3,8 @@ extends KinematicBody2D
 signal item_used
 signal player_damaged
 signal player_game_over
+signal player_invincible
+signal player_not_invincible
 signal item_picked(item_texture)
 signal player_activated_elevator(level_pass)
 
@@ -98,6 +100,7 @@ func turn_on_plasma(duration):
 	plasma_timer_tick.start()
 	plasma_collider.call_deferred("set_disabled", false)
 	animation_player.play("invincible")
+	emit_signal("player_invincible")
 
 func get_input_vector():
 	var input_vector = Vector2.ZERO
@@ -243,7 +246,8 @@ func _on_PlasmaTimer_timeout():
 	plasma.visible = false
 	plasma_timer_tick.stop()
 	PlayerData.plasma = 0
-	self.status = PlayerData.Status.OK # Should be safe
+	self.status = PlayerData.Status.OK
+	emit_signal("player_not_invincible")
 
 func _on_PlasmaTimerTick_timeout():
 	PlayerData.plasma -= 1

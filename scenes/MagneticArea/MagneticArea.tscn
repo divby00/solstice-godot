@@ -10,12 +10,12 @@
 extents = Vector2( 20, 16 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 12, 4 )
-
-[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 20, 4 )
 
 [sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 12, 4 )
+
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 28, 20 )
 
 [node name="MagneticArea" type="Node2D"]
@@ -38,31 +38,6 @@ collision_mask = 12
 position = Vector2( 20, 16 )
 shape = SubResource( 1 )
 
-[node name="ActiveArea" type="TextureRect" parent="."]
-margin_left = 8.0
-margin_top = 32.0
-margin_right = 32.0
-margin_bottom = 40.0
-texture = ExtResource( 5 )
-expand = true
-stretch_mode = 2
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Area2D" type="Area2D" parent="ActiveArea"]
-collision_layer = 0
-collision_mask = 4
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ActiveArea/Area2D"]
-position = Vector2( 12, 4 )
-z_as_relative = false
-shape = SubResource( 2 )
-
 [node name="Bottom" type="Sprite" parent="."]
 position = Vector2( 20, 44 )
 z_index = 2
@@ -75,15 +50,43 @@ __meta__ = {
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom/StaticBody2D"]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
+
+[node name="Active" type="Node2D" parent="."]
+z_as_relative = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Texture" type="TextureRect" parent="Active"]
+margin_left = 8.0
+margin_top = 32.0
+margin_right = 32.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="Active"]
+position = Vector2( 8, 32 )
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Active/Area2D"]
+position = Vector2( 12, 4 )
+z_as_relative = false
+shape = SubResource( 4 )
 
 [node name="InfoArea" parent="." instance=ExtResource( 1 )]
 text = "Magnetic area"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InfoArea"]
 position = Vector2( 20, 16 )
-shape = SubResource( 4 )
-[connection signal="body_entered" from="ActiveArea/Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="ActiveArea/Area2D" to="." method="_on_Area2D_body_exited"]
+shape = SubResource( 3 )
+[connection signal="body_entered" from="Active/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Active/Area2D" to="." method="_on_Area2D_body_exited"]
 
 [editable path="InfoArea"]

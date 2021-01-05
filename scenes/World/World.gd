@@ -10,6 +10,7 @@ onready var pause = $UI/Pause
 onready var camera = $Camera2D
 onready var transition = $UI/Transition
 onready var storage_base = $UI/StorageBase
+onready var nova = $UI/NovaEffect/TextureRect
 onready var animation_player = $AnimationPlayer
 onready var camera_shake_timer = $CameraShakeTimer
 onready var level_change_label = $UI/LevelChange/Label
@@ -27,7 +28,11 @@ func _ready():
 			load_level(saved_data.level)
 	else:
 		load_level("00")
-	
+
+func _input(_event):
+	if cheats and (Input.is_key_pressed(KEY_KP_ADD) or Input.is_key_pressed(KEY_PLUS)):
+		PlayerData.lives += 1
+
 func load_level(level_key):
 	if level_key != "00":
 		SoundFx.play("enter_area_" + str(level_key))
@@ -63,6 +68,7 @@ func level_init():
 		PlayerData.lives = saved_game.lifes
 	if LevelData.current_level_number == 1 or LevelData.current_level_number == 0:
 		PlayerData.lives = PlayerData.LIVES
+	nova.visible = false
 	panel.init_panel()
 	transition.fadein()
 	level_change_label.text = "Area " + str(LevelData.current_level_number)
@@ -147,6 +153,8 @@ func connect_player_data():
 	Utils.connect_signal(player, "player_game_over", self, "on_game_over")
 	Utils.connect_signal(player, "player_damaged", self, "on_player_damaged")
 	Utils.connect_signal(player, "player_activated_elevator", self, "on_player_activated_elevator")
+	Utils.connect_signal(player, "player_invincible", self, "on_player_invincible")
+	Utils.connect_signal(player, "player_not_invincible", self, "on_player_not_invincible")
 
 func set_camera_limits(level):
 	camera.limit_left = level.camera_limit_left
@@ -233,6 +241,9 @@ func _on_Transition_fadein_finished(transition_name):
 func on_cheats_activated():
 	cheats = true
 
-func _input(_event):
-	if cheats and (Input.is_key_pressed(KEY_KP_ADD) or Input.is_key_pressed(KEY_PLUS)):
-		PlayerData.lives += 1
+func on_player_invincible():
+	nova.visible = true
+
+func on_player_not_invincible():
+	nova.visible = false
+

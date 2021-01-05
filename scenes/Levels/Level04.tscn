@@ -235,18 +235,18 @@ position = Vector2( 672, 160 )
 [node name="Top" parent="MagneticArea" index="0"]
 position = Vector2( 44, 32 )
 
-[node name="ActiveArea" parent="MagneticArea" index="1"]
+[node name="Bottom" parent="MagneticArea" index="1"]
+position = Vector2( 44, 244 )
+
+[node name="Texture" parent="MagneticArea/Active" index="0"]
 margin_left = 32.0
 margin_top = 48.0
 margin_right = 56.0
 margin_bottom = 240.0
 
-[node name="CollisionShape2D" parent="MagneticArea/ActiveArea/Area2D" index="0"]
-position = Vector2( 12, 96 )
+[node name="CollisionShape2D" parent="MagneticArea/Active/Area2D" index="0"]
+position = Vector2( 36, 112 )
 shape = SubResource( 2 )
-
-[node name="Bottom" parent="MagneticArea" index="2"]
-position = Vector2( 44, 244 )
 
 [node name="CollisionShape2D" parent="MagneticArea/InfoArea" index="0"]
 position = Vector2( 44, 28 )
