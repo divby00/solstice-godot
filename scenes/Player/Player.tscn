@@ -288,6 +288,7 @@ shape = SubResource( 7 )
 
 [node name="DamageParticles" type="CPUParticles2D" parent="."]
 material = SubResource( 8 )
+z_index = 2
 emitting = false
 amount = 40
 lifetime = 0.6
@@ -316,6 +317,7 @@ anim_speed = 1.0
 
 [node name="RebuildParticles" type="CPUParticles2D" parent="."]
 material = SubResource( 10 )
+z_index = 2
 emitting = false
 amount = 50
 lifetime = 0.6
