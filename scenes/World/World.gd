@@ -27,7 +27,7 @@ func _ready():
 		if saved_data != null:
 			load_level(saved_data.level)
 	else:
-		load_level("00")
+		load_level("01")
 
 func _input(_event):
 	if cheats and (Input.is_key_pressed(KEY_KP_ADD) or Input.is_key_pressed(KEY_PLUS)):

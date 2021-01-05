@@ -24,7 +24,7 @@ export(int) var MAX_HEALTH = 112
 export(int) var MAX_THRUST = 112
 export(int) var MAX_LASER = 112
 export(int) var MAX_TIME = 112
-export(int) var MAX_PLASMA = 17
+export(int) var MAX_PLASMA = 16
 
 var selected_item = null
 var lives = LIVES setget set_lives

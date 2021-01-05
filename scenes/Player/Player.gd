@@ -92,15 +92,18 @@ func _physics_process(delta):
 	motion = move_and_slide(motion, Vector2.UP)
 
 func turn_on_plasma(duration):
-	AudioServer.set_bus_effect_enabled(AudioServer.get_bus_index("Master"), 0, true)
-	self.status = PlayerData.Status.INVINCIBLE
-	plasma.visible = true
-	plasma_timer.wait_time = duration
-	plasma_timer.start()
-	plasma_timer_tick.start()
-	plasma_collider.call_deferred("set_disabled", false)
-	animation_player.play("invincible")
-	emit_signal("player_invincible")
+	if duration > 0:
+		AudioServer.set_bus_effect_enabled(AudioServer.get_bus_index("Master"), 0, true)
+		self.status = PlayerData.Status.INVINCIBLE
+		plasma.visible = true
+		plasma_timer.wait_time = duration
+		plasma_timer.start()
+		plasma_timer_tick.start()
+		plasma_collider.call_deferred("set_disabled", false)
+		animation_player.play("invincible")
+		emit_signal("player_invincible")
+	else:
+		self.status = PlayerData.Status.OK
 
 func get_input_vector():
 	var input_vector = Vector2.ZERO
@@ -257,7 +260,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		on_destroy_process = false
 		set_process(true)
 		set_physics_process(true)
-		turn_on_plasma(5)
+		turn_on_plasma(PlayerData.plasma * .5)
 
 func _on_AnimationPlayer_animation_started(anim_name):
 	if anim_name == "rebuilding":

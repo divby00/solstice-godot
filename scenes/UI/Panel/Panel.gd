@@ -52,7 +52,7 @@ func on_health_changed(health):
 	health_sprite.frame = frame
 
 func on_plasma_changed(plasma):
-	var frame = lerp(0.0, 17.0, (float(plasma) / float(PlayerData.MAX_PLASMA)))
+	var frame = lerp(0.0, 16.0, (float(plasma) / float(PlayerData.MAX_PLASMA)))
 	plasma_sprite.frame = clamp(frame, 0, 16)
 
 func on_thrust_changed(thrust):
