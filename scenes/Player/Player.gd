@@ -13,8 +13,6 @@ onready var plasma = $Plasma
 onready var sprite : Sprite = $Sprite
 onready var plasma_timer = $PlasmaTimer
 onready var damage_timer = $DamageTimer
-onready var invincible_timer = $InvincibleTimer
-onready var rebuild_timer: Timer = $RebuildTimer
 onready var plasma_collider = $Plasma/CollisionShape2D
 onready var particles : CPUParticles2D = $SmokeParticles
 onready var plasma_timer_tick = $PlasmaTimer/PlasmaTimerTick
@@ -31,11 +29,33 @@ export(int) var MAX_SPEED = 80
 export(int) var GRAVITY = 150
 export(float) var FRICTION = .2
 
-var plasma_on = false
+var on_destroy_process = false
 var motion = Vector2.ZERO
 var facing = Facing.RIGHT
 var is_in_magnetic_area = false
+var status = PlayerData.Status.OK setget set_status
+var prev_status = PlayerData.Status.OK
 var item_definitions = ResourceLoader.item_defs.definitions
+
+func set_status(value):
+	prev_status = status
+	status = value
+	if prev_status != status:
+		match status:
+			PlayerData.Status.OK:
+				animation_player.play("rotation")
+			PlayerData.Status.DAMAGED:
+				damage_particles.emitting = true
+				animation_player.play("hurt")
+				damage_timer.start()
+			PlayerData.Status.DESTROYED:
+				animation_player.play("destroyed")
+			PlayerData.Status.TELEPORT:
+				animation_player.play("teleport")
+			PlayerData.Status.INVINCIBLE:
+				animation_player.play("invincible")
+			PlayerData.Status.REBUILDING:
+				animation_player.play("rebuilding")
 
 func _ready():
 	ResourceLoader.player = self
@@ -58,16 +78,7 @@ func _process(_delta):
 	
 	if Input.is_action_just_released("plasma"):
 		if not plasma.visible and PlayerData.plasma > 0:
-			PlayerData.status = PlayerData.Status.INVINCIBLE
-			PlayerData.invincible = true
-			plasma.visible = true
-			plasma_timer.wait_time = PlayerData.plasma * .5
-			invincible_timer.wait_time = plasma_timer.wait_time
-			plasma_timer.start()
-			plasma_timer_tick.start()
-			invincible_timer.start()
-			plasma_collider.disabled = false
-			animation_player.play("invincible")
+			turn_on_plasma(PlayerData.plasma * .5)
 
 func _physics_process(delta):
 	var input_vector = get_input_vector()
@@ -77,6 +88,16 @@ func _physics_process(delta):
 	apply_gravity(delta)
 	update_animation(input_vector)
 	motion = move_and_slide(motion, Vector2.UP)
+
+func turn_on_plasma(duration):
+	AudioServer.set_bus_effect_enabled(AudioServer.get_bus_index("Master"), 0, true)
+	self.status = PlayerData.Status.INVINCIBLE
+	plasma.visible = true
+	plasma_timer.wait_time = duration
+	plasma_timer.start()
+	plasma_timer_tick.start()
+	plasma_collider.call_deferred("set_disabled", false)
+	animation_player.play("invincible")
 
 func get_input_vector():
 	var input_vector = Vector2.ZERO
@@ -111,7 +132,7 @@ func apply_friction(input_vector):
 		motion.x = lerp(motion.x, 0, FRICTION)
 
 func apply_gravity(delta):
-	if !is_on_floor() and !is_in_magnetic_area and PlayerData.status != PlayerData.Status.TELEPORT:
+	if !is_on_floor() and !is_in_magnetic_area and self.status != PlayerData.Status.TELEPORT:
 		motion.y += GRAVITY * delta
 
 func update_animation(_input_vector):
@@ -123,13 +144,13 @@ func update_animation(_input_vector):
 
 func create_new_item(item):
 	var item_scene = item_definitions[PlayerData.selected_item].scene.instance()
-	get_tree().current_scene.add_child(item_scene)
+	get_tree().current_scene.call_deferred("add_child", item_scene)
 	item_scene.global_position = item.global_position
 	item_scene.connect("item_picked", self, "on_item_picked")
 
 func create_teleporter_pass(position: Vector2):
 	var item_scene = item_definitions["teleportpass"].scene.instance()
-	get_tree().current_scene.add_child(item_scene)
+	get_tree().current_scene.call_deferred("add_child", item_scene)
 	item_scene.global_position = position
 	item_scene.connect("item_picked", self, "on_item_picked")
 
@@ -148,7 +169,7 @@ func on_teleporter_charged(_teleporter_group, _teleporter):
 	emit_signal("item_used")
 
 func on_teleporter_activated(teleporter_group, teleporter):
-	PlayerData.status = PlayerData.Status.TELEPORT
+	self.status = PlayerData.Status.TELEPORT
 	set_process(false)
 	set_physics_process(false)
 	for tele in teleporter_group.get_children():
@@ -158,7 +179,7 @@ func on_teleporter_activated(teleporter_group, teleporter):
 			global_position.y  = tele.global_position.y - 16
 			tele.particles.emitting = true
 			yield(get_tree().create_timer(.4), "timeout")
-			PlayerData.status = PlayerData.Status.OK
+			self.status = PlayerData.Status.OK # JCP Check
 			set_process(true)
 			set_physics_process(true)
 
@@ -169,50 +190,30 @@ func on_pass_dispatched(dispatcher):
 func on_nuclear_waste_stored(_storage):
 	emit_signal("item_used")
 
-func on_player_destroyed():
-	set_physics_process(false)
-	set_process(false)
+func create_explosion():
 	var explosion = BigExplosion.instance()
-	get_tree().current_scene.add_child(explosion)
+	get_tree().current_scene.call_deferred("add_child", explosion)
 	explosion.emitting = true
 	explosion.global_position = Vector2(global_position.x + rand_range(-8, +8), global_position.y + rand_range(-8, +8))
 	explosion.z_index = 2
+
+func on_player_destroyed():
+	on_destroy_process = true
+	damage_timer.stop()
+	create_explosion()
 	PlayerData.lives -= 1
 	if PlayerData.lives > 0:
 		PlayerData.health = PlayerData.MAX_HEALTH
-		rebuild_timer.start()
-		PlayerData.invincible = true
-		rebuild_particles.emitting = true
-		animation_player.play("rebuilding")
+		self.status = PlayerData.Status.REBUILDING
 	else:
 		emit_signal("player_game_over")
 
 func on_enemy_attacked(damage):
-	if not PlayerData.invincible:
-		damage_particles.emitting = true
+	if self.status != PlayerData.Status.INVINCIBLE and self.status != PlayerData.Status.REBUILDING:
+		self.status = PlayerData.Status.DAMAGED
 		SoundFx.play("hurt")
 		PlayerData.health -= damage
-		PlayerData.status = PlayerData.Status.DAMAGED
 		emit_signal("player_damaged")
-
-func on_status_changed(old_status, new_status):
-	if old_status != new_status:
-		match new_status:
-			PlayerData.Status.OK:
-				animation_player.play("rotation")
-			PlayerData.Status.DAMAGED:
-				animation_player.play("hurt")
-				damage_timer.start()
-			PlayerData.Status.DESTROYED:
-				animation_player.play("destroyed")
-			PlayerData.Status.TELEPORT:
-				animation_player.play("teleport")
-			PlayerData.Status.INVINCIBLE:
-				if invincible_timer.is_stopped():
-					invincible_timer.wait_time = 2.5
-				invincible_timer.start()
-	if PlayerData.invincible:
-		animation_player.play("invincible")
 
 func on_item_used():
 	PlayerData.selected_item = null
@@ -230,26 +231,32 @@ func on_elevator_activated(level_pass):
 func on_player_got_powerup(_powerup):
 	PlayerData.plasma += 1
 
-func _on_RebuildTimer_timeout():
-	set_physics_process(true)
-	set_process(true)
-	PlayerData.status = PlayerData.Status.INVINCIBLE
-	PlayerData.invincible = true
-
 func _on_DamageTimer_timeout():
-	PlayerData.status = PlayerData.Status.OK
-
-func _on_InvincibleTimer_timeout():
-	PlayerData.invincible = false
-	PlayerData.status = PlayerData.Status.OK
+	if not plasma_timer.is_stopped():
+		self.status = PlayerData.Status.INVINCIBLE
+	else:
+		self.status = PlayerData.Status.OK
 
 func _on_PlasmaTimer_timeout():
-	plasma_collider.disabled = true
+	AudioServer.set_bus_effect_enabled(AudioServer.get_bus_index("Master"), 0, false)
+	plasma_collider.call_deferred("set_disabled", true)
 	plasma.visible = false
 	plasma_timer_tick.stop()
 	PlayerData.plasma = 0
-	PlayerData.invincible = false
-	PlayerData.status = PlayerData.Status.OK
+	self.status = PlayerData.Status.OK # Should be safe
 
 func _on_PlasmaTimerTick_timeout():
 	PlayerData.plasma -= 1
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "rebuilding":
+		on_destroy_process = false
+		set_process(true)
+		set_physics_process(true)
+		turn_on_plasma(5)
+
+func _on_AnimationPlayer_animation_started(anim_name):
+	if anim_name == "rebuilding":
+		set_physics_process(false)
+		set_process(false)
+		rebuild_particles.emitting = true

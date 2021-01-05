@@ -341,16 +341,8 @@ z_index = 1
 texture = ExtResource( 4 )
 hframes = 5
 
-[node name="InvincibleTimer" type="Timer" parent="."]
-wait_time = 2.5
-one_shot = true
-
 [node name="DamageTimer" type="Timer" parent="."]
 wait_time = 0.5
-one_shot = true
-
-[node name="RebuildTimer" type="Timer" parent="."]
-wait_time = 1.2
 one_shot = true
 
 [node name="PlasmaTimer" type="Timer" parent="."]
@@ -359,8 +351,8 @@ one_shot = true
 
 [node name="PlasmaTimerTick" type="Timer" parent="PlasmaTimer"]
 wait_time = 0.5
-[connection signal="timeout" from="InvincibleTimer" to="." method="_on_InvincibleTimer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_DamageTimer_timeout"]
-[connection signal="timeout" from="RebuildTimer" to="." method="_on_RebuildTimer_timeout"]
 [connection signal="timeout" from="PlasmaTimer" to="." method="_on_PlasmaTimer_timeout"]
 [connection signal="timeout" from="PlasmaTimer/PlasmaTimerTick" to="." method="_on_PlasmaTimerTick_timeout"]

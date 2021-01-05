@@ -57,6 +57,7 @@ func connect_signals():
 func level_init():
 	call_deferred("set_initial_player_position")
 	PlayerData.reset_between_levels()
+	player.status = PlayerData.Status.OK
 	if GameState.loading:
 		var saved_game = GameState.load()
 		PlayerData.lives = saved_game.lifes
@@ -140,7 +141,6 @@ func connect_player_data():
 	Utils.connect_signal(PlayerData, "laser_changed", panel, "on_laser_changed")
 	Utils.connect_signal(PlayerData, "time_changed", panel, "on_time_changed")
 	Utils.connect_signal(PlayerData, "player_destroyed", player, "on_player_destroyed")
-	Utils.connect_signal(PlayerData, "status_changed", player, "on_status_changed")
 	Utils.connect_signal(player, "item_picked", panel, "on_item_picked")
 	Utils.connect_signal(player, "item_used", player, "on_item_used")
 	Utils.connect_signal(player, "item_used", panel, "on_item_used")
@@ -215,6 +215,7 @@ func on_game_over():
 	
 func _on_GameOverTransition_fadeout_finished(_transition_name):
 	PlayerData.reset()
+	player.status = PlayerData.Status.OK
 # warning-ignore:return_value_discarded
 	get_tree().change_scene_to(ResourceLoader.GameOver)
 

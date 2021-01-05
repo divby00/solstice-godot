@@ -13,7 +13,7 @@ func _ready():
 
 func _on_Hitbox_body_entered(body):
 	if body.is_in_group("PlayerGroup"):
-		if PlayerData.status != PlayerData.Status.INVINCIBLE:
+		if ResourceLoader.player.status != PlayerData.Status.INVINCIBLE:
 			emit_signal("enemy_attacked", 10)
 
 func _on_Timer_timeout():
