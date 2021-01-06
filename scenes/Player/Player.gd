@@ -17,7 +17,6 @@ onready var plasma_timer = $PlasmaTimer
 onready var damage_timer = $DamageTimer
 onready var plasma_collider = $Plasma/CollisionShape2D
 onready var particles : CPUParticles2D = $SmokeParticles
-onready var plasma_timer_tick = $PlasmaTimer/PlasmaTimerTick
 onready var damage_particles : CPUParticles2D = $DamageParticles
 onready var animation_player : AnimationPlayer = $AnimationPlayer
 onready var rebuild_particles : CPUParticles2D = $RebuildParticles
@@ -96,9 +95,7 @@ func turn_on_plasma(duration):
 		AudioServer.set_bus_effect_enabled(AudioServer.get_bus_index("Master"), 0, true)
 		self.status = PlayerData.Status.INVINCIBLE
 		plasma.visible = true
-		plasma_timer.wait_time = duration
 		plasma_timer.start()
-		plasma_timer_tick.start()
 		plasma_collider.call_deferred("set_disabled", false)
 		animation_player.play("invincible")
 		emit_signal("player_invincible")
@@ -244,16 +241,15 @@ func _on_DamageTimer_timeout():
 		self.status = PlayerData.Status.OK
 
 func _on_PlasmaTimer_timeout():
-	AudioServer.set_bus_effect_enabled(AudioServer.get_bus_index("Master"), 0, false)
-	plasma_collider.call_deferred("set_disabled", true)
-	plasma.visible = false
-	plasma_timer_tick.stop()
-	PlayerData.plasma = 0
-	self.status = PlayerData.Status.OK
-	emit_signal("player_not_invincible")
-
-func _on_PlasmaTimerTick_timeout():
 	PlayerData.plasma -= 1
+	if PlayerData.plasma == 0:
+		AudioServer.set_bus_effect_enabled(AudioServer.get_bus_index("Master"), 0, false)
+		plasma_collider.call_deferred("set_disabled", true)
+		plasma.visible = false
+		plasma_timer.stop()
+		PlayerData.plasma = 0
+		self.status = PlayerData.Status.OK
+		emit_signal("player_not_invincible")
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "rebuilding":

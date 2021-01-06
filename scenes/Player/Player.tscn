@@ -347,12 +347,7 @@ one_shot = true
 
 [node name="PlasmaTimer" type="Timer" parent="."]
 wait_time = 0.5
-one_shot = true
-
-[node name="PlasmaTimerTick" type="Timer" parent="PlasmaTimer"]
-wait_time = 0.5
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_DamageTimer_timeout"]
 [connection signal="timeout" from="PlasmaTimer" to="." method="_on_PlasmaTimer_timeout"]
-[connection signal="timeout" from="PlasmaTimer/PlasmaTimerTick" to="." method="_on_PlasmaTimerTick_timeout"]
