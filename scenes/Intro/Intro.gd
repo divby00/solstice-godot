@@ -45,11 +45,12 @@ var credits = [
 
 var messages = [
 	"In the near future...",
-	"...unknow entities have taken\nover the most powerful nuclear\npower plant in the world!",
+	"...unknow entities have taken\nover the most powerful nuclear\nmining complex in the world!",
 	"The threat of a nuclear winter\nis bigger than ever..."
 ]
 
 func _ready():
+	reset_music()
 	help.help_is_posible = false
 	label.text = messages[message_index]
 	for _i in range(100):
@@ -60,6 +61,10 @@ func _exit_tree():
 	var stars = get_tree().get_nodes_in_group("BlueStarGroup")
 	for star in stars:
 		star.queue_free()
+
+func reset_music():
+	AudioServer.set_bus_effect_enabled(AudioServer.get_bus_index("Master"), 0, false)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), db2linear(0))
 
 func skip_scrolling():
 	animation_player.stop()

@@ -44,3 +44,7 @@ func play(sound_stream, pitch_scale = 1):
 			sound_player.stream = sounds[sound_stream]
 			sound_player.play()
 			return
+
+func clear():
+	for sound_player in sound_players:
+		sound_player.stop()

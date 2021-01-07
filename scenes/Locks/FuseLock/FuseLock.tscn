@@ -15,6 +15,7 @@ extents = Vector2( 4, 28 )
 extents = Vector2( 20, 20 )
 
 [node name="FuseLock" instance=ExtResource( 1 )]
+z_index = 1
 script = ExtResource( 2 )
 opened_by = "fuse"
 

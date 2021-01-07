@@ -55,6 +55,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		get_tree().paused = game_paused
 
 func _on_Transition_fadeout_finished(_transition_name):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear2db(0))
+	SoundFx.clear()
 	get_tree().paused = false
 # warning-ignore:return_value_discarded
 	get_tree().change_scene_to(ResourceLoader.Intro)
