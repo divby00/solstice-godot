@@ -16,11 +16,18 @@ func _process(delta):
 	global_position.x += sin(angle) / 3
 	global_position.y += cos(angle) / 3
 
+func dissapear():
+	active_timer.stop()
+	animation_player.play("dissapear")
+
 func _on_PlasmaPowerup_body_entered(body):
 	if body.is_in_group("PlayerGroup"):
 		emit_signal("player_got_powerup", self)
 		SoundFx.play("powerup")
 		queue_free()
+	if body.is_in_group("SquidGroup"):
+		body.powerup += 1
+		queue_free()
 
 func _on_ActiveTimer_timeout():
-	animation_player.play("dissapear")
+	dissapear()

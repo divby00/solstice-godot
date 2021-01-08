@@ -24,6 +24,7 @@ func _process(delta):
 	global_position.y += cos(angle)
 
 func _physics_process(_delta):
+# warning-ignore:return_value_discarded
 	move_and_slide(motion)
 
 func create_mine():

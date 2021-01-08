@@ -60,9 +60,12 @@ tracks/3/keys = {
 } ]
 }
 
-[node name="PlasmaPowerup" type="Area2D"]
+[node name="PlasmaPowerup" type="Area2D" groups=[
+"PowerupGroup",
+]]
+z_index = 2
 collision_layer = 0
-collision_mask = 4
+collision_mask = 2147483661
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
