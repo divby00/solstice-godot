@@ -119,6 +119,8 @@ __meta__ = {
 [node name="Help" parent="UI" instance=ExtResource( 9 )]
 
 [node name="Transition" parent="UI" instance=ExtResource( 6 )]
+
+[node name="Screenshot" type="Sprite" parent="."]
 [connection signal="timeout" from="CameraShakeTimer" to="." method="_on_CameraShakeTimer_timeout"]
 [connection signal="fadeout_finished" from="UI/GameOverTransition" to="." method="_on_GameOverTransition_fadeout_finished"]
 [connection signal="help_hidden" from="UI/Help" to="UI/Pause" method="_on_Help_help_hidden"]

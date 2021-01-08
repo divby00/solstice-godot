@@ -2,12 +2,11 @@ extends "res://scenes/Enemies/Enemy.gd"
 
 onready var timer = $Timer
 
-export(int) var speed = 30
+export(int) var speed = 50
 export(int) var powerup_threshold = 100
 
 var motion = Vector2.ZERO
 var direction = Vector2.UP
-var powerup = 0 setget set_powerup
 
 func _ready():
 	get_direction()
@@ -35,14 +34,10 @@ func get_direction():
 			direction = Vector2.LEFT
 	rotation = direction.angle()
 
-func set_powerup(value):
-	powerup = value
-	if powerup == 1:
-		hurtbox.health += 2
-		var shoot_type = randi() % 2
-		var bullet_vector = Vector2.UP if shoot_type == 0 else Vector2.ONE
-		.create_bullet(bullet_vector, 0, 360, 45)
-		powerup = 0
+func pick_and_shoot():
+	SoundFx.play("squidpicks")
+	hurtbox.health += 2
+	.create_bullet(Vector2.UP, 0, 360, 45)
 
 func _on_Timer_timeout():
 	get_direction()

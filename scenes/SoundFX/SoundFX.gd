@@ -34,6 +34,7 @@ var sounds = {
 	"enter_area_08": preload("res://resources/sfx/entering_area_8.ogg"),
 	"congrats": preload("res://resources/sfx/congrats.ogg"),
 	"game_over": preload("res://resources/sfx/game_over.ogg"),
+	"squidpicks": preload("res://resources/sfx/squidpicks.ogg"),
 	"nuclear_explosion": preload("res://resources/sfx/nuclear_explosion.ogg"),
 }
 

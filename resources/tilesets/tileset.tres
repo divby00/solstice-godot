@@ -2408,7 +2408,7 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 109/texture = ExtResource( 1 )
 109/tex_offset = Vector2( 0, 0 )
 109/modulate = Color( 1, 1, 1, 1 )
-109/region = Rect2( 72, 0, 8, 8 )
+109/region = Rect2( 208, 112, 48, 16 )
 109/tile_mode = 0
 109/occluder_offset = Vector2( 0, 0 )
 109/navigation_offset = Vector2( 0, 0 )
@@ -2424,7 +2424,7 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 "shape": SubResource( 15 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-109/z_index = 2
+109/z_index = 0
 110/name = "tileset.png 110"
 110/texture = ExtResource( 1 )
 110/tex_offset = Vector2( 0, 0 )

@@ -26,7 +26,7 @@ func _on_PlasmaPowerup_body_entered(body):
 		SoundFx.play("powerup")
 		queue_free()
 	if body.is_in_group("SquidGroup"):
-		body.powerup += 1
+		body.pick_and_shoot()
 		queue_free()
 
 func _on_ActiveTimer_timeout():

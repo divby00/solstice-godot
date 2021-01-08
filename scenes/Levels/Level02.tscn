@@ -233,9 +233,6 @@ position = Vector2( 72, 128 )
 [node name="LandLock" parent="Locks" index="2" instance=ExtResource( 21 )]
 position = Vector2( 920, 576 )
 
-[node name="Spawners" parent="." index="6"]
-MAX_ENEMIES = 40
-
 [node name="Spawner1" parent="Spawners" index="0" instance=ExtResource( 20 )]
 position = Vector2( 144, 200 )
 

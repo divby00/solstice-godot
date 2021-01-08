@@ -18,6 +18,7 @@ onready var game_over_transition = $UI/GameOverTransition
 
 var cheats = false
 var new_level = null
+var n = 100
 
 func _ready():
 	help.help_is_posible = false
@@ -32,6 +33,15 @@ func _ready():
 func _input(_event):
 	if cheats and (Input.is_key_pressed(KEY_KP_ADD) or Input.is_key_pressed(KEY_PLUS)):
 		PlayerData.lives += 1
+	
+	if Input.is_action_just_pressed("screenshot"):
+		take_screenshot()
+
+func take_screenshot():
+	var image = get_viewport().get_texture().get_data()
+	image.flip_y()
+	image.save_png("res://area_0" + str(LevelData.current_level_number) + "_" + str(n) + ".png")
+	n += 1
 
 func load_level(level_key):
 	if level_key != "00":
@@ -80,7 +90,10 @@ func remove_level():
 		remove_items()
 		remove_spawners()
 		remove_enemies()
+		level[0].audio_player.stop()
 		level[0].queue_free()
+		AudioServer.set_bus_effect_enabled(AudioServer.get_bus_index("Master"), 0, false)
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), db2linear(0))
 
 func remove_spawners():
 	var spawners = get_tree().get_nodes_in_group("SpawnerGroup")

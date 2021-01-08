@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/squidpicks.ogg-3958fd9f788e0612321e39cec8846393.oggstr"
+
+[deps]
+
+source_file="res://resources/sfx/squidpicks.ogg"
+dest_files=[ "res://.import/squidpicks.ogg-3958fd9f788e0612321e39cec8846393.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
