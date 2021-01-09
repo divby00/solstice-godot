@@ -6,6 +6,12 @@ const Medusoid = preload("res://scenes/Enemies/Medusoid/Medusoid.tscn")
 const MedusoidSoldier = preload("res://scenes/Enemies/MedusoidSoldier/MedusoidSoldier.tscn")
 
 const area_enemies = {
+	0: {
+		"amount": 5,
+		"allowed_types": [
+			Medusoid, MedusoidSoldier, EvilOwl, Squid
+		]
+	},
 	1: {
 		"amount": 30,
 		"allowed_types": [

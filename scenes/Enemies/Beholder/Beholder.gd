@@ -13,6 +13,17 @@ func fire():
 	if in_screen:
 		.create_bullet(Vector2.ONE, 18, 360, 18)
 
+func on_enemy_died():
+	var explosion = BigExplosion.instance()
+	get_tree().current_scene.add_child(explosion)
+	explosion.global_position = global_position
+	explosion.global_position.y -= 32
+	explosion.emitting = true
+	emit_signal("enemy_died", self)
+	for _i in range(7):
+		.create_powerup(Vector2(rand_range(-8, +8), rand_range(-32, -24)))
+	queue_free()
+
 func _on_AwakeTimer_timeout():
 	animation_player.play("close")
 	sleep_timer.start()

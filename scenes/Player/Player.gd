@@ -5,6 +5,7 @@ signal player_damaged
 signal player_game_over
 signal player_invincible
 signal player_not_invincible
+signal player_activated_bomb
 signal item_picked(item_texture)
 signal player_activated_elevator(level_pass)
 
@@ -75,6 +76,9 @@ func _process(_delta):
 			"battery":
 				SoundFx.play("laserup")
 				PlayerData.laser = PlayerData.MAX_LASER
+				emit_signal("item_used")
+			"bomb":
+				emit_signal("player_activated_bomb")
 				emit_signal("item_used")
 	
 	if Input.is_action_just_released("plasma"):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/UI/StorageBase/StorageBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Pause/Pause.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scenes/UI/Help/Help.tscn" type="PackedScene" id=9]
 [ext_resource path="res://resources/animated_textures/red_circle_in.tres" type="Texture" id=10]
 [ext_resource path="res://scenes/Effects/Nova/NovaEffect.tscn" type="PackedScene" id=11]
+[ext_resource path="res://resources/animated_textures/white_circle_in.tres" type="Texture" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "new_area"
@@ -78,6 +79,9 @@ wait_time = 0.4
 one_shot = true
 
 [node name="UI" parent="." instance=ExtResource( 4 )]
+
+[node name="BombTransition" parent="UI" instance=ExtResource( 6 )]
+circle_in = ExtResource( 12 )
 
 [node name="StorageBase" parent="UI" instance=ExtResource( 1 )]
 

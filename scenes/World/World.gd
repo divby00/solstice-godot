@@ -12,6 +12,7 @@ onready var transition = $UI/Transition
 onready var storage_base = $UI/StorageBase
 onready var nova = $UI/NovaEffect/TextureRect
 onready var animation_player = $AnimationPlayer
+onready var bomb_transition = $UI/BombTransition
 onready var camera_shake_timer = $CameraShakeTimer
 onready var level_change_label = $UI/LevelChange/Label
 onready var game_over_transition = $UI/GameOverTransition
@@ -168,6 +169,7 @@ func connect_player_data():
 	Utils.connect_signal(player, "player_activated_elevator", self, "on_player_activated_elevator")
 	Utils.connect_signal(player, "player_invincible", self, "on_player_invincible")
 	Utils.connect_signal(player, "player_not_invincible", self, "on_player_not_invincible")
+	Utils.connect_signal(player, "player_activated_bomb", self, "on_player_activated_bomb")
 
 func set_camera_limits(level):
 	camera.limit_left = level.camera_limit_left
@@ -218,6 +220,17 @@ func on_player_damaged():
 	set_process(true)
 	camera_shake_timer.start()
 
+func on_player_activated_bomb():
+	SoundFx.play("explosion")
+	camera_shake_timer.start()
+	bomb_transition.fadein()
+	var enemies = get_tree().get_nodes_in_group("EnemyGroup")
+	for enemy in enemies:
+		if enemy.has_node("Hurtbox"):
+			enemy.hurtbox.health = 0
+		else:
+			print('no')
+
 func _on_CameraShakeTimer_timeout():
 	camera.offset_h = 0
 	camera.offset_v = 0
@@ -259,4 +272,3 @@ func on_player_invincible():
 
 func on_player_not_invincible():
 	nova.visible = false
-

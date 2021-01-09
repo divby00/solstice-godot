@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/Levels/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Items/ItemPass02/ItemPass02.tscn" type="PackedScene" id=2]
@@ -17,8 +17,10 @@
 [ext_resource path="res://scenes/Enemies/Squid/Squid.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Crusher/Crusher.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/Enemies/Turret/Turret.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/Items/ItemBomb/ItemBomb.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scenes/RadioactiveMud/RadioactiveMud.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scenes/Locks/FuseLock/FuseLock.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/Enemies/Beholder/Beholder.tscn" type="PackedScene" id=21]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -107,6 +109,12 @@ position = Vector2( -216, 104 )
 
 [node name="Squid" parent="." index="20" instance=ExtResource( 15 )]
 position = Vector2( -104, 256 )
+
+[node name="ItemBomb" parent="." index="21" instance=ExtResource( 18 )]
+position = Vector2( -24, 248 )
+
+[node name="Beholder" parent="." index="22" instance=ExtResource( 21 )]
+position = Vector2( -80, 288 )
 
 [editable path="TentaclePlant"]
 
