@@ -28,7 +28,7 @@ func _ready():
 		if saved_data != null:
 			load_level(saved_data.level)
 	else:
-		load_level("02")
+		load_level("08")
 
 func _input(_event):
 	if cheats and (Input.is_key_pressed(KEY_KP_ADD) or Input.is_key_pressed(KEY_PLUS)):
@@ -227,6 +227,7 @@ func on_player_activated_bomb():
 	var spawners = get_tree().get_nodes_in_group("SpawnerGroup")
 	for spawner in spawners:
 		if spawner.global_position.distance_to(player.global_position) < 300:
+			spawner.ready = false
 			spawner.timer.stop()
 			spawner.timer.wait_time = rand_range(4, 10)
 			spawner.timer.start()

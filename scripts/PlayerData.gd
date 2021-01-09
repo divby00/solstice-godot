@@ -23,7 +23,7 @@ export(int) var MAX_LIVES = 9
 export(int) var MAX_HEALTH = 130
 export(int) var MAX_THRUST = 130
 export(int) var MAX_LASER = 130
-export(int) var MAX_TIME = 130
+export(int) var MAX_TIME = 150
 export(int) var MAX_PLASMA = 16
 
 var selected_item = null

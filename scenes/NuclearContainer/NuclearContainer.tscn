@@ -15,7 +15,7 @@ extents = Vector2( 20, 16 )
 ]]
 z_index = 4
 script = ExtResource( 2 )
-seconds_to_explosion = 224
+seconds_to_explosion = 300
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 12, -16 )

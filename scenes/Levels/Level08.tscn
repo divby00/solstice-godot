@@ -217,6 +217,7 @@ position = Vector2( 800, 80 )
 
 [node name="NuclearContainer" parent="." index="7"]
 position = Vector2( 296, 80 )
+seconds_to_explosion = 360
 
 [node name="Elevator" parent="." index="8"]
 position = Vector2( 184, 120 )

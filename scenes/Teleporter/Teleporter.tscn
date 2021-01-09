@@ -5,7 +5,6 @@
 [ext_resource path="res://resources/fonts/joystix.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scenes/InfoAreas/InfoArea.tscn" type="PackedScene" id=4]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "charged"
 length = 0.4
@@ -69,7 +68,7 @@ extents = Vector2( 19, 4 )
 extents = Vector2( 24, 28 )
 
 [node name="Teleporter" type="StaticBody2D"]
-z_index = 1
+z_index = 4
 collision_mask = 4
 script = ExtResource( 2 )
 

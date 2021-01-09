@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/Enemies/Hitbox/Hitbox.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 189, 1 )
+extents = Vector2( 12, 1 )
 
 [node name="RadioactiveMud" type="Node2D" groups=[
 "EnemyGroup",

@@ -2,8 +2,8 @@ extends "res://scenes/Enemies/Enemy.gd"
 
 onready var timer = $Timer
 
-export(int) var speed = 50
-export(int) var powerup_threshold = 100
+export(int) var speed = 40
+export(int) var powerup_threshold = 80
 
 var motion = Vector2.ZERO
 var direction = Vector2.UP
@@ -23,7 +23,7 @@ func _process(delta):
 	for powup in powerups:
 		if global_position.distance_to(powup.global_position) < powerup_threshold:
 			var squid_vector = (global_position - powup.global_position).normalized()
-			powup.global_position += squid_vector * 100 * delta
+			powup.global_position += squid_vector * 80 * delta
 
 func get_direction():
 	direction = Vector2(round(rand_range(-1, 1)), round(rand_range(-1, 1))).normalized()
@@ -36,7 +36,7 @@ func get_direction():
 
 func pick_and_shoot():
 	SoundFx.play("squidpicks")
-	hurtbox.health += 2
+	hurtbox.health += 1
 	.create_bullet(Vector2.UP, 0, 360, 45)
 
 func _on_Timer_timeout():

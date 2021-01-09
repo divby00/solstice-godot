@@ -6,4 +6,5 @@ func open():
 	SoundFx.play("opened")
 	texture.visible = false
 	sprite.frame = 1
-	closed_area.queue_free()
+	if closed_area != null:
+		closed_area.queue_free()
