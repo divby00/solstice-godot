@@ -186,7 +186,7 @@ func on_teleporter_activated(teleporter_group, teleporter):
 			global_position.y  = tele.global_position.y - 16
 			tele.particles.emitting = true
 			yield(get_tree().create_timer(.4), "timeout")
-			self.status = PlayerData.Status.OK # JCP Check
+			self.status = PlayerData.Status.OK
 			set_process(true)
 			set_physics_process(true)
 
