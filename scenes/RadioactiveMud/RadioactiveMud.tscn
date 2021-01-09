@@ -44,7 +44,7 @@ __meta__ = {
 }
 
 [node name="Hitbox" parent="." instance=ExtResource( 5 )]
-damage = 1.0
+damage = 0.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2( 12, -1 )

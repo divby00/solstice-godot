@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scenes/Levels/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Enemies/Beholder/Beholder.tscn" type="PackedScene" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://scenes/Enemies/TentaclePlant/TentaclePlant.tscn" type="PackedScene" id=24]
 [ext_resource path="res://scenes/Enemies/Turret/Turret.tscn" type="PackedScene" id=25]
 [ext_resource path="res://scenes/RadioactiveMud/RadioactiveMud.tscn" type="PackedScene" id=26]
+[ext_resource path="res://scenes/Items/ItemBomb/ItemBomb.tscn" type="PackedScene" id=27]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 24 )
@@ -190,6 +191,9 @@ position = Vector2( 432, 1128 )
 [node name="ItemLandmine" parent="Items" index="12" instance=ExtResource( 14 )]
 position = Vector2( 80, 264 )
 
+[node name="ItemBomb" parent="Items" index="13" instance=ExtResource( 27 )]
+position = Vector2( 280, 840 )
+
 [node name="DumpLock" parent="Locks" index="0" instance=ExtResource( 15 )]
 position = Vector2( 240, 840 )
 
@@ -261,16 +265,16 @@ position = Vector2( 64, 648 )
 position = Vector2( 448, 632 )
 
 [node name="Spawner15" parent="Spawners" index="14" instance=ExtResource( 21 )]
-position = Vector2( 408, 784 )
+position = Vector2( 472, 960 )
 
 [node name="Spawner16" parent="Spawners" index="15" instance=ExtResource( 21 )]
 position = Vector2( 56, 912 )
 
 [node name="Spawner17" parent="Spawners" index="16" instance=ExtResource( 21 )]
-position = Vector2( 96, 784 )
+position = Vector2( 304, 768 )
 
 [node name="Spawner18" parent="Spawners" index="17" instance=ExtResource( 21 )]
-position = Vector2( 240, 952 )
+position = Vector2( 304, 960 )
 
 [node name="Spawner19" parent="Spawners" index="18" instance=ExtResource( 21 )]
 position = Vector2( 200, 1072 )
@@ -433,64 +437,56 @@ position = Vector2( 24, 952 )
 rotation = -1.5708
 scale = Vector2( -1, 1 )
 
-[node name="TentaclePlant4" parent="." index="32" instance=ExtResource( 24 )]
-position = Vector2( 344, 488 )
-scale = Vector2( 1, -1 )
-
-[node name="TentaclePlant5" parent="." index="33" instance=ExtResource( 24 )]
+[node name="TentaclePlant5" parent="." index="32" instance=ExtResource( 24 )]
 position = Vector2( 320, 312 )
 
-[node name="TentaclePlant6" parent="." index="34" instance=ExtResource( 24 )]
-position = Vector2( 360, 512 )
-rotation = -1.5708
-
-[node name="TentaclePlant7" parent="." index="35" instance=ExtResource( 24 )]
+[node name="TentaclePlant7" parent="." index="33" instance=ExtResource( 24 )]
 position = Vector2( 488, 488 )
 rotation = 1.5708
 
-[node name="TentaclePlant8" parent="." index="36" instance=ExtResource( 24 )]
+[node name="TentaclePlant8" parent="." index="34" instance=ExtResource( 24 )]
 position = Vector2( 160, 576 )
 rotation = 1.5708
 
-[node name="TentaclePlant9" parent="." index="37" instance=ExtResource( 24 )]
+[node name="TentaclePlant9" parent="." index="35" instance=ExtResource( 24 )]
 position = Vector2( 488, 784 )
 rotation = 1.5708
 
-[node name="TentaclePlant10" parent="." index="38" instance=ExtResource( 24 )]
+[node name="TentaclePlant10" parent="." index="36" instance=ExtResource( 24 )]
 position = Vector2( 400, 592 )
 
-[node name="RadioactiveMud" parent="." index="39" instance=ExtResource( 26 )]
+[node name="RadioactiveMud" parent="." index="37" instance=ExtResource( 26 )]
 position = Vector2( 320, 264 )
 
 [node name="CollisionShape2D" parent="RadioactiveMud/Hitbox" index="0"]
 shape = SubResource( 8 )
 
-[node name="RadioactiveMud2" parent="." index="40" instance=ExtResource( 26 )]
+[node name="RadioactiveMud2" parent="." index="38" instance=ExtResource( 26 )]
 position = Vector2( 312, 176 )
 rotation = 1.5708
 
 [node name="CollisionShape2D" parent="RadioactiveMud2/Hitbox" index="0"]
 shape = SubResource( 8 )
 
-[node name="RadioactiveMud3" parent="." index="41" instance=ExtResource( 26 )]
+[node name="RadioactiveMud3" parent="." index="39" instance=ExtResource( 26 )]
 position = Vector2( 288, 120 )
 
 [node name="CollisionShape2D" parent="RadioactiveMud3/Hitbox" index="0"]
 shape = SubResource( 8 )
 
-[node name="RadioactiveMud4" parent="." index="42" instance=ExtResource( 26 )]
+[node name="RadioactiveMud4" parent="." index="40" instance=ExtResource( 26 )]
 position = Vector2( 192, 120 )
 
 [node name="CollisionShape2D" parent="RadioactiveMud4/Hitbox" index="0"]
 shape = SubResource( 8 )
 
-[node name="RadioactiveMud6" parent="." index="43" instance=ExtResource( 26 )]
+[node name="RadioactiveMud6" parent="." index="41" instance=ExtResource( 26 )]
 position = Vector2( 168, 264 )
 
 [node name="CollisionShape2D" parent="RadioactiveMud6/Hitbox" index="0"]
 shape = SubResource( 8 )
 
-[node name="RadioactiveMud5" parent="." index="44" instance=ExtResource( 26 )]
+[node name="RadioactiveMud5" parent="." index="42" instance=ExtResource( 26 )]
 position = Vector2( 192, 120 )
 rotation = -1.5708
 scale = Vector2( -1, 1 )
@@ -498,7 +494,7 @@ scale = Vector2( -1, 1 )
 [node name="CollisionShape2D" parent="RadioactiveMud5/Hitbox" index="0"]
 shape = SubResource( 8 )
 
-[node name="RadioactiveMud7" parent="." index="45" instance=ExtResource( 26 )]
+[node name="RadioactiveMud7" parent="." index="43" instance=ExtResource( 26 )]
 position = Vector2( 200, 624 )
 rotation = -1.5708
 scale = Vector2( -1, 1 )
@@ -506,14 +502,14 @@ scale = Vector2( -1, 1 )
 [node name="CollisionShape2D" parent="RadioactiveMud7/Hitbox" index="0"]
 shape = SubResource( 8 )
 
-[node name="RadioactiveMud8" parent="." index="46" instance=ExtResource( 26 )]
+[node name="RadioactiveMud8" parent="." index="44" instance=ExtResource( 26 )]
 position = Vector2( 464, 864 )
 rotation = 1.5708
 
 [node name="CollisionShape2D" parent="RadioactiveMud8/Hitbox" index="0"]
 shape = SubResource( 8 )
 
-[node name="RadioactiveMud9" parent="." index="47" instance=ExtResource( 26 )]
+[node name="RadioactiveMud9" parent="." index="45" instance=ExtResource( 26 )]
 position = Vector2( 488, 800 )
 rotation = -1.5708
 scale = Vector2( -1, 1 )

@@ -364,39 +364,32 @@ rotation = -1.5708
 position = Vector2( 24, 360 )
 rotation = -1.5708
 
-[node name="TentaclePlant3" parent="." index="33" instance=ExtResource( 21 )]
-position = Vector2( 576, 312 )
-
-[node name="TentaclePlant4" parent="." index="34" instance=ExtResource( 21 )]
+[node name="TentaclePlant4" parent="." index="33" instance=ExtResource( 21 )]
 position = Vector2( 392, 312 )
 
-[node name="TentaclePlant5" parent="." index="35" instance=ExtResource( 21 )]
-position = Vector2( 488, 352 )
-rotation = 1.5708
-
-[node name="TentaclePlant6" parent="." index="36" instance=ExtResource( 21 )]
+[node name="TentaclePlant6" parent="." index="34" instance=ExtResource( 21 )]
 position = Vector2( 832, 360 )
 rotation = 1.5708
 
-[node name="Turret" parent="." index="37" instance=ExtResource( 22 )]
+[node name="Turret" parent="." index="35" instance=ExtResource( 22 )]
 position = Vector2( 1008, 392 )
 
-[node name="Turret2" parent="." index="38" instance=ExtResource( 22 )]
+[node name="Turret2" parent="." index="36" instance=ExtResource( 22 )]
 position = Vector2( 720, 392 )
 
-[node name="Turret3" parent="." index="39" instance=ExtResource( 22 )]
+[node name="Turret3" parent="." index="37" instance=ExtResource( 22 )]
 position = Vector2( 1008, 104 )
 
-[node name="Turret4" parent="." index="40" instance=ExtResource( 22 )]
+[node name="Turret4" parent="." index="38" instance=ExtResource( 22 )]
 position = Vector2( 256, 72 )
 
-[node name="RadioactiveMud" parent="." index="41" instance=ExtResource( 23 )]
+[node name="RadioactiveMud" parent="." index="39" instance=ExtResource( 23 )]
 position = Vector2( 496, 264 )
 
 [node name="CollisionShape2D" parent="RadioactiveMud/Hitbox" index="0"]
 shape = SubResource( 9 )
 
-[node name="RadioactiveMud2" parent="." index="42" instance=ExtResource( 23 )]
+[node name="RadioactiveMud2" parent="." index="40" instance=ExtResource( 23 )]
 position = Vector2( 464, 264 )
 scale = Vector2( -1, 1 )
 

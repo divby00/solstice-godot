@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scenes/Levels/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Teleporter/TeleporterGroup.tscn" type="PackedScene" id=2]
@@ -19,6 +19,9 @@
 [ext_resource path="res://scenes/NonInteractiveObjects/Brain.tscn" type="PackedScene" id=17]
 [ext_resource path="res://scenes/Enemies/TentaclePlant/TentaclePlant.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scenes/Enemies/Turret/Turret.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/Items/ItemBomb/ItemBomb.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/Enemies/EyesBlob/EyesBlob.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/RadioactiveMud/RadioactiveMud.tscn" type="PackedScene" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 24 )
@@ -110,6 +113,12 @@ position = Vector2( 696, 264 )
 
 [node name="ItemNuclearWaste" parent="Items" index="13" instance=ExtResource( 11 )]
 position = Vector2( 40, 552 )
+
+[node name="ItemBomb" parent="Items" index="14" instance=ExtResource( 20 )]
+position = Vector2( 976, 56 )
+
+[node name="ItemBomb2" parent="Items" index="15" instance=ExtResource( 20 )]
+position = Vector2( 96, 520 )
 
 [node name="DumpLock" parent="Locks" index="0" instance=ExtResource( 5 )]
 position = Vector2( 240, 264 )
@@ -268,17 +277,146 @@ stream = ExtResource( 3 )
 [node name="Beholder" parent="." index="16" instance=ExtResource( 4 )]
 position = Vector2( 848, 552 )
 
-[node name="Turret" parent="." index="17" instance=ExtResource( 19 )]
+[node name="Beholder2" parent="." index="17" instance=ExtResource( 4 )]
+position = Vector2( 200, 264 )
+
+[node name="Beholder3" parent="." index="18" instance=ExtResource( 4 )]
+position = Vector2( 912, 408 )
+
+[node name="Turret" parent="." index="19" instance=ExtResource( 19 )]
 position = Vector2( 784, 104 )
 
-[node name="Turret2" parent="." index="18" instance=ExtResource( 19 )]
+[node name="Turret2" parent="." index="20" instance=ExtResource( 19 )]
 position = Vector2( 776, 536 )
 
-[node name="Turret3" parent="." index="19" instance=ExtResource( 19 )]
+[node name="Turret3" parent="." index="21" instance=ExtResource( 19 )]
 position = Vector2( 232, 536 )
 
-[node name="TentaclePlant" parent="." index="20" instance=ExtResource( 18 )]
+[node name="Turret4" parent="." index="22" instance=ExtResource( 19 )]
+position = Vector2( 840, 248 )
+
+[node name="TentaclePlant" parent="." index="23" instance=ExtResource( 18 )]
 position = Vector2( 88, 168 )
+
+[node name="TentaclePlant2" parent="." index="24" instance=ExtResource( 18 )]
+position = Vector2( 656, 312 )
+
+[node name="TentaclePlant4" parent="." index="25" instance=ExtResource( 18 )]
+position = Vector2( 592, 24 )
+
+[node name="TentaclePlant5" parent="." index="26" instance=ExtResource( 18 )]
+position = Vector2( 632, 136 )
+rotation = 1.5708
+
+[node name="TentaclePlant6" parent="." index="27" instance=ExtResource( 18 )]
+position = Vector2( 536, 208 )
+rotation = -1.5708
+
+[node name="TentaclePlant3" parent="." index="28" instance=ExtResource( 18 )]
+position = Vector2( 488, 352 )
+rotation = 1.5708
+
+[node name="TentaclePlant7" parent="." index="29" instance=ExtResource( 18 )]
+position = Vector2( 24, 512 )
+rotation = -1.5708
+
+[node name="EyesBlob" parent="." index="30" instance=ExtResource( 21 )]
+position = Vector2( 948, 396 )
+
+[node name="EyesBlob2" parent="." index="31" instance=ExtResource( 21 )]
+position = Vector2( 804, 324 )
+rotation = 1.5708
+
+[node name="EyesBlob3" parent="." index="32" instance=ExtResource( 21 )]
+position = Vector2( 716, 180 )
+rotation = 3.14159
+
+[node name="EyesBlob4" parent="." index="33" instance=ExtResource( 21 )]
+position = Vector2( 132, 140 )
+rotation = -1.5708
+
+[node name="EyesBlob5" parent="." index="34" instance=ExtResource( 21 )]
+position = Vector2( 68, 324 )
+rotation = 3.14159
+
+[node name="EyesBlob6" parent="." index="35" instance=ExtResource( 21 )]
+position = Vector2( 412, 468 )
+rotation = 3.14159
+
+[node name="EyesBlob7" parent="." index="36" instance=ExtResource( 21 )]
+position = Vector2( 436, 444 )
+rotation = 1.5708
+
+[node name="RadioactiveMud" parent="." index="37" instance=ExtResource( 22 )]
+position = Vector2( 704, 120 )
+
+[node name="RadioactiveMud10" parent="." index="38" instance=ExtResource( 22 )]
+position = Vector2( 32, 408 )
+
+[node name="RadioactiveMud11" parent="." index="39" instance=ExtResource( 22 )]
+position = Vector2( 264, 552 )
+
+[node name="RadioactiveMud12" parent="." index="40" instance=ExtResource( 22 )]
+position = Vector2( 184, 552 )
+
+[node name="RadioactiveMud13" parent="." index="41" instance=ExtResource( 22 )]
+position = Vector2( 688, 552 )
+
+[node name="RadioactiveMud4" parent="." index="42" instance=ExtResource( 22 )]
+position = Vector2( 944, 24 )
+scale = Vector2( 1, -1 )
+
+[node name="RadioactiveMud14" parent="." index="43" instance=ExtResource( 22 )]
+position = Vector2( 432, 168 )
+scale = Vector2( 1, -1 )
+
+[node name="RadioactiveMud15" parent="." index="44" instance=ExtResource( 22 )]
+position = Vector2( 832, 312 )
+scale = Vector2( 1, -1 )
+
+[node name="RadioactiveMud2" parent="." index="45" instance=ExtResource( 22 )]
+position = Vector2( 280, 352 )
+rotation = 1.5708
+
+[node name="RadioactiveMud18" parent="." index="46" instance=ExtResource( 22 )]
+position = Vector2( 640, 424 )
+rotation = 1.5708
+
+[node name="RadioactiveMud8" parent="." index="47" instance=ExtResource( 22 )]
+position = Vector2( 320, 24 )
+rotation = 1.5708
+
+[node name="RadioactiveMud9" parent="." index="48" instance=ExtResource( 22 )]
+position = Vector2( 320, 88 )
+rotation = 1.5708
+
+[node name="RadioactiveMud5" parent="." index="49" instance=ExtResource( 22 )]
+position = Vector2( 112, 136 )
+rotation = 1.5708
+
+[node name="RadioactiveMud6" parent="." index="50" instance=ExtResource( 22 )]
+position = Vector2( 24, 248 )
+rotation = 1.5708
+
+[node name="RadioactiveMud3" parent="." index="51" instance=ExtResource( 22 )]
+position = Vector2( 744, 200 )
+rotation = -1.5708
+scale = Vector2( -1, 1 )
+
+[node name="RadioactiveMud16" parent="." index="52" instance=ExtResource( 22 )]
+position = Vector2( 488, 184 )
+rotation = -1.5708
+scale = Vector2( -1, 1 )
+
+[node name="RadioactiveMud17" parent="." index="53" instance=ExtResource( 22 )]
+position = Vector2( 896, 272 )
+rotation = -1.5708
+scale = Vector2( -1, 1 )
+
+[node name="RadioactiveMud7" parent="." index="54" instance=ExtResource( 22 )]
+position = Vector2( 56, 288 )
+rotation = -1.5708
+scale = Vector2( -1, 1 )
 
 [editable path="Locks/FuseLock"]
 
@@ -289,3 +427,39 @@ position = Vector2( 88, 168 )
 [editable path="TeleporterGroup"]
 
 [editable path="TeleporterGroup2"]
+
+[editable path="RadioactiveMud"]
+
+[editable path="RadioactiveMud10"]
+
+[editable path="RadioactiveMud11"]
+
+[editable path="RadioactiveMud12"]
+
+[editable path="RadioactiveMud13"]
+
+[editable path="RadioactiveMud4"]
+
+[editable path="RadioactiveMud14"]
+
+[editable path="RadioactiveMud15"]
+
+[editable path="RadioactiveMud2"]
+
+[editable path="RadioactiveMud18"]
+
+[editable path="RadioactiveMud8"]
+
+[editable path="RadioactiveMud9"]
+
+[editable path="RadioactiveMud5"]
+
+[editable path="RadioactiveMud6"]
+
+[editable path="RadioactiveMud3"]
+
+[editable path="RadioactiveMud16"]
+
+[editable path="RadioactiveMud17"]
+
+[editable path="RadioactiveMud7"]

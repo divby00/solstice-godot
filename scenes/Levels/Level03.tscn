@@ -93,7 +93,7 @@ position = Vector2( 648, 272 )
 position = Vector2( 656, 96 )
 
 [node name="ItemBomb" parent="Items" index="8" instance=ExtResource( 15 )]
-position = Vector2( 288, 128 )
+position = Vector2( 480, 368 )
 
 [node name="ItemTeleportPass" parent="Items" index="9" instance=ExtResource( 18 )]
 position = Vector2( 24, 128 )

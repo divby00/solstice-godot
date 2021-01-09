@@ -19,7 +19,6 @@ onready var game_over_transition = $UI/GameOverTransition
 
 var cheats = false
 var new_level = null
-var n = 100
 
 func _ready():
 	help.help_is_posible = false
@@ -29,7 +28,7 @@ func _ready():
 		if saved_data != null:
 			load_level(saved_data.level)
 	else:
-		load_level("01")
+		load_level("02")
 
 func _input(_event):
 	if cheats and (Input.is_key_pressed(KEY_KP_ADD) or Input.is_key_pressed(KEY_PLUS)):
@@ -41,8 +40,7 @@ func _input(_event):
 func take_screenshot():
 	var image = get_viewport().get_texture().get_data()
 	image.flip_y()
-	image.save_png("res://area_0" + str(LevelData.current_level_number) + "_" + str(n) + ".png")
-	n += 1
+	image.save_png("res://area_0" + str(LevelData.current_level_number) + ".png")
 
 func load_level(level_key):
 	if level_key != "00":
@@ -222,14 +220,22 @@ func on_player_damaged():
 
 func on_player_activated_bomb():
 	SoundFx.play("explosion")
+	set_process(true)
 	camera_shake_timer.start()
 	bomb_transition.fadein()
+
+	var spawners = get_tree().get_nodes_in_group("SpawnerGroup")
+	for spawner in spawners:
+		if spawner.global_position.distance_to(player.global_position) < 300:
+			spawner.timer.stop()
+			spawner.timer.wait_time = rand_range(4, 10)
+			spawner.timer.start()
+
 	var enemies = get_tree().get_nodes_in_group("EnemyGroup")
 	for enemy in enemies:
-		if enemy.has_node("Hurtbox"):
-			enemy.hurtbox.health = 0
-		else:
-			print('no')
+		if enemy.global_position.distance_to(player.global_position) < 300:
+			if enemy.has_node("Hurtbox"):
+				enemy.hurtbox.health = 0
 
 func _on_CameraShakeTimer_timeout():
 	camera.offset_h = 0
