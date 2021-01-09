@@ -199,18 +199,22 @@ position = Vector2( 192, 264 )
 
 [node name="DumpLock" parent="Locks" index="0" instance=ExtResource( 15 )]
 position = Vector2( 240, 840 )
+z_index = 2
 
 [node name="LandLock" parent="Locks" index="1" instance=ExtResource( 16 )]
 position = Vector2( 408, 1088 )
+z_index = 2
 
 [node name="DumpLock2" parent="Locks" index="2" instance=ExtResource( 15 )]
 position = Vector2( 240, 1128 )
+z_index = 2
 
 [node name="SteelLock" parent="Locks" index="3" instance=ExtResource( 17 )]
 position = Vector2( 72, 120 )
 
 [node name="DumpLock3" parent="Locks" index="4" instance=ExtResource( 15 )]
 position = Vector2( 240, 552 )
+z_index = 2
 
 [node name="FuseLock" parent="Locks" index="5" instance=ExtResource( 19 )]
 position = Vector2( 128, 688 )

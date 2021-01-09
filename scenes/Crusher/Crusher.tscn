@@ -75,6 +75,7 @@ tracks/4/keys = {
 extents = Vector2( 8, 2 )
 
 [node name="Crusher" type="StaticBody2D"]
+z_index = 4
 collision_mask = 0
 script = ExtResource( 2 )
 

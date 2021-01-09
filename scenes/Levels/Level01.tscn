@@ -130,6 +130,7 @@ position = Vector2( 24, 544 )
 
 [node name="DumpLock" parent="Locks" index="0" instance=ExtResource( 16 )]
 position = Vector2( 496, 640 )
+z_index = 2
 
 [node name="DoorLock" parent="Locks" index="1" instance=ExtResource( 17 )]
 position = Vector2( 256, 656 )

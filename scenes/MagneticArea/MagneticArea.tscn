@@ -12,10 +12,10 @@ extents = Vector2( 20, 16 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 20, 4 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 12, 4 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 28, 20 )
 
 [node name="MagneticArea" type="Node2D"]
@@ -78,14 +78,14 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Active/Area2D"]
 position = Vector2( 12, 4 )
 z_as_relative = false
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="InfoArea" parent="." instance=ExtResource( 1 )]
 text = "Magnetic area"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InfoArea"]
 position = Vector2( 20, 16 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 [connection signal="body_entered" from="Active/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Active/Area2D" to="." method="_on_Area2D_body_exited"]
 
