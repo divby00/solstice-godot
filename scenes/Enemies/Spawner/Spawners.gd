@@ -43,19 +43,19 @@ const area_enemies = {
 		]
 	},
 	6: {
-		"amount": 30,
+		"amount": 20,
 		"allowed_types": [
 			Medusoid, MedusoidSoldier, EvilOwl, Squid
 		]
 	},
 	7: {
-		"amount": 30,
+		"amount": 20,
 		"allowed_types": [
 			Medusoid, MedusoidSoldier, EvilOwl, Squid
 		]
 	},
 	8: {
-		"amount": 30,
+		"amount": 25,
 		"allowed_types": [
 			Medusoid, MedusoidSoldier, EvilOwl, Squid
 		]

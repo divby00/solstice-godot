@@ -120,6 +120,9 @@ position = Vector2( 976, 56 )
 [node name="ItemBomb2" parent="Items" index="15" instance=ExtResource( 20 )]
 position = Vector2( 96, 520 )
 
+[node name="ItemBomb3" parent="Items" index="16" instance=ExtResource( 20 )]
+position = Vector2( 792, 408 )
+
 [node name="DumpLock" parent="Locks" index="0" instance=ExtResource( 5 )]
 position = Vector2( 240, 264 )
 

@@ -28,7 +28,7 @@ func _ready():
 		if saved_data != null:
 			load_level(saved_data.level)
 	else:
-		load_level("08")
+		load_level("06")
 
 func _input(_event):
 	if cheats and (Input.is_key_pressed(KEY_KP_ADD) or Input.is_key_pressed(KEY_PLUS)):
@@ -108,6 +108,12 @@ func remove_items():
 		item.queue_free()
 
 func remove_enemies():
+	# Disconnect evil owls
+	var owls = get_tree().get_nodes_in_group("EvilOwlGroup")
+	for owl in owls:
+		owl.move_timer.stop()
+		owl.position_timer.stop()
+		
 	var enemies = get_tree().get_nodes_in_group("EnemyGroup")
 	for enemy in enemies:
 		enemy.queue_free()
