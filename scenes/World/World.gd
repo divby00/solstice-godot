@@ -216,7 +216,10 @@ func on_nuclear_waste_stored(_storage):
 func on_player_activated_elevator(level_pass):
 	if has_node("CustomNuclearWaste"):
 		get_node("CustomNuclearWaste").queue_free()
-	new_level = level_pass.substr(4, 2)
+	if level_pass != null:
+		new_level = level_pass.substr(4, 2)
+	else:
+		new_level = "0" + str(LevelData.current_level_number + 1)
 	PlayerData.selected_item = null
 	transition.fadeout()
 

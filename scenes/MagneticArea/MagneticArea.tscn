@@ -24,7 +24,7 @@ script = ExtResource( 2 )
 
 [node name="Top" type="Sprite" parent="."]
 position = Vector2( 20, 16 )
-z_index = 2
+z_index = 4
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
@@ -40,7 +40,7 @@ shape = SubResource( 1 )
 
 [node name="Bottom" type="Sprite" parent="."]
 position = Vector2( 20, 44 )
-z_index = 2
+z_index = 4
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
