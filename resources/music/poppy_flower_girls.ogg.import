@@ -11,5 +11,5 @@ dest_files=[ "res://.import/poppy_flower_girls.ogg-93ed4556678ad8b4560c61705c874
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0

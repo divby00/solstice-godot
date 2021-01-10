@@ -3,9 +3,11 @@ extends Node2D
 onready var timer = $Timer
 onready var transition = $Transition
 
+const VERSION = "1.0.0"
 const Cursor = preload("res://resources/textures/cursor.png")
 
 func _ready():
+	print("Solstice " + VERSION + " is running...")
 	Configuration.load_and_save_config()
 	transition.fadein()
 
