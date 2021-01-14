@@ -5,11 +5,12 @@ var sfx_volume = 0.5 setget set_sfx_volume
 var music_volume = 0.5 setget set_music_volume
 
 func set_fullscreen(value):
-	fullscreen = value
-	if !fullscreen:
-		OS.set_window_size(Vector2(1024, 768))
-	OS.window_fullscreen = fullscreen
-	save()
+	if OS.get_name() != "HTML5":
+		fullscreen = value
+		if !fullscreen:
+			OS.set_window_size(Vector2(1024, 768))
+		OS.window_fullscreen = fullscreen
+		save()
 
 func set_sfx_volume(value):
 	sfx_volume = value
