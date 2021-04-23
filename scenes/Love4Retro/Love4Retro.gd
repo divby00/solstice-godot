@@ -3,7 +3,7 @@ extends Node2D
 onready var timer = $Timer
 onready var transition = $Transition
 
-const VERSION = "1.0.2"
+const VERSION = "1.0.3"
 
 func _ready():
 	print("Solstice " + VERSION + " is running...")

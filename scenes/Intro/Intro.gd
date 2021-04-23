@@ -27,6 +27,7 @@ enum Status {
 var tween_steps = 0
 var credits_index = 0
 var message_index = 0
+var credit_has_displayed = false
 var status = Status.SCROLLING
 
 var credits = [
@@ -113,13 +114,14 @@ func start_tween():
 	label_skip.rect_position.y = 192
 	label_skip.text = credits[credits_index]
 # warning-ignore:return_value_discarded
-	credits_tween.interpolate_property(label_skip, "rect_position", Vector2(0, 192), Vector2(0, 152), 2.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	credits_tween.interpolate_property(label_skip, "rect_position", Vector2(0, 192), Vector2(0, 152), 2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 # warning-ignore:return_value_discarded
 	credits_tween.start()
+	credit_has_displayed = false
 
 func _on_CreditsTween_tween_step(_object, _key, _elapsed, _value):
 	tween_steps += 1
-	if tween_steps == 70:
+	if int(_value[1]) == 168 and not credit_has_displayed:
 		label_skip.rect_position.y = 168
 # warning-ignore:return_value_discarded
 		credits_tween.stop(label_skip, "rect_position")
@@ -140,6 +142,7 @@ func quit_game():
 
 func _on_CreditsTimer_timeout():
 # warning-ignore:return_value_discarded
+	credit_has_displayed = true
 	credits_tween.resume(label_skip, "rect_position")
 
 func _on_Transition_fadein_finished(_transition_name):

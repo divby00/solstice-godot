@@ -9,11 +9,12 @@ cd build
 rm -rf solstice-html.zip
 
 # Zip contents from solstice-html
-zip solstice-html.zip solstice-html/*
+zip -r solstice-html.zip solstice-html/*
 
 for f in "solstice-win.x86-64.exe" "solstice-linux.x86_64" "solstice-mac.x86_64.zip" "solstice-html.zip"; 
 do
-    mv ./${f} ./${f%%.*}-${version_number}.${f#*.};
+    rm -rf ./${f%%.*}-${version_number}.${f#*.}
+    mv ./${f} ./${f%%.*}-${version_number}.${f#*.}
 done;
 
 cd ..
