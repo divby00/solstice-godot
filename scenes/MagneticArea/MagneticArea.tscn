@@ -61,7 +61,7 @@ __meta__ = {
 [node name="Texture" type="TextureRect" parent="Active"]
 margin_left = 8.0
 margin_top = 32.0
-margin_right = 32.0
+margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 5 )
 expand = true
@@ -86,6 +86,7 @@ text = "Magnetic area"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InfoArea"]
 position = Vector2( 20, 16 )
 shape = SubResource( 4 )
+
 [connection signal="body_entered" from="Active/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Active/Area2D" to="." method="_on_Area2D_body_exited"]
 

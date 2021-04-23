@@ -291,15 +291,10 @@ position = Vector2( 56, 688 )
 z_index = 1
 
 [editable path="TeleporterGroup"]
-
 [editable path="MagneticArea"]
-
+[editable path="MagneticArea/InfoArea"]
 [editable path="Elevator"]
-
 [editable path="Elevator/InfoArea"]
-
 [editable path="Containment1"]
-
 [editable path="Containment2"]
-
 [editable path="Containment3"]

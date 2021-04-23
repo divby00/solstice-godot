@@ -457,37 +457,21 @@ position = Vector2( 964, 476 )
 rotation = -1.5708
 
 [editable path="Locks/FuseLock"]
-
 [editable path="TeleporterGroup"]
-
 [editable path="TeleporterGroup2"]
-
 [editable path="MagneticArea"]
-
+[editable path="MagneticArea/InfoArea"]
 [editable path="Rail"]
-
 [editable path="Rail2"]
-
 [editable path="RadioactiveMud"]
-
 [editable path="RadioactiveMud2"]
-
 [editable path="RadioactiveMud3"]
-
 [editable path="RadioactiveMud5"]
-
 [editable path="RadioactiveMud6"]
-
 [editable path="RadioactiveMud4"]
-
 [editable path="RadioactiveMud7"]
-
 [editable path="RadioactiveMud8"]
-
 [editable path="RadioactiveMud9"]
-
 [editable path="RadioactiveMud10"]
-
 [editable path="RadioactiveMud11"]
-
 [editable path="RadioactiveMud12"]

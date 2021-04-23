@@ -423,47 +423,26 @@ rotation = -1.5708
 scale = Vector2( -1, 1 )
 
 [editable path="Locks/FuseLock"]
-
 [editable path="Locks/FuseLock2"]
-
 [editable path="MagneticArea"]
-
+[editable path="MagneticArea/InfoArea"]
 [editable path="TeleporterGroup"]
-
 [editable path="TeleporterGroup2"]
-
 [editable path="RadioactiveMud"]
-
 [editable path="RadioactiveMud10"]
-
 [editable path="RadioactiveMud11"]
-
 [editable path="RadioactiveMud12"]
-
 [editable path="RadioactiveMud13"]
-
 [editable path="RadioactiveMud4"]
-
 [editable path="RadioactiveMud14"]
-
 [editable path="RadioactiveMud15"]
-
 [editable path="RadioactiveMud2"]
-
 [editable path="RadioactiveMud18"]
-
 [editable path="RadioactiveMud8"]
-
 [editable path="RadioactiveMud9"]
-
 [editable path="RadioactiveMud5"]
-
 [editable path="RadioactiveMud6"]
-
 [editable path="RadioactiveMud3"]
-
 [editable path="RadioactiveMud16"]
-
 [editable path="RadioactiveMud17"]
-
 [editable path="RadioactiveMud7"]

@@ -97,6 +97,7 @@ margin_top = 40.0
 margin_right = 256.0
 margin_bottom = 104.0
 texture = ExtResource( 3 )
+expand = true
 stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -154,6 +155,7 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="Control/Button" to="." method="_on_Button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="fadeout_finished" from="Transition" to="." method="_on_Transition_fadeout_finished"]

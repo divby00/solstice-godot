@@ -20,6 +20,7 @@ wait_time = 1.4
 one_shot = true
 
 [node name="Transition" parent="." instance=ExtResource( 3 )]
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="fadein_finished" from="Transition" to="." method="_on_Transition_fadein_finished"]
 [connection signal="fadeout_finished" from="Transition" to="." method="_on_Transition_fadeout_finished"]

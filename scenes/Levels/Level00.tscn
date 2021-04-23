@@ -112,7 +112,5 @@ position = Vector2( -24, 248 )
 position = Vector2( -80, 288 )
 
 [editable path="TentaclePlant"]
-
 [editable path="RadioactiveMud"]
-
 [editable path="RadioactiveMud2"]

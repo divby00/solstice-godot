@@ -398,21 +398,14 @@ scale = Vector2( -1, 1 )
 shape = SubResource( 9 )
 
 [editable path="Locks/FuseLock"]
-
 [editable path="Locks/FuseLock2"]
-
 [editable path="TeleporterGroup"]
-
 [editable path="TeleporterGroup2"]
-
 [editable path="Rail"]
-
 [editable path="Rail2"]
-
 [editable path="MagneticArea"]
-
+[editable path="MagneticArea/InfoArea"]
 [editable path="MagneticArea2"]
-
+[editable path="MagneticArea2/InfoArea"]
 [editable path="RadioactiveMud"]
-
 [editable path="RadioactiveMud2"]

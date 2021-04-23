@@ -378,19 +378,12 @@ position = Vector2( 540, 660 )
 rotation = 1.5708
 
 [editable path="Decoration/MagneticDoor"]
-
 [editable path="Decoration/MagneticDoor2"]
-
 [editable path="Decoration/MagneticDoor3"]
-
 [editable path="Decoration/MagneticDoor4"]
-
 [editable path="Decoration/MagneticDoor5"]
-
 [editable path="Decoration/MagneticDoor6"]
-
 [editable path="TeleporterGroup2"]
-
 [editable path="TeleporterGroup"]
-
 [editable path="MagneticArea"]
+[editable path="MagneticArea/InfoArea"]

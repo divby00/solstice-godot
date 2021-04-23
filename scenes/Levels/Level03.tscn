@@ -295,9 +295,7 @@ position = Vector2( 124, 603 )
 rotation = 3.14159
 
 [editable path="Locks/FuseLock"]
-
 [editable path="TeleporterGroup"]
-
 [editable path="MagneticArea"]
-
+[editable path="MagneticArea/InfoArea"]
 [editable path="Rail"]

@@ -1,0 +1,18 @@
+1.0.3
+
+    * Fixed black textures on magnetic fields and pause screen on web export.
+    * Fixed the issue that sometimes crashed the game while changing levels.
+    * Minor aesthetical improvements.
+
+1.0.2
+
+    * Upgraded to Godot 3.3
+
+1.0.1
+
+    * First HTML 5 version
+
+1.0.0
+
+    * First public release
+
