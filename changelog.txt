@@ -1,3 +1,9 @@
+1.0.4
+
+    * Fixed black textures on radioactive mud.
+    * Fixed tile on level 2
+    * Z-Index adjustments
+
 1.0.3
 
     * Fixed black textures on magnetic fields and pause screen on web export.
