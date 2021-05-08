@@ -12,6 +12,8 @@ particles_anim_loop = true
 
 [node name="BigExplosionParticles" type="CPUParticles2D"]
 material = SubResource( 1 )
+z_index = 10
+z_as_relative = false
 emitting = false
 amount = 5
 lifetime = 0.5
@@ -32,4 +34,5 @@ autostart = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 bus = "SFX"
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -347,6 +347,7 @@ one_shot = true
 
 [node name="PlasmaTimer" type="Timer" parent="."]
 wait_time = 0.5
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_DamageTimer_timeout"]

@@ -25,7 +25,7 @@ __meta__ = {
 
 [node name="CenterTexture" type="TextureRect" parent="."]
 margin_left = 5.0
-margin_top = -5.0
+margin_top = -8.0
 margin_right = 21.0
 texture = ExtResource( 2 )
 expand = true

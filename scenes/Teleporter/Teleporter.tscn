@@ -68,7 +68,7 @@ extents = Vector2( 19, 4 )
 extents = Vector2( 24, 28 )
 
 [node name="Teleporter" type="StaticBody2D"]
-z_index = 4
+z_index = 10
 collision_mask = 4
 script = ExtResource( 2 )
 
@@ -145,6 +145,7 @@ text = "Teleporter"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InfoArea"]
 position = Vector2( 24, -28 )
 shape = SubResource( 7 )
+
 [connection signal="body_entered" from="ActivateArea" to="." method="_on_ActivateArea_body_entered"]
 [connection signal="body_entered" from="LoadingArea" to="." method="_on_LoadingArea_body_entered"]
 [connection signal="body_exited" from="LoadingArea" to="." method="_on_LoadingArea_body_exited"]

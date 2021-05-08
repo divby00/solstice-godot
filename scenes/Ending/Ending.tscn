@@ -178,6 +178,7 @@ autoplay = true
 
 [node name="VoicePlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="fadeout_finished" from="Transition" to="." method="_on_Transition_fadeout_finished"]

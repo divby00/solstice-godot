@@ -13,7 +13,7 @@ extents = Vector2( 11, 23 )
 [node name="Elevator" type="StaticBody2D" groups=[
 "ElevatorGroup",
 ]]
-z_index = 4
+z_index = 10
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -37,6 +37,7 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActivateArea"]
 position = Vector2( 20, -24 )
 shape = SubResource( 2 )
+
 [connection signal="body_entered" from="ActivateArea" to="." method="_on_ActivateArea_body_entered"]
 [connection signal="body_exited" from="ActivateArea" to="." method="_on_ActivateArea_body_exited"]
 

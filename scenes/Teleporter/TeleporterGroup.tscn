@@ -16,6 +16,7 @@ linked_teleporter = "teleB"
 position = Vector2( 128, 0 )
 teleporter_name = "teleB"
 linked_teleporter = "teleA"
+
 [connection signal="player_over_charger" from="TeleporterA" to="." method="_on_TeleporterA_player_over_charger"]
 [connection signal="teleporter_activated" from="TeleporterA" to="." method="_on_TeleporterA_teleporter_activated"]
 [connection signal="player_over_charger" from="TeleporterB" to="." method="_on_TeleporterB_player_over_charger"]

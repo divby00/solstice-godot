@@ -13,7 +13,7 @@ extents = Vector2( 20, 16 )
 [node name="NuclearContainer" type="Node2D" groups=[
 "NuclearStorageGroup",
 ]]
-z_index = 4
+z_index = 10
 script = ExtResource( 2 )
 seconds_to_explosion = 300
 
@@ -37,6 +37,7 @@ position = Vector2( 12, -16 )
 shape = SubResource( 2 )
 
 [node name="ExplosionTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="ActivateArea" to="." method="_on_ActivateArea_body_entered"]
 [connection signal="body_exited" from="ActivateArea" to="." method="_on_ActivateArea_body_exited"]
 [connection signal="timeout" from="ExplosionTimer" to="." method="_on_ExplosionTimer_timeout"]

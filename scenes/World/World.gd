@@ -72,6 +72,7 @@ func level_init():
 	call_deferred("set_initial_player_position")
 	PlayerData.reset_between_levels()
 	player.status = PlayerData.Status.OK
+	player.z_index = 0
 	if GameState.loading:
 		var saved_game = GameState.load()
 		PlayerData.lives = saved_game.lifes

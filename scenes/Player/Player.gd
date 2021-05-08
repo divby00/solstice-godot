@@ -103,6 +103,7 @@ func turn_on_plasma(duration):
 		plasma_collider.call_deferred("set_disabled", false)
 		animation_player.play("invincible")
 		emit_signal("player_invincible")
+		self.z_index = 0
 	else:
 		self.status = PlayerData.Status.OK
 
@@ -141,6 +142,7 @@ func apply_friction(input_vector):
 func apply_gravity(delta):
 	if !is_on_floor() and !is_in_magnetic_area and self.status != PlayerData.Status.TELEPORT:
 		motion.y += GRAVITY * delta
+
 
 func update_animation(_input_vector):
 	var current_animation = animation_player.current_animation
@@ -253,6 +255,7 @@ func _on_PlasmaTimer_timeout():
 		plasma_timer.stop()
 		PlayerData.plasma = 0
 		self.status = PlayerData.Status.OK
+		self.z_index = 0
 		emit_signal("player_not_invincible")
 
 func _on_AnimationPlayer_animation_finished(anim_name):
