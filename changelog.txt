@@ -1,3 +1,7 @@
+1.0.5
+
+    * Fixed security error (Thanks to eons for pointing it out to me)
+
 1.0.4
 
     * Fixed black textures on radioactive mud.
